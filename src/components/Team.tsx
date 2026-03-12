@@ -1,0 +1,92 @@
+/**
+ * "Meet the Team" — team members grid
+ *
+ * Update TEAM array as the team evolves.
+ */
+
+const TEAM = [
+  {
+    name: "Clara Long",
+    role: "Co-Lead",
+    photo: "/team/clara.jpeg",
+  },
+  {
+    name: "Rahmin Sarabi",
+    role: "Co-Lead",
+    photo: "/team/rahmin.jpg",
+  },
+  {
+    name: "Zabrae Valentine",
+    role: "Strategy & Partnerships",
+    photo: "/team/zabrae.jpeg",
+  },
+  {
+    name: "Stuart Lynn",
+    role: "Technology & Product",
+    org: "CrownShy",
+    photo: "/team/stuart.png",
+  },
+  {
+    name: "Liz Barry",
+    role: "Strategy & Ecosystem",
+    org: "MetaGov",
+    photo: "/team/liz.jpeg",
+  },
+  {
+    name: "Humphrey Obuobi",
+    role: "Design",
+    photo: "/team/humphrey.png",
+  },
+  {
+    name: "Audrey Tang",
+    role: "Senior Advisor",
+    photo: "/team/audrey.jpeg",
+  },
+  {
+    name: "Lauren Higgins",
+    role: "Senior Advisor",
+    photo: "/team/lauren.jpg",
+  },
+];
+
+export default function Team() {
+  return (
+    <section id="team" className="bg-white py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
+            Meet the team
+          </h2>
+          <p className="mt-4 text-lg text-gray-600">
+            A cross-disciplinary team working at the intersection of civic
+            infrastructure, technology, and democratic innovation.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {TEAM.map(({ name, role, org, photo }) => (
+            <div
+              key={name}
+              className="group rounded-lg border border-gray-200 bg-white p-5 text-center transition-all hover:border-bloom-300 hover:shadow-md"
+            >
+              <img
+                src={photo}
+                alt={name}
+                className="mx-auto h-28 w-28 rounded-lg object-cover grayscale transition-all group-hover:grayscale-0"
+              />
+              <h3 className="mt-4 text-base font-bold text-maroon-700">
+                {name}
+              </h3>
+              <p className="mt-1 font-mono text-xs uppercase tracking-wide text-bloom-600">
+                {role}
+              </p>
+              {org && (
+                <p className="mt-0.5 text-xs text-gray-400">{org}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

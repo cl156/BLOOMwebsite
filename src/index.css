@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling for anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset scroll targets so they don't hide behind the sticky header */
+[id] {
+  scroll-margin-top: 5rem;
+}
