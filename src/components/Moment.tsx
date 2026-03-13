@@ -19,17 +19,10 @@ export default function Moment() {
           The moment we're in
         </h2>
 
-        {/* Challenge tags */}
-        <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">
-          {CHALLENGES.map((c) => (
-            <span
-              key={c}
-              className="rounded-md border border-bloom-200 bg-bloom-50/60 px-3 py-1.5 font-mono text-xs font-medium text-bloom-700"
-            >
-              {c}
-            </span>
-          ))}
-        </div>
+        {/* Challenge list — plain text, not clickable */}
+        <p className="mt-8 font-mono text-xs font-medium tracking-wide text-bloom-600">
+          {CHALLENGES.join(" \u00b7 ")}
+        </p>
 
         <p className="mt-8 text-lg leading-relaxed text-gray-600">
           The pace of change is accelerating. Our institutions aren't keeping

@@ -459,9 +459,9 @@ export default function Hero() {
         ))}
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-500 sm:text-lg md:text-xl">
-          BLOOM equips communities to learn together, deliberate across
-          differences, find durable common ground, and coordinate
-          action&nbsp;&mdash; locally and across places.
+          BLOOM's CivicOS platform equips communities to learn together,
+          deliberate across differences, find durable common ground, and
+          coordinate action&nbsp;&mdash; locally and across places.
         </p>
 
         {/* CTAs — two prominent buttons, stack on mobile */}
@@ -481,7 +481,7 @@ export default function Hero() {
         </div>
 
         <p className="relative z-10 mt-4 font-mono text-xs text-gray-500 sm:mt-5 sm:text-xs">
-          Now live in Central Oregon &amp; Utah&nbsp;&mdash; more regions coming soon.
+          Now open in Central Oregon &amp; Utah&nbsp;&mdash; more regions coming soon.
         </p>
       </div>
     </section>

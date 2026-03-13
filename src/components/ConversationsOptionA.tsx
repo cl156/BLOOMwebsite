@@ -10,14 +10,14 @@ const CONVERSATIONS = [
     region: "Central Oregon",
     state: "OR",
     topic: "Community priorities & local governance",
-    status: "Live" as const,
+    status: "Open" as const,
     link: "#",
   },
   {
     region: "Utah",
     state: "UT",
     topic: "Public problem-solving across divides",
-    status: "Live" as const,
+    status: "Open" as const,
     link: "#",
   },
 ];
@@ -45,8 +45,8 @@ export default function ConversationsOptionA() {
             Active conversations
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
-            BLOOM organizes public problem-solving by geography. Join a live
-            deliberation or bring BLOOM to your community.
+            BLOOM organizes public problem-solving by geography. Explore an
+            open deliberation or bring BLOOM to your community.
           </p>
         </div>
 
@@ -60,10 +60,7 @@ export default function ConversationsOptionA() {
             >
               {/* Status badge */}
               <div className="absolute right-5 top-5 flex items-center gap-1.5">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
-                </span>
+                <span className="inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
                 <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-green-600">
                   {status}
                 </span>
@@ -92,7 +89,7 @@ export default function ConversationsOptionA() {
 
               {/* Join link */}
               <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-bloom-500 transition-colors group-hover:text-bloom-600">
-                Join this conversation
+                Explore this conversation
                 <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>

@@ -1,5 +1,5 @@
 /**
- * "What BLOOM Is" — identity statement, dark band
+ * "What BLOOM Is" — identity statement + CivicOS product introduction
  */
 
 const TRAITS = [
@@ -17,6 +17,13 @@ const HOST_CAPABILITIES = [
   "Coordinate across communities when the lever of change lives elsewhere",
 ];
 
+const CIVIC_OS_FEATURES = [
+  "Multi-format participation \u2014 surveys, deliberation, live dialogue",
+  "AI-assisted synthesis and pattern visualization",
+  "Federated reporting from local to cross-state scale",
+  "Shared identity layer across integrated tools",
+];
+
 export default function WhatBloomIs() {
   return (
     <section className="relative bg-maroon-700 py-20 text-white md:py-28">
@@ -32,6 +39,7 @@ export default function WhatBloomIs() {
       />
 
       <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
+        {/* BLOOM — the org/mission */}
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-3xl font-bold sm:text-4xl">
             What BLOOM is
@@ -57,8 +65,46 @@ export default function WhatBloomIs() {
           </p>
         </div>
 
+        {/* Divider */}
+        <div className="mx-auto my-14 h-px max-w-md bg-white/15" />
+
+        {/* CivicOS — the product */}
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-mono text-xs font-semibold uppercase tracking-widest text-bloom-300">
+            The platform
+          </p>
+          <h3 className="mt-3 font-display text-2xl font-bold sm:text-3xl">
+            Powered by CivicOS
+          </h3>
+          <p className="mt-5 text-lg leading-relaxed text-bloom-100">
+            CivicOS is a modular, open-source platform that weaves multiple
+            participation methods into a single end-to-end
+            workflow&nbsp;&mdash; so communities can learn together, contribute
+            in multiple formats, and receive clear reporting on what was heard
+            and what happens next.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-bloom-200">
+            Not a new tool&nbsp;&mdash; a switchboard. CivicOS integrates
+            existing leading tools&nbsp;&mdash; Polis for large-group opinion
+            mapping, Talk to the City for AI-assisted synthesis, facilitated
+            dialogue on Jitsi, and others&nbsp;&mdash; under a shared identity
+            layer, a workflow engine, and a federated data ontology that lets
+            outputs be read at the local, regional, and cross-state level
+            simultaneously.
+          </p>
+
+          <div className="mt-8 inline-flex flex-col items-start gap-2 text-left">
+            {CIVIC_OS_FEATURES.map((item) => (
+              <span key={item} className="flex items-start gap-2 text-sm text-bloom-100">
+                <span className="mt-0.5 font-mono text-bloom-300">&#9670;</span>
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
         {/* Trait chips */}
-        <div className="mt-12 flex flex-wrap justify-center gap-3">
+        <div className="mt-14 flex flex-wrap justify-center gap-3">
           {TRAITS.map(({ icon, label }) => (
             <div
               key={label}
