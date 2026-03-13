@@ -11,3 +11,17 @@ html {
 [id] {
   scroll-margin-top: 5rem;
 }
+
+/* Dev-only: subtle indicator for editable fields */
+.editable-field {
+  transition: outline 0.15s ease;
+  border-radius: 2px;
+}
+.editable-field:hover {
+  outline: 1px dashed rgba(255, 255, 255, 0.35);
+  outline-offset: 4px;
+}
+.editable-field:focus {
+  outline: 1px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+}
