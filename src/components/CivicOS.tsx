@@ -18,7 +18,7 @@ const TRAITS = [
 ];
 
 const CIVIC_OS_FEATURES = [
-  "Multi-format participation \u2014 surveys, deliberation, live dialogue",
+  "Multi-format participation \u2014 surveys, online deliberation, in-person assemblies, live dialogue",
   "AI-assisted synthesis and pattern visualization",
   "Federated reporting from local to cross-state scale",
   "Shared identity layer across integrated tools",
@@ -27,6 +27,7 @@ const CIVIC_OS_FEATURES = [
 export default function CivicOS() {
   return (
     <section
+      id="civic-os"
       className="relative py-20 md:py-28"
       style={{ background: "linear-gradient(180deg, #ffffff 0%, #faf8f9 50%, #ffffff 100%)" }}
     >
@@ -63,7 +64,11 @@ export default function CivicOS() {
           dialogue on Jitsi, and others&nbsp;&mdash; under a shared identity
           layer, a workflow engine, and a federated data ontology that lets
           outputs be read at the local, regional, and cross-state level
-          simultaneously.
+          simultaneously. It also makes in-person deliberation
+          legible&nbsp;&mdash; capturing what happens in town halls,
+          citizens&rsquo; assemblies, and community workshops so those
+          inputs carry the same weight as online participation in the
+          final synthesis.
         </p>
 
         <div className="mt-8 inline-flex flex-col items-start gap-2 text-left">

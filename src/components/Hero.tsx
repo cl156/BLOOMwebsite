@@ -190,7 +190,7 @@ export default function Hero() {
         ))}
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-500 sm:text-xl md:text-2xl">
-          BLOOM's CivicOS platform equips communities to learn together,
+          BLOOM equips communities to learn together,
           deliberate across differences, find durable common ground, and
           coordinate action&nbsp;&mdash; locally and beyond.
         </p>

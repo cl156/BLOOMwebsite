@@ -2,8 +2,10 @@ import { useState } from "react";
 import BloomLogo from "./BloomLogo";
 
 const NAV_LINKS = [
-  { label: "Deliberations", href: "#conversations" },
   { label: "About", href: "#what-bloom-is" },
+  { label: "CivicOS", href: "#civic-os" },
+  { label: "Process", href: "#how-it-works" },
+  { label: "Deliberations", href: "#conversations" },
   { label: "Team", href: "#team" },
 ] as const;
 
