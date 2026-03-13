@@ -1,56 +1,22 @@
 import { useEffect, useRef } from "react";
 
 /**
- * MouseGlow — tiny blinking nodes that evoke AI pattern-matching.
+ * MouseGlow — soft radial glow that follows the cursor.
  *
- * Instead of a smooth trailing glow, this renders a small cluster of dots
- * around the cursor that blink in and out at staggered intervals — like
- * neural activations or pattern-recognition pulses. Each node has its own
- * color, phase, and blink speed for an algorithmic, non-organic feel.
- *
- * Tuning knobs at the top control size, density, speed, and palette.
+ * A warm bloom-coral spotlight trails the mouse, gently
+ * illuminating the page. Pairs with the cybernetic decode
+ * hero without competing for attention.
  */
 
 /* ── Tuning knobs ──────────────────────────────────────────────────────────── */
-const NODE_COUNT = 10; // number of blinking nodes
-const ORBIT_MIN = 12; // px — closest a node can be to cursor
-const ORBIT_MAX = 35; // px — farthest a node can be
-const NODE_R_MIN = 1.5; // px — smallest node radius
-const NODE_R_MAX = 3.5; // px — largest node radius
-const PEAK_OPACITY = 0.35; // max alpha when fully "on"
-const EASE = 0.15; // how quickly the cluster snaps to cursor (higher = tighter)
+const GLOW_RADIUS = 220;       // px — radius of the soft glow
+const PEAK_OPACITY = 0.12;     // max alpha at center of glow
+const EASE = 0.12;             // cursor-follow smoothing (0→1, higher = tighter)
 
-/* Multi-color palette — coral, maroon, warm peach, muted rose, soft slate */
-const PALETTE: [number, number, number][] = [
-  [212, 87, 59],   // bloom-500 coral
-  [184, 67, 44],   // bloom-600 deeper coral
-  [107, 42, 61],   // maroon-700
-  [244, 152, 128], // bloom-300 peach
-  [155, 69, 89],   // maroon-500 rose
-  [185, 140, 155], // muted mauve
-  [120, 100, 110], // warm gray
-];
-
-/** Each node has fixed geometry + its own blink phase/speed */
-interface Node {
-  angle: number;       // radians — position around cursor
-  orbit: number;       // px — distance from cursor center
-  r: number;           // px — dot radius
-  color: [number, number, number];
-  phase: number;       // 0–2π — blink cycle offset
-  speed: number;       // radians per frame — blink frequency
-}
-
-function createNodes(): Node[] {
-  return Array.from({ length: NODE_COUNT }, () => ({
-    angle: Math.random() * Math.PI * 2,
-    orbit: ORBIT_MIN + Math.random() * (ORBIT_MAX - ORBIT_MIN),
-    r: NODE_R_MIN + Math.random() * (NODE_R_MAX - NODE_R_MIN),
-    color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
-    phase: Math.random() * Math.PI * 2,
-    speed: 0.03 + Math.random() * 0.04, // varied blink rates
-  }));
-}
+/* Gradient color stops — warm coral fading through peach to transparent */
+const INNER_COLOR = [212, 87, 59];   // bloom-500 coral
+const MID_COLOR = [244, 152, 128];   // bloom-300 peach
+const OUTER_COLOR = [155, 69, 89];   // maroon-500 rose
 
 export default function MouseGlow() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -67,9 +33,6 @@ export default function MouseGlow() {
     let drawY = -1000;
     let animId = 0;
     let dpr = 1;
-    let frame = 0;
-
-    const nodes = createNodes();
 
     function resize() {
       dpr = window.devicePixelRatio || 1;
@@ -99,46 +62,42 @@ export default function MouseGlow() {
     function draw() {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      frame++;
 
-      // Snap toward cursor (tighter than organic trailing)
+      // Smooth follow
       drawX += (mouseX - drawX) * EASE;
       drawY += (mouseY - drawY) * EASE;
 
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx!.clearRect(0, 0, w, h);
 
-      // Skip if off-screen
-      if (drawX < -ORBIT_MAX * 2 || drawX > w + ORBIT_MAX * 2 ||
-          drawY < -ORBIT_MAX * 2 || drawY > h + ORBIT_MAX * 2) {
+      // Skip if cursor is off-screen
+      if (
+        drawX < -GLOW_RADIUS * 2 || drawX > w + GLOW_RADIUS * 2 ||
+        drawY < -GLOW_RADIUS * 2 || drawY > h + GLOW_RADIUS * 2
+      ) {
         animId = requestAnimationFrame(draw);
         return;
       }
 
-      // Draw each blinking node
-      for (const node of nodes) {
-        // Blink: sinusoidal alpha oscillation (0 → peak → 0)
-        const blink = Math.sin(frame * node.speed + node.phase);
-        // Only visible in the "on" half of the cycle (blink > 0)
-        if (blink <= 0) continue;
+      // Multi-stop radial gradient for a rich, warm glow
+      const grad = ctx!.createRadialGradient(
+        drawX, drawY, 0,
+        drawX, drawY, GLOW_RADIUS,
+      );
 
-        const alpha = blink * PEAK_OPACITY;
-        const x = drawX + node.orbit * Math.cos(node.angle);
-        const y = drawY + node.orbit * Math.sin(node.angle);
+      const [ir, ig, ib] = INNER_COLOR;
+      const [mr, mg, mb] = MID_COLOR;
+      const [or2, og, ob] = OUTER_COLOR;
 
-        const [r, g, b] = node.color;
+      grad.addColorStop(0, `rgba(${ir}, ${ig}, ${ib}, ${PEAK_OPACITY})`);
+      grad.addColorStop(0.3, `rgba(${mr}, ${mg}, ${mb}, ${PEAK_OPACITY * 0.6})`);
+      grad.addColorStop(0.6, `rgba(${or2}, ${og}, ${ob}, ${PEAK_OPACITY * 0.25})`);
+      grad.addColorStop(1, `rgba(${or2}, ${og}, ${ob}, 0)`);
 
-        // Crisp dot with soft edge
-        const grad = ctx!.createRadialGradient(x, y, 0, x, y, node.r);
-        grad.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${alpha})`);
-        grad.addColorStop(0.6, `rgba(${r}, ${g}, ${b}, ${alpha * 0.5})`);
-        grad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
-
-        ctx!.fillStyle = grad;
-        ctx!.beginPath();
-        ctx!.arc(x, y, node.r, 0, Math.PI * 2);
-        ctx!.fill();
-      }
+      ctx!.fillStyle = grad;
+      ctx!.beginPath();
+      ctx!.arc(drawX, drawY, GLOW_RADIUS, 0, Math.PI * 2);
+      ctx!.fill();
 
       animId = requestAnimationFrame(draw);
     }

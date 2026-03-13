@@ -5,7 +5,8 @@
       "name": "bloom-dev",
       "runtimeExecutable": "/usr/local/bin/npm",
       "runtimeArgs": ["run", "dev"],
-      "port": 5173
+      "port": 5175,
+      "autoPort": true
     },
     {
       "name": "bloom-preview",

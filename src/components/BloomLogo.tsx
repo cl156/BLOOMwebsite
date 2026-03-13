@@ -10,7 +10,7 @@ export default function BloomLogo({ className = "" }: { className?: string }) {
       <img
         src="/bloom-logo.png"
         alt="BLOOM Project"
-        className="h-14 w-auto"
+        className="h-24 w-auto"
       />
     </a>
   );

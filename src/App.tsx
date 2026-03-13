@@ -1,4 +1,3 @@
-import MouseGlow from "./components/MouseGlow";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Moment from "./components/Moment";
@@ -27,7 +26,6 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      <MouseGlow />
       <Header />
       <main>
         <Hero />

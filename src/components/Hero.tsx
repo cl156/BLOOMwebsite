@@ -1,31 +1,418 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 
 /**
  * Hero Section — bold, centered, clean background.
  *
- * The second line rotates through words every 3 seconds
- * with a fade transition.
+ * The rotating word phases in from the background:
+ * characters start invisible, emerge as scrambled glyphs
+ * at low opacity, then resolve left-to-right into the
+ * target word at full opacity — like pattern-matching.
  */
 
-const ROTATING_WORDS = ["futures", "prosperity", "understandings", "ideas", "solutions"];
+const ROTATING_WORDS = ["futures.", "prosperity.", "ideas.", "solutions.", "action."];
 
-export default function Hero() {
+const GLYPHS = "abcdefghijklmnopqrstuvwxyz";
+
+function randomGlyph() {
+  return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+}
+
+interface CharState {
+  char: string;
+  opacity: number;
+  resolved: boolean;
+}
+
+/**
+ * Hook returning per-character state with opacity phasing.
+ * Unresolved chars start near-invisible and gradually brighten
+ * as the decode wave approaches. Resolved chars snap to full opacity.
+ */
+function usePhaseText(words: string[], intervalMs = 4500) {
+  const [chars, setChars] = useState<CharState[]>(
+    () => words[0].split("").map((c) => ({ char: c, opacity: 1, resolved: true }))
+  );
   const [wordIndex, setWordIndex] = useState(0);
-  const [fading, setFading] = useState(false);
+  const frameRef = useRef<number>(0);
+  const resolvedRef = useRef(words[0].length);
+
+  const scramble = useCallback((target: string, idx: number) => {
+    resolvedRef.current = 0;
+    setWordIndex(idx);
+    const totalChars = target.length;
+    const RESOLVE_EVERY = 10; // ~300ms per char at 30fps
+    let tick = 0;
+
+    const run = () => {
+      tick++;
+      if (tick % RESOLVE_EVERY === 0 && resolvedRef.current < totalChars) {
+        resolvedRef.current++;
+      }
+
+      const resolved = resolvedRef.current;
+      const progress = resolved / totalChars; // 0→1 overall progress
+
+      const next: CharState[] = [];
+      for (let i = 0; i < totalChars; i++) {
+        if (i < resolved) {
+          // Resolved: full opacity, real character
+          next.push({ char: target[i], opacity: 1, resolved: true });
+        } else {
+          // Unresolved: opacity ramps up as decode wave approaches
+          // Characters closer to the resolve frontier are brighter
+          const distFromFrontier = i - resolved;
+          const proximityFade = Math.max(0.05, 1 - distFromFrontier * 0.12);
+          // Also fade in globally over time
+          const globalFade = Math.min(1, progress * 1.5 + 0.15);
+          const opacity = Math.min(proximityFade, globalFade);
+          next.push({ char: randomGlyph(), opacity, resolved: false });
+        }
+      }
+      setChars(next);
+
+      if (resolved < totalChars) {
+        frameRef.current = window.requestAnimationFrame(run);
+      } else {
+        setChars(target.split("").map((c) => ({ char: c, opacity: 1, resolved: true })));
+      }
+    };
+
+    // Start: all characters invisible scrambled
+    setChars(
+      Array.from({ length: totalChars }, () => ({
+        char: randomGlyph(),
+        opacity: 0.06,
+        resolved: false,
+      }))
+    );
+
+    frameRef.current = window.requestAnimationFrame(run);
+  }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFading(true);
-      setTimeout(() => {
-        setWordIndex((i) => (i + 1) % ROTATING_WORDS.length);
-        setFading(false);
-      }, 300);
-    }, 3000);
-    return () => clearInterval(interval);
+    setChars(words[0].split("").map((c) => ({ char: c, opacity: 1, resolved: true })));
+    resolvedRef.current = words[0].length;
+    setWordIndex(0);
+
+    const wordIndexRef = { current: 0 };
+
+    const wordInterval = setInterval(() => {
+      wordIndexRef.current = (wordIndexRef.current + 1) % words.length;
+      scramble(words[wordIndexRef.current], wordIndexRef.current);
+    }, intervalMs);
+
+    return () => {
+      clearInterval(wordInterval);
+      cancelAnimationFrame(frameRef.current);
+    };
+  }, [words, intervalMs, scramble]);
+
+  return { chars, wordIndex };
+}
+
+/* ── Palette for the mycelial network ── */
+const NET_COLORS = [
+  "212,87,59",   // bloom-500 coral
+  "244,152,128", // bloom-300 peach
+  "155,69,89",   // maroon-500 rose
+  "184,67,44",   // bloom-600
+  "107,42,61",   // maroon-700
+];
+
+interface NetNode { x: number; y: number; r: number; color: string }
+interface NetEdge { x1: number; y1: number; x2: number; y2: number; color: string; w: number }
+interface Branch { x: number; y: number; angle: number; speed: number; life: number; color: string }
+
+/** Seeded PRNG for deterministic layout across renders */
+function mulberry32(seed: number) {
+  return () => {
+    let t = (seed += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function generateNetwork(w: number, h: number) {
+  const rand = mulberry32(42);
+  const cx = w / 2;
+  const cy = h * 0.46;
+  const nodes: NetNode[] = [];
+  const edges: NetEdge[] = [];
+
+  // Grow branches from seed points scattered around edges
+  const seeds: Branch[] = [];
+  const SEED_COUNT = 18;
+  for (let i = 0; i < SEED_COUNT; i++) {
+    // Bias seed points toward edges
+    const side = Math.floor(rand() * 4);
+    let sx: number, sy: number, angle: number;
+    if (side === 0) { sx = rand() * w; sy = -10; angle = Math.PI / 2 + (rand() - 0.5) * 0.8; }
+    else if (side === 1) { sx = rand() * w; sy = h + 10; angle = -Math.PI / 2 + (rand() - 0.5) * 0.8; }
+    else if (side === 2) { sx = -10; sy = rand() * h; angle = (rand() - 0.5) * 0.8; }
+    else { sx = w + 10; sy = rand() * h; angle = Math.PI + (rand() - 0.5) * 0.8; }
+    seeds.push({
+      x: sx, y: sy, angle, speed: 8 + rand() * 12,
+      life: 12 + Math.floor(rand() * 20),
+      color: NET_COLORS[Math.floor(rand() * NET_COLORS.length)],
+    });
+  }
+
+  // Grow each branch
+  const allBranches = [...seeds];
+  const maxIter = 600;
+  let iter = 0;
+  while (allBranches.length > 0 && iter < maxIter) {
+    iter++;
+    const br = allBranches.shift()!;
+    if (br.life <= 0) continue;
+
+    const nx = br.x + Math.cos(br.angle) * br.speed;
+    const ny = br.y + Math.sin(br.angle) * br.speed;
+
+    if (nx < -40 || nx > w + 40 || ny < -40 || ny > h + 40) continue;
+
+    // Add edge (rendering alpha applied later)
+    const lineW = 0.6 + rand() * 1.0;
+    edges.push({ x1: br.x, y1: br.y, x2: nx, y2: ny, color: br.color, w: lineW });
+
+    // Possibly add a node at junction
+    if (rand() < 0.35) {
+      const nr = 1.5 + rand() * 3.5;
+      nodes.push({ x: nx, y: ny, r: nr, color: br.color });
+    }
+
+    // Continue growing with slight curve
+    const nextAngle = br.angle + (rand() - 0.5) * 0.6;
+    allBranches.push({
+      x: nx, y: ny, angle: nextAngle,
+      speed: br.speed * (0.85 + rand() * 0.2),
+      life: br.life - 1,
+      color: br.color,
+    });
+
+    // Branch fork
+    if (rand() < 0.25 && br.life > 3) {
+      const forkAngle = br.angle + (rand() > 0.5 ? 1 : -1) * (0.4 + rand() * 0.8);
+      allBranches.push({
+        x: nx, y: ny, angle: forkAngle,
+        speed: br.speed * (0.6 + rand() * 0.3),
+        life: Math.floor(br.life * (0.4 + rand() * 0.3)),
+        color: NET_COLORS[Math.floor(rand() * NET_COLORS.length)],
+      });
+    }
+  }
+
+  return { nodes, edges };
+}
+
+/** Compute base alpha: 0 at center, ramps up toward edges.
+ *  Uses separate horizontal/vertical radii so the clear zone
+ *  stays tall enough to protect text on narrow mobile screens. */
+function baseAlpha(x: number, y: number, cx: number, cy: number, fadeRx: number, fadeRy: number) {
+  const dx = (x - cx) / fadeRx;
+  const dy = (y - cy) / fadeRy;
+  const t = Math.min(1, Math.sqrt(dx * dx + dy * dy));
+  return t * t; // smooth ease-in
+}
+
+/** Mouse proximity boost: 0 when far, up to 1 when cursor is right on it */
+const MOUSE_RADIUS = 160;
+function mouseBoost(x: number, y: number, mx: number, my: number) {
+  if (mx < -500) return 0; // cursor off-screen
+  const dist = Math.sqrt((x - mx) ** 2 + (y - my) ** 2);
+  if (dist > MOUSE_RADIUS) return 0;
+  const t = 1 - dist / MOUSE_RADIUS;
+  return t * t * 0.6; // peak 0.6 extra alpha
+}
+
+/** Draw the network — visible at edges, invisible at center, mouse activates nearby */
+function drawNetwork(
+  ctx: CanvasRenderingContext2D,
+  edges: NetEdge[],
+  nodes: NetNode[],
+  cx: number,
+  cy: number,
+  w: number,
+  h: number,
+  mouseX: number,
+  mouseY: number,
+) {
+  // Elliptical fade: horizontal radius = 50% of half-width, vertical = 60% of half-height
+  // This keeps the clear zone taller on mobile where width shrinks
+  const fadeRx = w * 0.5;
+  const fadeRy = h * 0.55;
+
+  // Draw edges
+  ctx.lineCap = "round";
+  for (const e of edges) {
+    const mx = (e.x1 + e.x2) / 2;
+    const my = (e.y1 + e.y2) / 2;
+    const base = baseAlpha(mx, my, cx, cy, fadeRx, fadeRy) * 0.3;
+    const boost = mouseBoost(mx, my, mouseX, mouseY);
+    const a = Math.min(0.7, base + boost);
+    if (a < 0.01) continue;
+    ctx.strokeStyle = `rgba(${e.color},${a})`;
+    ctx.lineWidth = boost > 0.05 ? e.w * (1 + boost * 1.5) : e.w;
+    ctx.beginPath();
+    ctx.moveTo(e.x1, e.y1);
+    ctx.lineTo(e.x2, e.y2);
+    ctx.stroke();
+  }
+
+  // Draw nodes
+  for (const n of nodes) {
+    const base = baseAlpha(n.x, n.y, cx, cy, fadeRx, fadeRy) * 0.4;
+    const boost = mouseBoost(n.x, n.y, mouseX, mouseY);
+    const a = Math.min(0.85, base + boost);
+    if (a < 0.01) continue;
+
+    const glowR = boost > 0.05 ? n.r * (2.5 + boost * 3) : n.r * 2.5;
+
+    // Soft glow
+    const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowR);
+    grad.addColorStop(0, `rgba(${n.color},${a})`);
+    grad.addColorStop(0.4, `rgba(${n.color},${a * 0.35})`);
+    grad.addColorStop(1, `rgba(${n.color},0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, glowR, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Solid core — brighter when mouse is near
+    const coreA = Math.min(1, a * (boost > 0.05 ? 2 : 1.4));
+    ctx.fillStyle = `rgba(${n.color},${coreA})`;
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r * 0.7, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function MycelialNetwork() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const parent = canvas.parentElement;
+    if (!parent) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let mouseX = -1000;
+    let mouseY = -1000;
+    let drawMX = -1000;
+    let drawMY = -1000;
+    let animId = 0;
+    let currentW = 0;
+    let currentH = 0;
+    let net: ReturnType<typeof generateNetwork> = { nodes: [], edges: [] };
+
+    const dpr = window.devicePixelRatio || 1;
+
+    function setup() {
+      currentW = parent!.clientWidth;
+      currentH = parent!.clientHeight;
+      canvas!.width = currentW * dpr;
+      canvas!.height = currentH * dpr;
+      canvas!.style.width = `${currentW}px`;
+      canvas!.style.height = `${currentH}px`;
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+      net = generateNetwork(currentW, currentH);
+    }
+
+    setup();
+
+    function onMouse(e: MouseEvent) {
+      const rect = canvas!.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    }
+    function onLeave() { mouseX = -1000; mouseY = -1000; }
+
+    function draw() {
+      // Smooth follow
+      drawMX += (mouseX - drawMX) * 0.15;
+      drawMY += (mouseY - drawMY) * 0.15;
+
+      ctx!.clearRect(0, 0, currentW, currentH);
+      const cx = currentW / 2;
+      const cy = currentH * 0.46;
+      drawNetwork(ctx!, net.edges, net.nodes, cx, cy, currentW, currentH, drawMX, drawMY);
+      animId = requestAnimationFrame(draw);
+    }
+
+    // Only animate when mouse is in the section; otherwise draw once static
+    let isAnimating = false;
+    function startAnim() {
+      if (!isAnimating) { isAnimating = true; draw(); }
+    }
+    function stopAnim() {
+      isAnimating = false;
+      cancelAnimationFrame(animId);
+      // Final static draw
+      mouseX = -1000; mouseY = -1000;
+      drawMX = -1000; drawMY = -1000;
+      ctx!.clearRect(0, 0, currentW, currentH);
+      const cx = currentW / 2;
+      const cy = currentH * 0.46;
+      drawNetwork(ctx!, net.edges, net.nodes, cx, cy, currentW, currentH, -1000, -1000);
+    }
+
+    // Initial static draw
+    stopAnim();
+
+    const section = parent!;
+    section.addEventListener("mouseenter", startAnim);
+    section.addEventListener("mouseleave", stopAnim);
+    window.addEventListener("mousemove", onMouse);
+
+    const onResize = () => { setup(); stopAnim(); };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      section.removeEventListener("mouseenter", startAnim);
+      section.removeEventListener("mouseleave", stopAnim);
+      window.removeEventListener("mousemove", onMouse);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
   return (
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none absolute inset-0"
+      aria-hidden="true"
+    />
+  );
+}
+
+export default function Hero() {
+  const { chars, wordIndex } = usePhaseText(ROTATING_WORDS, 4500);
+  const measureRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [wordWidths, setWordWidths] = useState<number[]>([]);
+
+  useEffect(() => {
+    function measure() {
+      const widths = measureRefs.current.map(
+        (el) => (el ? Math.ceil(el.getBoundingClientRect().width) : 0)
+      );
+      setWordWidths(widths);
+    }
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const containerWidth = wordWidths[wordIndex] || 0;
+
+  return (
     <section className="relative overflow-hidden border-b border-gray-100 bg-white">
+      {/* Mycelial network background */}
+      <MycelialNetwork />
+
       <div className="relative mx-auto max-w-4xl px-5 pb-16 pt-16 text-center sm:pb-20 sm:pt-20 md:pb-28 md:pt-28 lg:px-8">
         <p className="mb-5 inline-block rounded-md border border-bloom-200 bg-bloom-50/60 px-4 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-bloom-600 sm:text-xs">
           Open infrastructure for public problem-solving
@@ -34,21 +421,42 @@ export default function Hero() {
         <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-maroon-700 sm:text-5xl md:text-6xl lg:text-7xl">
           From common ground
           <br />
-          <span className="text-bloom-500">
+          <span className="whitespace-nowrap text-bloom-500">
             to shared{" "}
-            <span className="relative inline-block w-[5.5em] text-left align-baseline">
-              <span
-                className={`inline-block transition-all duration-300 ${
-                  fading
-                    ? "translate-y-2 opacity-0"
-                    : "translate-y-0 opacity-100"
-                }`}
-              >
-                {ROTATING_WORDS[wordIndex]}.
-              </span>
+            <span
+              className="inline-block overflow-hidden text-left"
+              style={{
+                width: containerWidth > 0 ? containerWidth : "auto",
+                verticalAlign: "bottom",
+                lineHeight: "inherit",
+                transition: "width 0.35s ease",
+              }}
+            >
+              {chars.map((c, i) => (
+                <span
+                  key={i}
+                  style={{
+                    opacity: c.opacity,
+                    transition: c.resolved ? "opacity 0.15s ease-in" : "none",
+                  }}
+                >
+                  {c.char}
+                </span>
+              ))}
             </span>
           </span>
         </h1>
+        {/* Hidden measurers — one per word, outside h1 to avoid layout impact */}
+        {ROTATING_WORDS.map((word, i) => (
+          <span
+            key={word}
+            ref={(el) => { measureRefs.current[i] = el; }}
+            className="pointer-events-none invisible absolute whitespace-nowrap font-display text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+            aria-hidden="true"
+          >
+            {word}
+          </span>
+        ))}
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-500 sm:text-lg md:text-xl">
           BLOOM equips communities to learn together, deliberate across
@@ -72,7 +480,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <p className="mt-4 font-mono text-[10px] text-gray-400 sm:mt-5 sm:text-xs">
+        <p className="relative z-10 mt-4 font-mono text-xs text-gray-500 sm:mt-5 sm:text-xs">
           Now live in Central Oregon &amp; Utah&nbsp;&mdash; more regions coming soon.
         </p>
       </div>

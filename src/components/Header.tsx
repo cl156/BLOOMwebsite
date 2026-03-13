@@ -12,23 +12,23 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 lg:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 lg:px-8">
         <BloomLogo />
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-10 md:flex">
           {NAV_LINKS.map(({ label, href }) => (
             <a
               key={href}
               href={href}
-              className="text-base font-medium text-gray-600 transition-colors hover:text-maroon-700"
+              className="text-lg font-medium text-gray-600 transition-colors hover:text-maroon-700"
             >
               {label}
             </a>
           ))}
           <a
             href="#get-in-touch"
-            className="rounded-lg bg-bloom-500 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-bloom-600"
+            className="rounded-lg bg-bloom-500 px-7 py-3 text-lg font-semibold text-white transition-colors hover:bg-bloom-600"
           >
             Get in touch
           </a>
