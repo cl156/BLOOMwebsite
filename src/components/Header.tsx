@@ -3,9 +3,7 @@ import BloomLogo from "./BloomLogo";
 
 const NAV_LINKS = [
   { label: "Conversations", href: "#conversations" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "For Civic Hosts", href: "#for-civic-hosts" },
-  { label: "For partners", href: "#for-partners" },
+  { label: "About", href: "#how-it-works" },
   { label: "Team", href: "#team" },
 ] as const;
 
@@ -29,10 +27,10 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#get-involved"
+            href="#get-in-touch"
             className="rounded-lg bg-bloom-500 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-bloom-600"
           >
-            Get involved
+            Get in touch
           </a>
         </nav>
 
@@ -73,11 +71,11 @@ export default function Header() {
             ))}
             <li>
               <a
-                href="#get-involved"
+                href="#get-in-touch"
                 onClick={() => setMenuOpen(false)}
                 className="mt-2 inline-block rounded-lg bg-bloom-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-bloom-600"
               >
-                Get involved
+                Get in touch
               </a>
             </li>
           </ul>

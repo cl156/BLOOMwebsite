@@ -43,13 +43,17 @@ export default function ForCommunities() {
           ))}
         </div>
 
-        {/* Tagline */}
+        {/* "We don't replace" emphasis + tagline */}
         <div className="mx-auto mt-14 max-w-lg text-center">
-          <p className="text-base leading-relaxed text-gray-600">
-            You stay rooted in your community. We help you coordinate at the
-            scale that matters.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3 font-mono text-xs font-semibold uppercase tracking-widest text-maroon-600">
+          <div className="rounded-lg border border-bloom-200 bg-bloom-50/40 p-5">
+            <p className="text-base leading-relaxed text-gray-700">
+              BLOOM doesn't replace existing civic work&nbsp;&mdash; we strengthen it.
+              We build on the organizers, institutions, and local efforts already
+              doing the hard work in your community.
+            </p>
+          </div>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3 font-mono text-xs font-semibold uppercase tracking-widest text-maroon-600">
             <span className="rounded-md border border-bloom-200 bg-bloom-50/60 px-3 py-1.5">
               Locally rooted
             </span>
@@ -61,7 +65,7 @@ export default function ForCommunities() {
             </span>
           </div>
           <a
-            href="#get-involved"
+            href="#get-in-touch"
             className="mt-8 inline-block rounded-lg bg-bloom-500 px-7 py-3 text-base font-semibold text-white transition-colors hover:bg-bloom-600"
           >
             Become a Civic Host

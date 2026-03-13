@@ -5,23 +5,24 @@ import Moment from "./components/Moment";
 import WhatBloomIs from "./components/WhatBloomIs";
 import HowItWorks from "./components/HowItWorks";
 import ConversationsOptionA from "./components/ConversationsOptionA";
+import TryConversation from "./components/TryConversation";
 import SmarterTogether from "./components/SmarterTogether";
 import ForCommunities from "./components/ForCommunities";
 import AIAlly from "./components/AIAlly";
 import Federated from "./components/Federated";
-import ForPartners from "./components/ForPartners";
 import Principles from "./components/Principles";
 import Team from "./components/Team";
-import GetInvolved from "./components/GetInvolved";
+import StayInTheLoop from "./components/StayInTheLoop";
 import Footer from "./components/Footer";
 
 /**
  * BLOOM Marketing Site — single-page layout
  *
- * Section order follows the narrative arc:
+ * Section order:
  *   Hero → Moment → What BLOOM Is → How It Works → Active Conversations →
- *   Smarter Together → For Civic Hosts → AI Ally → Federated →
- *   For Partners → Not Another Platform → Team → The Invitation → Footer
+ *   Try a Conversation → Smarter Together → For Civic Hosts →
+ *   AI Ally → Federated → Not Another Platform → Team →
+ *   Stay in the Loop → Footer
  */
 export default function App() {
   return (
@@ -34,14 +35,14 @@ export default function App() {
         <WhatBloomIs />
         <HowItWorks />
         <ConversationsOptionA />
+        <TryConversation />
         <SmarterTogether />
         <ForCommunities />
         <AIAlly />
         <Federated />
-        <ForPartners />
         <Principles />
         <Team />
-        <GetInvolved />
+        <StayInTheLoop />
       </main>
       <Footer />
     </div>
