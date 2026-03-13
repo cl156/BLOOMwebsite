@@ -51,8 +51,8 @@ export default function ForCommunities() {
         fadeCenterY={0.5}
         fadeRxRatio={0.85}
         fadeRyRatio={0.9}
-        edgeAlpha={0.05}
-        nodeAlpha={0.07}
+        edgeAlpha={0.14}
+        nodeAlpha={0.17}
       />
 
       <div className="relative mx-auto max-w-6xl px-5 lg:px-8">

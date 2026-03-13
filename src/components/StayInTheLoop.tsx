@@ -29,8 +29,8 @@ export default function StayInTheLoop() {
         fadeCenterY={0.5}
         fadeRxRatio={0.85}
         fadeRyRatio={0.9}
-        edgeAlpha={0.04}
-        nodeAlpha={0.06}
+        edgeAlpha={0.12}
+        nodeAlpha={0.15}
       />
 
       <div className="relative mx-auto max-w-2xl px-5 text-center lg:px-8">

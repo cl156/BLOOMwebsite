@@ -71,8 +71,8 @@ export default function Team() {
         fadeCenterY={0.5}
         fadeRxRatio={0.85}
         fadeRyRatio={0.9}
-        edgeAlpha={0.04}
-        nodeAlpha={0.06}
+        edgeAlpha={0.12}
+        nodeAlpha={0.15}
       />
 
       <div className="relative mx-auto max-w-6xl px-5 lg:px-8">

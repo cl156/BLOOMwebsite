@@ -30,8 +30,8 @@ export default function Moment() {
         fadeCenterY={0.5}
         fadeRxRatio={0.85}
         fadeRyRatio={0.9}
-        edgeAlpha={0.06}
-        nodeAlpha={0.08}
+        edgeAlpha={0.15}
+        nodeAlpha={0.18}
       />
 
       <div className="relative mx-auto max-w-3xl px-5 text-center lg:px-8">
