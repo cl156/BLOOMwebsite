@@ -4,6 +4,13 @@
  * Clean two-card layout with location pins, status badges, and topic info.
  * Easy to scale by adding more cards as new regions come online.
  */
+import MycelialCanvas from "./MycelialCanvas";
+
+const LIGHT_NET_COLORS = [
+  "107,42,61",
+  "155,69,89",
+  "180,100,120",
+];
 
 const CONVERSATIONS = [
   {
@@ -26,16 +33,21 @@ const CONVERSATIONS = [
 
 export default function ConversationsOptionA() {
   return (
-    <section id="conversations" className="relative bg-white py-20 md:py-28">
-      {/* Subtle dot grid */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, #6B2A3D 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-        aria-hidden="true"
+    <section
+      id="conversations"
+      className="relative py-20 md:py-28"
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #faf8f9 50%, #ffffff 100%)" }}
+    >
+      <MycelialCanvas
+        colors={LIGHT_NET_COLORS}
+        seed={83}
+        seedCount={14}
+        fadeCenterX={0.5}
+        fadeCenterY={0.5}
+        fadeRxRatio={0.85}
+        fadeRyRatio={0.9}
+        edgeAlpha={0.05}
+        nodeAlpha={0.07}
       />
 
       <div className="relative mx-auto max-w-4xl px-5 lg:px-8">
@@ -44,12 +56,13 @@ export default function ConversationsOptionA() {
             Happening now
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
-            Active conversations
+            Active deliberations
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
+          <p className="mx-auto mt-4 max-w-xl text-xl text-gray-600">
             Our 2026 headline deliberation asks one question across communities:
-            how should AI shape our shared future? Explore an open deliberation
-            or bring BLOOM to your community.
+            how can we build a future where the benefits of AI are widely shared
+            and the risks responsibly managed? Explore an open deliberation or bring BLOOM to
+            your community.
           </p>
         </div>
 
@@ -86,7 +99,7 @@ export default function ConversationsOptionA() {
               </div>
 
               {/* Topic */}
-              <p className="mt-4 text-sm font-medium leading-relaxed text-maroon-600">
+              <p className="mt-4 text-base font-medium leading-relaxed text-maroon-600">
                 {topic}
               </p>
               {subtopics && (
@@ -108,7 +121,7 @@ export default function ConversationsOptionA() {
 
         {/* Coming soon teaser */}
         <div className="mt-10 rounded-lg border border-dashed border-gray-300 bg-gray-50/50 p-6 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-base text-gray-500">
             <span className="font-medium text-maroon-700">More regions coming soon.</span>{" "}
             BLOOM is expanding to new communities across the country.
           </p>

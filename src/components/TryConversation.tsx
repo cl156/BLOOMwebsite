@@ -4,19 +4,44 @@
  * Lets any visitor get a taste of the BLOOM process through
  * a sample conversation. Neutral, inclusive language.
  */
+import MycelialCanvas from "./MycelialCanvas";
+
+const LIGHT_NET_COLORS = [
+  "107,42,61",
+  "155,69,89",
+  "180,100,120",
+];
+
 export default function TryConversation() {
   return (
-    <section id="try-it" className="bg-bloom-50/30 py-20 md:py-28">
-      <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
+    <section
+      id="try-it"
+      className="relative py-20 md:py-28"
+      style={{ background: "linear-gradient(180deg, #fdf2f4 0%, #fce8ec 50%, #fdf2f4 100%)" }}
+    >
+      <MycelialCanvas
+        colors={LIGHT_NET_COLORS}
+        seed={109}
+        seedCount={12}
+        fadeCenterX={0.5}
+        fadeCenterY={0.5}
+        fadeRxRatio={0.85}
+        fadeRyRatio={0.9}
+        edgeAlpha={0.06}
+        nodeAlpha={0.08}
+      />
+
+      <div className="relative mx-auto max-w-3xl px-5 text-center lg:px-8">
         <p className="font-mono text-xs font-semibold uppercase tracking-widest text-bloom-500">
           Open to everyone
         </p>
         <h2 className="mt-3 font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
           Try a Bloom-style conversation
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
-          See what structured public deliberation feels like. This sample
-          conversation is open to anyone&nbsp;&mdash; no sign-up required.
+        <p className="mx-auto mt-4 max-w-xl text-xl text-gray-600">
+          See what the opening of a structured public deliberation feels
+          like. This sample conversation is open to anyone&nbsp;&mdash; no
+          sign-up required.
         </p>
 
         <a

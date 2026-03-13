@@ -1,6 +1,13 @@
 /**
  * "Not Another Platform" — differentiation section
  */
+import MycelialCanvas from "./MycelialCanvas";
+
+const LIGHT_NET_COLORS = [
+  "107,42,61",
+  "155,69,89",
+  "180,100,120",
+];
 
 const WE_ARE_NOT = [
   "A social media replacement",
@@ -19,16 +26,20 @@ const WE_ARE = [
 
 export default function Principles() {
   return (
-    <section className="relative bg-white py-20 md:py-28">
-      {/* Subtle dot grid */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, #6B2A3D 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-        aria-hidden="true"
+    <section
+      className="relative py-20 md:py-28"
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #faf8f9 50%, #ffffff 100%)" }}
+    >
+      <MycelialCanvas
+        colors={LIGHT_NET_COLORS}
+        seed={127}
+        seedCount={14}
+        fadeCenterX={0.5}
+        fadeCenterY={0.5}
+        fadeRxRatio={0.85}
+        fadeRyRatio={0.9}
+        edgeAlpha={0.05}
+        nodeAlpha={0.07}
       />
 
       <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
@@ -46,7 +57,7 @@ export default function Principles() {
               {WE_ARE_NOT.map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <span className="font-mono text-sm text-gray-300" aria-hidden="true">&times;</span>
-                  <span className="text-sm text-gray-500">{item}</span>
+                  <span className="text-base text-gray-500">{item}</span>
                 </div>
               ))}
             </div>
@@ -61,14 +72,14 @@ export default function Principles() {
               {WE_ARE.map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <span className="font-mono text-sm text-bloom-500" aria-hidden="true">&#10003;</span>
-                  <span className="text-sm font-medium text-maroon-700">{item}</span>
+                  <span className="text-base font-medium text-maroon-700">{item}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        <p className="mx-auto mt-12 max-w-md text-center text-lg leading-relaxed text-gray-600">
+        <p className="mx-auto mt-12 max-w-md text-center text-xl leading-relaxed text-gray-600">
           This is serious work for serious times.
           <br />
           <span className="font-medium text-maroon-700">

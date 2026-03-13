@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Moment from "./components/Moment";
 import WhatBloomIs from "./components/WhatBloomIs";
+import CivicOS from "./components/CivicOS";
 import HowItWorks from "./components/HowItWorks";
 import ConversationsOptionA from "./components/ConversationsOptionA";
 import TryConversation from "./components/TryConversation";
@@ -18,7 +19,7 @@ import Footer from "./components/Footer";
  * BLOOM Marketing Site — single-page layout
  *
  * Section order:
- *   Hero → Moment → What BLOOM Is → How It Works → Active Conversations →
+ *   Hero → Moment → What BLOOM Is → CivicOS → How It Works → Active Conversations →
  *   Try a Conversation → Smarter Together → For Civic Hosts →
  *   AI Ally → Federated → Not Another Platform → Team →
  *   Stay in the Loop → Footer
@@ -31,6 +32,7 @@ export default function App() {
         <Hero />
         <Moment />
         <WhatBloomIs />
+        <CivicOS />
         <HowItWorks />
         <ConversationsOptionA />
         <TryConversation />

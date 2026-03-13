@@ -3,6 +3,13 @@
  *
  * Update TEAM array as the team evolves.
  */
+import MycelialCanvas from "./MycelialCanvas";
+
+const LIGHT_NET_COLORS = [
+  "107,42,61",
+  "155,69,89",
+  "180,100,120",
+];
 
 const TEAM = [
   {
@@ -51,13 +58,29 @@ const TEAM = [
 
 export default function Team() {
   return (
-    <section id="team" className="bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+    <section
+      id="team"
+      className="relative py-20 md:py-28"
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #faf8f9 50%, #ffffff 100%)" }}
+    >
+      <MycelialCanvas
+        colors={LIGHT_NET_COLORS}
+        seed={151}
+        seedCount={18}
+        fadeCenterX={0.5}
+        fadeCenterY={0.5}
+        fadeRxRatio={0.85}
+        fadeRyRatio={0.9}
+        edgeAlpha={0.04}
+        nodeAlpha={0.06}
+      />
+
+      <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
             Meet the team
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-xl text-gray-600">
             A cross-disciplinary team working at the intersection of civic
             infrastructure, technology, and democratic innovation.
           </p>

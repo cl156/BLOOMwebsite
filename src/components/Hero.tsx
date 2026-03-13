@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import MycelialCanvas from "./MycelialCanvas";
 
 /**
  * Hero Section — bold, centered, clean background.
@@ -111,283 +112,13 @@ function usePhaseText(words: string[], intervalMs = 4500) {
 }
 
 /* ── Palette for the mycelial network ── */
-const NET_COLORS = [
+const HERO_NET_COLORS = [
   "212,87,59",   // bloom-500 coral
   "244,152,128", // bloom-300 peach
   "155,69,89",   // maroon-500 rose
   "184,67,44",   // bloom-600
   "107,42,61",   // maroon-700
 ];
-
-interface NetNode { x: number; y: number; r: number; color: string }
-interface NetEdge { x1: number; y1: number; x2: number; y2: number; color: string; w: number }
-interface Branch { x: number; y: number; angle: number; speed: number; life: number; color: string }
-
-/** Seeded PRNG for deterministic layout across renders */
-function mulberry32(seed: number) {
-  return () => {
-    let t = (seed += 0x6d2b79f5);
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function generateNetwork(w: number, h: number) {
-  const rand = mulberry32(42);
-  const cx = w / 2;
-  const cy = h * 0.46;
-  const nodes: NetNode[] = [];
-  const edges: NetEdge[] = [];
-
-  // Grow branches from seed points scattered around edges
-  const seeds: Branch[] = [];
-  const SEED_COUNT = 18;
-  for (let i = 0; i < SEED_COUNT; i++) {
-    // Bias seed points toward edges
-    const side = Math.floor(rand() * 4);
-    let sx: number, sy: number, angle: number;
-    if (side === 0) { sx = rand() * w; sy = -10; angle = Math.PI / 2 + (rand() - 0.5) * 0.8; }
-    else if (side === 1) { sx = rand() * w; sy = h + 10; angle = -Math.PI / 2 + (rand() - 0.5) * 0.8; }
-    else if (side === 2) { sx = -10; sy = rand() * h; angle = (rand() - 0.5) * 0.8; }
-    else { sx = w + 10; sy = rand() * h; angle = Math.PI + (rand() - 0.5) * 0.8; }
-    seeds.push({
-      x: sx, y: sy, angle, speed: 8 + rand() * 12,
-      life: 12 + Math.floor(rand() * 20),
-      color: NET_COLORS[Math.floor(rand() * NET_COLORS.length)],
-    });
-  }
-
-  // Grow each branch
-  const allBranches = [...seeds];
-  const maxIter = 600;
-  let iter = 0;
-  while (allBranches.length > 0 && iter < maxIter) {
-    iter++;
-    const br = allBranches.shift()!;
-    if (br.life <= 0) continue;
-
-    const nx = br.x + Math.cos(br.angle) * br.speed;
-    const ny = br.y + Math.sin(br.angle) * br.speed;
-
-    if (nx < -40 || nx > w + 40 || ny < -40 || ny > h + 40) continue;
-
-    // Add edge (rendering alpha applied later)
-    const lineW = 0.6 + rand() * 1.0;
-    edges.push({ x1: br.x, y1: br.y, x2: nx, y2: ny, color: br.color, w: lineW });
-
-    // Possibly add a node at junction
-    if (rand() < 0.35) {
-      const nr = 1.5 + rand() * 3.5;
-      nodes.push({ x: nx, y: ny, r: nr, color: br.color });
-    }
-
-    // Continue growing with slight curve
-    const nextAngle = br.angle + (rand() - 0.5) * 0.6;
-    allBranches.push({
-      x: nx, y: ny, angle: nextAngle,
-      speed: br.speed * (0.85 + rand() * 0.2),
-      life: br.life - 1,
-      color: br.color,
-    });
-
-    // Branch fork
-    if (rand() < 0.25 && br.life > 3) {
-      const forkAngle = br.angle + (rand() > 0.5 ? 1 : -1) * (0.4 + rand() * 0.8);
-      allBranches.push({
-        x: nx, y: ny, angle: forkAngle,
-        speed: br.speed * (0.6 + rand() * 0.3),
-        life: Math.floor(br.life * (0.4 + rand() * 0.3)),
-        color: NET_COLORS[Math.floor(rand() * NET_COLORS.length)],
-      });
-    }
-  }
-
-  return { nodes, edges };
-}
-
-/** Compute base alpha: 0 at center, ramps up toward edges.
- *  Uses separate horizontal/vertical radii so the clear zone
- *  stays tall enough to protect text on narrow mobile screens. */
-function baseAlpha(x: number, y: number, cx: number, cy: number, fadeRx: number, fadeRy: number) {
-  const dx = (x - cx) / fadeRx;
-  const dy = (y - cy) / fadeRy;
-  const t = Math.min(1, Math.sqrt(dx * dx + dy * dy));
-  return t * t; // smooth ease-in
-}
-
-/** Mouse proximity boost: 0 when far, up to 1 when cursor is right on it */
-const MOUSE_RADIUS = 160;
-function mouseBoost(x: number, y: number, mx: number, my: number) {
-  if (mx < -500) return 0; // cursor off-screen
-  const dist = Math.sqrt((x - mx) ** 2 + (y - my) ** 2);
-  if (dist > MOUSE_RADIUS) return 0;
-  const t = 1 - dist / MOUSE_RADIUS;
-  return t * t * 0.6; // peak 0.6 extra alpha
-}
-
-/** Draw the network — visible at edges, invisible at center, mouse activates nearby */
-function drawNetwork(
-  ctx: CanvasRenderingContext2D,
-  edges: NetEdge[],
-  nodes: NetNode[],
-  cx: number,
-  cy: number,
-  w: number,
-  h: number,
-  mouseX: number,
-  mouseY: number,
-) {
-  // Elliptical fade: horizontal radius = 50% of half-width, vertical = 60% of half-height
-  // This keeps the clear zone taller on mobile where width shrinks
-  const fadeRx = w * 0.5;
-  const fadeRy = h * 0.55;
-
-  // Draw edges
-  ctx.lineCap = "round";
-  for (const e of edges) {
-    const mx = (e.x1 + e.x2) / 2;
-    const my = (e.y1 + e.y2) / 2;
-    const base = baseAlpha(mx, my, cx, cy, fadeRx, fadeRy) * 0.3;
-    const boost = mouseBoost(mx, my, mouseX, mouseY);
-    const a = Math.min(0.7, base + boost);
-    if (a < 0.01) continue;
-    ctx.strokeStyle = `rgba(${e.color},${a})`;
-    ctx.lineWidth = boost > 0.05 ? e.w * (1 + boost * 1.5) : e.w;
-    ctx.beginPath();
-    ctx.moveTo(e.x1, e.y1);
-    ctx.lineTo(e.x2, e.y2);
-    ctx.stroke();
-  }
-
-  // Draw nodes
-  for (const n of nodes) {
-    const base = baseAlpha(n.x, n.y, cx, cy, fadeRx, fadeRy) * 0.4;
-    const boost = mouseBoost(n.x, n.y, mouseX, mouseY);
-    const a = Math.min(0.85, base + boost);
-    if (a < 0.01) continue;
-
-    const glowR = boost > 0.05 ? n.r * (2.5 + boost * 3) : n.r * 2.5;
-
-    // Soft glow
-    const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowR);
-    grad.addColorStop(0, `rgba(${n.color},${a})`);
-    grad.addColorStop(0.4, `rgba(${n.color},${a * 0.35})`);
-    grad.addColorStop(1, `rgba(${n.color},0)`);
-    ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, glowR, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Solid core — brighter when mouse is near
-    const coreA = Math.min(1, a * (boost > 0.05 ? 2 : 1.4));
-    ctx.fillStyle = `rgba(${n.color},${coreA})`;
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, n.r * 0.7, 0, Math.PI * 2);
-    ctx.fill();
-  }
-}
-
-function MycelialNetwork() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const parent = canvas.parentElement;
-    if (!parent) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let mouseX = -1000;
-    let mouseY = -1000;
-    let drawMX = -1000;
-    let drawMY = -1000;
-    let animId = 0;
-    let currentW = 0;
-    let currentH = 0;
-    let net: ReturnType<typeof generateNetwork> = { nodes: [], edges: [] };
-
-    const dpr = window.devicePixelRatio || 1;
-
-    function setup() {
-      currentW = parent!.clientWidth;
-      currentH = parent!.clientHeight;
-      canvas!.width = currentW * dpr;
-      canvas!.height = currentH * dpr;
-      canvas!.style.width = `${currentW}px`;
-      canvas!.style.height = `${currentH}px`;
-      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
-      net = generateNetwork(currentW, currentH);
-    }
-
-    setup();
-
-    function onMouse(e: MouseEvent) {
-      const rect = canvas!.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-    }
-    function onLeave() { mouseX = -1000; mouseY = -1000; }
-
-    function draw() {
-      // Smooth follow
-      drawMX += (mouseX - drawMX) * 0.15;
-      drawMY += (mouseY - drawMY) * 0.15;
-
-      ctx!.clearRect(0, 0, currentW, currentH);
-      const cx = currentW / 2;
-      const cy = currentH * 0.46;
-      drawNetwork(ctx!, net.edges, net.nodes, cx, cy, currentW, currentH, drawMX, drawMY);
-      animId = requestAnimationFrame(draw);
-    }
-
-    // Only animate when mouse is in the section; otherwise draw once static
-    let isAnimating = false;
-    function startAnim() {
-      if (!isAnimating) { isAnimating = true; draw(); }
-    }
-    function stopAnim() {
-      isAnimating = false;
-      cancelAnimationFrame(animId);
-      // Final static draw
-      mouseX = -1000; mouseY = -1000;
-      drawMX = -1000; drawMY = -1000;
-      ctx!.clearRect(0, 0, currentW, currentH);
-      const cx = currentW / 2;
-      const cy = currentH * 0.46;
-      drawNetwork(ctx!, net.edges, net.nodes, cx, cy, currentW, currentH, -1000, -1000);
-    }
-
-    // Initial static draw
-    stopAnim();
-
-    const section = parent!;
-    section.addEventListener("mouseenter", startAnim);
-    section.addEventListener("mouseleave", stopAnim);
-    window.addEventListener("mousemove", onMouse);
-
-    const onResize = () => { setup(); stopAnim(); };
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      cancelAnimationFrame(animId);
-      section.removeEventListener("mouseenter", startAnim);
-      section.removeEventListener("mouseleave", stopAnim);
-      window.removeEventListener("mousemove", onMouse);
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="pointer-events-none absolute inset-0"
-      aria-hidden="true"
-    />
-  );
-}
 
 export default function Hero() {
   const { chars, wordIndex } = usePhaseText(ROTATING_WORDS, 4500);
@@ -411,7 +142,7 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-gray-100 bg-white">
       {/* Mycelial network background */}
-      <MycelialNetwork />
+      <MycelialCanvas colors={HERO_NET_COLORS} seed={42} seedCount={18} />
 
       <div className="relative mx-auto max-w-4xl px-5 pb-16 pt-16 text-center sm:pb-20 sm:pt-20 md:pb-28 md:pt-28 lg:px-8">
         <p className="mb-5 inline-block rounded-md border border-bloom-200 bg-bloom-50/60 px-4 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-bloom-600 sm:text-xs">
@@ -458,10 +189,10 @@ export default function Hero() {
           </span>
         ))}
 
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-500 sm:text-lg md:text-xl">
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-500 sm:text-xl md:text-2xl">
           BLOOM's CivicOS platform equips communities to learn together,
           deliberate across differences, find durable common ground, and
-          coordinate action&nbsp;&mdash; locally and across places.
+          coordinate action&nbsp;&mdash; locally and beyond.
         </p>
 
         {/* CTAs — two prominent buttons, stack on mobile */}

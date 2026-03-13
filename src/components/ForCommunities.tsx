@@ -1,6 +1,13 @@
 /**
  * "For Civic Hosts" — speaks to organizers, civic leaders, institutions
  */
+import MycelialCanvas from "./MycelialCanvas";
+
+const LIGHT_NET_COLORS = [
+  "107,42,61",
+  "155,69,89",
+  "180,100,120",
+];
 
 const BACKBONE = [
   {
@@ -31,14 +38,30 @@ const BACKBONE = [
 
 export default function ForCommunities() {
   return (
-    <section id="for-civic-hosts" className="bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+    <section
+      id="for-civic-hosts"
+      className="relative py-20 md:py-28"
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #faf8f9 50%, #ffffff 100%)" }}
+    >
+      <MycelialCanvas
+        colors={LIGHT_NET_COLORS}
+        seed={91}
+        seedCount={16}
+        fadeCenterX={0.5}
+        fadeCenterY={0.5}
+        fadeRxRatio={0.85}
+        fadeRyRatio={0.9}
+        edgeAlpha={0.05}
+        nodeAlpha={0.07}
+      />
+
+      <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
             For Civic Hosts
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            If you're an organizer, civic leader, institution, or
+          <p className="mt-4 text-xl text-gray-600">
+            If you&rsquo;re an organizer, civic leader, institution, or
             coalition&nbsp;&mdash; BLOOM increases your capacity, coherence, and
             impact.
           </p>
@@ -60,7 +83,7 @@ export default function ForCommunities() {
                     <span className="mt-0.5 font-mono text-sm text-bloom-500" aria-hidden="true">
                       &#10003;
                     </span>
-                    <span className="text-sm font-medium text-maroon-700">
+                    <span className="text-base font-medium text-maroon-700">
                       {item}
                     </span>
                   </div>
@@ -73,8 +96,8 @@ export default function ForCommunities() {
         {/* "We don't replace" emphasis + tagline */}
         <div className="mx-auto mt-14 max-w-lg text-center">
           <div className="rounded-lg border border-bloom-200 bg-bloom-50/40 p-5">
-            <p className="text-base leading-relaxed text-gray-700">
-              BLOOM doesn't replace existing civic work&nbsp;&mdash; we strengthen it.
+            <p className="text-lg leading-relaxed text-gray-700">
+              BLOOM doesn&rsquo;t replace existing civic work&nbsp;&mdash; we strengthen it.
               We build on the organizers, institutions, and local efforts already
               doing the hard work in your community.
             </p>

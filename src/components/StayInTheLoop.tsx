@@ -4,19 +4,42 @@
  * Links to BLOOM's Substack for newsletter signup.
  * Replace SUBSTACK_URL with the real URL when ready.
  */
+import MycelialCanvas from "./MycelialCanvas";
+
+const LIGHT_NET_COLORS = [
+  "107,42,61",
+  "155,69,89",
+  "180,100,120",
+];
 
 const SUBSTACK_URL = "#"; // TODO: replace with real Substack URL
 
 export default function StayInTheLoop() {
   return (
-    <section id="get-in-touch" className="bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-2xl px-5 text-center lg:px-8">
+    <section
+      id="get-in-touch"
+      className="relative py-20 md:py-28"
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #faf8f9 50%, #ffffff 100%)" }}
+    >
+      <MycelialCanvas
+        colors={LIGHT_NET_COLORS}
+        seed={163}
+        seedCount={12}
+        fadeCenterX={0.5}
+        fadeCenterY={0.5}
+        fadeRxRatio={0.85}
+        fadeRyRatio={0.9}
+        edgeAlpha={0.04}
+        nodeAlpha={0.06}
+      />
+
+      <div className="relative mx-auto max-w-2xl px-5 text-center lg:px-8">
         <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
           Stay in the loop
         </h2>
-        <p className="mt-4 text-lg text-gray-600">
-          We share what we're learning as we build&nbsp;&mdash; pilot results,
-          process updates, and what's working in communities. No spam, just
+        <p className="mt-4 text-xl text-gray-600">
+          We share what we&rsquo;re learning as we build&nbsp;&mdash; pilot results,
+          process updates, and what&rsquo;s working in communities. No spam, just
           the real stuff.
         </p>
 
@@ -51,7 +74,7 @@ export default function StayInTheLoop() {
           <p className="text-sm text-gray-500">
             Want to host or partner?{" "}
             <a href="mailto:hello@bloom-project.org" className="font-medium text-bloom-600 underline underline-offset-2 hover:text-bloom-700">
-              Let's talk
+              Let&rsquo;s talk
             </a>
           </p>
         </div>
