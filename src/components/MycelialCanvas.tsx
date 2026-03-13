@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { generateNetwork, drawNetwork } from "../utils/mycelialNetwork";
+import { generateNetwork, drawNetwork, spawnTrailCluster, drawTrail, type TrailCluster } from "../utils/mycelialNetwork";
 
 interface MycelialCanvasProps {
   /** RGB color strings, e.g. ["212,87,59", "244,152,128"] */
@@ -50,6 +50,13 @@ export default function MycelialCanvas({
     let currentH = 0;
     let net: ReturnType<typeof generateNetwork> = { nodes: [], edges: [] };
 
+    // Mouse trail state
+    let trail: TrailCluster[] = [];
+    let lastSpawnX = -1000;
+    let lastSpawnY = -1000;
+    const SPAWN_DISTANCE = 50; // px of movement before spawning a new cluster
+    const TRAIL_FADE_MS = 1500;
+
     const dpr = window.devicePixelRatio || 1;
 
     function setup() {
@@ -74,10 +81,32 @@ export default function MycelialCanvas({
       drawMX += (mouseX - drawMX) * 0.15;
       drawMY += (mouseY - drawMY) * 0.15;
 
+      const now = performance.now();
+
+      // Spawn new trail cluster when cursor moves enough
+      if (drawMX > -500) {
+        const dx = drawMX - lastSpawnX;
+        const dy = drawMY - lastSpawnY;
+        if (dx * dx + dy * dy > SPAWN_DISTANCE * SPAWN_DISTANCE) {
+          trail.push(spawnTrailCluster(drawMX, drawMY, colors, now));
+          lastSpawnX = drawMX;
+          lastSpawnY = drawMY;
+        }
+      }
+
+      // Garbage-collect expired clusters
+      trail = trail.filter(c => now - c.birthTime < TRAIL_FADE_MS);
+
       ctx!.clearRect(0, 0, currentW, currentH);
       const cx = currentW * fadeCenterX;
       const cy = currentH * fadeCenterY;
-      drawNetwork(ctx!, net.edges, net.nodes, cx, cy, currentW, currentH, drawMX, drawMY, fadeRxRatio, fadeRyRatio, edgeAlpha, nodeAlpha);
+
+      // Static network — no mouse boost (pass -1000)
+      drawNetwork(ctx!, net.edges, net.nodes, cx, cy, currentW, currentH, -1000, -1000, fadeRxRatio, fadeRyRatio, edgeAlpha, nodeAlpha);
+
+      // Mouse trail on top
+      drawTrail(ctx!, trail, now, TRAIL_FADE_MS);
+
       animId = requestAnimationFrame(draw);
     }
 
@@ -90,6 +119,7 @@ export default function MycelialCanvas({
       cancelAnimationFrame(animId);
       mouseX = -1000; mouseY = -1000;
       drawMX = -1000; drawMY = -1000;
+      trail = []; lastSpawnX = -1000; lastSpawnY = -1000;
       ctx!.clearRect(0, 0, currentW, currentH);
       const cx = currentW * fadeCenterX;
       const cy = currentH * fadeCenterY;

@@ -7,6 +7,13 @@ export interface NetNode { x: number; y: number; r: number; color: string }
 export interface NetEdge { x1: number; y1: number; x2: number; y2: number; color: string; w: number }
 interface Branch { x: number; y: number; angle: number; speed: number; life: number; color: string }
 
+/** A small cluster of branches spawned at the mouse cursor */
+export interface TrailCluster {
+  nodes: NetNode[];
+  edges: NetEdge[];
+  birthTime: number;
+}
+
 /** Seeded PRNG for deterministic layout across renders */
 export function mulberry32(seed: number) {
   return () => {
@@ -162,5 +169,103 @@ export function drawNetwork(
     ctx.beginPath();
     ctx.arc(n.x, n.y, n.r * 0.7, 0, Math.PI * 2);
     ctx.fill();
+  }
+}
+
+/* ---- Mouse trail: small mycelial clusters spawned at cursor ---- */
+
+let trailSeedCounter = 0;
+
+/** Spawn a tiny cluster of 2-3 branch arms at (x, y) */
+export function spawnTrailCluster(
+  x: number,
+  y: number,
+  colors: string[],
+  now: number,
+): TrailCluster {
+  const rand = mulberry32(++trailSeedCounter * 7919 + Math.round(x * 31 + y * 17));
+  const nodes: NetNode[] = [];
+  const edges: NetEdge[] = [];
+
+  const armCount = 2 + Math.floor(rand() * 2); // 2-3 arms
+  const baseAngle = rand() * Math.PI * 2;
+
+  for (let a = 0; a < armCount; a++) {
+    const armAngle = baseAngle + (a / armCount) * Math.PI * 2 + (rand() - 0.5) * 0.8;
+    let bx = x;
+    let by = y;
+    let angle = armAngle;
+    const segCount = 2 + Math.floor(rand() * 3); // 2-4 segments
+
+    for (let s = 0; s < segCount; s++) {
+      const segLen = 4 + rand() * 4; // 4-8px
+      const nx = bx + Math.cos(angle) * segLen;
+      const ny = by + Math.sin(angle) * segLen;
+      const color = colors[Math.floor(rand() * colors.length)];
+      edges.push({ x1: bx, y1: by, x2: nx, y2: ny, color, w: 0.3 + rand() * 0.3 });
+
+      if (rand() < 0.35) {
+        nodes.push({ x: nx, y: ny, r: 0.8 + rand() * 0.7, color });
+      }
+
+      bx = nx;
+      by = ny;
+      angle += (rand() - 0.5) * 0.7;
+    }
+  }
+
+  return { nodes, edges, birthTime: now };
+}
+
+const TRAIL_EDGE_ALPHA = 0.18;
+const TRAIL_NODE_ALPHA = 0.22;
+
+/** Draw all trail clusters with age-based fade-out */
+export function drawTrail(
+  ctx: CanvasRenderingContext2D,
+  trail: TrailCluster[],
+  now: number,
+  fadeDuration = 1500,
+) {
+  ctx.lineCap = "round";
+
+  for (const cluster of trail) {
+    const age = now - cluster.birthTime;
+    const fade = Math.max(0, 1 - age / fadeDuration);
+    if (fade <= 0) continue;
+
+    // Ease out for smoother fade
+    const f = fade * fade;
+
+    for (const e of cluster.edges) {
+      const a = TRAIL_EDGE_ALPHA * f;
+      if (a < 0.005) continue;
+      ctx.strokeStyle = `rgba(${e.color},${a})`;
+      ctx.lineWidth = e.w;
+      ctx.beginPath();
+      ctx.moveTo(e.x1, e.y1);
+      ctx.lineTo(e.x2, e.y2);
+      ctx.stroke();
+    }
+
+    for (const n of cluster.nodes) {
+      const a = TRAIL_NODE_ALPHA * f;
+      if (a < 0.005) continue;
+
+      const glowR = n.r * 2.5;
+      const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowR);
+      grad.addColorStop(0, `rgba(${n.color},${a})`);
+      grad.addColorStop(0.4, `rgba(${n.color},${a * 0.35})`);
+      grad.addColorStop(1, `rgba(${n.color},0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, glowR, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = `rgba(${n.color},${Math.min(1, a * 1.4)})`;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+    }
   }
 }
