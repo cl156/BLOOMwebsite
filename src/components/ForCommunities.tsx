@@ -2,13 +2,31 @@
  * "For Civic Hosts" — speaks to organizers, civic leaders, institutions
  */
 
-const CAPABILITIES = [
-  "Rapid learning material generation",
-  "Structured deliberation workflows",
-  "Common-ground detection tools",
-  "Public legitimacy metrics",
-  "Cross-community coordination pathways",
-  "Implementation playbooks",
+const BACKBONE = [
+  {
+    label: "Commissioning & legitimacy",
+    items: [
+      "Convene around locally consequential issues",
+      "Steward legitimacy norms so outcomes carry weight",
+      "Structured deliberation workflows from start to finish",
+    ],
+  },
+  {
+    label: "Institutional coupling",
+    items: [
+      "Map decision levers before the conversation starts",
+      "Secure commitments from decision-makers to respond",
+      "Cross-community coordination when the lever lives elsewhere",
+    ],
+  },
+  {
+    label: "Continuity & public memory",
+    items: [
+      "Recurring deliberation cycles, not one-off events",
+      "Return paths for participants to stay engaged",
+      "Accountability checkpoints that track follow-through",
+    ],
+  },
 ];
 
 export default function ForCommunities() {
@@ -26,19 +44,28 @@ export default function ForCommunities() {
           </p>
         </div>
 
-        {/* Capabilities grid */}
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {CAPABILITIES.map((item) => (
+        {/* Backbone responsibilities */}
+        <div className="mt-14 grid gap-6 sm:grid-cols-3">
+          {BACKBONE.map(({ label, items }) => (
             <div
-              key={item}
-              className="flex items-start gap-3 rounded-lg border border-gray-200 bg-white px-5 py-4 transition-all hover:border-bloom-300 hover:shadow-md"
+              key={label}
+              className="rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-bloom-300 hover:shadow-md"
             >
-              <span className="mt-0.5 font-mono text-sm text-bloom-500" aria-hidden="true">
-                &#10003;
-              </span>
-              <span className="text-sm font-medium text-maroon-700">
-                {item}
-              </span>
+              <p className="font-mono text-xs font-bold uppercase tracking-widest text-bloom-500">
+                {label}
+              </p>
+              <div className="mt-4 flex flex-col gap-3">
+                {items.map((item) => (
+                  <div key={item} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 font-mono text-sm text-bloom-500" aria-hidden="true">
+                      &#10003;
+                    </span>
+                    <span className="text-sm font-medium text-maroon-700">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

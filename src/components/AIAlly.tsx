@@ -9,6 +9,13 @@ const AI_CAPABILITIES = [
   "Scalable evaluation of public support",
 ];
 
+const RESPONSIBLE_AI = [
+  "Synthesis grounded in participant statements with drill-down to source",
+  "Editable thematic clusters that communities can refine",
+  "Human validation at every legitimacy-critical point",
+  "Opinion auditing to ensure no voice is misrepresented",
+];
+
 export default function AIAlly() {
   return (
     <section className="relative bg-gray-50 py-20 md:py-28">
@@ -39,9 +46,24 @@ export default function AIAlly() {
                 </div>
               ))}
             </div>
+
+            {/* Responsible AI details */}
+            <p className="mt-8 font-mono text-xs font-semibold uppercase tracking-widest text-bloom-500">
+              Built-in accountability
+            </p>
+            <div className="mt-3 flex flex-col gap-2">
+              {RESPONSIBLE_AI.map((item) => (
+                <div key={item} className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-bloom-400" />
+                  <span className="text-sm leading-relaxed text-gray-600">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Right column — summary card */}
+          {/* Right column — principle card */}
           <div className="rounded-lg border border-bloom-200 bg-white p-8">
             <p className="font-mono text-xs font-semibold uppercase tracking-widest text-bloom-500">
               The principle
@@ -58,6 +80,18 @@ export default function AIAlly() {
                   <span className="text-sm text-gray-600">{item}</span>
                 </div>
               ))}
+            </div>
+
+            {/* Anti-failure-mode framing */}
+            <div className="mt-8 border-t border-gray-100 pt-6">
+              <p className="text-sm leading-relaxed text-gray-500">
+                The most common failure mode in AI-for-democracy work is
+                producing better summaries of public will without producing
+                stronger publics.{" "}
+                <span className="font-semibold text-maroon-700">
+                  BLOOM is designed against that failure.
+                </span>
+              </p>
             </div>
           </div>
         </div>

@@ -6,19 +6,20 @@
 
 const TEAM = [
   {
+    name: "Liz Barry",
+    role: "Strategy & Ecosystem",
+    org: "MetaGov",
+    photo: "/team/liz.jpeg",
+  },
+  {
+    name: "Lauren Higgins",
+    role: "Senior Advisor",
+    photo: "/team/lauren.jpg",
+  },
+  {
     name: "Clara Long",
     role: "Co-Lead",
     photo: "/team/clara.jpeg",
-  },
-  {
-    name: "Rahmin Sarabi",
-    role: "Co-Lead",
-    photo: "/team/rahmin.jpg",
-  },
-  {
-    name: "Zabrae Valentine",
-    role: "Strategy & Partnerships",
-    photo: "/team/zabrae.jpeg",
   },
   {
     name: "Stuart Lynn",
@@ -27,15 +28,14 @@ const TEAM = [
     photo: "/team/stuart.png",
   },
   {
-    name: "Liz Barry",
-    role: "Strategy & Ecosystem",
-    org: "MetaGov",
-    photo: "/team/liz.jpeg",
-  },
-  {
     name: "Humphrey Obuobi",
     role: "Design",
     photo: "/team/humphrey.png",
+  },
+  {
+    name: "Rahmin Sarabi",
+    role: "Co-Lead",
+    photo: "/team/rahmin.jpg",
   },
   {
     name: "Audrey Tang",
@@ -43,9 +43,9 @@ const TEAM = [
     photo: "/team/audrey.jpeg",
   },
   {
-    name: "Lauren Higgins",
-    role: "Senior Advisor",
-    photo: "/team/lauren.jpg",
+    name: "Zabrae Valentine",
+    role: "Strategy & Partnerships",
+    photo: "/team/zabrae.jpeg",
   },
 ];
 

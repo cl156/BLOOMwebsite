@@ -9,14 +9,16 @@ const CONVERSATIONS = [
   {
     region: "Central Oregon",
     state: "OR",
-    topic: "Community priorities & local governance",
+    topic: "AI & the Future of Our Communities",
+    subtopics: "Youth mental health \u00b7 Work transitions \u00b7 Energy & environment \u00b7 Information integrity",
     status: "Open" as const,
     link: "#",
   },
   {
     region: "Utah",
     state: "UT",
-    topic: "Public problem-solving across divides",
+    topic: "AI & the Future of Our Communities",
+    subtopics: "Youth mental health \u00b7 Work transitions \u00b7 Energy & environment \u00b7 Information integrity",
     status: "Open" as const,
     link: "#",
   },
@@ -45,14 +47,15 @@ export default function ConversationsOptionA() {
             Active conversations
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
-            BLOOM organizes public problem-solving by geography. Explore an
-            open deliberation or bring BLOOM to your community.
+            Our 2026 headline deliberation asks one question across communities:
+            how should AI shape our shared future? Explore an open deliberation
+            or bring BLOOM to your community.
           </p>
         </div>
 
         {/* Conversation cards */}
         <div className="mt-14 grid gap-6 sm:grid-cols-2">
-          {CONVERSATIONS.map(({ region, state, topic, status, link }) => (
+          {CONVERSATIONS.map(({ region, state, topic, subtopics, status, link }) => (
             <a
               key={region}
               href={link}
@@ -83,9 +86,14 @@ export default function ConversationsOptionA() {
               </div>
 
               {/* Topic */}
-              <p className="mt-4 text-sm leading-relaxed text-gray-600">
+              <p className="mt-4 text-sm font-medium leading-relaxed text-maroon-600">
                 {topic}
               </p>
+              {subtopics && (
+                <p className="mt-1.5 font-mono text-[10px] tracking-wide text-gray-400">
+                  {subtopics}
+                </p>
+              )}
 
               {/* Join link */}
               <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-bloom-500 transition-colors group-hover:text-bloom-600">

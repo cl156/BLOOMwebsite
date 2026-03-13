@@ -2,13 +2,11 @@
  * "The Moment We're In" — concise context-setting section
  */
 
-const CHALLENGES = [
-  "Climate shocks",
-  "AI disruption",
-  "Youth mental health",
-  "School budgets",
-  "Housing",
-  "Immigration",
+const ISSUE_PATHWAYS = [
+  "Youth mental health & social tech",
+  "Work & economic transitions",
+  "Energy, data centers & environment",
+  "Information integrity",
 ];
 
 export default function Moment() {
@@ -18,11 +16,6 @@ export default function Moment() {
         <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
           The moment we're in
         </h2>
-
-        {/* Challenge list — plain text, not clickable */}
-        <p className="mt-8 font-mono text-xs font-medium tracking-wide text-bloom-600">
-          {CHALLENGES.join(" \u00b7 ")}
-        </p>
 
         <p className="mt-8 text-lg leading-relaxed text-gray-600">
           The pace of change is accelerating. Our institutions aren't keeping
@@ -35,9 +28,14 @@ export default function Moment() {
         </p>
 
         <p className="mt-4 text-base leading-relaxed text-gray-500">
-          What if communities had tools to make sense of complex issues
-          together, find real agreement across differences, and turn
-          conversation into coordinated action?
+          AI is at a turning point for democracy. It can either atrophy
+          our collective capacity&nbsp;&mdash; or rebuild it. BLOOM is building
+          infrastructure for the second possibility.
+        </p>
+
+        {/* 2026 issue pathways */}
+        <p className="mt-8 font-mono text-xs font-medium tracking-wide text-bloom-600">
+          {ISSUE_PATHWAYS.join(" \u00b7 ")}
         </p>
       </div>
     </section>

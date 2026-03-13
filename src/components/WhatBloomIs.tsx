@@ -46,9 +46,15 @@ export default function WhatBloomIs() {
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-bloom-100">
             BLOOM is civic infrastructure for coordinated, community-rooted
-            problem-solving. We support Civic Hosts&nbsp;&mdash; organizers,
-            community leaders, institutions&nbsp;&mdash; with tools that make it
-            dramatically easier to:
+            problem-solving. Our model is that of a library&nbsp;&mdash; open
+            infrastructure communities use to identify and act on their own
+            shared problems. We organize around shared problems, not political
+            positions.
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-bloom-200">
+            We support Civic Hosts&nbsp;&mdash; organizers, community leaders,
+            institutions&nbsp;&mdash; with tools that make it dramatically
+            easier to:
           </p>
 
           <div className="mt-6 inline-flex flex-col items-start gap-2 text-left">
@@ -57,6 +63,24 @@ export default function WhatBloomIs() {
                 <span className="mt-0.5 font-mono text-bloom-300">&#10003;</span>
                 {item}
               </span>
+            ))}
+          </div>
+
+          {/* Three-element structure */}
+          <div className="mt-10 grid gap-4 text-left sm:grid-cols-3">
+            {[
+              { label: "CivicOS", desc: "A modular open-source platform for the full deliberation workflow" },
+              { label: "Civic Hosts", desc: "A network of trained community leaders who commission and steward local processes" },
+              { label: "Headline Deliberations", desc: "Flagship cycles that demonstrate impact, advance R&D, and build the field" },
+            ].map(({ label, desc }) => (
+              <div key={label} className="rounded-md border border-white/15 bg-white/5 px-4 py-4">
+                <p className="font-mono text-xs font-bold uppercase tracking-widest text-bloom-300">
+                  {label}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-bloom-100">
+                  {desc}
+                </p>
+              </div>
             ))}
           </div>
 
