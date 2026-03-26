@@ -128,7 +128,7 @@ export default function Hero() {
   useEffect(() => {
     function measure() {
       const widths = measureRefs.current.map(
-        (el) => (el ? Math.ceil(el.getBoundingClientRect().width) : 0)
+        (el) => (el ? Math.ceil(el.getBoundingClientRect().width) + 4 : 0)
       );
       setWordWidths(widths);
     }
