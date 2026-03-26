@@ -18,7 +18,7 @@ const CONVERSATIONS = [
     state: "OR",
     topic: "AI & the Future of Our Communities",
     subtopics: "Youth mental health \u00b7 Work transitions \u00b7 Energy & environment \u00b7 Information integrity",
-    status: "Open" as const,
+    status: "Coming soon" as const,
     link: "#",
   },
   {
@@ -26,7 +26,7 @@ const CONVERSATIONS = [
     state: "UT",
     topic: "AI & the Future of Our Communities",
     subtopics: "Youth mental health \u00b7 Work transitions \u00b7 Energy & environment \u00b7 Information integrity",
-    status: "Open" as const,
+    status: "Coming soon" as const,
     link: "#",
   },
 ];
@@ -53,7 +53,7 @@ export default function ConversationsOptionA() {
       <div className="relative mx-auto max-w-4xl px-5 lg:px-8">
         <div className="text-center">
           <p className="font-mono text-xs font-semibold uppercase tracking-widest text-bloom-500">
-            Happening now
+            Coming soon
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
             Active deliberations
@@ -78,8 +78,8 @@ export default function ConversationsOptionA() {
             >
               {/* Status badge */}
               <div className="absolute right-5 top-5 flex items-center gap-1.5">
-                <span className="inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
-                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-green-600">
+                <span className="inline-flex h-2.5 w-2.5 rounded-full bg-amber-400" />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-amber-600">
                   {status}
                 </span>
               </div>
