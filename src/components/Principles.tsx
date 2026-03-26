@@ -54,16 +54,16 @@ export default function Principles() {
           few. Between doom and boom, BLOOM is building for a third possibility.
         </p>
 
-        <div className="mt-14 grid gap-8 md:grid-cols-2">
+        <div className="mx-auto mt-14 grid max-w-2xl gap-8 md:grid-cols-2">
           {/* We are not */}
-          <div className="rounded-lg border border-gray-200 bg-gray-50 p-8">
+          <div className="rounded-lg border border-gray-200 bg-gray-50 px-6 py-6 sm:px-8 sm:py-8">
             <p className="font-mono text-xs font-semibold uppercase tracking-widest text-gray-400">
               We are not
             </p>
             <div className="mt-5 flex flex-col gap-3">
               {WE_ARE_NOT.map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <span className="font-mono text-sm text-gray-300" aria-hidden="true">&times;</span>
+                <div key={item} className="flex items-start gap-2.5">
+                  <span className="mt-0.5 font-mono text-sm text-gray-300" aria-hidden="true">&times;</span>
                   <span className="text-base text-gray-500">{item}</span>
                 </div>
               ))}
@@ -71,14 +71,14 @@ export default function Principles() {
           </div>
 
           {/* We are */}
-          <div className="rounded-lg border border-bloom-200 bg-bloom-50/40 p-8">
+          <div className="rounded-lg border border-bloom-200 bg-bloom-50/40 px-6 py-6 sm:px-8 sm:py-8">
             <p className="font-mono text-xs font-semibold uppercase tracking-widest text-bloom-500">
               We are
             </p>
             <div className="mt-5 flex flex-col gap-3">
               {WE_ARE.map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <span className="font-mono text-sm text-bloom-500" aria-hidden="true">&#10003;</span>
+                <div key={item} className="flex items-start gap-2.5">
+                  <span className="mt-0.5 font-mono text-sm text-bloom-500" aria-hidden="true">&#10003;</span>
                   <span className="text-base font-medium text-maroon-700">{item}</span>
                 </div>
               ))}
