@@ -12,8 +12,6 @@ const LIGHT_NET_COLORS = [
   "180,100,120",
 ];
 
-const SUBSTACK_URL = "#"; // TODO: replace with real Substack URL
-
 export default function StayInTheLoop() {
   return (
     <section
@@ -35,7 +33,7 @@ export default function StayInTheLoop() {
 
       <div className="relative mx-auto max-w-2xl px-5 text-center lg:px-8">
         <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
-          Stay in the loop
+          Get in touch
         </h2>
         <p className="mt-4 text-xl text-gray-600">
           We share what we&rsquo;re learning as we build&nbsp;&mdash; pilot results,
@@ -43,23 +41,6 @@ export default function StayInTheLoop() {
           the real stuff.
         </p>
 
-        {/* Substack subscribe button */}
-        <div className="mt-10">
-          <a
-            href={SUBSTACK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-lg bg-bloom-500 px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all hover:bg-bloom-600 hover:shadow-md"
-          >
-            {/* Substack icon */}
-            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24l9.56-5.26L20.58 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
-            </svg>
-            Subscribe on Substack
-          </a>
-        </div>
-
-        {/* Secondary contact options */}
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-8">
           <a
             href="mailto:hello@bloom-project.org"
