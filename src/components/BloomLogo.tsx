@@ -40,7 +40,7 @@ export default function BloomLogo({ className = "" }: { className?: string }) {
       onMouseLeave={onLeave}
     >
       <img
-        src="/bloom-logo.png"
+        src={`${import.meta.env.BASE_URL}bloom-logo.png`}
         alt="BLOOM Project"
         className="h-24 w-auto transition-[filter] duration-300"
         style={

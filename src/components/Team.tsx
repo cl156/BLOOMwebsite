@@ -93,7 +93,7 @@ export default function Team() {
               className="group rounded-lg border border-gray-200 bg-white p-5 text-center transition-all hover:border-bloom-300 hover:shadow-md"
             >
               <img
-                src={photo}
+                src={`${import.meta.env.BASE_URL}${photo.slice(1)}`}
                 alt={name}
                 className="mx-auto h-28 w-28 rounded-lg object-cover grayscale transition-all group-hover:grayscale-0"
               />
