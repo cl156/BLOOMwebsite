@@ -146,7 +146,7 @@ export default function Hero() {
 
       <div className="relative mx-auto max-w-4xl px-5 pb-16 pt-16 text-center sm:pb-20 sm:pt-20 md:pb-28 md:pt-28 lg:px-8">
         <p className="mb-5 inline-block rounded-md border border-bloom-200 bg-bloom-50/60 px-4 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-bloom-600 sm:text-xs">
-          Open infrastructure for public problem-solving
+          Free tools for community problem-solving that actually goes somewhere
         </p>
 
         <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-maroon-700 sm:text-5xl md:text-6xl lg:text-7xl">
@@ -190,9 +190,9 @@ export default function Hero() {
         ))}
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-500 sm:text-xl md:text-2xl">
-          BLOOM equips communities to learn together,
-          deliberate across differences, find durable common ground, and
-          coordinate action&nbsp;&mdash; locally and beyond.
+          BLOOM is public infrastructure for organizers and civic leaders.
+          Run structured deliberations, surface what your community agrees on,
+          and make sure this shapes what happens.
         </p>
 
         {/* CTAs — two prominent buttons, stack on mobile */}

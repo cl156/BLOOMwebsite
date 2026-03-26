@@ -11,26 +11,26 @@ const LIGHT_NET_COLORS = [
 
 const BACKBONE = [
   {
-    label: "Commissioning & legitimacy",
+    label: "Run a process people trust",
     items: [
-      "Convene around locally consequential issues",
-      "Steward legitimacy norms so outcomes carry weight",
-      "Structured deliberation workflows from start to finish",
+      "Convene around issues that genuinely matter to your community",
+      "Build in the norms that make outcomes credible and hard to ignore",
+      "Structured workflows from start to finish \u2014 so nothing falls through the cracks",
     ],
   },
   {
-    label: "Institutional coupling",
+    label: "Connect findings to decisions",
     items: [
-      "Map decision levers before the conversation starts",
+      "Identify who holds the decision before the conversation starts",
       "Secure commitments from decision-makers to respond",
-      "Cross-community coordination when the lever lives elsewhere",
+      "Coordinate across communities when the decision lives beyond your local level",
     ],
   },
   {
-    label: "Continuity & public memory",
+    label: "Keep the momentum going",
     items: [
-      "Recurring deliberation cycles, not one-off events",
-      "Return paths for participants to stay engaged",
+      "Recurring cycles, not one-off events",
+      "Ways for participants to stay involved and see what happened",
       "Accountability checkpoints that track follow-through",
     ],
   },
@@ -62,8 +62,8 @@ export default function ForCommunities() {
           </h2>
           <p className="mt-4 text-xl text-gray-600">
             If you&rsquo;re an organizer, civic leader, institution, or
-            coalition&nbsp;&mdash; BLOOM increases your capacity, coherence, and
-            impact.
+            coalition&nbsp;&mdash; BLOOM gives you the structure, tools, and
+            support to run public conversations that actually go somewhere.
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export default function ForCommunities() {
           ))}
         </div>
 
-        {/* "We don't replace" emphasis + tagline */}
+        {/* "We don't replace" emphasis */}
         <div className="mx-auto mt-14 max-w-lg text-center">
           <div className="rounded-lg border border-bloom-200 bg-bloom-50/40 p-5">
             <p className="text-lg leading-relaxed text-gray-700">
@@ -102,24 +102,6 @@ export default function ForCommunities() {
               doing the hard work in your community.
             </p>
           </div>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-3 font-mono text-xs font-semibold uppercase tracking-widest text-maroon-600">
-            <span className="rounded-md border border-bloom-200 bg-bloom-50/60 px-3 py-1.5">
-              Locally rooted
-            </span>
-            <span className="rounded-md border border-bloom-200 bg-bloom-50/60 px-3 py-1.5">
-              Coordinated across communities
-            </span>
-            <span className="rounded-md border border-bloom-200 bg-bloom-50/60 px-3 py-1.5">
-              Built for multi-level action
-            </span>
-          </div>
-          <a
-            href="#get-in-touch"
-            className="mt-8 inline-block rounded-lg bg-bloom-500 px-7 py-3 text-base font-semibold text-white transition-colors hover:bg-bloom-600"
-          >
-            Become a Civic Host
-          </a>
         </div>
       </div>
     </section>

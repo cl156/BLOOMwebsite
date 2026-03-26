@@ -20,25 +20,25 @@ const PHASES = [
     label: "Listen",
     title: "Broad collective dialogue",
     description:
-      "Digital and in-person forums map the issue landscape — surfacing where people agree, where they diverge, and what trade-offs feel real.",
+      "Digital and in-person forums map the issue landscape \u2014 surfacing where people agree, where they diverge, and what trade-offs feel real.",
   },
   {
     label: "Deliberate",
     title: "Weigh trade-offs together",
     description:
-      "Smaller, representative groups — modeled on citizens\u2019 assemblies — dig deeper, developing shared recommendations grounded in real constraints, not just preferences.",
+      "Smaller, representative groups \u2014 modeled on citizens\u2019 assemblies \u2014 dig deeper, developing shared recommendations grounded in real constraints, not just preferences.",
   },
   {
     label: "Synthesize",
     title: "Make common ground visible",
     description:
-      "AI-assisted synthesis identifies durable agreement across groups and scales — the proposals that hold up across difference.",
+      "AI-assisted synthesis identifies durable agreement across groups and scales \u2014 the proposals that hold up across difference.",
   },
   {
     label: "Act",
     title: "Connect findings to decisions",
     description:
-      "Federated reporting carries local insight to the institutions where decisions are made — school boards, city councils, state legislatures — without centralized control.",
+      "Local findings reach the institutions where decisions are made \u2014 school boards, city councils, state legislatures and beyond \u2014 while keeping authority where it belongs: in the community.",
   },
 ];
 
@@ -107,17 +107,6 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        {/* Pilot context */}
-        <div className="mt-12 rounded-lg border border-bloom-200 bg-white px-8 py-6 text-center">
-          <p className="text-lg leading-relaxed text-gray-600">
-            Our 2026 pilot deliberations in Central Oregon and Utah are testing
-            this full cycle on a single question:{" "}
-            <span className="font-semibold text-maroon-700">
-              how can we build a future where the benefits of AI are widely
-              shared and the risks responsibly managed?
-            </span>
-          </p>
-        </div>
       </div>
     </section>
   );

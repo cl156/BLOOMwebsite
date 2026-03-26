@@ -9,19 +9,17 @@ const LIGHT_NET_COLORS = [
   "180,100,120",
 ];
 
+const CIVIC_OS_FEATURES = [
+  "Multiple ways to participate \u2014 surveys, online forums, in-person assemblies, live dialogue",
+  "AI that surfaces patterns and areas of agreement across contributions",
+  "Reporting that scales from a single neighborhood to a statewide coalition",
+  "One login across all tools, so participants stay connected across sessions",
+];
+
 const TRAITS = [
-  { icon: "\u25B8", label: "Collective intelligence infrastructure" },
-  { icon: "\u25B8", label: "Locally rooted, cross-local when needed" },
   { icon: "\u25B8", label: "Action-oriented \u2014 not just discussion" },
   { icon: "\u25B8", label: "Nonpartisan and broadly accessible" },
   { icon: "\u25B8", label: "AI-enabled, human-led" },
-];
-
-const CIVIC_OS_FEATURES = [
-  "Multi-format participation \u2014 surveys, online deliberation, in-person assemblies, live dialogue",
-  "AI-assisted synthesis and pattern visualization",
-  "Federated reporting from local to cross-state scale",
-  "Shared identity layer across integrated tools",
 ];
 
 export default function CivicOS() {
@@ -51,24 +49,9 @@ export default function CivicOS() {
           Powered by CivicOS
         </h2>
         <p className="mt-5 text-xl leading-relaxed text-gray-600">
-          CivicOS is a modular, open-source platform that weaves multiple
-          participation methods into a single end-to-end
-          workflow&nbsp;&mdash; so communities can learn together, contribute
-          in multiple formats, and receive clear reporting on what was heard
-          and what happens next.
-        </p>
-        <p className="mt-4 text-lg leading-relaxed text-gray-500">
-          Not a new tool&nbsp;&mdash; a switchboard. CivicOS integrates
-          existing leading tools&nbsp;&mdash; Polis for large-group opinion
-          mapping, Talk to the City for AI-assisted synthesis, facilitated
-          dialogue on Jitsi, and others&nbsp;&mdash; under a shared identity
-          layer, a workflow engine, and a federated data ontology that lets
-          outputs be read at the local, regional, and cross-state level
-          simultaneously. It also makes in-person deliberation
-          legible&nbsp;&mdash; capturing what happens in town halls,
-          citizens&rsquo; assemblies, and community workshops so those
-          inputs carry the same weight as online participation in the
-          final synthesis.
+          CivicOS is a free, open-source platform that supports full public
+          problem-solving processes&nbsp;&mdash; from framing the right questions
+          to reporting what was heard and what happens next.
         </p>
 
         <div className="mt-8 inline-flex flex-col items-start gap-2 text-left">

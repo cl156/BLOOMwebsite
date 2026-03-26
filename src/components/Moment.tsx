@@ -9,13 +9,6 @@ const LIGHT_NET_COLORS = [
   "180,100,120",
 ];
 
-const ISSUE_PATHWAYS = [
-  "Youth mental health & social tech",
-  "Work & economic transitions",
-  "Energy, data centers & environment",
-  "Information integrity",
-];
-
 export default function Moment() {
   return (
     <section
@@ -50,15 +43,12 @@ export default function Moment() {
         </p>
 
         <p className="mt-4 text-lg leading-relaxed text-gray-500">
-          AI is at a turning point for democracy. It can either atrophy
-          our civic muscle&nbsp;&mdash; or help rebuild it. BLOOM is building
-          infrastructure for the second possibility.
+          AI is at a turning point for democracy. It can either erode our
+          ability to think and act together&nbsp;&mdash; or help rebuild it.
+          BLOOM is building the tools, relationships and capacities communities
+          need to make that second path real.
         </p>
 
-        {/* 2026 issue pathways */}
-        <p className="mt-8 font-mono text-xs font-medium tracking-wide text-bloom-600">
-          {ISSUE_PATHWAYS.join(" \u00b7 ")}
-        </p>
       </div>
     </section>
   );

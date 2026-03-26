@@ -68,8 +68,14 @@ export default function WhatBloomIs() {
             </div>
           )}
 
+          <p className="mt-8 text-lg font-medium text-bloom-200">
+            <Editable file={FILE} path="closingLine">
+              {content.closingLine}
+            </Editable>
+          </p>
+
           {/* Three-element structure */}
-          <div className="mt-10 grid gap-4 text-left sm:grid-cols-3">
+          <div className="mt-6 grid gap-4 text-left sm:grid-cols-3">
             {content.cards.map(({ label, desc }, i) => (
               <div key={i} className="rounded-md border border-white/15 bg-white/5 px-4 py-4">
                 <p className="font-mono text-xs font-bold uppercase tracking-widest text-bloom-300">
@@ -85,12 +91,6 @@ export default function WhatBloomIs() {
               </div>
             ))}
           </div>
-
-          <p className="mt-8 text-lg font-medium text-bloom-200">
-            <Editable file={FILE} path="closingLine">
-              {content.closingLine}
-            </Editable>
-          </p>
         </div>
       </div>
     </section>

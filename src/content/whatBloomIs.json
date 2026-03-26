@@ -1,21 +1,21 @@
 {
   "heading": "What BLOOM is",
-  "introParagraph": "Bloom is building civic infrastructure for coordinated, community-rooted problem-solving. Our model supports communities to identify and act on their own shared problems. ",
-  "supportLine": "We support Civic Hosts — organizers, community leaders, institutions — with tools that make it dramatically easier to launch informed public conversations, surface shared priorities across difference, act form common ground and coordinate across communities when the lever of change lives elsewhere. BLOOM's three interlocking elements are:",
+  "introParagraph": "BLOOM is a nonprofit. Our tools are free.",
+  "supportLine": "We work with civic leaders \u2014 organizers, community leaders, and institutions \u2014 to run public conversations that go beyond talk: surfacing what communities actually think, finding real common ground, and connecting findings to the decisions that matter.",
   "capabilities": [],
   "cards": [
     {
       "label": "CivicOS",
-      "desc": "A modular open-source platform for the full deliberation workflow"
+      "desc": "A free, open-source platform that supports the full problem solving processes \u2014 from setting the agenda to reporting what was heard"
     },
     {
       "label": "Civic Hosts",
-      "desc": "A network of trained community leaders who commission and steward local processes"
+      "desc": "A network of trained community leaders who run and steward local deliberations"
     },
     {
       "label": "Headline Deliberations",
-      "desc": "Flagship cycles that demonstrate impact, advance R&D, and build the field"
+      "desc": "Large-scale pilots run directly by BLOOM that demonstrate what\u2019s possible and develop the model"
     }
   ],
-  "closingLine": "We don’t replace existing civic work. We strengthen it."
+  "closingLine": "Three things make it work:"
 }

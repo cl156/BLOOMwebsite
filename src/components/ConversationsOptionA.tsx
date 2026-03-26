@@ -59,10 +59,12 @@ export default function ConversationsOptionA() {
             Active deliberations
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-xl text-gray-600">
-            Our 2026 headline deliberation asks one question across communities:
-            how can we build a future where the benefits of AI are widely shared
-            and the risks responsibly managed? Explore an open deliberation or bring BLOOM to
-            your community.
+            In 2026, BLOOM is asking one question across communities: what would
+            it take for AI to work for everyone&nbsp;&mdash; and for its risks to
+            be shared fairly?
+          </p>
+          <p className="mx-auto mt-3 max-w-xl text-lg text-gray-500">
+            Join a deliberation near you, or bring BLOOM to your community.
           </p>
         </div>
 
@@ -123,17 +125,11 @@ export default function ConversationsOptionA() {
         <div className="mt-10 rounded-lg border border-dashed border-gray-300 bg-gray-50/50 p-6 text-center">
           <p className="text-base text-gray-500">
             <span className="font-medium text-maroon-700">More regions coming soon.</span>{" "}
-            BLOOM is expanding to new communities across the country.
+            Interested in hosting?{" "}
+            <a href="#for-civic-hosts" className="font-medium text-bloom-500 hover:text-bloom-600">
+              Bring BLOOM to your community &rarr;
+            </a>
           </p>
-          <a
-            href="#get-involved"
-            className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-bloom-500 transition-colors hover:text-bloom-600"
-          >
-            Bring BLOOM to your community
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
         </div>
       </div>
     </section>

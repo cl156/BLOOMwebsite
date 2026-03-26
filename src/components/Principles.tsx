@@ -18,9 +18,9 @@ const WE_ARE_NOT = [
 
 const WE_ARE = [
   "Public infrastructure",
-  "Service-oriented",
+  "Built to serve communities, not capture them",
   "Action-oriented",
-  "Designed for cultural resonance",
+  "Designed to work across real differences, not just ideal ones",
   "Built to last",
 ];
 
@@ -42,10 +42,17 @@ export default function Principles() {
         nodeAlpha={0.17}
       />
 
-      <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
-        <h2 className="text-center font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
-          Not another platform
+      <div className="relative mx-auto max-w-3xl px-5 text-center lg:px-8">
+        <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
+          Not another platform.
         </h2>
+
+        <p className="mt-6 text-xl leading-relaxed text-gray-600">
+          There are two dominant stories about where AI leads. It could collapse
+          into doom&nbsp;&mdash; concentrated power, eroded institutions, a
+          public left behind. Or it could deliver a boom that benefits only a
+          few. Between doom and boom, BLOOM is building for a third possibility.
+        </p>
 
         <div className="mt-14 grid gap-8 md:grid-cols-2">
           {/* We are not */}
@@ -79,7 +86,7 @@ export default function Principles() {
           </div>
         </div>
 
-        <p className="mx-auto mt-12 max-w-md text-center text-xl leading-relaxed text-gray-600">
+        <p className="mx-auto mt-12 max-w-md text-xl leading-relaxed text-gray-600">
           This is serious work for serious times.
           <br />
           <span className="font-medium text-maroon-700">

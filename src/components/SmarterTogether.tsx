@@ -29,11 +29,10 @@ export default function SmarterTogether() {
 
       <div className="relative mx-auto max-w-3xl px-5 text-center lg:px-8">
         <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
-          We&rsquo;re smarter together
+          &ldquo;We&rsquo;re smarter together.&rdquo;
         </h2>
         <p className="mt-6 text-xl leading-relaxed text-gray-600">
-          No one has the whole story. Complex problems require partial knowledge
-          to be woven together.
+          No one has the whole story. The best answers come from putting pieces together.
         </p>
 
         <div className="mt-10 grid gap-3 text-left sm:grid-cols-2">
