@@ -10,7 +10,7 @@ import MycelialCanvas from "./MycelialCanvas";
  * target word at full opacity — like pattern-matching.
  */
 
-const ROTATING_WORDS = ["futures.", "prosperity.", "ideas.", "solutions.", "action."];
+const ROTATING_WORDS = ["futures", "prosperity", "ideas", "solutions", "action"];
 
 const GLYPHS = "abcdefghijklmnopqrstuvwxyz";
 
@@ -151,7 +151,7 @@ export default function Hero() {
           <span className="whitespace-nowrap text-bloom-500">
             to shared{" "}
             <span
-              className="inline-block overflow-hidden text-left"
+              className="inline-block text-left"
               style={{
                 width: containerWidth > 0 ? containerWidth : "auto",
                 verticalAlign: "bottom",
