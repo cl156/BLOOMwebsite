@@ -145,10 +145,6 @@ export default function Hero() {
       <MycelialCanvas colors={HERO_NET_COLORS} seed={42} seedCount={18} fadeCenterY={0.55} fadeRyRatio={0.45} />
 
       <div className="relative mx-auto max-w-4xl px-5 pb-16 pt-16 text-center sm:pb-20 sm:pt-20 md:pb-28 md:pt-28 lg:px-8">
-        <p className="mb-5 inline-block rounded-md border border-bloom-200 bg-bloom-50/60 px-4 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-bloom-600 sm:text-xs">
-          Free tools for community problem-solving that actually goes somewhere
-        </p>
-
         <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-maroon-700 sm:text-5xl md:text-6xl lg:text-7xl">
           From common ground
           <br />
