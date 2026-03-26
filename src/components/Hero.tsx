@@ -188,7 +188,7 @@ export default function Hero() {
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-500 sm:text-xl md:text-2xl">
           BLOOM is public infrastructure for organizers and civic leaders.
           Run structured deliberations, surface what your community agrees on,
-          and make sure this shapes what happens.
+          and make sure this shapes what happens next.
         </p>
 
         {/* CTAs — two prominent buttons, stack on mobile */}
