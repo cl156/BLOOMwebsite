@@ -185,6 +185,11 @@ export default function Hero() {
           </span>
         ))}
 
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-500 sm:text-xl md:text-2xl">
+          Run structured deliberations, surface what your community agrees on,
+          and make sure this shapes what happens next.
+        </p>
+
         {/* CTAs — two prominent buttons, stack on mobile */}
         <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center sm:gap-4">
           <a
