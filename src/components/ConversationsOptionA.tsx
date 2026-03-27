@@ -21,7 +21,7 @@ const CONVERSATIONS = [
     status: "Live" as const,
     host: "COCAP",
     hostLink: "https://cocap.us/",
-    cta: "In Oregon, join the conversation",
+    cta: "In Oregon? Join the conversation",
     link: "https://oregon.bloomproject.us/landing?host=true",
   },
   {
@@ -32,7 +32,7 @@ const CONVERSATIONS = [
     status: "Live" as const,
     host: "Utah Common Ground",
     hostLink: "https://www.utahcommonground.org/",
-    cta: "In Utah, join the conversation",
+    cta: "In Utah? Join the conversation",
     link: "https://utah.bloomproject.us/landing?host=true",
   },
 ];
