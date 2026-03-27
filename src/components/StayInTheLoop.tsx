@@ -36,9 +36,8 @@ export default function StayInTheLoop() {
           Get in touch
         </h2>
         <p className="mt-4 text-xl text-gray-600">
-          We share what we&rsquo;re learning as we build&nbsp;&mdash; pilot results,
-          process updates, and what&rsquo;s working in communities. No spam, just
-          the real stuff.
+          Want to host a deliberation, partner with us, or just say hello?
+          We&rsquo;d love to hear from you.
         </p>
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-8">
