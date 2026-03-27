@@ -29,7 +29,7 @@ export default function Footer() {
           <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=ba402bb7-5499-4b37-860b-bbb507d3c3c1" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-maroon-700">
             Privacy
           </a>
-          <a href="#" className="transition-colors hover:text-maroon-700">
+          <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=4f85478f-bc07-46b7-a67b-e9f11de4b279" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-maroon-700">
             Terms
           </a>
         </nav>
