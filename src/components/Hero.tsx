@@ -196,13 +196,13 @@ export default function Hero() {
             href="#conversations"
             className="w-full rounded-lg bg-bloom-500 px-8 py-3.5 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-bloom-600 hover:shadow-md sm:w-auto"
           >
-            Join a conversation
+            Active Deliberations
           </a>
           <a
             href="#for-civic-hosts"
             className="w-full rounded-lg bg-maroon-700 px-8 py-3.5 text-center text-base font-semibold text-white shadow-sm transition-all hover:bg-maroon-800 hover:shadow-md sm:w-auto"
           >
-            Host a conversation
+            Host a Deliberation
           </a>
         </div>
 

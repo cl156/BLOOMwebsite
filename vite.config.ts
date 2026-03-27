@@ -54,6 +54,6 @@ function contentEditorPlugin(): Plugin {
 }
 
 export default defineConfig({
-  base: "/BLOOMwebsite/",
+  base: "/",
   plugins: [react(), contentEditorPlugin()],
 });
