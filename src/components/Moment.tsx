@@ -1,13 +1,11 @@
 /**
  * "The Moment We're In" — concise context-setting section
+ *
+ * Background: scroll-driven "signal vs. noise" animation.
+ * Particles start scattered and chaotic, then self-organize
+ * into connected clusters as the reader scrolls through.
  */
-import MycelialCanvas from "./MycelialCanvas";
-
-const LIGHT_NET_COLORS = [
-  "107,42,61",
-  "155,69,89",
-  "180,100,120",
-];
+import SignalNoiseCanvas from "./SignalNoiseCanvas";
 
 export default function Moment() {
   return (
@@ -15,17 +13,7 @@ export default function Moment() {
       className="relative py-20 md:py-28"
       style={{ background: "linear-gradient(180deg, #f9fafb 0%, #f3f4f6 50%, #f9fafb 100%)" }}
     >
-      <MycelialCanvas
-        colors={LIGHT_NET_COLORS}
-        seed={51}
-        seedCount={14}
-        fadeCenterX={0.5}
-        fadeCenterY={0.5}
-        fadeRxRatio={0.85}
-        fadeRyRatio={0.9}
-        edgeAlpha={0.15}
-        nodeAlpha={0.18}
-      />
+      <SignalNoiseCanvas />
 
       <div className="relative mx-auto max-w-3xl px-5 text-center lg:px-8">
         <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
