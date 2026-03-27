@@ -1,7 +1,7 @@
 /**
- * Active Conversations — Option A: Minimal Cards
+ * Active Deliberations — Minimal Cards
  *
- * Clean two-card layout with location pins, status badges, and topic info.
+ * Clean two-card layout with location pins, status badges, host info, and topic.
  * Easy to scale by adding more cards as new regions come online.
  */
 import MycelialCanvas from "./MycelialCanvas";
@@ -18,16 +18,22 @@ const CONVERSATIONS = [
     state: "OR",
     topic: "AI & the Future of Our Communities",
     subtopics: "Youth mental health \u00b7 Work transitions \u00b7 Energy & environment \u00b7 Information integrity",
-    status: "Coming soon" as const,
-    link: "#",
+    status: "Live" as const,
+    host: "COCAP",
+    hostLink: "https://cocap.us/",
+    cta: "In Oregon, join the conversation",
+    link: "https://oregon.bloomproject.us/landing?host=true",
   },
   {
     region: "Utah",
     state: "UT",
     topic: "AI & the Future of Our Communities",
     subtopics: "Youth mental health \u00b7 Work transitions \u00b7 Energy & environment \u00b7 Information integrity",
-    status: "Coming soon" as const,
-    link: "#",
+    status: "Live" as const,
+    host: "Utah Common Ground",
+    hostLink: "https://www.utahcommonground.org/",
+    cta: "In Utah, join the conversation",
+    link: "https://utah.bloomproject.us/landing?host=true",
   },
 ];
 
@@ -53,7 +59,7 @@ export default function ConversationsOptionA() {
       <div className="relative mx-auto max-w-4xl px-5 lg:px-8">
         <div className="text-center">
           <p className="font-mono text-xs font-semibold uppercase tracking-widest text-bloom-500">
-            Coming soon
+            Happening now
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
             Active deliberations
@@ -70,16 +76,15 @@ export default function ConversationsOptionA() {
 
         {/* Conversation cards */}
         <div className="mt-14 grid gap-6 sm:grid-cols-2">
-          {CONVERSATIONS.map(({ region, state, topic, subtopics, status, link }) => (
-            <a
+          {CONVERSATIONS.map(({ region, state, topic, subtopics, status, host, hostLink, cta, link }) => (
+            <div
               key={region}
-              href={link}
               className="group relative rounded-lg border border-gray-200 bg-white p-7 transition-all hover:border-bloom-300 hover:shadow-lg"
             >
               {/* Status badge */}
               <div className="absolute right-5 top-5 flex items-center gap-1.5">
-                <span className="inline-flex h-2.5 w-2.5 rounded-full bg-amber-400" />
-                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-amber-600">
+                <span className="inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-green-600">
                   {status}
                 </span>
               </div>
@@ -93,15 +98,28 @@ export default function ConversationsOptionA() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-maroon-700 group-hover:text-bloom-600 transition-colors">
+                  <h3 className="text-lg font-bold text-maroon-700">
                     {region}
                   </h3>
                   <p className="font-mono text-xs text-gray-400">{state}</p>
                 </div>
               </div>
 
+              {/* Host info */}
+              <p className="mt-3 text-sm text-gray-500">
+                Hosted by{" "}
+                <a
+                  href={hostLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-bloom-600 underline underline-offset-2 hover:text-bloom-700"
+                >
+                  {host}
+                </a>
+              </p>
+
               {/* Topic */}
-              <p className="mt-4 text-base font-medium leading-relaxed text-maroon-600">
+              <p className="mt-3 text-base font-medium leading-relaxed text-maroon-600">
                 {topic}
               </p>
               {subtopics && (
@@ -111,13 +129,18 @@ export default function ConversationsOptionA() {
               )}
 
               {/* Join link */}
-              <div className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-bloom-500 transition-colors group-hover:text-bloom-600">
-                Explore this conversation
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-bloom-500 transition-colors hover:text-bloom-600"
+              >
+                {cta}
                 <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </div>
-            </a>
+              </a>
+            </div>
           ))}
         </div>
 
