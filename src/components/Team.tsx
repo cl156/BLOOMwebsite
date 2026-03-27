@@ -81,7 +81,7 @@ export default function Team() {
             Meet the team
           </h2>
           <p className="mt-4 text-xl text-gray-600">
-            We&rsquo;re builders, organizers, and civic practitioners&nbsp;&mdash;
+            We&rsquo;re builders, civic leaders, and practitioners&nbsp;&mdash;
             brought together by the belief that democracy can work better.
           </p>
         </div>

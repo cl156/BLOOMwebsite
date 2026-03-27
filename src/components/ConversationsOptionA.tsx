@@ -60,8 +60,8 @@ export default function ConversationsOptionA() {
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-xl text-gray-600">
             In 2026, BLOOM is asking one question across communities: what would
-            it take for AI to work for everyone&nbsp;&mdash; and for its risks to
-            be shared fairly?
+            it take for AI to benefit our communities&nbsp;&mdash; and for its
+            risks to be managed responsibly?
           </p>
           <p className="mx-auto mt-3 max-w-xl text-lg text-gray-500">
             Join a deliberation near you, or bring BLOOM to your community.

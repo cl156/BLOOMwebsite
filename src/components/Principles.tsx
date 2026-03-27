@@ -12,13 +12,13 @@ const LIGHT_NET_COLORS = [
 const WE_ARE_NOT = [
   "A social media replacement",
   "A partisan campaign tool",
-  "A VC-backed tech play",
+  "A for-profit tech product",
   "A one-off civic experiment",
 ];
 
 const WE_ARE = [
   "Public infrastructure",
-  "Built to serve communities, not capture them",
+  "Built to serve communities, not monetize them",
   "Action-oriented",
   "Designed to work across real differences, not just ideal ones",
   "Built to last",
@@ -49,9 +49,10 @@ export default function Principles() {
 
         <p className="mt-6 text-xl leading-relaxed text-gray-600">
           There are two dominant stories about where AI leads. It could collapse
-          into doom&nbsp;&mdash; concentrated power, eroded institutions, a
-          public left behind. Or it could deliver a boom that benefits only a
-          few. Between doom and boom, BLOOM is building for a third possibility.
+          into doom&nbsp;&mdash; unchecked power, weakened institutions, a
+          public sidelined. Or it could deliver a boom that passes most
+          communities by. Between doom and boom, BLOOM is building for a third
+          possibility.
         </p>
 
         <div className="mx-auto mt-14 grid max-w-2xl gap-8 md:grid-cols-2">

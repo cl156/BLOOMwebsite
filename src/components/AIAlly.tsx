@@ -55,8 +55,8 @@ export default function AIAlly() {
         <div className="mx-auto mt-10 max-w-xl rounded-lg border border-bloom-200 bg-white px-8 py-6">
           <p className="text-lg leading-relaxed text-gray-600">
             The most common failure mode in AI-for-democracy work is producing
-            better summaries of public will without producing stronger
-            publics.{" "}
+            better summaries of what people think without actually strengthening
+            people&rsquo;s ability to act on it.{" "}
             <span className="font-semibold text-maroon-700">
               BLOOM is designed against that failure.
             </span>

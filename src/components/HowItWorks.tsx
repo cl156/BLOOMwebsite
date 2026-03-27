@@ -38,7 +38,7 @@ const PHASES = [
     label: "Act",
     title: "Connect findings to decisions",
     description:
-      "Local findings reach the institutions where decisions are made \u2014 school boards, city councils, state legislatures and beyond \u2014 while keeping authority where it belongs: in the community.",
+      "Local findings reach the institutions where decisions are made \u2014 school boards, city councils, state legislatures and beyond \u2014 while keeping communities connected to the decisions that affect them.",
   },
 ];
 

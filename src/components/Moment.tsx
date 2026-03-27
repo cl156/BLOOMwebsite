@@ -44,7 +44,7 @@ export default function Moment() {
 
         <p className="mt-4 text-lg leading-relaxed text-gray-500">
           AI is at a turning point for democracy. It can either erode our
-          ability to think and act together&nbsp;&mdash; or help rebuild it.
+          ability to think and act together&nbsp;&mdash; or help strengthen it.
           BLOOM is building the tools, relationships and capacities communities
           need to make that second path real.
         </p>
