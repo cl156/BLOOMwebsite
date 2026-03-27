@@ -2,11 +2,11 @@ import { useState } from "react";
 import BloomLogo from "./BloomLogo";
 
 const NAV_LINKS = [
-  { label: "About", href: "#what-bloom-is" },
-  { label: "CivicOS", href: "#civic-os" },
-  { label: "Process", href: "#how-it-works" },
-  { label: "Deliberations", href: "#conversations" },
-  { label: "Team", href: "#team" },
+  { label: "About", href: "#what-bloom-is", tooltip: "What BLOOM is and how it works" },
+  { label: "CivicOS", href: "#civic-os", tooltip: "The free, open-source platform behind BLOOM" },
+  { label: "Process", href: "#how-it-works", tooltip: "The five phases of end-to-end deliberation" },
+  { label: "Deliberations", href: "#conversations", tooltip: "Structured conversations where people weigh real trade-offs together" },
+  { label: "Team", href: "#team", tooltip: "The people building BLOOM" },
 ] as const;
 
 export default function Header() {
@@ -19,13 +19,19 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-10 md:flex">
-          {NAV_LINKS.map(({ label, href }) => (
+          {NAV_LINKS.map(({ label, href, tooltip }) => (
             <a
               key={href}
               href={href}
-              className="text-lg font-medium text-gray-600 transition-colors hover:text-maroon-700"
+              className="group relative text-lg font-medium text-gray-600 transition-colors hover:text-maroon-700"
             >
               {label}
+              {/* Tooltip */}
+              <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-maroon-700 px-3 py-1.5 text-xs font-normal text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100">
+                {tooltip}
+                {/* Arrow */}
+                <span className="absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-transparent border-b-maroon-700" />
+              </span>
             </a>
           ))}
           <a
@@ -60,7 +66,7 @@ export default function Header() {
       {menuOpen && (
         <nav className="border-t border-gray-100 bg-white px-5 pb-5 pt-3 md:hidden">
           <ul className="flex flex-col gap-3">
-            {NAV_LINKS.map(({ label, href }) => (
+            {NAV_LINKS.map(({ label, href, tooltip }) => (
               <li key={href}>
                 <a
                   href={href}
@@ -68,6 +74,7 @@ export default function Header() {
                   className="block text-base font-medium text-gray-700 hover:text-maroon-700"
                 >
                   {label}
+                  <span className="block text-xs font-normal text-gray-400">{tooltip}</span>
                 </a>
               </li>
             ))}
