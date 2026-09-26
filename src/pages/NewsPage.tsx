@@ -154,7 +154,9 @@ export default function NewsPage() {
                 <p className="mt-1 text-xs text-maroon-900/60">{formatDate(a.date)}</p>
                 <h3 className="mt-4 font-display text-xl leading-snug text-maroon-900 group-hover:text-bloom-600">{a.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-maroon-900/75">{a.blurb}</p>
-                <span className="mt-5 text-sm text-bloom-600">Read article &rarr;</span>
+                <span className="mt-5 text-sm text-bloom-600">
+                  {"kind" in a && a.kind === "podcast" ? "Listen to the episode" : "Read article"} &rarr;
+                </span>
               </a>
             ))}
           </div>
