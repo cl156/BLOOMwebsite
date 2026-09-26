@@ -22,9 +22,6 @@ export default function Vision() {
             <Quote by="Public Assembly participant" size="lg" className="mt-6">
               I want to use AI. I don&rsquo;t want AI to use me.
             </Quote>
-            <Quote by="Public Assembly participant" className="mt-12 border-l border-bloom-200 pl-5">
-              You&rsquo;re not really talking to other people, you&rsquo;re just going to the podium and giving your rant.
-            </Quote>
           </div>
         </div>
 
@@ -39,6 +36,9 @@ export default function Vision() {
             don&rsquo;t believe their effort will matter.
           </p>
           <p>And the ways we do invite people in don&rsquo;t tend to serve wise decision-making.</p>
+          <Quote by="Public Assembly participant" className="!my-8 border-l border-bloom-200 pl-5">
+            You&rsquo;re not really talking to other people, you&rsquo;re just going to the podium and giving your rant.
+          </Quote>
           <p>
             Meanwhile, decisions on AI get made behind closed doors. Good information is
             increasingly hard to access. Powerful interests and people who profit from division shape what happens in ways
