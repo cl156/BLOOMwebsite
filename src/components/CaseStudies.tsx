@@ -51,8 +51,8 @@ function UtahDetail() {
         trade-offs, and developed proposals together.
       </p>
       <p className="font-medium text-maroon-900">
-        The result: 10 policy proposals, each backed by more than 80% of delegates, in a room that leaned roughly
-        60/40 Republican to Democrat.
+        The result: 10 policy proposals, each backed by more than 80% of delegates, in a room of roughly 60% Republican-leaning and
+        40% Democrat-leaning delegates.
       </p>
       <figure className="border-l border-bloom-200 pl-4">
         <blockquote className="font-display text-lg leading-snug text-bloom-500">

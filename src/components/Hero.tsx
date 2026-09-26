@@ -12,7 +12,7 @@ const STATS = [
   { value: "~1,000", label: "residents engaged across six counties in Utah and Oregon" },
   { value: "38", label: "Utahns selected by civic lottery for the Solutions Forum" },
   { value: "10", label: "policy proposals, each backed by more than 80% of delegates" },
-  { value: "60/40", label: "Republican- to Democrat-leaning room, so the agreement crossed party lines" },
+  { value: "60% / 40%", label: "Republican- and Democrat-leaning delegates, who still agreed on every proposal" },
 ];
 
 export default function Hero() {
