@@ -100,8 +100,7 @@ export default function CohortPage() {
             Many places. A growing civic institution.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-maroon-900/85">
-            BLOOM is looking for locally rooted organizations to become founding Civic Hosts for Public Assemblies on
-            AI in 2027. Over the past year, the BLOOM Project has developed a community assembly model that combines
+            Over the past year, the BLOOM Project has developed a community assembly model that combines
             digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon,
             engaging nearly 1,000 people across six counties on questions about AI. Now we&rsquo;re inviting a founding
             cohort of civic hosts to lead their communities in shaping their futures in the AI era.
