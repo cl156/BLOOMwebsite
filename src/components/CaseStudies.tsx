@@ -4,7 +4,11 @@
  */
 import { useState } from "react";
 import { Eyebrow, Heading, Pill } from "./ui";
-import { WESTERN_STATES, MAP_WIDTH, MAP_HEIGHT } from "../content/westernStates";
+import { US_STATES, MAP_WIDTH, MAP_HEIGHT, MAP_FULL_WIDTH } from "../content/usStates";
+
+/* The rest of the country continues east and fades out: the network is national. */
+const FADE_START = Math.round(((MAP_WIDTH * 0.8) / MAP_FULL_WIDTH) * 100); // around the Colorado Rockies
+const FADE = `linear-gradient(to right, #000 ${FADE_START}%, rgba(0,0,0,0.35) ${FADE_START + 6}%, transparent ${FADE_START + 13}%)`;
 import { pageHref, assetHref } from "../utils/href";
 
 const UTAH_REPORT_URL = "https://drive.google.com/file/d/1QngRN6wkkAcPDdhdFInZQn_qu0mmBWnl/view?usp=drive_link";
@@ -159,11 +163,24 @@ export default function CaseStudies() {
         {/* Right: the map. Starts level with the tabs, then stays in view while the card scrolls past. */}
         <div className="lg:sticky lg:top-28 lg:col-span-6 lg:mt-56">
           <div
-            className="relative mx-auto"
-            style={{ width: `min(100%, calc((100svh - 9rem) * ${MAP_WIDTH / MAP_HEIGHT}))` }}
+            className="relative"
+            style={{
+              width: `min(100%, calc((100svh - 9rem) * ${MAP_WIDTH / MAP_HEIGHT}))`,
+              aspectRatio: `${MAP_WIDTH} / ${MAP_HEIGHT}`,
+            }}
           >
-          <svg viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`} className="h-auto w-full" role="img" aria-label="Map of the western United States highlighting Oregon and Utah">
-            {WESTERN_STATES.map((s) => {
+          <svg
+            viewBox={`0 0 ${MAP_FULL_WIDTH} ${MAP_HEIGHT}`}
+            className="absolute left-0 top-0 h-full max-w-none"
+            style={{
+              width: `${(MAP_FULL_WIDTH / MAP_WIDTH) * 100}%`,
+              maskImage: FADE,
+              WebkitMaskImage: FADE,
+            }}
+            role="img"
+            aria-label="Map of the United States highlighting Oregon and Utah"
+          >
+            {US_STATES.map((s) => {
               const siteId = s.id === "UT" || s.id === "OR" ? (s.id as SiteId) : null;
               const isActive = siteId === active;
               return (
@@ -185,7 +202,7 @@ export default function CaseStudies() {
             })}
           </svg>
 
-          {WESTERN_STATES.filter((s) => s.id === "UT" || s.id === "OR").map((s) => {
+          {US_STATES.filter((s) => s.id === "UT" || s.id === "OR").map((s) => {
             const id = s.id as SiteId;
             const isActive = id === active;
             return (
