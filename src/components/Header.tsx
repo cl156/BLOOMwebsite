@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { BrandMark } from "./ui";
 import { FormButton } from "./CohortForm";
-import { sectionHref, pageHref } from "../utils/href";
+import { sectionHref, pageHref, assetHref } from "../utils/href";
 
 const NAV_LINKS = [
   { label: "Vision", href: sectionHref("vision") },
@@ -32,8 +31,8 @@ export default function Header() {
       style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-10">
-        <a href={sectionHref("top")} className="text-bloom-500 transition-transform hover:rotate-12" aria-label="BLOOM home">
-          <BrandMark className="h-9 w-9" />
+        <a href={sectionHref("top")} className="shrink-0" aria-label="BLOOM Project home">
+          <img src={assetHref("bloom-logo-header.png")} alt="BLOOM Project" className="h-10 w-auto sm:h-12" />
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">

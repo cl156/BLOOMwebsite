@@ -1,13 +1,10 @@
 /**
- * Hero: headline top-left, pitch bottom-right, a large soft glow between them
- * (layout from Humphrey's site sketch).
+ * Hero: headline top-left, photo and pitch below, a large soft glow behind
+ * (layout from Humphrey's site sketch, plus an inset photo).
  */
 import { Glow } from "./ui";
 import { sectionHref, assetHref } from "../utils/href";
 import { FormButton } from "./CohortForm";
-
-/** Mock for review: add ?hero=photo to the URL to see the hero with an inset photo. */
-const WITH_PHOTO = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("hero") === "photo";
 
 export default function Hero() {
   return (
@@ -25,8 +22,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        <div className={WITH_PHOTO ? "flex flex-col gap-10 md:flex-row md:items-end md:justify-between" : "contents"}>
-        {WITH_PHOTO && (
+        <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <figure className="w-full max-w-md md:ml-[6%] md:w-[38%] md:max-w-none">
             <img
               src={assetHref("photos/delegates-listening.jpg")}
@@ -35,7 +31,6 @@ export default function Hero() {
             />
             <figcaption className="mt-3 text-xs text-maroon-900/60">Utah Solutions Forum, September 2026</figcaption>
           </figure>
-        )}
         <div className="max-w-md self-end text-[15px] leading-relaxed text-maroon-900 sm:text-base md:mr-[4%]">
           <p>
             BLOOM helps communities stand up <strong className="font-semibold">Public Assemblies on AI</strong>:
