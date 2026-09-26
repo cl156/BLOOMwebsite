@@ -3,8 +3,11 @@
  * (layout from Humphrey's site sketch).
  */
 import { Glow } from "./ui";
-import { sectionHref } from "../utils/href";
+import { sectionHref, assetHref } from "../utils/href";
 import { FormButton } from "./CohortForm";
+
+/** Mock for review: add ?hero=photo to the URL to see the hero with an inset photo. */
+const WITH_PHOTO = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("hero") === "photo";
 
 export default function Hero() {
   return (
@@ -22,6 +25,17 @@ export default function Hero() {
           </span>
         </h1>
 
+        <div className={WITH_PHOTO ? "flex flex-col gap-10 md:flex-row md:items-end md:justify-between" : "contents"}>
+        {WITH_PHOTO && (
+          <figure className="w-full max-w-md md:ml-[6%] md:w-[38%] md:max-w-none">
+            <img
+              src={assetHref("photos/delegates-listening.jpg")}
+              alt="Delegates listening and smiling during a discussion at the Utah Solutions Forum"
+              className="aspect-[4/3] w-full rounded-3xl bg-blush-100 object-cover shadow-soft"
+            />
+            <figcaption className="mt-3 text-xs text-maroon-900/60">Utah Solutions Forum, September 2026</figcaption>
+          </figure>
+        )}
         <div className="max-w-md self-end text-[15px] leading-relaxed text-maroon-900 sm:text-base md:mr-[4%]">
           <p>
             BLOOM helps communities stand up <strong className="font-semibold">Public Assemblies on AI</strong>:
@@ -39,6 +53,7 @@ export default function Hero() {
               See the results from Utah
             </a>
           </div>
+        </div>
         </div>
       </div>
     </section>

@@ -123,8 +123,8 @@ export default function CohortPage() {
             multiple places, and build collective capacity to act.
           </p>
           <img
-            src={assetHref("photos/small-group.jpg")}
-            alt="A small group deliberating at the Utah Solutions Forum"
+            src={assetHref("photos/delegates-conversation.jpg")}
+            alt="Delegates talking across a table at the Utah Solutions Forum"
             loading="lazy"
             className="aspect-[21/9] w-full rounded-3xl bg-blush-100 object-cover object-[50%_30%] md:col-span-12"
           />

@@ -55,10 +55,10 @@ export default function Vision() {
       <div className="mx-auto mt-24 max-w-7xl px-5 lg:px-10">
         <figure className="mb-16">
           <img
-            src={assetHref("photos/delegates-conversation.jpg")}
-            alt="Delegates talking across a table at the Utah Solutions Forum"
+            src={assetHref("photos/small-group.jpg")}
+            alt="Two delegates in conversation at the Utah Solutions Forum"
             loading="lazy"
-            className="aspect-[21/9] w-full rounded-3xl bg-blush-100 object-cover"
+            className="aspect-[21/9] w-full rounded-3xl bg-blush-100 object-cover object-[50%_30%]"
           />
           <figcaption className="mt-3 text-xs text-maroon-900/60">Delegates at the Utah Solutions Forum, September 2026.</figcaption>
         </figure>
