@@ -3,7 +3,7 @@
  * The full theory of change lives on /cohort/.
  */
 import { Glow, Pill } from "./ui";
-import { FormButton, FormLink } from "./CohortForm";
+import { FormButton } from "./CohortForm";
 import { pageHref } from "../utils/href";
 
 export default function CohortCard() {
@@ -28,15 +28,12 @@ export default function CohortCard() {
             </p>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <FormButton kind="apply">Apply for the 2027 Cohort</FormButton>
+            <FormButton kind="notify">Get notified about the 2027 Cohort</FormButton>
             <Pill href={pageHref("cohort")} variant="soft" arrow={false}>
               Learn more
             </Pill>
           </div>
         </div>
-        <p className="mt-6 text-center text-sm text-maroon-900/70 sm:text-left">
-          Or, <FormLink kind="notify">join the BLOOM network</FormLink> to stay in touch.
-        </p>
       </div>
     </section>
   );

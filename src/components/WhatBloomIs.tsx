@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import Editable from "./Editable";
 import { Eyebrow } from "./ui";
 import content from "../content/whatBloomIs.json";
-import { pageHref } from "../utils/href";
+import { pageHref, assetHref } from "../utils/href";
 
 const FILE = "whatBloomIs.json";
 
@@ -77,8 +77,12 @@ export default function WhatBloomIs() {
               <p className="mt-3 max-w-lg text-[15px] leading-relaxed text-maroon-900/85">
                 <Editable file={FILE} path={`items.${i}.desc`}>{item.desc}</Editable>
               </p>
-              {/* Placeholder until photography is ready */}
-              <div className="mt-7 aspect-[16/9] w-full rounded-2xl bg-gradient-to-br from-blush-100 to-blush-50" aria-hidden="true" />
+              <img
+                src={assetHref(item.image)}
+                alt={item.alt}
+                loading="lazy"
+                className="mt-7 aspect-[16/10] w-full rounded-2xl bg-blush-100 object-cover"
+              />
             </div>
           ))}
 

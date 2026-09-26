@@ -3,6 +3,7 @@
  */
 import { Eyebrow, Glow, Pill } from "../components/ui";
 import news from "../content/news.json";
+import { assetHref } from "../utils/href";
 
 const REPORT_URL = "https://drive.google.com/file/d/1QngRN6wkkAcPDdhdFInZQn_qu0mmBWnl/view?usp=drive_link";
 
@@ -45,8 +46,13 @@ export default function NewsPage() {
       {/* Featured press release */}
       <section className="bg-cream pb-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
-          <article id="utah-solutions-forum" className="rounded-3xl bg-white p-7 shadow-soft sm:p-12 lg:p-16">
-            <div className="mx-auto max-w-2xl">
+          <article id="utah-solutions-forum" className="overflow-hidden rounded-3xl bg-white shadow-soft">
+            <img
+              src={assetHref("photos/utah-forum-group.jpg")}
+              alt="Delegates and organizers of the 2026 Utah Solutions Forum outside the venue in Draper"
+              className="aspect-[21/9] w-full bg-blush-100 object-cover"
+            />
+            <div className="mx-auto max-w-2xl p-7 sm:p-12 lg:px-0 lg:py-16">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">Press release &middot; September 25, 2026</p>
               <h2 className="mt-4 font-display text-3xl font-medium leading-tight text-maroon-900 sm:text-4xl">
                 Utahns Move from Concerns to Solutions on AI and Data Centers

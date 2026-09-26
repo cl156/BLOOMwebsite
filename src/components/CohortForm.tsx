@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { Pill } from "./ui";
 
 const AIRTABLE_APPLY_URL = ""; // e.g. "https://airtable.com/appXXXX/shrXXXX"
-const AIRTABLE_NOTIFY_URL = ""; // "Join the BLOOM network" / notify-me form
+const AIRTABLE_NOTIFY_URL = ""; // "Get notified about the 2027 Cohort" form
 
 export type FormKind = "apply" | "notify";
 
@@ -22,8 +22,8 @@ const FORMS: Record<FormKind, { url: string; title: string; mailto: string }> = 
   },
   notify: {
     url: AIRTABLE_NOTIFY_URL,
-    title: "Join the BLOOM network",
-    mailto: "mailto:hello@bloom-project.org?subject=Join%20the%20BLOOM%20network",
+    title: "Get notified about the 2027 Cohort",
+    mailto: "mailto:hello@bloom-project.org?subject=Notify%20me%20about%20the%202027%20Cohort",
   },
 };
 

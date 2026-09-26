@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { Eyebrow, Heading, Pill } from "./ui";
 import { WESTERN_STATES, MAP_WIDTH, MAP_HEIGHT } from "../content/westernStates";
-import { pageHref } from "../utils/href";
+import { pageHref, assetHref } from "../utils/href";
 
 const UTAH_REPORT_URL = "https://drive.google.com/file/d/1QngRN6wkkAcPDdhdFInZQn_qu0mmBWnl/view?usp=drive_link";
 const UTAH_FORUM_URL = ""; // TODO: Utah Solutions Forum page
@@ -114,7 +114,16 @@ export default function CaseStudies() {
             ))}
           </div>
 
-          <article key={active} role="tabpanel" className="mt-6 animate-[fadeIn_.35s_ease] rounded-2xl bg-white p-7 shadow-soft sm:p-8">
+          <article key={active} role="tabpanel" className="mt-6 animate-[fadeIn_.35s_ease] overflow-hidden rounded-2xl bg-white shadow-soft">
+            {active === "UT" && (
+              <img
+                src={assetHref("photos/utah-forum-group.jpg")}
+                alt="Delegates and organizers of the 2026 Utah Solutions Forum outside the venue in Draper"
+                loading="lazy"
+                className="aspect-[16/7] w-full bg-blush-100 object-cover"
+              />
+            )}
+            <div className="p-7 sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">{site.place}</p>
             <h3 className="mt-2 font-display text-2xl text-maroon-900">{site.title}</h3>
             <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
@@ -134,6 +143,7 @@ export default function CaseStudies() {
                   {site.host.name}
                 </a>
               </p>
+            </div>
             </div>
           </article>
         </div>

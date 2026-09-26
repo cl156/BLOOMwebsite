@@ -42,8 +42,8 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <FormButton kind="apply" className="!px-5 !py-2">
-            Apply
+          <FormButton kind="notify" className="!px-5 !py-2">
+            Get updates
           </FormButton>
         </nav>
 
@@ -75,7 +75,7 @@ export default function Header() {
               </li>
             ))}
             <li className="pt-2">
-              <FormButton kind="apply">Apply for the 2027 Cohort</FormButton>
+              <FormButton kind="notify">Get notified about the 2027 Cohort</FormButton>
             </li>
           </ul>
         </nav>

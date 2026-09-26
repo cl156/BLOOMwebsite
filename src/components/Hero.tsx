@@ -2,8 +2,9 @@
  * Hero: headline top-left, pitch bottom-right, a large soft glow between them
  * (layout from Humphrey's site sketch).
  */
-import { Glow, Pill } from "./ui";
-import { pageHref, sectionHref } from "../utils/href";
+import { Glow } from "./ui";
+import { sectionHref } from "../utils/href";
+import { FormButton } from "./CohortForm";
 
 export default function Hero() {
   return (
@@ -33,7 +34,7 @@ export default function Hero() {
             for state and national citizens&rsquo; assemblies.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <Pill href={pageHref("cohort")}>Apply to join the 2027 Cohort</Pill>
+            <FormButton kind="notify">Get notified about the 2027 Cohort</FormButton>
             <a href={sectionHref("work")} className="text-sm text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700">
               See the results from Utah
             </a>

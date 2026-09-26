@@ -4,7 +4,8 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { Eyebrow, Glow } from "../components/ui";
-import { FormButton, FormLink } from "../components/CohortForm";
+import { FormButton } from "../components/CohortForm";
+import { assetHref } from "../utils/href";
 
 const TIERS = [
   {
@@ -103,7 +104,7 @@ export default function CohortPage() {
             AI in 2027. Here&rsquo;s what we&rsquo;re building together, and why it matters beyond any one place.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <FormButton kind="apply">Apply for the 2027 Cohort</FormButton>
+            <FormButton kind="notify">Get notified about the 2027 Cohort</FormButton>
           </div>
         </div>
       </section>
@@ -121,6 +122,12 @@ export default function CohortPage() {
             Hosts learn alongside communities across the country, share what works, identify questions appearing in
             multiple places, and build collective capacity to act.
           </p>
+          <img
+            src={assetHref("photos/small-group.jpg")}
+            alt="A small group deliberating at the Utah Solutions Forum"
+            loading="lazy"
+            className="aspect-[21/9] w-full rounded-3xl bg-blush-100 object-cover object-[50%_30%] md:col-span-12"
+          />
         </div>
       </section>
 
@@ -224,12 +231,9 @@ export default function CohortPage() {
               ))}
             </ul>
             <div className="mt-9 flex flex-wrap gap-3">
-              <FormButton kind="apply">Apply for the 2027 Cohort</FormButton>
+              <FormButton kind="notify">Get notified about the 2027 Cohort</FormButton>
             </div>
           </div>
-          <p className="mt-6 text-center text-sm text-maroon-900/70 sm:text-left">
-            Not ready to apply? <FormLink kind="notify">Join the BLOOM network</FormLink> to stay in touch.
-          </p>
         </div>
       </section>
     </main>

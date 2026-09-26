@@ -26,7 +26,7 @@ export default function Footer() {
           <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
             <a href={pageHref("cohort")} className="hover:text-bloom-600">2027 Cohort</a>
             <a href={pageHref("news")} className="hover:text-bloom-600">News</a>
-            <a href="mailto:hello@bloom-project.org" className="hover:text-bloom-600">hello@bloom-project.org</a>
+            <a href="mailto:hello@bloom-project.org" className="hover:text-bloom-600">Contact us</a>
             <a
               href="https://app.termly.io/policy-viewer/policy.html?policyUUID=ba402bb7-5499-4b37-860b-bbb507d3c3c1"
               target="_blank"

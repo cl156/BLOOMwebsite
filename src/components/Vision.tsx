@@ -3,6 +3,7 @@
  * then what participants took away (layout from Humphrey's sketch).
  */
 import { Eyebrow, Quote } from "./ui";
+import { assetHref } from "../utils/href";
 
 const TAKEAWAYS = [
   "I’ve left with a better understanding of the common ground we share.",
@@ -52,6 +53,15 @@ export default function Vision() {
 
       {/* What participants took away */}
       <div className="mx-auto mt-24 max-w-7xl px-5 lg:px-10">
+        <figure className="mb-16">
+          <img
+            src={assetHref("photos/delegates-conversation.jpg")}
+            alt="Delegates talking across a table at the Utah Solutions Forum"
+            loading="lazy"
+            className="aspect-[21/9] w-full rounded-3xl bg-blush-100 object-cover"
+          />
+          <figcaption className="mt-3 text-xs text-maroon-900/60">Delegates at the Utah Solutions Forum, September 2026.</figcaption>
+        </figure>
         <div className="grid gap-6 md:grid-cols-3">
           {TAKEAWAYS.map((q) => (
             <figure key={q} className="rounded-2xl bg-white p-7 shadow-soft">

@@ -5,17 +5,23 @@
     {
       "label": "Funding",
       "title": "Funding",
-      "desc": "We help level the playing field by providing resources for engagement, research, communications, facilitation, and the work required to bring a whole community into the process."
+      "desc": "We help level the playing field by providing resources for engagement, research, communications, facilitation, and the work required to bring a whole community into the process.",
+      "image": "photos/cache-county-forum.jpg",
+      "alt": "Residents filling a community forum in Cache County, Utah"
     },
     {
       "label": "Training + methods",
       "title": "Training + methods",
-      "desc": "Running a good public process is a craft. Hosts receive training, tested methods, playbooks, coaching, peer learning, and access to researchers and practitioners."
+      "desc": "Running a good public process is a craft. Hosts receive training, tested methods, playbooks, coaching, peer learning, and access to researchers and practitioners.",
+      "image": "photos/facilitation-wall.jpg",
+      "alt": "A facilitator organizing ideas on a wall of sticky notes at the Utah Solutions Forum"
     },
     {
       "label": "CivicOS",
       "title": "CivicOS",
-      "desc": "Our open-source civic infrastructure helps communities combine in-person and digital participation, engage hundreds or thousands of people, and make patterns of agreement, disagreement, and priority legible."
+      "desc": "Our open-source civic infrastructure helps communities combine in-person and digital participation, engage hundreds or thousands of people, and make patterns of agreement, disagreement, and priority legible.",
+      "image": "photos/forum-screens.jpg",
+      "alt": "Delegates working at tables with laptops at the Utah Solutions Forum"
     }
   ],
   "networkLine": "And a national network: no community should have to solve the AI transition alone."
