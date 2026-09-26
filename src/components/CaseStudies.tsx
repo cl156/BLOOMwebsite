@@ -9,6 +9,7 @@ import { pageHref, assetHref } from "../utils/href";
 
 const UTAH_REPORT_URL = "https://drive.google.com/file/d/1QngRN6wkkAcPDdhdFInZQn_qu0mmBWnl/view?usp=drive_link";
 const UTAH_FORUM_URL = ""; // TODO: Utah Solutions Forum page
+const OREGON_REPORT_URL = "https://report.bloomproject.us/central-oregon-ai/";
 
 type SiteId = "UT" | "OR";
 
@@ -72,7 +73,10 @@ function OregonDetail() {
       <p>
         Across Deschutes, Crook, and Jefferson counties, local partners are engaging residents through digital
         participation, community conversations, and representative deliberation around the AI choices reaching
-        Central Oregon.
+        Central Oregon.{" "}
+        <a href={OREGON_REPORT_URL} target="_blank" rel="noopener noreferrer" className="text-bloom-600 underline decoration-bloom-300 underline-offset-4">
+          Read the report
+        </a>
       </p>
       <p>
         The process culminates in a representative civic assembly leaving behind something more important: local

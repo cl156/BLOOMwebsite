@@ -19,10 +19,10 @@ export default function Vision() {
         <div className="md:col-span-5">
           <div className="md:sticky md:top-32">
             <Eyebrow>The vision</Eyebrow>
-            <Quote by="Participant, Cache County, Utah" size="lg" className="mt-6">
+            <Quote by="Public Assembly participant" size="lg" className="mt-6">
               I want to use AI. I don&rsquo;t want AI to use me.
             </Quote>
-            <Quote by="BLOOM participant" className="mt-12 border-l border-bloom-200 pl-5">
+            <Quote by="Public Assembly participant" className="mt-12 border-l border-bloom-200 pl-5">
               You&rsquo;re not really talking to other people, you&rsquo;re just going to the podium and giving your rant.
             </Quote>
           </div>
@@ -75,7 +75,7 @@ export default function Vision() {
           <p className="text-base text-maroon-900/80">
             And people don&rsquo;t just want to be heard. They want what they decide together to matter.
           </p>
-          <Quote size="lg" className="mt-6">
+          <Quote by="Public Assembly participant" size="lg" className="mt-6">
             I want to see an elected official on TV parroting back the ideas we talked about and then actions
             following through.
           </Quote>
