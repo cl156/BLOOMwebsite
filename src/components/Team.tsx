@@ -4,6 +4,16 @@
 import { Eyebrow } from "./ui";
 import { assetHref } from "../utils/href";
 
+/* Advisory board, listed without photos. Lauren Higgins and Audrey Tang appear in the grid above. */
+const ADVISORS = [
+  { name: "Andrew Means", org: "Stand Together" },
+  { name: "Maria McFarland S\u00e1nchez-Moreno", org: "RepresentUs" },
+  { name: "Becca Kearl", org: "Mormon Women for Ethical Government" },
+  { name: "Maury Giles", org: "Braver Angels" },
+  { name: "Carolyn Lukensmeyer", org: "AmericaSpeaks" },
+  { name: "Scott Warren", org: "SNF Agora" },
+];
+
 const TEAM = [
   {
     name: "Liz Barry",
@@ -14,6 +24,7 @@ const TEAM = [
   {
     name: "Lauren Higgins",
     role: "Senior Advisor",
+    org: "New Pluralist",
     photo: "/team/lauren.jpg",
   },
   {
@@ -77,6 +88,21 @@ export default function Team() {
               {org && <p className="text-xs text-maroon-900/50">{org}</p>}
             </div>
           ))}
+        </div>
+
+        <div id="advisors" className="mt-20 border-t border-blush-200 pt-12">
+          <p className="max-w-xl text-[15px] leading-relaxed text-maroon-900/80">
+            <span className="font-display text-xl text-maroon-900">Advisory board.</span>{" "}
+            Leaders from across the political spectrum who help keep our work credible to everyone.
+          </p>
+          <ul className="mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            {ADVISORS.map(({ name, org }) => (
+              <li key={name}>
+                <p className="font-display text-lg text-maroon-900">{name}</p>
+                <p className="text-sm text-bloom-600">{org}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
