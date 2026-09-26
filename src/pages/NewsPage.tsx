@@ -86,7 +86,9 @@ export default function NewsPage() {
                 </p>
                 <p>
                   The assembly was organized by the nonprofit coalition Utah Common Ground in partnership with the BLOOM
-                  Project, a civic participation nonprofit. Every proposal received support from more than 80% of
+                  Project, a civic participation nonprofit. Utah Common Ground&rsquo;s member organizations are the AEGIX
+                  AI Ethics &amp; Governance Institute, Braver Angels, Utah State University&rsquo;s Center for
+                  Anticipatory Intelligence, Engage Forum, and Mormon Women for Ethical Government. Every proposal received support from more than 80% of
                   delegates, in a group that was approximately 60/40 Republican-leaning to Democrat-leaning delegates,
                   showing substantial common ground across partisan lines on how Utah should approach AI and data center
                   policy.
