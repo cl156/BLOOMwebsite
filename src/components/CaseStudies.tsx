@@ -17,6 +17,64 @@ const OREGON_REPORT_URL = "https://report.bloomproject.us/central-oregon-ai/";
 
 type SiteId = "UT" | "OR";
 
+/* From the Utah Solutions Forum preliminary report (Sept. 25, 2026), with delegate support */
+const UTAH_RECOMMENDATIONS: { area: string; items: [string, number][] }[] = [
+  {
+    area: "Helping residents find information and take part",
+    items: [
+      ["A dedicated statewide AI information hub", 95],
+      ["A centralized citizen engagement portal", 84],
+      ["AI literacy programs through community libraries", 95],
+      ["A public awareness campaign pointing people to these resources", 82],
+    ],
+  },
+  {
+    area: "Opening up decisions about data centers",
+    items: [
+      ["Hyperscale data centers voted on by city councils and county commissions", 89],
+      ["State permits and independent environmental and economic impact analyses", 92],
+      ["Consistent statewide standards for data centers and public AI tools", 92],
+    ],
+  },
+  {
+    area: "Strengthening accountability",
+    items: [
+      ["Recusal for public officials with a conflict of interest", 92],
+      ["Limits on nondisclosure agreements that shield public interest or safety", 95],
+      ["An AI consumer complaint and transparency initiative", 97],
+    ],
+  },
+];
+
+function UtahRecommendations() {
+  return (
+    <details className="group rounded-xl bg-blush-50 px-5 py-4">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-medium text-maroon-900 marker:hidden">
+        See all 10 recommendations
+        <span aria-hidden="true" className="text-bloom-500 transition-transform group-open:rotate-45">+</span>
+      </summary>
+      <div className="mt-4 space-y-5">
+        {UTAH_RECOMMENDATIONS.map(({ area, items }) => (
+          <div key={area}>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-bloom-500">{area}</p>
+            <ul className="mt-2 space-y-2">
+              {items.map(([text, pct]) => (
+                <li key={text} className="flex items-baseline justify-between gap-4 text-sm">
+                  <span>{text}</span>
+                  <span className="shrink-0 font-display text-base text-bloom-600">{pct}%</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <p className="border-t border-blush-200 pt-3 text-sm">
+          92% of delegates supported the final package as a whole.
+        </p>
+      </div>
+    </details>
+  );
+}
+
 const SITES: Record<SiteId, { place: string; chip: string; title: string; host: { name: string; url: string } }> = {
   UT: {
     place: "Utah",
@@ -35,6 +93,10 @@ const SITES: Record<SiteId, { place: string; chip: string; title: string; host: 
 function UtahDetail() {
   return (
     <>
+      <p className="font-medium text-maroon-900">
+        A coalition of Utah organizations engaged more than 600 Utahns in conversations about AI and developed 10
+        policy recommendations through a 38-person civic assembly.
+      </p>
       <p>
         Working with Utah Common Ground, BLOOM helped build a process that moved from community conversations to a
         representative civic assembly.
@@ -55,9 +117,10 @@ function UtahDetail() {
         trade-offs, and developed proposals together.
       </p>
       <p className="font-medium text-maroon-900">
-        The result: 10 policy proposals, each backed by more than 80% of delegates, in a room of roughly 60% right-leaning and 40%
-        left-leaning delegates.
+        The result: 10 policy proposals, each backed by at least 82% of delegates, in a room of roughly 60%
+        right-leaning and 40% left-leaning delegates.
       </p>
+      <UtahRecommendations />
       <figure className="border-l border-bloom-200 pl-4">
         <blockquote className="font-display text-lg leading-snug text-bloom-500">
           &ldquo;Did you think yesterday you might get to 90% on something? &hellip; This is a pretty extraordinary
@@ -72,8 +135,8 @@ function UtahDetail() {
 function OregonDetail() {
   return (
     <>
-      <p>
-        Across Deschutes, Crook, and Jefferson counties, local partners are engaging residents through digital
+      <p className="font-medium text-maroon-900">
+        Across Deschutes, Crook, and Jefferson counties, local organizations are engaging residents through digital
         participation, community conversations, and representative deliberation around the AI choices reaching
         Central Oregon.
       </p>

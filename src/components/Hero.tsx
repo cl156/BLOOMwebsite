@@ -44,9 +44,8 @@ export default function Hero() {
           <div className="text-[15px] leading-relaxed text-maroon-900 sm:text-base md:col-span-6 lg:col-span-5 lg:col-start-8">
             <p>
               BLOOM helps communities stand up <strong className="font-semibold">Public Assemblies on AI</strong>:
-              structured, unusually hopeful online and in-person spaces where neighbors can learn about AI, hear
-              different perspectives, work through difficult choices, and{" "}
-              <em className="text-bloom-500">turn their concerns into concrete proposals decision makers can&rsquo;t ignore.</em>
+              in-person and online spaces where neighbors can make sense of the challenges they face and{" "}
+              <em className="text-bloom-500">develop actionable proposals that decision makers can&rsquo;t ignore.</em>
             </p>
             <p className="mt-4 text-maroon-900/75">
               Communities act on what they decide locally. Questions they can&rsquo;t solve alone become the agenda

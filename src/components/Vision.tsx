@@ -40,13 +40,19 @@ export default function Vision() {
             You&rsquo;re not really talking to other people, you&rsquo;re just going to the podium and giving your rant.
           </Quote>
           <p>
-            Meanwhile, decisions on AI get made behind closed doors. Good information is
+            Meanwhile, decisions that will reshape our classrooms, workplaces, and land are being made behind closed
+            doors. Good information is
             increasingly hard to access. Powerful interests and people who profit from division shape what happens in ways
             neighbors cannot.
           </p>
           <p className="!mt-10 font-display text-2xl leading-snug text-bloom-500 sm:text-3xl">
             Public Assemblies start from a different premise: given a real chance to learn, listen, and work through
             the choices, we can decide together what happens next.
+          </p>
+          <p>
+            Public Assemblies are BLOOM&rsquo;s answer to this moment. Our partners, local organizations committed to
+            the wellbeing of their communities, bring neighbors together to learn the real considerations behind these
+            decisions, discuss the trade-offs, and develop actionable policies aligned with the public interest.
           </p>
         </div>
       </div>
