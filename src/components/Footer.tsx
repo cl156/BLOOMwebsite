@@ -9,16 +9,7 @@ export default function Footer() {
             <img src={assetHref("bloom-logo.png")} alt="BLOOM Project" className="h-14 w-auto" />
           </a>
           <p className="mt-4 text-sm text-maroon-900/70">
-            Helping communities stand up Public Assemblies on AI. BLOOM is a project of{" "}
-            <a
-              href="https://www.americanpublictrust.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-bloom-300 underline-offset-2 hover:text-bloom-600"
-            >
-              American Public Trust
-            </a>
-            .
+            Helping communities stand up Public Assemblies on AI.
           </p>
         </div>
 
