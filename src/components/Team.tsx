@@ -91,8 +91,8 @@ export default function Team() {
         </div>
 
         <div id="advisors" className="mt-20 border-t border-blush-200 pt-12">
-          <p className="max-w-xl text-[15px] leading-relaxed text-maroon-900/80">
-            <span className="font-display text-xl text-maroon-900">Advisory board.</span>{" "}
+          <h3 className="font-display text-2xl text-maroon-900">Advisory board</h3>
+          <p className="mt-2 max-w-3xl text-pretty text-[15px] leading-relaxed text-maroon-900/80">
             Leaders from across the political spectrum who help keep our work credible to everyone.
           </p>
           <ul className="mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
