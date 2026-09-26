@@ -8,7 +8,7 @@ import { WESTERN_STATES, MAP_WIDTH, MAP_HEIGHT } from "../content/westernStates"
 import { pageHref, assetHref } from "../utils/href";
 
 const UTAH_REPORT_URL = "https://drive.google.com/file/d/1QngRN6wkkAcPDdhdFInZQn_qu0mmBWnl/view?usp=drive_link";
-const UTAH_FORUM_URL = ""; // TODO: Utah Solutions Forum page
+const UTAH_FORUM_URL = "https://forum.utahcommonground.org/";
 const OREGON_REPORT_URL = "https://report.bloomproject.us/central-oregon-ai/";
 
 type SiteId = "UT" | "OR";
@@ -16,15 +16,15 @@ type SiteId = "UT" | "OR";
 const SITES: Record<SiteId, { place: string; chip: string; title: string; host: { name: string; url: string } }> = {
   UT: {
     place: "Utah",
-    chip: "Supermajority proposals",
+    chip: "10 proposals, 80%+ support",
     title: "From conversation to public judgment",
     host: { name: "Utah Common Ground", url: "https://www.utahcommonground.org/" },
   },
   OR: {
     place: "Central Oregon",
-    chip: "Assembly in December 2026",
+    chip: "Assembly December 5\u20136",
     title: "Building public capacity from the ground up",
-    host: { name: "COCAP", url: "https://cocap.us/" },
+    host: { name: "the Central Oregon Civic Action Project (COCAP)", url: "https://cocap.us/" },
   },
 };
 
@@ -47,11 +47,12 @@ function UtahDetail() {
         ) : (
           "Utah Solutions Forum"
         )}
-        , 38 Utahns selected through civic lottery heard evidence, considered competing perspectives, worked through
+        , 38 Utahns selected through civic lottery (a random, representative draw, much like a jury) heard evidence, considered competing perspectives, worked through
         trade-offs, and developed proposals together.
       </p>
       <p className="font-medium text-maroon-900">
-        The result: a set of policy proposals commanding supermajority support across a politically diverse group.
+        The result: 10 policy proposals, each backed by more than 80% of delegates, in a room that leaned roughly
+        60/40 Republican to Democrat.
       </p>
       <figure className="border-l border-bloom-200 pl-4">
         <blockquote className="font-display text-lg leading-snug text-bloom-500">
@@ -76,6 +77,7 @@ function OregonDetail() {
         The process culminates in a representative civic assembly leaving behind something more important: local
         organizations and residents with greater capacity to work through future public problems together.
       </p>
+      <p className="font-medium text-maroon-900">The Central Oregon assembly takes place December 5&ndash;6, 2026.</p>
     </>
   );
 }

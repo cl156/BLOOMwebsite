@@ -40,8 +40,8 @@ export default function Vision() {
           </p>
           <p>And the ways we do invite people in don&rsquo;t tend to serve wise decision-making.</p>
           <p>
-            Meanwhile, decisions on AI get made in Silicon Valley or behind closed doors. Good information is
-            increasingly hard to access. Powerful interests and conflict entrepreneurs shape what happens in ways
+            Meanwhile, decisions on AI get made behind closed doors. Good information is
+            increasingly hard to access. Powerful interests and people who profit from division shape what happens in ways
             neighbors cannot.
           </p>
           <p className="!mt-10 font-display text-2xl leading-snug text-bloom-500 sm:text-3xl">

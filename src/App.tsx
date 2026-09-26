@@ -14,7 +14,7 @@ import { CohortFormModal } from "./components/CohortForm";
  *
  * Section order:
  *   Hero → Vision (why) → The Work (Utah, Central Oregon) → What we do (how) →
- *   2027 Cohort teaser → People → Our Approach → Footer
+ *   2027 Cohort teaser → Our Approach → People → Footer
  *
  * Other pages: /cohort/ (theory of change + application), /news/ (press).
  */
@@ -28,8 +28,8 @@ export default function App() {
         <CaseStudies />
         <WhatBloomIs />
         <CohortCard />
-        <Team />
         <Approach />
+        <Team />
       </main>
       <Footer />
       <ScrollArrow />

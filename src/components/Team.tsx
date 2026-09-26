@@ -18,7 +18,7 @@ const TEAM = [
   },
   {
     name: "Clara Long",
-    role: "Co-Lead",
+    role: "Co-Executive Director",
     photo: "/team/clara.jpeg",
   },
   {
@@ -34,7 +34,7 @@ const TEAM = [
   },
   {
     name: "Rahmin Sarabi",
-    role: "Co-Lead",
+    role: "Co-Executive Director",
     photo: "/team/rahmin.jpg",
   },
   {

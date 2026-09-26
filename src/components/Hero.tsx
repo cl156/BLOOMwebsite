@@ -3,9 +3,17 @@
  * (layout from Humphrey's site sketch, plus an inset photo).
  * Edges line up with the header; height follows the content.
  */
-import { Glow } from "./ui";
 import { sectionHref, assetHref } from "../utils/href";
-import { FormButton } from "./CohortForm";
+import { FormLink } from "./CohortForm";
+import { Glow, Pill } from "./ui";
+
+/* Pilot results, from the Cohort page intro and the Utah press release */
+const STATS = [
+  { value: "~1,000", label: "residents engaged across six counties in Utah and Oregon" },
+  { value: "38", label: "Utahns selected by civic lottery for the Solutions Forum" },
+  { value: "10", label: "policy proposals, each backed by more than 80% of delegates" },
+  { value: "60/40", label: "Republican- to Democrat-leaning room, so the agreement crossed party lines" },
+];
 
 export default function Hero() {
   return (
@@ -45,13 +53,23 @@ export default function Hero() {
               for state and national citizens&rsquo; assemblies.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <FormButton kind="notify">Get notified about the 2027 Cohort</FormButton>
-              <a href={sectionHref("work")} className="text-sm text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700">
-                See the results from Utah
-              </a>
+              <Pill href={sectionHref("work")}>See the results from Utah</Pill>
             </div>
+            <p className="mt-4 text-sm text-maroon-900/70">
+              Want to host an assembly in your community?{" "}
+              <FormLink kind="notify">Get notified about the 2027 Cohort</FormLink>
+            </p>
           </div>
         </div>
+
+        <ul className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-blush-200 pt-10 lg:mt-20 lg:grid-cols-4">
+          {STATS.map((s) => (
+            <li key={s.value}>
+              <p className="font-display text-4xl font-medium tracking-tight text-bloom-500 sm:text-5xl">{s.value}</p>
+              <p className="mt-2 max-w-[16rem] text-sm leading-snug text-maroon-900/75">{s.label}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

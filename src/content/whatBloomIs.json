@@ -1,6 +1,6 @@
 {
   "heading": "BLOOM helps communities do this themselves.",
-  "intro": "The people who know a community best are already there. BLOOM partners with locally rooted organizations that can bring people together across difference. We give them the infrastructure to turn that trust into consequential public action.",
+  "intro": "The people who know a community best are already there. BLOOM partners with locally rooted organizations, which we call Civic Hosts, that can bring people together across difference. We give them the infrastructure to turn that trust into consequential public action.",
   "items": [
     {
       "label": "Funding",
@@ -19,7 +19,7 @@
     {
       "label": "CivicOS",
       "title": "CivicOS",
-      "desc": "Our open-source civic infrastructure helps communities combine in-person and digital participation, engage hundreds or thousands of people, and make patterns of agreement, disagreement, and priority legible.",
+      "desc": "Our open-source civic infrastructure helps communities combine in-person and digital participation, engage hundreds or thousands of people, and see clearly where people agree, where they differ, and what matters most.",
       "image": "photos/forum-screens.jpg",
       "alt": "Delegates working at tables with laptops at the Utah Solutions Forum"
     }

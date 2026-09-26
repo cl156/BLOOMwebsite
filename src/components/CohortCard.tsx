@@ -19,8 +19,8 @@ export default function CohortCard() {
           <p className="mt-2 font-display text-xl text-maroon-900">Many places. A growing civic institution.</p>
           <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
             <p>
-              BLOOM is looking for locally rooted organizations to become founding Civic Hosts for Public Assemblies on
-              AI in 2027, with the potential to expand the network as resources allow.
+              BLOOM is looking for locally rooted organizations to become founding Civic Hosts, running Public
+              Assemblies on AI in their communities in 2027. Our request for proposals comes out in October 2026.
             </p>
             <p>
               Selected hosts will receive funding, training, methods, CivicOS, coaching, communications support, and a

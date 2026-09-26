@@ -223,6 +223,14 @@ export default function CohortPage() {
                 the people who will live with the future should have a meaningful role in shaping it.
               </p>
             </div>
+            <div className="mt-8 rounded-2xl bg-blush-50 p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">What to expect</p>
+              <p className="mt-2 text-[15px] leading-relaxed text-maroon-900">
+                Our request for proposals comes out in <strong className="font-semibold">October 2026</strong>. Details
+                on timeline, eligibility, commitment, funding and how hosts are selected are coming soon. Sign up below
+                and we&rsquo;ll let you know as soon as it&rsquo;s released.
+              </p>
+            </div>
             <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">Selected hosts receive</p>
             <ul className="mt-4 grid gap-x-6 gap-y-2 text-[15px] text-maroon-900 sm:grid-cols-2">
               {HOSTS_RECEIVE.map((item) => (

@@ -53,6 +53,9 @@ function contentEditorPlugin(): Plugin {
   };
 }
 
+// Absolute site URL for link-preview tags (%VITE_SITE_URL% in the HTML pages)
+process.env.VITE_SITE_URL ??= "https://bloom-project.org";
+
 export default defineConfig({
   // "/" for bloom-project.org; the fork's staging deploy sets BASE_PATH=/BLOOMwebsite/
   base: process.env.BASE_PATH ?? "/",
