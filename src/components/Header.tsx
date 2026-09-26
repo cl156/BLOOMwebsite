@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { FormButton } from "./CohortForm";
+import { Pill } from "./ui";
+
+const LINKEDIN_URL = "https://www.linkedin.com/company/bloom-project-ai/";
 import { sectionHref, pageHref, assetHref } from "../utils/href";
 
 const NAV_LINKS = [
@@ -41,9 +44,9 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <FormButton kind="notify" className="!px-5 !py-2">
+          <Pill href={LINKEDIN_URL} external className="!px-5 !py-2">
             Get updates
-          </FormButton>
+          </Pill>
         </nav>
 
         <button
