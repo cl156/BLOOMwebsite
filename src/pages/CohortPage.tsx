@@ -18,7 +18,7 @@ const TIERS = [
   },
   {
     level: "National",
-    body: "Questions requiring national action can ultimately become the agenda for a representative National Civic Assembly on AI.",
+    body: "Questions requiring national action can ultimately become the agenda for a representative national civic assembly on AI.",
   },
 ];
 
