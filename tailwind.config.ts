@@ -24,6 +24,13 @@ export default {
           800: "#7D2C20",
           900: "#68261E",
         },
+        /* Warm page ground and soft fills (from Humphrey's sketch) */
+        cream: "#FDFBFA",
+        blush: {
+          50: "#FEF6F4",
+          100: "#FBE9E5",
+          200: "#F7D6CF",
+        },
         /* Dark maroon — used for headings and strong text */
         maroon: {
           50: "#F9F1F3",
@@ -41,7 +48,10 @@ export default {
       fontFamily: {
         /* Swap these to change typography site-wide */
         sans: ['"Inter"', "system-ui", "-apple-system", "sans-serif"],
-        display: ['"Inter"', "system-ui", "-apple-system", "sans-serif"],
+        display: ['"Outfit"', '"Inter"', "system-ui", "sans-serif"],
+      },
+      boxShadow: {
+        soft: "0 20px 60px -20px rgba(122, 44, 32, 0.18)",
       },
       maxWidth: {
         prose: "65ch",

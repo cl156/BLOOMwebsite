@@ -25,6 +25,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          BASE_PATH: ${{ github.repository_owner == 'cl156' && '/BLOOMwebsite/' || '/' }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

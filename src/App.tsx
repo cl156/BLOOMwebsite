@@ -1,48 +1,39 @@
-import Header from "./components/Header";
+import Header, { ScrollArrow } from "./components/Header";
 import Hero from "./components/Hero";
-import Moment from "./components/Moment";
+import Vision from "./components/Vision";
+import CaseStudies from "./components/CaseStudies";
 import WhatBloomIs from "./components/WhatBloomIs";
-import CivicOS from "./components/CivicOS";
-import HowItWorks from "./components/HowItWorks";
-import ConversationsOptionA from "./components/ConversationsOptionA";
-import SmarterTogether from "./components/SmarterTogether";
-import ForCommunities from "./components/ForCommunities";
-import AIAlly from "./components/AIAlly";
-import Federated from "./components/Federated";
-import Principles from "./components/Principles";
+import CohortCard from "./components/CohortCard";
 import Team from "./components/Team";
-import StayInTheLoop from "./components/StayInTheLoop";
+import Approach from "./components/Approach";
 import Footer from "./components/Footer";
+import { CohortFormModal } from "./components/CohortForm";
 
 /**
- * BLOOM Marketing Site — single-page layout
+ * BLOOM homepage — Public Assemblies on AI
  *
  * Section order:
- *   Hero → Moment → What BLOOM Is → CivicOS → How It Works → Active Conversations →
- *   Smarter Together → For Civic Hosts →
- *   AI Ally → Federated → Not Another Platform → Team →
- *   Stay in the Loop → Footer
+ *   Hero → Vision (why) → The Work (Utah, Central Oregon) → What we do (how) →
+ *   2027 Cohort teaser → People → Our Approach → Footer
+ *
+ * Other pages: /cohort/ (theory of change + application), /news/ (press).
  */
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-cream text-maroon-900">
       <Header />
       <main>
         <Hero />
-        <Moment />
+        <Vision />
+        <CaseStudies />
         <WhatBloomIs />
-        <CivicOS />
-        <HowItWorks />
-        <ConversationsOptionA />
-        <SmarterTogether />
-        <ForCommunities />
-        <AIAlly />
-        <Federated />
-        <Principles />
+        <CohortCard />
         <Team />
-        <StayInTheLoop />
+        <Approach />
       </main>
       <Footer />
+      <ScrollArrow />
+      <CohortFormModal />
     </div>
   );
 }

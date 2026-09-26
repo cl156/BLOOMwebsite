@@ -1,15 +1,8 @@
 /**
- * "Meet the Team" — team members grid
- *
- * Update TEAM array as the team evolves.
+ * People — team members grid. Update TEAM as the team evolves.
  */
-import MycelialCanvas from "./MycelialCanvas";
-
-const LIGHT_NET_COLORS = [
-  "107,42,61",
-  "155,69,89",
-  "180,100,120",
-];
+import { Eyebrow } from "./ui";
+import { assetHref } from "../utils/href";
 
 const TEAM = [
   {
@@ -58,54 +51,30 @@ const TEAM = [
 
 export default function Team() {
   return (
-    <section
-      id="team"
-      className="relative py-20 md:py-28"
-      style={{ background: "linear-gradient(180deg, #ffffff 0%, #faf8f9 50%, #ffffff 100%)" }}
-    >
-      <MycelialCanvas
-        colors={LIGHT_NET_COLORS}
-        seed={151}
-        seedCount={18}
-        fadeCenterX={0.5}
-        fadeCenterY={0.5}
-        fadeRxRatio={0.85}
-        fadeRyRatio={0.9}
-        edgeAlpha={0.12}
-        nodeAlpha={0.15}
-      />
-
-      <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-display text-3xl font-bold text-maroon-700 sm:text-4xl">
-            Meet the team
+    <section id="team" className="relative bg-cream py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 lg:px-10">
+        <div className="max-w-2xl">
+          <Eyebrow>People</Eyebrow>
+          <h2 className="mt-5 font-display text-4xl font-medium tracking-tight text-bloom-500 sm:text-5xl">
+            Builders, civic leaders and practitioners.
           </h2>
-          <p className="mt-4 text-xl text-gray-600">
-            We&rsquo;re builders, civic leaders, and practitioners&nbsp;&mdash;
-            brought together by the belief that democracy can work better.
+          <p className="mt-5 text-[15px] leading-relaxed text-maroon-900/80">
+            Brought together by the belief that democracy can work better.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
           {TEAM.map(({ name, role, org, photo }) => (
-            <div
-              key={name}
-              className="group rounded-lg border border-gray-200 bg-white p-5 text-center transition-all hover:border-bloom-300 hover:shadow-md"
-            >
+            <div key={name} className="group">
               <img
-                src={`${import.meta.env.BASE_URL}${photo.slice(1)}`}
+                src={assetHref(photo)}
                 alt={name}
-                className="mx-auto h-28 w-28 rounded-lg object-cover grayscale transition-all group-hover:grayscale-0"
+                loading="lazy"
+                className="aspect-square w-full rounded-2xl object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
               />
-              <h3 className="mt-4 text-base font-bold text-maroon-700">
-                {name}
-              </h3>
-              <p className="mt-1 font-mono text-xs uppercase tracking-wide text-bloom-600">
-                {role}
-              </p>
-              {org && (
-                <p className="mt-0.5 text-xs text-gray-400">{org}</p>
-              )}
+              <h3 className="mt-4 font-display text-lg text-maroon-900">{name}</h3>
+              <p className="text-sm text-bloom-600">{role}</p>
+              {org && <p className="text-xs text-maroon-900/50">{org}</p>}
             </div>
           ))}
         </div>

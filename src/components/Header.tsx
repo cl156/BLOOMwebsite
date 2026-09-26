@@ -1,95 +1,114 @@
-import { useState } from "react";
-import BloomLogo from "./BloomLogo";
+import { useEffect, useState } from "react";
+import { BrandMark } from "./ui";
+import { FormButton } from "./CohortForm";
+import { sectionHref, pageHref } from "../utils/href";
 
 const NAV_LINKS = [
-  { label: "About", href: "#what-bloom-is", tooltip: "What BLOOM is and how it works" },
-  { label: "CivicOS", href: "#civic-os", tooltip: "The free, open-source platform behind BLOOM" },
-  { label: "Process", href: "#how-it-works", tooltip: "The five phases of end-to-end deliberation" },
-  { label: "Deliberations", href: "#conversations", tooltip: "Structured conversations where people weigh real trade-offs together" },
-  { label: "Team", href: "#team", tooltip: "The people building BLOOM" },
-] as const;
+  { label: "Vision", href: sectionHref("vision") },
+  { label: "Our work", href: sectionHref("work") },
+  { label: "What we do", href: sectionHref("what-we-do") },
+  { label: "People", href: sectionHref("team") },
+  { label: "Approach", href: sectionHref("approach") },
+  { label: "2027 Cohort", href: pageHref("cohort") },
+  { label: "News", href: pageHref("news") },
+];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 lg:px-8">
-        <BloomLogo />
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled || menuOpen ? "bg-cream/85 backdrop-blur-md" : "bg-transparent"
+      }`}
+      style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-10">
+        <a href={sectionHref("top")} className="text-bloom-500 transition-transform hover:rotate-12" aria-label="BLOOM home">
+          <BrandMark className="h-9 w-9" />
+        </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-10 md:flex">
-          {NAV_LINKS.map(({ label, href, tooltip }) => (
-            <a
-              key={href}
-              href={href}
-              className="group relative text-lg font-medium text-gray-600 transition-colors hover:text-maroon-700"
-            >
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
+          {NAV_LINKS.map(({ label, href }) => (
+            <a key={label} href={href} className="text-sm text-maroon-900/75 transition-colors hover:text-bloom-600">
               {label}
-              {/* Tooltip */}
-              <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-maroon-700 px-3 py-1.5 text-xs font-normal text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100">
-                {tooltip}
-                {/* Arrow */}
-                <span className="absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-transparent border-b-maroon-700" />
-              </span>
             </a>
           ))}
-          <a
-            href="#get-in-touch"
-            className="rounded-lg bg-bloom-500 px-7 py-3 text-lg font-semibold text-white transition-colors hover:bg-bloom-600"
-          >
-            Get in touch
-          </a>
+          <FormButton kind="apply" className="!px-5 !py-2">
+            Apply
+          </FormButton>
         </nav>
 
-        {/* Mobile menu button */}
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
-          className="inline-flex items-center justify-center rounded-md p-2 text-gray-500 hover:text-maroon-700 md:hidden"
+          className="rounded-full p-2 text-maroon-900 lg:hidden"
           aria-label="Toggle navigation menu"
           aria-expanded={menuOpen}
         >
-          {menuOpen ? (
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            {menuOpen ? (
+              <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
+            )}
+          </svg>
         </button>
       </div>
 
-      {/* Mobile nav panel */}
       {menuOpen && (
-        <nav className="border-t border-gray-100 bg-white px-5 pb-5 pt-3 md:hidden">
-          <ul className="flex flex-col gap-3">
-            {NAV_LINKS.map(({ label, href, tooltip }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block text-base font-medium text-gray-700 hover:text-maroon-700"
-                >
+        <nav className="px-5 pb-6 lg:hidden" aria-label="Mobile">
+          <ul className="flex flex-col gap-4 border-t border-blush-200 pt-5">
+            {NAV_LINKS.map(({ label, href }) => (
+              <li key={label}>
+                <a href={href} onClick={() => setMenuOpen(false)} className="font-display text-xl text-maroon-900 hover:text-bloom-600">
                   {label}
-                  <span className="block text-xs font-normal text-gray-400">{tooltip}</span>
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href="#get-in-touch"
-                onClick={() => setMenuOpen(false)}
-                className="mt-2 inline-block rounded-lg bg-bloom-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-bloom-600"
-              >
-                Get in touch
-              </a>
+            <li className="pt-2">
+              <FormButton kind="apply">Apply for the 2027 Cohort</FormButton>
             </li>
           </ul>
         </nav>
       )}
     </header>
+  );
+}
+
+/** Thin arrow fixed bottom-left that fills as the page scrolls. */
+export function ScrollArrow() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? window.scrollY / max : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed bottom-6 left-5 z-40 hidden flex-col items-center min-[1440px]:flex"
+      style={{ marginBottom: "env(safe-area-inset-bottom, 0px)" }}
+    >
+      <div className="relative h-16 w-px bg-bloom-200">
+        <div className="absolute inset-x-0 top-0 bg-bloom-500" style={{ height: `${progress * 100}%` }} />
+      </div>
+      <svg viewBox="0 0 10 6" className="-mt-px h-2 w-3 text-bloom-300">
+        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1" />
+      </svg>
+    </div>
   );
 }

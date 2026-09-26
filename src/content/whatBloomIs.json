@@ -1,21 +1,22 @@
 {
-  "heading": "What BLOOM is",
-  "introParagraph": "BLOOM is a nonprofit. Our tools are free.",
-  "supportLine": "We work with civic leaders to run public conversations that go beyond talk: surfacing what communities actually think, finding real common ground, and connecting findings to the decisions that matter.",
-  "capabilities": [],
-  "cards": [
+  "heading": "BLOOM helps communities do this themselves.",
+  "intro": "The people who know a community best are already there. BLOOM partners with locally rooted organizations that can bring people together across difference. We give them the infrastructure to turn that trust into consequential public action.",
+  "items": [
+    {
+      "label": "Funding",
+      "title": "Funding",
+      "desc": "We help level the playing field by providing resources for engagement, research, communications, facilitation, and the work required to bring a whole community into the process."
+    },
+    {
+      "label": "Training + methods",
+      "title": "Training + methods",
+      "desc": "Running a good public process is a craft. Hosts receive training, tested methods, playbooks, coaching, peer learning, and access to researchers and practitioners."
+    },
     {
       "label": "CivicOS",
-      "desc": "A free, open-source platform that supports the full problem solving processes \u2014 from setting the agenda to reporting what was heard"
-    },
-    {
-      "label": "Civic Hosts",
-      "desc": "A network of trained community leaders who run and steward local deliberations"
-    },
-    {
-      "label": "Headline Deliberations",
-      "desc": "Large-scale pilots led by place-based civic partners, with BLOOM support, that demonstrate what\u2019s possible and develop the model"
+      "title": "CivicOS",
+      "desc": "Our open-source civic infrastructure helps communities combine in-person and digital participation, engage hundreds or thousands of people, and make patterns of agreement, disagreement, and priority legible."
     }
   ],
-  "closingLine": "Three things make it work:"
+  "networkLine": "And a national network: no community should have to solve the AI transition alone."
 }

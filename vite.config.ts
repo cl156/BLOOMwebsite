@@ -54,6 +54,16 @@ function contentEditorPlugin(): Plugin {
 }
 
 export default defineConfig({
-  base: "/",
+  // "/" for bloom-project.org; the fork's staging deploy sets BASE_PATH=/BLOOMwebsite/
+  base: process.env.BASE_PATH ?? "/",
   plugins: [react(), contentEditorPlugin()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        news: path.resolve(__dirname, "news/index.html"),
+        cohort: path.resolve(__dirname, "cohort/index.html"),
+      },
+    },
+  },
 });

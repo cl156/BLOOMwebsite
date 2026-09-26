@@ -1,95 +1,97 @@
 /**
- * "What BLOOM Is" — identity statement
- * Content is loaded from src/content/whatBloomIs.json and editable in dev mode.
+ * What we do (how): sticky left column with an index that follows the reader,
+ * stacked feature blocks on the right (layout from Humphrey's sketch).
+ * Copy lives in src/content/whatBloomIs.json and is editable in dev mode.
  */
-import MycelialCanvas from "./MycelialCanvas";
+import { useEffect, useRef, useState } from "react";
 import Editable from "./Editable";
+import { Eyebrow } from "./ui";
 import content from "../content/whatBloomIs.json";
-
-/* Light palette for mycelial network on dark maroon background */
-const BLOOM_NET_COLORS = [
-  "255,255,255",   // white
-  "244,200,210",   // light pink
-  "255,220,225",   // soft rose
-  "230,180,190",   // dusty pink
-  "200,160,170",   // muted mauve
-];
+import { pageHref } from "../utils/href";
 
 const FILE = "whatBloomIs.json";
 
 export default function WhatBloomIs() {
+  const [active, setActive] = useState(0);
+  const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.index));
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px" },
+    );
+    blockRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section
-      id="what-bloom-is"
-      className="relative py-20 text-white md:py-28"
-      style={{ background: "linear-gradient(180deg, #5e2636 0%, #6B2A3D 30%, #6B2A3D 70%, #4d1f2e 100%)" }}
-    >
-      {/* Mycelial network background */}
-      <MycelialCanvas
-        colors={BLOOM_NET_COLORS}
-        seed={99}
-        seedCount={22}
-        fadeCenterX={0.5}
-        fadeCenterY={0.5}
-        fadeRxRatio={0.8}
-        fadeRyRatio={0.85}
-        edgeAlpha={0.15}
-        nodeAlpha={0.2}
-      />
+    <section id="what-we-do" className="relative bg-cream py-24 md:py-32">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-12 lg:px-10">
+        {/* Sticky left column */}
+        <div className="md:col-span-5">
+          <div className="md:sticky md:top-32">
+            <Eyebrow>What we do</Eyebrow>
+            <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl">
+              <Editable file={FILE} path="heading">{content.heading}</Editable>
+            </h2>
+            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-maroon-900/80">
+              <Editable file={FILE} path="intro">{content.intro}</Editable>
+            </p>
 
-      <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-bold sm:text-4xl">
-            <Editable file={FILE} path="heading">
-              {content.heading}
-            </Editable>
-          </h2>
-          <p className="mt-6 text-xl leading-relaxed text-bloom-100">
-            <Editable file={FILE} path="introParagraph">
-              {content.introParagraph}
-            </Editable>
-          </p>
-          <p className="mt-4 text-lg leading-relaxed text-bloom-200">
-            <Editable file={FILE} path="supportLine">
-              {content.supportLine}
-            </Editable>
-          </p>
-
-          {content.capabilities.length > 0 && (
-            <div className="mt-6 inline-flex flex-col items-start gap-2 text-left">
-              {content.capabilities.map((item, i) => (
-                <span key={i} className="flex items-start gap-2 text-base text-bloom-100">
-                  <span className="mt-0.5 font-mono text-bloom-300">&#10003;</span>
-                  <Editable file={FILE} path={`capabilities.${i}`}>
-                    {item}
-                  </Editable>
-                </span>
+            <ol className="mt-10 hidden space-y-3 md:block">
+              {content.items.map((item, i) => (
+                <li key={item.label}>
+                  <a
+                    href={`#wwd-${i}`}
+                    className={`flex items-center gap-3 text-xs font-medium uppercase tracking-[0.16em] transition-colors ${
+                      active === i ? "text-bloom-500" : "text-bloom-300 hover:text-bloom-500"
+                    }`}
+                  >
+                    {item.label}
+                    <span className={`h-px bg-bloom-500 transition-all duration-500 ${active === i ? "w-12" : "w-0"}`} />
+                  </a>
+                </li>
               ))}
+            </ol>
+          </div>
+        </div>
+
+        {/* Feature blocks */}
+        <div className="space-y-20 md:col-span-7 md:space-y-28">
+          {content.items.map((item, i) => (
+            <div
+              key={item.label}
+              id={`wwd-${i}`}
+              data-index={i}
+              ref={(el) => {
+                blockRefs.current[i] = el;
+              }}
+            >
+              <h3 className="font-display text-3xl text-bloom-500">
+                <Editable file={FILE} path={`items.${i}.title`}>{item.title}</Editable>
+              </h3>
+              <p className="mt-3 max-w-lg text-[15px] leading-relaxed text-maroon-900/85">
+                <Editable file={FILE} path={`items.${i}.desc`}>{item.desc}</Editable>
+              </p>
+              {/* Placeholder until photography is ready */}
+              <div className="mt-7 aspect-[16/9] w-full rounded-2xl bg-gradient-to-br from-blush-100 to-blush-50" aria-hidden="true" />
             </div>
-          )}
+          ))}
 
-          <p className="mt-8 text-lg font-medium text-bloom-200">
-            <Editable file={FILE} path="closingLine">
-              {content.closingLine}
-            </Editable>
-          </p>
-
-          {/* Three-element structure */}
-          <div className="mt-6 grid gap-4 text-left sm:grid-cols-3">
-            {content.cards.map(({ label, desc }, i) => (
-              <div key={i} className="rounded-md border border-white/15 bg-white/5 px-4 py-4">
-                <p className="font-mono text-xs font-bold uppercase tracking-widest text-bloom-300">
-                  <Editable file={FILE} path={`cards.${i}.label`}>
-                    {label}
-                  </Editable>
-                </p>
-                <p className="mt-2 text-base leading-relaxed text-bloom-100">
-                  <Editable file={FILE} path={`cards.${i}.desc`}>
-                    {desc}
-                  </Editable>
-                </p>
-              </div>
-            ))}
+          <div className="rounded-2xl border border-blush-200 p-7">
+            <p className="font-display text-2xl leading-snug text-maroon-900">
+              <Editable file={FILE} path="networkLine">{content.networkLine}</Editable>
+            </p>
+            <a
+              href={pageHref("cohort")}
+              className="mt-4 inline-flex items-center gap-2 text-sm text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
+            >
+              See how the network grows from communities to the country &rarr;
+            </a>
           </div>
         </div>
       </div>

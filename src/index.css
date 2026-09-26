@@ -12,16 +12,26 @@ html {
   scroll-margin-top: 5rem;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
 /* Dev-only: subtle indicator for editable fields */
 .editable-field {
   transition: outline 0.15s ease;
   border-radius: 2px;
 }
 .editable-field:hover {
-  outline: 1px dashed rgba(255, 255, 255, 0.35);
+  outline: 1px dashed rgba(212, 87, 59, 0.45);
   outline-offset: 4px;
 }
 .editable-field:focus {
-  outline: 1px solid rgba(255, 255, 255, 0.5);
+  outline: 1px solid rgba(212, 87, 59, 0.7);
   outline-offset: 4px;
 }
