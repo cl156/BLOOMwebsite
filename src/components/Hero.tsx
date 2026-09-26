@@ -10,9 +10,9 @@ import { Glow, Pill } from "./ui";
 /* Pilot results, from the Cohort page intro and the Utah press release */
 const STATS = [
   { value: "~1,000", label: "residents engaged across six counties in Utah and Oregon" },
-  { value: "38", label: "Utahns selected by civic lottery for the Solutions Forum" },
-  { value: "10", label: "policy proposals, each backed by more than 80% of delegates" },
-  { value: "60% / 40%", label: "right- and left-leaning delegates in Utah, who still agreed on every proposal" },
+  { value: "38", label: "Utahns chosen by civic lottery to reflect the state\u2019s mix of political views" },
+  { value: "10", label: "policy recommendations, each backed by at least 82% of delegates" },
+  { value: "92%", label: "of delegates supported the full package of recommendations" },
 ];
 
 export default function Hero() {

@@ -117,8 +117,8 @@ function UtahDetail() {
         trade-offs, and developed proposals together.
       </p>
       <p className="font-medium text-maroon-900">
-        The result: 10 policy proposals, each backed by at least 82% of delegates, in a room of roughly 60%
-        right-leaning and 40% left-leaning delegates.
+        The result: 10 policy recommendations, each backed by at least 82% of delegates, from a group chosen to
+        reflect Utah&rsquo;s political makeup. 92% supported the full package.
       </p>
       <UtahRecommendations />
       <figure className="border-l border-bloom-200 pl-4">
