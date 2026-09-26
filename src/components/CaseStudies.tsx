@@ -87,7 +87,7 @@ export default function CaseStudies() {
   const site = SITES[active];
 
   return (
-    <section id="work" className="relative overflow-hidden bg-cream py-24 md:py-32">
+    <section id="work" className="relative overflow-x-clip bg-cream py-24 md:py-32">
       <div className="mx-auto grid max-w-7xl items-start gap-12 px-5 lg:grid-cols-12 lg:px-10">
         {/* Left: heading + swapping card */}
         <div className="lg:col-span-6">
@@ -156,8 +156,12 @@ export default function CaseStudies() {
           </article>
         </div>
 
-        {/* Right: the map */}
-        <div className="relative lg:col-span-6 lg:-mr-10">
+        {/* Right: the map. Starts level with the tabs, then stays in view while the card scrolls past. */}
+        <div className="lg:sticky lg:top-28 lg:col-span-6 lg:mt-56">
+          <div
+            className="relative mx-auto"
+            style={{ width: `min(100%, calc((100svh - 9rem) * ${MAP_WIDTH / MAP_HEIGHT}))` }}
+          >
           <svg viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`} className="h-auto w-full" role="img" aria-label="Map of the western United States highlighting Oregon and Utah">
             {WESTERN_STATES.map((s) => {
               const siteId = s.id === "UT" || s.id === "OR" ? (s.id as SiteId) : null;
@@ -204,6 +208,7 @@ export default function CaseStudies() {
               </button>
             );
           })}
+          </div>
         </div>
       </div>
     </section>
