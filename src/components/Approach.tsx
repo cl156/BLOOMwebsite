@@ -26,7 +26,7 @@ export default function Approach() {
           <div className="md:col-span-5">
             <Eyebrow>How we work</Eyebrow>
             <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl">
-              Civic power with public judgment.
+              Careful deliberation, real weight.
             </h2>
           </div>
           <p className="self-end text-base leading-relaxed text-maroon-900/85 md:col-span-6 md:col-start-7">
