@@ -36,10 +36,7 @@ function UtahDetail() {
         representative civic assembly.
       </p>
       <p>
-        Residents explored questions about AI in schools, work, data centers, transparency, and public participation.{" "}
-        <a href={UTAH_REPORT_URL} target="_blank" rel="noopener noreferrer" className="text-bloom-600 underline decoration-bloom-300 underline-offset-4">
-          Read the report
-        </a>
+        Residents explored questions about AI in schools, work, data centers, transparency, and public participation.
       </p>
       <p>
         Over two days at the{" "}
@@ -73,10 +70,7 @@ function OregonDetail() {
       <p>
         Across Deschutes, Crook, and Jefferson counties, local partners are engaging residents through digital
         participation, community conversations, and representative deliberation around the AI choices reaching
-        Central Oregon.{" "}
-        <a href={OREGON_REPORT_URL} target="_blank" rel="noopener noreferrer" className="text-bloom-600 underline decoration-bloom-300 underline-offset-4">
-          Read the report
-        </a>
+        Central Oregon.
       </p>
       <p>
         The process culminates in a representative civic assembly leaving behind something more important: local
@@ -133,14 +127,22 @@ export default function CaseStudies() {
             <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
               {active === "UT" ? <UtahDetail /> : <OregonDetail />}
             </div>
-            <div className="mt-7 flex flex-wrap items-center justify-between gap-4">
+            <div className="mt-7 flex flex-wrap gap-3">
               {active === "UT" ? (
-                <Pill href={pageHref("news", "utah-solutions-forum")}>Explore the Utah results</Pill>
+                <>
+                  <Pill href={pageHref("news", "utah-solutions-forum")}>Explore the Utah results</Pill>
+                  <Pill href={UTAH_REPORT_URL} external variant="soft">Read the report</Pill>
+                </>
               ) : (
-                <Pill href="https://oregon.bloomproject.us/landing?host=true" external>
-                  Explore Central Oregon
-                </Pill>
+                <>
+                  <Pill href={OREGON_REPORT_URL} external>Read the report</Pill>
+                  <Pill href="https://oregon.bloomproject.us/landing?host=true" external variant="soft">
+                    Explore Central Oregon
+                  </Pill>
+                </>
               )}
+            </div>
+            <div className="mt-5">
               <p className="text-xs text-maroon-900/60">
                 Hosted by{" "}
                 <a href={site.host.url} target="_blank" rel="noopener noreferrer" className="underline decoration-bloom-300 underline-offset-2 hover:text-bloom-600">
