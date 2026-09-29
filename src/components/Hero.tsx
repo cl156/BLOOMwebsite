@@ -7,6 +7,7 @@ import { sectionHref, assetHref } from "../utils/href";
 import { INSTITUTION, NATIONAL_GOAL } from "../content/terms";
 import { FormLink } from "./CohortForm";
 import { Glow, Pill } from "./ui";
+import { FeaturedIn } from "./LatestNews";
 
 /* Pilot results, from the Cohort page intro and the Utah press release */
 const STATS = [
@@ -69,6 +70,7 @@ export default function Hero() {
             </li>
           ))}
         </ul>
+        <FeaturedIn />
       </div>
     </section>
   );
