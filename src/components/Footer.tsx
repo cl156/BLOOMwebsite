@@ -17,7 +17,7 @@ export default function Footer() {
             <img src={assetHref("bloom-logo-header.png")} alt="BLOOM Project" className="h-11 w-auto" />
           </a>
           <p className="mt-4 text-sm text-maroon-900/70">
-            Helping communities stand up Public Assemblies on AI.
+            So that AI happens with people, not to them.
           </p>
         </div>
 
