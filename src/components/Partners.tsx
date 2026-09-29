@@ -8,6 +8,7 @@
  * To add a logo: put the file in public/partners/ and set `logo` below. Partners without one show their name.
  */
 import { Eyebrow } from "./ui";
+import { INSTITUTION } from "../content/terms";
 import { assetHref } from "../utils/href";
 
 export const SHOW_PARTNERS = import.meta.env.DEV || import.meta.env.VITE_SHOW_PARTNERS === "true";
@@ -37,10 +38,10 @@ export default function Partners() {
         <div className="max-w-2xl">
           <Eyebrow>Partners</Eyebrow>
           <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl">
-            Built with partners in every community.
+            Bigger than any one organization.
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-maroon-900/80">
-            Local organizations, coalitions and technology partners we work alongside.
+            The {INSTITUTION} is built by civic groups, coalitions and technology partners working together.
           </p>
         </div>
 
