@@ -46,8 +46,10 @@ export default function Hero() {
             <p>
               BLOOM is building <strong className="font-semibold">the {INSTITUTION}</strong>: a growing network of
               in-person and online assemblies where neighbors make sense of the challenges they face and{" "}
-              <em className="text-bloom-500">develop proposals decision makers can&rsquo;t ignore.</em> Each is
-              designed and led by the community it serves, building toward {NATIONAL_GOAL}.
+              <em className="text-bloom-500">develop proposals decision makers can&rsquo;t ignore.</em>
+            </p>
+            <p className="mt-4">
+              Each is designed and led by the community it serves, building toward {NATIONAL_GOAL}.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Pill href={sectionHref("work")}>See the results from Utah</Pill>
