@@ -15,7 +15,7 @@ import { CohortFormModal } from "./components/CohortForm";
  *
  * Section order:
  *   Hero → Vision (why) → The Work (Utah, Central Oregon) → What we do (how) →
- *   Our Approach ("How we work") → 2027 Cohort teaser → Partners (staging only for now) → Latest news → Footer
+ *   Our Approach ("How we work") → 2027 Cohort teaser → Partners → Latest news → Footer
  *
  * Other pages: /cohort/ (theory of change + application), /people/ (team), /news/ (press).
  */

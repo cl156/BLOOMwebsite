@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { FormButton } from "./CohortForm";
 import { Pill } from "./ui";
-import { SHOW_PARTNERS } from "./Partners";
 import { sectionHref, pageHref, assetHref } from "../utils/href";
 
 const LINKEDIN_URL = "https://www.linkedin.com/company/bloom-project-ai/";
 
 const NAV_LINKS = [
   { label: "Vision", href: sectionHref("vision") },
-  { label: "Our work", href: sectionHref("work") },
+  { label: "Where we work", href: sectionHref("work") },
   { label: "What we do", href: sectionHref("what-we-do") },
-  // Partners appears in the nav wherever the section is shown (staging only for now)
-  ...(SHOW_PARTNERS ? [{ label: "Partners", href: sectionHref("partners") }] : []),
+  { label: "Partners", href: sectionHref("partners") },
   { label: "People", href: pageHref("people") },
   { label: "2027 Cohort", href: pageHref("cohort") },
   { label: "News", href: pageHref("news") },

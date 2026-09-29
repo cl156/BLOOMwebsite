@@ -161,7 +161,7 @@ export default function CaseStudies() {
       <div className="mx-auto grid max-w-7xl items-start gap-12 px-5 lg:grid-cols-12 lg:px-10">
         {/* Left: heading + swapping card */}
         <div className="lg:col-span-6">
-          <Eyebrow>The work</Eyebrow>
+          <Eyebrow>Where we work</Eyebrow>
           <Heading className="mt-5 text-4xl sm:text-5xl">Explore what communities have built.</Heading>
           <p className="mt-5 max-w-md text-[15px] leading-relaxed text-maroon-900/80">
             Local partners run the process. BLOOM brings the funding, methods and tools. Here&rsquo;s where it&rsquo;s

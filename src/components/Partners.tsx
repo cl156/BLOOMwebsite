@@ -1,18 +1,12 @@
 /**
  * Partners: logo wall on the homepage.
  *
- * Staging only for now (partners are confirming they're happy to be listed): it shows in local dev and
- * on the fork's staging build, where the deploy sets VITE_SHOW_PARTNERS=true, and is hidden on
- * bloom-project.org. Remove the SHOW_PARTNERS check to publish.
- *
  * To add a logo: put the file in public/partners/ and set `logo` below. Partners without one show their name.
  */
 import { useState } from "react";
 import { Eyebrow } from "./ui";
 import { INSTITUTION } from "../content/terms";
 import { assetHref } from "../utils/href";
-
-export const SHOW_PARTNERS = import.meta.env.DEV || import.meta.env.VITE_SHOW_PARTNERS === "true";
 
 const PARTNERS: { name: string; logo?: string }[] = [
   { name: "Utah Common Ground", logo: "partners/utah-common-ground.png" },
@@ -60,7 +54,6 @@ function Logo({ src, name }: { src: string; name: string }) {
 }
 
 export default function Partners() {
-  if (!SHOW_PARTNERS) return null;
   return (
     <section id="partners" className="relative bg-cream py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
