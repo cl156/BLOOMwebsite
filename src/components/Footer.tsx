@@ -24,6 +24,7 @@ export default function Footer() {
         <div className="flex flex-col gap-4 text-sm text-maroon-900/70 md:items-end">
           <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
             <a href={pageHref("cohort")} className="hover:text-bloom-600">2027 Cohort</a>
+            <a href={pageHref("people")} className="hover:text-bloom-600">People</a>
             <a href={pageHref("news")} className="hover:text-bloom-600">News</a>
             <a href="mailto:hello@bloom-project.org" className="hover:text-bloom-600">Contact us</a>
             <a href="https://www.linkedin.com/company/bloom-project-ai/" target="_blank" rel="noopener noreferrer" className="hover:text-bloom-600">

@@ -28,6 +28,8 @@ jobs:
         env:
           BASE_PATH: ${{ github.repository_owner == 'cl156' && '/BLOOMwebsite/' || '/' }}
           VITE_SITE_URL: ${{ github.repository_owner == 'cl156' && 'https://cl156.github.io/BLOOMwebsite' || 'https://bloom-project.org' }}
+          # Partners section shows on staging only until partners confirm
+          VITE_SHOW_PARTNERS: ${{ github.repository_owner == 'cl156' && 'true' || 'false' }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

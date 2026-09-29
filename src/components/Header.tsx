@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: "Our work", href: sectionHref("work") },
   { label: "What we do", href: sectionHref("what-we-do") },
   { label: "Approach", href: sectionHref("approach") },
-  { label: "People", href: sectionHref("team") },
+  { label: "People", href: pageHref("people") },
   { label: "2027 Cohort", href: pageHref("cohort") },
   { label: "News", href: pageHref("news") },
 ];
