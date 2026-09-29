@@ -14,20 +14,20 @@ import { assetHref } from "../utils/href";
 export const SHOW_PARTNERS = import.meta.env.DEV || import.meta.env.VITE_SHOW_PARTNERS === "true";
 
 const PARTNERS: { name: string; logo?: string }[] = [
-  { name: "Utah Common Ground" },
-  { name: "Mormon Women for Ethical Government" },
-  { name: "Central Oregon Civic Action Project (COCAP)" },
-  { name: "Braver Angels" },
-  { name: "AEGIX AI Ethics & Governance Institute" },
-  { name: "Center for Anticipatory Intelligence, Utah State University" },
-  { name: "Engage Forum" },
-  { name: "Child First Policy Center" },
-  { name: "Oregon’s Kitchen Table" },
-  { name: "Central Oregon Community College" },
-  { name: "Central Oregon Intergovernmental Council" },
-  { name: "Citizens for Community" },
-  { name: "Metagov" },
-  { name: "CrownShy" },
+  { name: "Utah Common Ground", logo: "partners/utah-common-ground.png" },
+  { name: "Mormon Women for Ethical Government" }, // logo file in Drive is corrupted; needs a re-upload
+  { name: "Central Oregon Civic Action Project (COCAP)", logo: "partners/cocap.png" },
+  { name: "Braver Angels", logo: "partners/braver-angels.png" },
+  { name: "AEGIX AI Ethics & Governance Institute", logo: "partners/aegix.png" },
+  { name: "Center for Anticipatory Intelligence, Utah State University", logo: "partners/center-anticipatory-intelligence.png" },
+  { name: "Engage Forum", logo: "partners/engage-forum.png" },
+  { name: "Child First Policy Center", logo: "partners/child-first-policy-center.png" },
+  { name: "Oregon\u2019s Kitchen Table", logo: "partners/oregons-kitchen-table.png" },
+  { name: "Central Oregon Community College", logo: "partners/central-oregon-community-college.png" },
+  { name: "Central Oregon Intergovernmental Council", logo: "partners/coic.png" },
+  { name: "Citizens4Community", logo: "partners/citizens4community.png" },
+  { name: "Metagov", logo: "partners/metagov.png" },
+  { name: "CrownShy", logo: "partners/crownshy.png" },
 ];
 
 export default function Partners() {
@@ -52,7 +52,7 @@ export default function Partners() {
               className="flex aspect-[3/2] items-center justify-center rounded-2xl border border-blush-200 bg-white p-5 text-center"
             >
               {logo ? (
-                <img src={assetHref(logo)} alt={name} loading="lazy" className="max-h-full max-w-full object-contain" />
+                <img src={assetHref(logo)} alt={name} loading="lazy" className="max-h-[72%] max-w-[88%] object-contain" />
               ) : (
                 <span className="font-display text-base leading-snug text-maroon-900/80 sm:text-lg">{name}</span>
               )}
