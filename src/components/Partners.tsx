@@ -7,6 +7,7 @@
  *
  * To add a logo: put the file in public/partners/ and set `logo` below. Partners without one show their name.
  */
+import { useState } from "react";
 import { Eyebrow } from "./ui";
 import { INSTITUTION } from "../content/terms";
 import { assetHref } from "../utils/href";
@@ -30,6 +31,34 @@ const PARTNERS: { name: string; logo?: string }[] = [
   { name: "CrownShy", logo: "partners/crownshy.png" },
 ];
 
+/** Size each logo by area rather than width, so wide wordmarks and square marks carry similar weight. */
+const LOGO_AREA = 8600;
+const MAX_W = 220;
+const MAX_H = 96;
+
+function Logo({ src, name }: { src: string; name: string }) {
+  const [size, setSize] = useState<{ width: number; height: number } | null>(null);
+  return (
+    <img
+      src={assetHref(src)}
+      alt={name}
+      loading="lazy"
+      onLoad={(e) => {
+        const ratio = e.currentTarget.naturalWidth / e.currentTarget.naturalHeight;
+        let width = Math.min(MAX_W, Math.sqrt(LOGO_AREA * ratio));
+        let height = width / ratio;
+        if (height > MAX_H) {
+          height = MAX_H;
+          width = height * ratio;
+        }
+        setSize({ width: Math.round(width), height: Math.round(height) });
+      }}
+      style={size ?? { maxHeight: MAX_H, maxWidth: MAX_W }}
+      className="max-w-full object-contain"
+    />
+  );
+}
+
 export default function Partners() {
   if (!SHOW_PARTNERS) return null;
   return (
@@ -45,16 +74,13 @@ export default function Partners() {
           </p>
         </div>
 
-        <ul className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <ul className="mt-16 grid grid-cols-2 gap-x-8 gap-y-14 border-t border-blush-200 pt-14 sm:grid-cols-3 lg:grid-cols-4">
           {PARTNERS.map(({ name, logo }) => (
-            <li
-              key={name}
-              className="flex aspect-[3/2] items-center justify-center rounded-2xl border border-blush-200 bg-white p-5 text-center"
-            >
+            <li key={name} className="flex h-24 items-center justify-center text-center">
               {logo ? (
-                <img src={assetHref(logo)} alt={name} loading="lazy" className="max-h-[72%] max-w-[88%] object-contain" />
+                <Logo src={logo} name={name} />
               ) : (
-                <span className="font-display text-base leading-snug text-maroon-900/80 sm:text-lg">{name}</span>
+                <span className="max-w-[14rem] font-display text-lg leading-snug text-maroon-900/80">{name}</span>
               )}
             </li>
           ))}
