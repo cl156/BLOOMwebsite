@@ -16,7 +16,7 @@ export const SHOW_PARTNERS = import.meta.env.DEV || import.meta.env.VITE_SHOW_PA
 
 const PARTNERS: { name: string; logo?: string }[] = [
   { name: "Utah Common Ground", logo: "partners/utah-common-ground.png" },
-  { name: "Mormon Women for Ethical Government" }, // logo file in Drive is corrupted; needs a re-upload
+  { name: "Mormon Women for Ethical Government", logo: "partners/mweg.png" }, // small source (157px); swap for a larger file when available
   { name: "Central Oregon Civic Action Project (COCAP)", logo: "partners/cocap.png" },
   { name: "Braver Angels", logo: "partners/braver-angels.png" },
   { name: "AEGIX AI Ethics & Governance Institute", logo: "partners/aegix.png" },
