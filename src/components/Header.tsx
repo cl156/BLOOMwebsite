@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { FormButton } from "./CohortForm";
 import { Pill } from "./ui";
+import { SHOW_PARTNERS } from "./Partners";
+import { sectionHref, pageHref, assetHref } from "../utils/href";
 
 const LINKEDIN_URL = "https://www.linkedin.com/company/bloom-project-ai/";
-import { sectionHref, pageHref, assetHref } from "../utils/href";
 
 const NAV_LINKS = [
   { label: "Vision", href: sectionHref("vision") },
   { label: "Our work", href: sectionHref("work") },
   { label: "What we do", href: sectionHref("what-we-do") },
   { label: "Approach", href: sectionHref("approach") },
+  // Partners appears in the nav wherever the section is shown (staging only for now)
+  ...(SHOW_PARTNERS ? [{ label: "Partners", href: sectionHref("partners") }] : []),
   { label: "People", href: pageHref("people") },
   { label: "2027 Cohort", href: pageHref("cohort") },
   { label: "News", href: pageHref("news") },
@@ -38,9 +41,9 @@ export default function Header() {
           <img src={assetHref("bloom-logo-header.png")} alt="BLOOM Project" className="h-10 w-auto sm:h-12" />
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-7 xl:flex" aria-label="Main">
           {NAV_LINKS.map(({ label, href }) => (
-            <a key={label} href={href} className="text-sm text-maroon-900/75 transition-colors hover:text-bloom-600">
+            <a key={label} href={href} className="whitespace-nowrap text-sm text-maroon-900/75 transition-colors hover:text-bloom-600">
               {label}
             </a>
           ))}
@@ -52,7 +55,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
-          className="rounded-full p-2 text-maroon-900 lg:hidden"
+          className="rounded-full p-2 text-maroon-900 xl:hidden"
           aria-label="Toggle navigation menu"
           aria-expanded={menuOpen}
         >
@@ -67,7 +70,7 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="px-5 pb-6 lg:hidden" aria-label="Mobile">
+        <nav className="mx-auto max-w-7xl px-5 pb-6 lg:px-10 xl:hidden" aria-label="Mobile">
           <ul className="flex flex-col gap-4 border-t border-blush-200 pt-5">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={label}>
