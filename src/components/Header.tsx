@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { label: "Vision", href: sectionHref("vision") },
   { label: "Our work", href: sectionHref("work") },
   { label: "What we do", href: sectionHref("what-we-do") },
-  { label: "Approach", href: sectionHref("approach") },
   // Partners appears in the nav wherever the section is shown (staging only for now)
   ...(SHOW_PARTNERS ? [{ label: "Partners", href: sectionHref("partners") }] : []),
   { label: "People", href: pageHref("people") },
