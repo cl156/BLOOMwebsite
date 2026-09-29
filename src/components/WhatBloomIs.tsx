@@ -38,10 +38,7 @@ export default function WhatBloomIs() {
             <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl">
               <Editable file={FILE} path="heading">{content.heading}</Editable>
             </h2>
-            <p className="mt-5 max-w-sm font-display text-xl leading-snug text-maroon-900">
-              <Editable file={FILE} path="introLead">{content.introLead}</Editable>
-            </p>
-            <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-maroon-900/80">
+            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-maroon-900/80">
               <Editable file={FILE} path="intro">{content.intro}</Editable>
             </p>
 
