@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import fs from "node:fs";
 import path from "node:path";
 import type { Plugin } from "vite";
+import { SITE_TITLE } from "./src/content/terms";
 
 /** Dev-only plugin: POST /__save-content to write JSON edits to disk */
 function contentEditorPlugin(): Plugin {
@@ -55,6 +56,8 @@ function contentEditorPlugin(): Plugin {
 
 // Absolute site URL for link-preview tags (%VITE_SITE_URL% in the HTML pages)
 process.env.VITE_SITE_URL ??= "https://bloom-project.org";
+// Homepage title comes from the terms file (%VITE_SITE_TITLE% in index.html)
+process.env.VITE_SITE_TITLE = SITE_TITLE;
 
 export default defineConfig({
   // "/" for bloom-project.org; the fork's staging deploy sets BASE_PATH=/BLOOMwebsite/

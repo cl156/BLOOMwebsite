@@ -4,6 +4,7 @@
  * scrolling the map under a resting cursor would otherwise change the card unasked.
  */
 import { useState } from "react";
+import { OREGON_ASSEMBLY, UTAH_FORUM } from "../content/terms";
 import { Eyebrow, Heading, Pill } from "./ui";
 import { US_STATES, MAP_WIDTH, MAP_HEIGHT, MAP_FULL_WIDTH } from "../content/usStates";
 
@@ -96,11 +97,11 @@ function UtahDetail() {
     <>
       <p className="font-medium text-maroon-900">
         A coalition of Utah organizations engaged more than 600 Utahns in conversations about AI and developed 10
-        policy recommendations through a 38-person civic assembly.
+        policy recommendations through a 38-person assembly, the {UTAH_FORUM}.
       </p>
       <p>
         Working with Utah Common Ground, BLOOM helped build a process that moved from community conversations to a
-        representative civic assembly.
+        representative assembly.
       </p>
       <p>
         Residents explored questions about AI in schools, work, data centers, transparency, and public participation.
@@ -109,10 +110,10 @@ function UtahDetail() {
         Over two days at the{" "}
         {UTAH_FORUM_URL ? (
           <a href={UTAH_FORUM_URL} target="_blank" rel="noopener noreferrer" className="text-bloom-600 underline decoration-bloom-300 underline-offset-4">
-            Utah Solutions Forum
+            {UTAH_FORUM}
           </a>
         ) : (
-          "Utah Solutions Forum"
+          UTAH_FORUM
         )}
         , 38 Utahns selected through civic lottery (a random, representative draw, much like a jury) heard evidence, considered competing perspectives, worked through
         trade-offs, and developed proposals together.
@@ -142,10 +143,11 @@ function OregonDetail() {
         Central Oregon.
       </p>
       <p>
-        The process culminates in a representative civic assembly leaving behind something more important: local
-        organizations and residents with greater capacity to work through future public problems together.
+        The process culminates in the {OREGON_ASSEMBLY}, a representative assembly that leaves behind something more
+        important: local organizations and residents with greater capacity to work through future public problems
+        together.
       </p>
-      <p className="font-medium text-maroon-900">The Central Oregon assembly takes place December 5&ndash;6, 2026.</p>
+      <p className="font-medium text-maroon-900">The {OREGON_ASSEMBLY} takes place December 5&ndash;6, 2026.</p>
     </>
   );
 }
@@ -186,7 +188,7 @@ export default function CaseStudies() {
             {active === "UT" && (
               <img
                 src={assetHref("photos/utah-forum-group.jpg")}
-                alt="Delegates and organizers of the 2026 Utah Solutions Forum outside the venue in Draper"
+                alt={`Delegates and organizers of the 2026 ${UTAH_FORUM} outside the venue in Draper`}
                 loading="lazy"
                 className="aspect-[16/7] w-full bg-blush-100 object-cover"
               />

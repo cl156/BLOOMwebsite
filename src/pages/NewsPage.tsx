@@ -2,6 +2,7 @@
  * /news/ — BLOOM press release(s) and coverage. Add articles in src/content/news.json.
  */
 import { Eyebrow, Glow, Pill } from "../components/ui";
+import { INSTITUTION } from "../content/terms";
 import news from "../content/news.json";
 import { assetHref } from "../utils/href";
 
@@ -38,7 +39,7 @@ export default function NewsPage() {
             In the news
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-maroon-900/80">
-            Announcements from BLOOM and coverage of Public Assemblies on AI.
+            Announcements from BLOOM and coverage of the {INSTITUTION}.
           </p>
         </div>
       </section>

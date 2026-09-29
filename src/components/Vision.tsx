@@ -3,6 +3,7 @@
  * then what participants took away (layout from Humphrey's sketch).
  */
 import { Eyebrow, Quote } from "./ui";
+import { ATTRIBUTION, INSTITUTION, UTAH_FORUM } from "../content/terms";
 import { assetHref } from "../utils/href";
 
 const TAKEAWAYS = [
@@ -19,7 +20,7 @@ export default function Vision() {
         <div className="md:col-span-5">
           <div className="md:sticky md:top-32">
             <Eyebrow>The vision</Eyebrow>
-            <Quote by="Public Assembly participant" size="lg" className="mt-6">
+            <Quote by={ATTRIBUTION.cacheForum} size="lg" className="mt-6">
               I want to use AI. I don&rsquo;t want AI to use me.
             </Quote>
           </div>
@@ -42,11 +43,11 @@ export default function Vision() {
             neighbors cannot.
           </p>
           <p className="!mt-10 font-display text-2xl leading-snug text-bloom-500 sm:text-3xl">
-            Public Assemblies start from a different premise: given a real chance to learn, listen, and work through
+            The {INSTITUTION} starts from a different premise: given a real chance to learn, listen, and work through
             the choices, we can decide together what happens next.
           </p>
           <p>
-            Public Assemblies are BLOOM&rsquo;s answer to this moment. Our partners, local organizations committed to
+            The {INSTITUTION} is BLOOM&rsquo;s answer to this moment. Our partners, local organizations committed to
             the wellbeing of their communities, bring neighbors together to learn the real considerations behind these
             decisions, discuss the trade-offs, and develop actionable policies aligned with the public interest.
           </p>
@@ -62,13 +63,13 @@ export default function Vision() {
             loading="lazy"
             className="aspect-[21/9] w-full rounded-3xl bg-blush-100 object-cover object-[50%_30%]"
           />
-          <figcaption className="mt-3 text-xs text-maroon-900/60">Delegates at the Utah Solutions Forum, September 2026.</figcaption>
+          <figcaption className="mt-3 text-xs text-maroon-900/60">Delegates at the {UTAH_FORUM}, September 2026.</figcaption>
         </figure>
         <div className="grid gap-6 md:grid-cols-3">
           {TAKEAWAYS.map((q) => (
             <figure key={q} className="rounded-2xl bg-white p-7 shadow-soft">
               <blockquote className="text-[15px] leading-relaxed text-maroon-900">&ldquo;{q}&rdquo;</blockquote>
-              <figcaption className="mt-4 text-xs tracking-wide text-maroon-900/60">&mdash; Public Assembly participant</figcaption>
+              <figcaption className="mt-4 text-xs tracking-wide text-maroon-900/60">&mdash; {ATTRIBUTION.unplaced}</figcaption>
             </figure>
           ))}
         </div>
@@ -77,7 +78,7 @@ export default function Vision() {
           <p className="text-base text-maroon-900/80">
             And people don&rsquo;t just want to be heard. They want what they decide together to matter.
           </p>
-          <Quote by="Public Assembly participant" size="lg" className="mt-6">
+          <Quote by={ATTRIBUTION.cacheForum} size="lg" className="mt-6">
             I want to see an elected official on TV parroting back the ideas we talked about and then actions
             following through.
           </Quote>

@@ -3,6 +3,7 @@
  * questions travelling from communities to the country) and the call for hosts.
  */
 import { useEffect, useRef, useState } from "react";
+import { HOSTS, INSTITUTION } from "../content/terms";
 import { Eyebrow, Glow } from "../components/ui";
 import { FormButton } from "../components/CohortForm";
 import { assetHref } from "../utils/href";
@@ -103,7 +104,7 @@ export default function CohortPage() {
             Over the past year, the BLOOM Project has developed a community assembly model that combines
             digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon,
             engaging nearly 1,000 people across six counties on questions about AI. Now we&rsquo;re inviting a founding
-            cohort of civic hosts to lead their communities in shaping their futures in the AI era.
+            cohort of {HOSTS} to lead their communities in shaping their futures in the AI era.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <FormButton kind="notify">Get notified about the 2027 Cohort</FormButton>
@@ -215,8 +216,8 @@ export default function CohortPage() {
             </h2>
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
               <p>
-                BLOOM is looking for locally rooted organizations to become founding Civic Hosts for Public Assemblies
-                on AI in 2027, with the potential to expand the network as resources allow.
+                BLOOM is looking for locally rooted organizations to become founding {HOSTS} for the {INSTITUTION}
+                in 2027, with the potential to expand the network as resources allow.
               </p>
               <p>
                 You need to know your community, be able to bring people across differences together, and believe that

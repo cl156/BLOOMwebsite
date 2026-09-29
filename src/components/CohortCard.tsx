@@ -3,6 +3,7 @@
  * The full theory of change lives on /cohort/.
  */
 import { Glow, Pill } from "./ui";
+import { HOSTS, INSTITUTION } from "../content/terms";
 import { FormButton } from "./CohortForm";
 import { pageHref } from "../utils/href";
 
@@ -19,8 +20,8 @@ export default function CohortCard() {
           <p className="mt-2 font-display text-xl text-maroon-900">Many places. A growing civic institution.</p>
           <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
             <p>
-              BLOOM is looking for locally rooted organizations to become founding Civic Hosts, running Public
-              Assemblies on AI in their communities in 2027. Our request for proposals comes out in October 2026.
+              BLOOM is looking for locally rooted organizations to become founding {HOSTS} of the {INSTITUTION},
+              running assemblies in their communities in 2027. Our request for proposals comes out in October 2026.
             </p>
             <p>
               Selected hosts will receive funding, training, methods, CivicOS, coaching, communications support, and a
