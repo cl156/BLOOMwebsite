@@ -27,7 +27,7 @@ export default function Hero() {
             Decisions about AI are changing our lives.
           </span>
           <span className="mt-2 block text-5xl font-medium leading-[1.02] text-bloom-500 sm:text-6xl lg:text-7xl">
-            Our communities should have a say in how.
+            Communities should have a say in how.
           </span>
         </h1>
 
