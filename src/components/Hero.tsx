@@ -4,7 +4,7 @@
  * Edges line up with the header; height follows the content.
  */
 import { sectionHref, assetHref } from "../utils/href";
-import { INSTITUTION, INSTITUTION_EXPLAINER } from "../content/terms";
+import { INSTITUTION, NATIONAL_GOAL } from "../content/terms";
 import { FormLink } from "./CohortForm";
 import { Glow, Pill } from "./ui";
 
@@ -44,17 +44,10 @@ export default function Hero() {
 
           <div className="text-[15px] leading-relaxed text-maroon-900 sm:text-base md:col-span-6 lg:col-span-5 lg:col-start-8">
             <p>
-              BLOOM helps communities hold assemblies on AI: in-person and online spaces where neighbors can make sense
-              of the challenges they face and{" "}
-              <em className="text-bloom-500">develop actionable proposals that decision makers can&rsquo;t ignore.</em>
-            </p>
-            <p className="mt-4">
-              <strong className="font-semibold">The {INSTITUTION}</strong>
-              {INSTITUTION_EXPLAINER.slice(`The ${INSTITUTION}`.length)}
-            </p>
-            <p className="mt-4 text-maroon-900/75">
-              Communities act on what they decide locally. Questions they can&rsquo;t solve alone become the agenda
-              for state and national assemblies.
+              BLOOM is building <strong className="font-semibold">the {INSTITUTION}</strong>: a growing network of
+              in-person and online assemblies where neighbors make sense of the challenges they face and{" "}
+              <em className="text-bloom-500">develop proposals decision makers can&rsquo;t ignore.</em> Each is
+              designed and led by the community it serves, building toward {NATIONAL_GOAL}.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Pill href={sectionHref("work")}>See the results from Utah</Pill>
