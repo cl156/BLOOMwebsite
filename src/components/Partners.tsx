@@ -74,9 +74,9 @@ export default function Partners() {
           </p>
         </div>
 
-        <ul className="mt-16 grid grid-cols-2 gap-x-8 gap-y-14 border-t border-blush-200 pt-14 sm:grid-cols-3 lg:grid-cols-4">
+        <ul className="mt-16 flex flex-wrap justify-center gap-y-14 border-t border-blush-200 pt-14">
           {PARTNERS.map(({ name, logo }) => (
-            <li key={name} className="flex h-24 items-center justify-center text-center">
+            <li key={name} className="flex h-24 basis-1/2 items-center justify-center px-4 text-center sm:basis-1/3 lg:basis-1/4">
               {logo ? (
                 <Logo src={logo} name={name} />
               ) : (
