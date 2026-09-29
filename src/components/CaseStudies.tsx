@@ -1,6 +1,7 @@
 /**
  * The Work: case studies beside an interactive map of the western states.
- * Hover or tap Oregon / Utah (or their label chips) to swap the detail card.
+ * Click or tap Oregon / Utah (or their label chips) to swap the detail card. No hover switching:
+ * scrolling the map under a resting cursor would otherwise change the card unasked.
  */
 import { useState } from "react";
 import { Eyebrow, Heading, Pill } from "./ui";
@@ -250,7 +251,6 @@ export default function CaseStudies() {
                 <path
                   key={s.id}
                   d={s.d}
-                  onMouseEnter={siteId ? () => setActive(siteId) : undefined}
                   onClick={siteId ? () => setActive(siteId) : undefined}
                   className={`stroke-cream transition-colors duration-300 ${
                     siteId
@@ -271,10 +271,10 @@ export default function CaseStudies() {
             return (
               <button
                 key={id}
-                onMouseEnter={() => setActive(id)}
                 onClick={() => setActive(id)}
+                aria-pressed={isActive}
                 className={`absolute -translate-y-1/2 rounded-lg px-3 py-2 text-left shadow-soft transition-colors ${
-                  isActive ? "bg-maroon-900 text-white" : "bg-white text-maroon-900"
+                  isActive ? "bg-maroon-900 text-white" : "bg-white text-maroon-900 hover:bg-blush-100"
                 }`}
                 style={{
                   left: `${((s.cx + (id === "OR" ? 10 : 24)) / MAP_WIDTH) * 100}%`,
