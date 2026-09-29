@@ -69,7 +69,7 @@ export default function Vision() {
           {TAKEAWAYS.map((q) => (
             <figure key={q} className="rounded-2xl bg-white p-7 shadow-soft">
               <blockquote className="text-[15px] leading-relaxed text-maroon-900">&ldquo;{q}&rdquo;</blockquote>
-              <figcaption className="mt-4 text-xs tracking-wide text-maroon-900/60">&mdash; {ATTRIBUTION.unplaced}</figcaption>
+              <figcaption className="mt-4 text-xs tracking-wide text-maroon-900/60">&mdash; {ATTRIBUTION.utahForum}</figcaption>
             </figure>
           ))}
         </div>

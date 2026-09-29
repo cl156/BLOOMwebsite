@@ -26,8 +26,7 @@ export const NATIONAL_GOAL = "a national civic assembly on AI in 2028";
 /** Quote attributions, by where the quote was gathered. */
 export const ATTRIBUTION = {
   cacheForum: `${CACHE_FORUM} participant, Utah`,
-  /** Source not yet confirmed. Replace once we know which process each quote came from. */
-  unplaced: "Participant",
+  utahForum: `${UTAH_FORUM} delegate`,
 };
 
 /** Browser titles (used in the HTML pages via vite.config.ts). */
