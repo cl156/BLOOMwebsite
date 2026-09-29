@@ -8,7 +8,7 @@ import { assetHref } from "../utils/href";
 type Member = { name: string; role: string; org?: string; photo?: string };
 
 const TEAM: Member[] = [
-  { name: "Wren Elhai", role: "Strategy & Partnerships" },
+  { name: "Wren Elhai", role: "Strategy & Partnerships", photo: "/team/wren.jpg" },
   { name: "Mike Grafton", role: "Engineering Lead" },
   { name: "Lauren Higgins", role: "Senior Advisor", org: "New Pluralist", photo: "/team/lauren.jpg" },
   { name: "Clara Long", role: "Co-Executive Director", photo: "/team/clara.jpeg" },
