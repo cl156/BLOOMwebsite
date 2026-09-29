@@ -4,6 +4,7 @@ import Header, { ScrollArrow } from "../components/Header";
 import Footer from "../components/Footer";
 import { CohortFormModal } from "../components/CohortForm";
 import NewsPage from "../pages/NewsPage";
+import { scrollToHashAfterRender } from "../utils/scrollToHash";
 import "../index.css";
 
 createRoot(document.getElementById("root")!).render(
@@ -17,3 +18,5 @@ createRoot(document.getElementById("root")!).render(
     </div>
   </StrictMode>,
 );
+
+scrollToHashAfterRender();
