@@ -33,8 +33,8 @@ export default function UpdatesPage() {
             <div className="rounded-2xl bg-white p-7 shadow-soft sm:p-9">
               <h2 className="font-display text-2xl text-maroon-900">Stay connected with BLOOM</h2>
               <p className="mt-3 text-[15px] leading-relaxed text-maroon-900/80">
-                Tell us a little about yourself and what you’re interested in. We’ll keep you posted on our work and
-                reach out when there’s something relevant to you.
+                Tell us a little about yourself and what you’re interested in. We’ll send you a quarterly update on our
+                work and reach out when there’s something relevant to you.
               </p>
               {AIRTABLE_UPDATES_URL ? (
                 <iframe
