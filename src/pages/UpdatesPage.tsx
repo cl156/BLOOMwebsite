@@ -2,7 +2,7 @@
  * /updates/ — where "Get updates" in the nav lands. One main action and one secondary one, each going
  * straight to the system that owns it, so nothing has to be synced by hand:
  *   - Quarterly updates → Airtable form (Website signups table in the CRM)
- *   - Between Doom and Boom → a link to Substack's own subscribe page
+ *   - Beyond Doom and Boom → a link to Substack's own subscribe page
  *
  * The form's title and description are set in Airtable. If the form URL is ever cleared,
  * the card falls back to email.
@@ -49,12 +49,12 @@ export default function UpdatesPage() {
           </div>
 
           <div
-            id="between-doom-and-boom"
+            id="beyond-doom-and-boom"
             className="mt-8 flex flex-col gap-5 rounded-2xl bg-blush-100 p-7 sm:flex-row sm:items-center sm:justify-between sm:p-8"
           >
             <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-bloom-500">Also from BLOOM</p>
-              <h2 className="mt-2 font-display text-2xl italic text-maroon-900">Between Doom and Boom</h2>
+              <h2 className="mt-2 font-display text-2xl italic text-maroon-900">Beyond Doom and Boom</h2>
               <p className="mt-2 text-[15px] leading-relaxed text-maroon-900/80">
                 Our biweekly publication tracking how people are building civic power in the age of AI.
               </p>

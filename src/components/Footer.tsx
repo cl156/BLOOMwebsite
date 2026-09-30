@@ -19,7 +19,7 @@ export default function Footer() {
             <a href={pageHref("people")} className="hover:text-bloom-600">People</a>
             <a href={pageHref("news")} className="hover:text-bloom-600">News</a>
             <a href={pageHref("updates")} className="hover:text-bloom-600">Get updates</a>
-            <a href="https://bloomproject.substack.com" target="_blank" rel="noopener noreferrer" className="hover:text-bloom-600">Between Doom and Boom</a>
+            <a href="https://bloomproject.substack.com" target="_blank" rel="noopener noreferrer" className="hover:text-bloom-600">Beyond Doom and Boom</a>
             <a href="mailto:hello@bloom-project.org" className="hover:text-bloom-600">Contact us</a>
             <a href="https://www.linkedin.com/company/bloom-project-ai/" target="_blank" rel="noopener noreferrer" className="hover:text-bloom-600">
               LinkedIn
