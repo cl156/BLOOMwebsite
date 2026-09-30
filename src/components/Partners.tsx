@@ -80,12 +80,12 @@ export default function Partners() {
         </ul>
 
         <p className="mt-16 text-center font-display text-xl text-maroon-900 sm:text-2xl">
-          And growing.{" "}
+          And growing. Partner with us:{" "}
           <a
             href="mailto:hello@bloom-project.org?subject=Partnering%20with%20BLOOM"
             className="text-bloom-500 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600"
           >
-            Partner with us &rarr;
+            hello@bloom-project.org
           </a>
         </p>
       </div>

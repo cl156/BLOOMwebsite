@@ -56,7 +56,7 @@ export default function UpdatesPage() {
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-bloom-500">Also from BLOOM</p>
               <h2 className="mt-2 font-display text-2xl italic text-maroon-900">Between Doom and Boom</h2>
               <p className="mt-2 text-[15px] leading-relaxed text-maroon-900/80">
-                Our biweekly publication tracking how people are building democratic power in the age of AI.
+                Our biweekly publication tracking how people are building civic power in the age of AI.
               </p>
             </div>
             <Pill href={`${SUBSTACK_URL}/subscribe`} external className="shrink-0 self-start sm:self-center">
