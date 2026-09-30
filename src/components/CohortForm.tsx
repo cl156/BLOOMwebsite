@@ -8,9 +8,10 @@
  */
 import { useEffect, useState } from "react";
 import { Pill } from "./ui";
+import { pageHref } from "../utils/href";
 
 const AIRTABLE_APPLY_URL = ""; // e.g. "https://airtable.com/appXXXX/shrXXXX"
-const AIRTABLE_NOTIFY_URL = ""; // "Get notified about the 2027 Cohort" form
+const AIRTABLE_NOTIFY_URL = ""; // Leave empty: "Get notified" buttons go to the Get updates page, whose form has a Civic Host checkbox
 
 export type FormKind = "apply" | "notify";
 
@@ -23,7 +24,7 @@ const FORMS: Record<FormKind, { url: string; title: string; mailto: string }> = 
   notify: {
     url: AIRTABLE_NOTIFY_URL,
     title: "Get notified about the 2027 Cohort",
-    mailto: "mailto:hello@bloom-project.org?subject=Notify%20me%20about%20the%202027%20Cohort",
+    mailto: pageHref("updates"),
   },
 };
 
