@@ -9,7 +9,7 @@
  */
 import { Eyebrow, Glow } from "../components/ui";
 
-const AIRTABLE_UPDATES_URL: string = ""; // e.g. "https://airtable.com/appXXXX/shrXXXX"
+const AIRTABLE_UPDATES_URL: string = "https://airtable.com/appWfFclW2rKc7Ot1/pag0BttDW5T5XHy96/form"; // Website signups form
 const SUBSTACK_URL = "https://bloomproject.substack.com";
 const FALLBACK_EMAIL = "hello@bloom-project.org";
 
@@ -30,20 +30,16 @@ export default function UpdatesPage() {
           </div>
 
           <div className="mt-14 grid items-start gap-6 lg:grid-cols-2">
-            <div className="rounded-2xl bg-white p-7 shadow-soft sm:p-9">
-              <h2 className="font-display text-2xl text-maroon-900">Stay connected with BLOOM</h2>
-              <p className="mt-3 text-[15px] leading-relaxed text-maroon-900/80">
-                Tell us a little about yourself and what you’re interested in. We’ll send you a quarterly update on our
-                work and reach out when there’s something relevant to you.
-              </p>
+            {/* The form's own title and description (set in Airtable) serve as this card's heading. */}
+            <div className="rounded-2xl bg-white p-3 shadow-soft sm:p-4">
               {AIRTABLE_UPDATES_URL ? (
                 <iframe
                   title="Stay connected with BLOOM"
-                  src={`${AIRTABLE_UPDATES_URL.replace("/shr", "/embed/shr")}?backgroundColor=orange`}
-                  className="mt-6 h-[640px] w-full rounded-xl border-0"
+                  src={AIRTABLE_UPDATES_URL.replace("airtable.com/", "airtable.com/embed/")}
+                  className="h-[920px] w-full rounded-xl border-0"
                 />
               ) : (
-                <p className="mt-6 rounded-xl bg-blush-100 p-5 text-[15px] text-maroon-900/80">
+                <p className="rounded-xl bg-blush-100 p-5 text-[15px] text-maroon-900/80">
                   Sign-up form coming soon. In the meantime, email us at{" "}
                   <a
                     href={`mailto:${FALLBACK_EMAIL}?subject=Keep%20me%20posted`}
