@@ -216,8 +216,8 @@ export default function CohortPage() {
             </h2>
             <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
               <p>
-                BLOOM is looking for locally rooted organizations to become founding {HOSTS} for the {INSTITUTION}
-                in 2027, with the potential to expand the network as resources allow.
+                BLOOM is looking for locally rooted organizations to become founding {HOSTS} for the {INSTITUTION} in
+                2027, with the potential to expand the network as resources allow.
               </p>
               <p>
                 You need to know your community, be able to bring people across differences together, and believe that
