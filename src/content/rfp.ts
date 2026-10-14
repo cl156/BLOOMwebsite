@@ -117,7 +117,7 @@ export const HOST_SCOPES = [
 ];
 
 export const HOST_SCOPES_INTRO =
-  "Most hosts will run the core arc. A few sites with a live local decision and a named decision-maker will go further as co-design hosts.";
+  "The 2027 cohort brings together two types of hosts. Most will be core hosts, running a 10–12 week arc. Up to three co-design hosts, each with a live local decision and a named decision-maker, will run a full six-month community assembly.";
 
 /** The co-design arc: five phases, the layers that run across them, and what it produces. */
 export const CO_DESIGN_ARC = {
