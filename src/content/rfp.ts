@@ -117,7 +117,7 @@ export const HOST_SCOPES = [
 ];
 
 export const HOST_SCOPES_INTRO =
-  "Most hosts will run the core arc. A few sites with a live local decision and a named decision-maker will go further as co-design hosts. We’ll work out the right scope with each host during selection.";
+  "Most hosts will run the core arc. A few sites with a live local decision and a named decision-maker will go further as co-design hosts.";
 
 /** The co-design arc: five phases, the layers that run across them, and what it produces. */
 export const CO_DESIGN_ARC = {
