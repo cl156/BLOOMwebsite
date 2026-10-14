@@ -5,19 +5,23 @@
  * shared-form embeds, so no API key ever ships to the browser. Paste the
  * share URLs (Airtable → form view → Share form) below. Until they're set,
  * the buttons fall back to email.
+ *
+ * The application is an Airtable interface form (…/pag…/form), which can't be
+ * embedded in the modal, so "apply" always opens it in a new tab. Its URL and
+ * the open/close dates live in content/rfp.ts.
  */
 import { useEffect, useState } from "react";
 import { Pill } from "./ui";
 import { pageHref } from "../utils/href";
+import { APPLY_URL, CLOSES_LABEL, OPENS_LABEL, rfpStatus } from "../content/rfp";
 
-const AIRTABLE_APPLY_URL = ""; // e.g. "https://airtable.com/appXXXX/shrXXXX"
 const AIRTABLE_NOTIFY_URL = ""; // Leave empty: "Get notified" buttons go to the Get updates page, whose form has a Civic Host checkbox
 
 export type FormKind = "apply" | "notify";
 
 const FORMS: Record<FormKind, { url: string; title: string; mailto: string }> = {
   apply: {
-    url: AIRTABLE_APPLY_URL,
+    url: "",
     title: "Apply for the 2027 Cohort",
     mailto: "mailto:hello@bloom-project.org?subject=2027%20Cohort%20application",
   },
@@ -43,6 +47,13 @@ export function FormButton({
   children: React.ReactNode;
 }) {
   const form = FORMS[kind];
+  if (kind === "apply") {
+    return (
+      <Pill href={APPLY_URL} external variant={variant} className={className}>
+        {children}
+      </Pill>
+    );
+  }
   if (!form.url) {
     return (
       <Pill href={form.mailto} variant={variant} className={className}>
@@ -65,12 +76,47 @@ export function FormButton({
 export function FormLink({ kind, className = "", children }: { kind: FormKind; className?: string; children: React.ReactNode }) {
   const form = FORMS[kind];
   const cls = `underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600 ${className}`;
+  if (kind === "apply") {
+    return (
+      <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" className={cls}>
+        {children}
+      </a>
+    );
+  }
   if (!form.url) return <a href={form.mailto} className={cls}>{children}</a>;
   return (
     <button type="button" className={cls} onClick={() => window.dispatchEvent(new CustomEvent(OPEN_EVENT, { detail: kind }))}>
       {children}
     </button>
   );
+}
+
+/**
+ * The cohort call to action, switched by date: "Get notified" until applications
+ * open, "Apply" while they're open, and "Get notified" again once they close.
+ */
+export function CohortCTA({ variant = "primary", className = "" }: { variant?: "primary" | "soft"; className?: string }) {
+  const status = rfpStatus();
+  if (status === "open") {
+    return (
+      <FormButton kind="apply" variant={variant} className={className}>
+        Apply to be a Civic Host
+      </FormButton>
+    );
+  }
+  return (
+    <FormButton kind="notify" variant={variant} className={className}>
+      Get notified about the 2027 Cohort
+    </FormButton>
+  );
+}
+
+/** One line on where the call stands, e.g. "Applications open October 15, 2026". */
+export function cohortStatusLine() {
+  const status = rfpStatus();
+  if (status === "upcoming") return `Applications open ${OPENS_LABEL}`;
+  if (status === "open") return `Applications open · due ${CLOSES_LABEL}`;
+  return "Applications for the 2027 Cohort are closed";
 }
 
 /** Mount once per page. Shows the Airtable form in a modal when a FormButton is clicked. */
