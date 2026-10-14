@@ -4,7 +4,7 @@
  */
 import { Glow, Pill } from "./ui";
 import { HOSTS, INSTITUTION } from "../content/terms";
-import { FormButton } from "./CohortForm";
+import { CohortCTA, cohortStatusLine } from "./CohortForm";
 import { pageHref } from "../utils/href";
 
 export default function CohortCard() {
@@ -21,15 +21,16 @@ export default function CohortCard() {
           <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
             <p>
               BLOOM is looking for locally rooted organizations to become founding {HOSTS} of the {INSTITUTION},
-              running assemblies in their communities in 2027. Our request for proposals comes out in October 2026.
+              running assemblies in their communities in 2027.
             </p>
             <p>
               Selected hosts will receive funding, training, methods, CivicOS, coaching, communications support, and a
               peer network of communities doing this work across the country.
             </p>
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <FormButton kind="notify">Get notified about the 2027 Cohort</FormButton>
+          <p className="mt-6 text-sm font-semibold text-maroon-900">{cohortStatusLine()}</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <CohortCTA />
             <Pill href={pageHref("cohort")} variant="soft" arrow={false}>
               Learn more
             </Pill>
