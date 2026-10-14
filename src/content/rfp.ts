@@ -22,9 +22,12 @@ export const CLOSES_LABEL = "November 20, 2026";
 
 export type RfpStatus = "upcoming" | "open" | "closed";
 
-/** In local preview only (npm run dev), ?rfp=upcoming|open|closed shows the page as it will look on those dates. */
+/**
+ * ?rfp=upcoming|open|closed shows the page as it will look on those dates, locally and on the live
+ * site (for sharing previews with the team). It only changes which buttons show; the form and PDF are public anyway.
+ */
 function previewOverride(): RfpStatus | null {
-  if (!import.meta.env.DEV || typeof window === "undefined") return null;
+  if (typeof window === "undefined") return null;
   const v = new URLSearchParams(window.location.search).get("rfp");
   return v === "upcoming" || v === "open" || v === "closed" ? v : null;
 }

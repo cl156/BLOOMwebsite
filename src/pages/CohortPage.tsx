@@ -126,7 +126,7 @@ export default function CohortPage() {
   const { ref: ladderRef, progress } = useScrollProgress<HTMLOListElement>();
   const [arcOpen, setArcOpen] = useState(() => typeof window !== "undefined" && window.location.hash === "#co-design-arc");
   const statusLine = cohortStatusLine();
-  // The RFP PDF download appears once applications open (preview early with ?rfp=open in dev).
+  // The RFP PDF download appears once applications open (preview early with ?rfp=open).
   const showPdf = Boolean(RFP_PDF) && rfpStatus() !== "upcoming";
 
   return (
