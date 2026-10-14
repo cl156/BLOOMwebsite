@@ -20,6 +20,7 @@ import {
   MODEL_LEGS,
   PILOT_STATS,
   RFP_PDF,
+  rfpStatus,
   SELECTION_NOTES,
   TIMELINE,
   TOPICS,
@@ -127,6 +128,8 @@ function useScrollProgress<T extends HTMLElement>() {
 export default function CohortPage() {
   const { ref: ladderRef, progress } = useScrollProgress<HTMLOListElement>();
   const statusLine = cohortStatusLine();
+  // The RFP PDF download appears once applications open (preview early with ?rfp=open in dev).
+  const showPdf = Boolean(RFP_PDF) && rfpStatus() !== "upcoming";
 
   return (
     <main>
@@ -147,7 +150,7 @@ export default function CohortPage() {
           <p className="mt-8 text-sm font-semibold text-maroon-900">{statusLine}</p>
           <div className="mt-4 flex flex-wrap gap-3">
             <CohortCTA />
-            {RFP_PDF && (
+            {showPdf && (
               <Pill href={assetHref(RFP_PDF)} external variant="soft" arrow={false}>
                 Download the full RFP (PDF)
               </Pill>
@@ -508,7 +511,7 @@ export default function CohortPage() {
             </div>
             <div className="mt-9 flex flex-wrap gap-3">
               <CohortCTA />
-              {RFP_PDF && (
+              {showPdf && (
                 <Pill href={assetHref(RFP_PDF)} external variant="soft" arrow={false}>
                   Download the full RFP (PDF)
                 </Pill>
