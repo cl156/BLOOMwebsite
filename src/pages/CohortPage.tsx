@@ -309,7 +309,7 @@ export default function CohortPage() {
         <Glow tone="blush" className="-left-1/4 top-1/4 h-[60vmin] w-[60vmin]" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
           <Eyebrow>Host roles</Eyebrow>
-          <h2 className={`${sectionHeading} max-w-3xl`}>Two ways to host.</h2>
+          <h2 className={`${sectionHeading} max-w-3xl`}>Two types of hosts in this cohort.</h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-maroon-900/85">
             {HOSTS} are the heart of the {INSTITUTION}. {HOST_SCOPES_INTRO}
           </p>
