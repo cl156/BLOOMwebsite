@@ -11,7 +11,7 @@ export const APPLY_URL = "https://airtable.com/appWfFclW2rKc7Ot1/pagikLlEpAcW0r6
 
 export const CONTACT_EMAIL = "hello@bloom-project.org";
 
-/** The RFP slide deck as a PDF in public/, e.g. "rfp/founding-civic-hosts-rfp.pdf". The download link shows once this is set. */
+/** The RFP slide deck as a PDF in public/, e.g. "rfp/founding-civic-hosts-rfp.pdf". The download link shows once this is set and applications have opened. */
 export const RFP_PDF = "rfp/founding-civic-hosts-rfp.pdf";
 
 /** Pacific time. Before OPENS the site shows "Get notified"; after CLOSES it says applications are closed. */
