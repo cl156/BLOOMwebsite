@@ -206,7 +206,7 @@ export default function CohortPage() {
             <div className="md:sticky md:top-32">
               <Eyebrow>From communities to the country</Eyebrow>
               <p className="mt-6 font-display text-4xl leading-tight text-maroon-900 sm:text-5xl">
-                Some questions can be answered locally.
+                Some questions can be resolved locally.
                 <span className="block text-bloom-500">Others can&rsquo;t.</span>
               </p>
               <div className="mt-8 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
@@ -217,7 +217,7 @@ export default function CohortPage() {
                 </p>
                 <p className="font-medium text-maroon-900">
                   BLOOM is building a federation through which questions can travel to the level where they can
-                  actually be answered.
+                  actually be resolved.
                 </p>
               </div>
             </div>
