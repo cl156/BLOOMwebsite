@@ -6,11 +6,13 @@
 import { useEffect, useRef, useState } from "react";
 import { HOSTS, INSTITUTION } from "../content/terms";
 import {
+  APPLY_PATHS,
   ASSEMBLY_TYPES,
   CO_DESIGN_ARC,
   CONTACT_EMAIL,
   CRITERIA,
   CRITERIA_NOTE,
+  cohortVariant,
   FUNDING_NOTE,
   HOST_SCOPES,
   HOST_SCOPES_INTRO,
@@ -29,11 +31,12 @@ import {
   WHERE_HOSTS_WORK,
 } from "../content/rfp";
 import { Eyebrow, Glow, Pill } from "../components/ui";
-import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
+import { CohortCTA, HubCTA, cohortStatusLine } from "../components/CohortForm";
 import CoDesignArc from "../components/CoDesignArc";
 import { assetHref } from "../utils/href";
 
 const SECTIONS = [
+  { id: "paths", label: "Ways to apply", hubsOnly: true },
   { id: "host-roles", label: "Host roles" },
   { id: "support", label: "Support" },
   { id: "impact", label: "Impact" },
@@ -126,6 +129,9 @@ export default function CohortPage() {
   const { ref: ladderRef, progress } = useScrollProgress<HTMLOListElement>();
   const [arcOpen, setArcOpen] = useState(() => typeof window !== "undefined" && window.location.hash === "#co-design-arc");
   const statusLine = cohortStatusLine();
+  // ?call=hubs: the variant that also invites civic hubs to apply with a constellation of hosts.
+  const hubs = cohortVariant() === "hubs";
+  const hostLabel = hubs ? "Apply as a Civic Host" : "Apply to be a Civic Host";
   // The RFP PDF download appears once applications open (preview early with ?rfp=open).
   const showPdf = Boolean(RFP_PDF) && rfpStatus() !== "upcoming";
 
@@ -135,7 +141,10 @@ export default function CohortPage() {
       <section className="relative overflow-hidden bg-cream pb-16 pt-36 sm:pt-44">
         <Glow className="left-1/2 top-0 h-[80vmin] w-[80vmin] -translate-x-1/2" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>The 2027 Cohort &middot; Call for Founding {HOSTS}</Eyebrow>
+          <Eyebrow>
+            The 2027 Cohort &middot; Call for Founding {HOSTS}
+            {hubs && " and Hubs"}
+          </Eyebrow>
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-medium leading-[1.02] tracking-tight text-bloom-500 sm:text-6xl lg:text-7xl">
             Many places. A growing civic institution.
           </h1>
@@ -147,7 +156,8 @@ export default function CohortPage() {
           </p>
           <p className="mt-8 text-sm font-semibold text-maroon-900">{statusLine}</p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <CohortCTA />
+            <CohortCTA label={hostLabel} />
+            {hubs && <HubCTA />}
             {showPdf && (
               <Pill href={assetHref(RFP_PDF)} external variant="soft" arrow={false}>
                 Download the full RFP (PDF)
@@ -165,7 +175,7 @@ export default function CohortPage() {
           </ul>
 
           <nav aria-label="On this page" className="mt-12 flex flex-wrap gap-2">
-            {SECTIONS.map((s) => (
+            {SECTIONS.filter((s) => hubs || !s.hubsOnly).map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
@@ -304,6 +314,41 @@ export default function CohortPage() {
         </div>
       </section>
 
+      {/* Ways to apply (hubs variant only) */}
+      {hubs && (
+        <section id="paths" className="relative scroll-mt-24 overflow-hidden bg-cream py-20 md:py-28">
+          <Glow tone="blush" className="-right-1/4 top-1/4 h-[60vmin] w-[60vmin]" />
+          <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
+            <Eyebrow>Ways to apply</Eyebrow>
+            <h2 className={`${sectionHeading} max-w-3xl`}>Apply as a host, or as a hub with your hosts.</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-maroon-900/85">{APPLY_PATHS.intro}</p>
+            <div className="mt-12 grid gap-6 lg:grid-cols-2">
+              {[
+                { key: "host", path: APPLY_PATHS.host, cta: <CohortCTA label={hostLabel} /> },
+                { key: "hub", path: APPLY_PATHS.hub, cta: <HubCTA variant="primary" /> },
+              ].map(({ key, path, cta }) => (
+                <article key={key} className="flex flex-col rounded-3xl bg-white p-8 shadow-soft sm:p-10">
+                  <p className="font-display text-3xl text-maroon-900">{path.name}</p>
+                  <p className="mt-4 rounded-2xl bg-blush-50 p-5 text-[15px] leading-relaxed text-maroon-900">
+                    <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">Who it&rsquo;s for</span>
+                    <span className="mt-2 block">{path.for}</span>
+                  </p>
+                  <ul className="mt-6 flex-1 space-y-3 text-[15px] leading-relaxed text-maroon-900/85">
+                    {path.points.map((pt) => (
+                      <li key={pt} className="flex gap-3">
+                        <span className="text-bloom-500" aria-hidden="true">&#10003;</span>
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-8">{cta}</div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Host roles */}
       <section id="host-roles" className="relative scroll-mt-24 overflow-hidden bg-cream py-20 md:py-28">
         <Glow tone="blush" className="-left-1/4 top-1/4 h-[60vmin] w-[60vmin]" />
@@ -423,11 +468,19 @@ export default function CohortPage() {
                 <p className="mt-4 font-display text-3xl leading-tight text-maroon-900">How hubs and BLOOM support hosts</p>
                 <p className="mt-4 text-[15px] leading-relaxed text-maroon-900/85">{HUB_NOTE}</p>
                 <p className="mt-4 text-[15px] leading-relaxed text-maroon-900/85">
-                  Work this way and want to serve as a hub?{" "}
-                  <a href={`mailto:${CONTACT_EMAIL}`} className="underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600">
-                    Write to {CONTACT_EMAIL}
-                  </a>
-                  .
+                  {hubs ? (
+                    <a href="#paths" className="underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600">
+                      See how hubs apply with their hosts
+                    </a>
+                  ) : (
+                    <>
+                      Work this way and want to serve as a hub?{" "}
+                      <a href={`mailto:${CONTACT_EMAIL}`} className="underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600">
+                        Write to {CONTACT_EMAIL}
+                      </a>
+                      .
+                    </>
+                  )}
                 </p>
               </div>
               <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2 md:col-span-8">
@@ -552,7 +605,8 @@ export default function CohortPage() {
               </p>
             </div>
             <div className="mt-9 flex flex-wrap gap-3">
-              <CohortCTA />
+              <CohortCTA label={hostLabel} />
+            {hubs && <HubCTA />}
               {showPdf && (
                 <Pill href={assetHref(RFP_PDF)} external variant="soft" arrow={false}>
                   Download the full RFP (PDF)
