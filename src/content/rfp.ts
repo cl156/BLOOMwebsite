@@ -40,6 +40,48 @@ export function rfpStatus(now = new Date()): RfpStatus {
   return "open";
 }
 
+/**
+ * Page variant. ?call=hubs shows the version of /cohort/ that invites state and regional
+ * civic hubs to apply with a constellation of hosts, alongside individual hosts.
+ * Combine with ?rfp=open to preview the open state: /cohort/?call=hubs&rfp=open
+ */
+export type CohortVariant = "hosts" | "hubs";
+
+export function cohortVariant(): CohortVariant {
+  if (typeof window === "undefined") return "hosts";
+  return new URLSearchParams(window.location.search).get("call") === "hubs" ? "hubs" : "hosts";
+}
+
+/** Hub (constellation) application form. Until it's set, "Apply as a hub" opens an email. */
+export const HUB_APPLY_URL = "";
+export const HUB_APPLY_MAILTO = `mailto:${CONTACT_EMAIL}?subject=Civic%20hub%20application%20(2027%20Cohort)`;
+
+/** The two ways into the cohort, shown in the hubs variant. */
+export const APPLY_PATHS = {
+  intro:
+    "The 2027 cohort will be a mix: a few states or regions where a civic hub supports a constellation of hosts, and individual hosts across the country.",
+  host: {
+    name: "Apply as a Civic Host",
+    for: "Local organizations rooted in a town, county, or constituency, applying on their own.",
+    points: [
+      "One application per organization, about an hour.",
+      "Supported by a civic hub where there is one, and by BLOOM where there isn’t.",
+      "In a state with a hub, selected hosts can join that hub’s constellation.",
+    ],
+  },
+  hub: {
+    name: "Apply as a Civic Hub with your hosts",
+    for: "State or regional organizations already working with a network of place-based communities.",
+    points: [
+      "One application for your constellation: typically two to five hosts from your network.",
+      "Each host in your constellation chooses to take part. Not every community will want to focus on AI right now, and that’s fine.",
+      "Your hub coaches its hosts, sets shared questions with them, and carries what they conclude to state decision-makers.",
+      "You stay open to new hosts: organizations in your state that apply individually can join your constellation.",
+      "Your constellation’s budget, covering host grants and hub support, is set together with BLOOM based on the number of hosts and subject to fundraising.",
+    ],
+  },
+};
+
 export const FUNDING = {
   core: { short: "$10–30k", full: "$10,000–$30,000" },
   coDesign: { short: "$50–60k", full: "$50,000–$60,000" },
