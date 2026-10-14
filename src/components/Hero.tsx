@@ -6,6 +6,7 @@
 import { sectionHref, assetHref } from "../utils/href";
 import { INSTITUTION, NATIONAL_GOAL } from "../content/terms";
 import { FormLink } from "./CohortForm";
+import { CLOSES_LABEL, rfpStatus } from "../content/rfp";
 import { Glow, Pill } from "./ui";
 import { FeaturedIn } from "./LatestNews";
 
@@ -57,7 +58,11 @@ export default function Hero() {
             </div>
             <p className="mt-4 text-sm text-maroon-900/70">
               Want to host an assembly in your community?{" "}
-              <FormLink kind="notify">Get notified about the 2027 Cohort</FormLink>
+              {rfpStatus() === "open" ? (
+                <FormLink kind="apply">Apply to be a Civic Host by {CLOSES_LABEL}</FormLink>
+              ) : (
+                <FormLink kind="notify">Get notified about the 2027 Cohort</FormLink>
+              )}
             </p>
           </div>
         </div>
