@@ -110,24 +110,69 @@ export const HOST_SCOPES = [
     hours: "Up to three sites selected",
     summary:
       "You engage a larger-scale public with a live local decision and a named decision-maker. Over six months you run a full community assembly, from agenda setting to recommendations your community ratifies, with support to put them in front of decision-makers.",
-    stepsLabel: "The phases",
-    steps: [
-      { name: "Agenda setting", body: "The core arc: one-to-ones, cafe, house meetings, open poll, and sense-making." },
-      {
-        name: "Goals and ideas",
-        body: "Cafe and poll rounds on values and goals; working groups draft options from research.",
-      },
-      {
-        name: "Tradeoffs and decisions",
-        body: "3–5 hour sessions and polls seeking broad agreement across viewpoints, then a public ratification vote.",
-      },
-      {
-        name: "Guided by a local steering committee",
-        body: "Local leaders from across your community choose the issues and vouch for the process. Checkpoints between phases sort local actions from what needs state action.",
-      },
-    ],
+    // The full five-phase arc is shown in CO_DESIGN_ARC below the cards.
+    stepsLabel: "",
+    steps: [],
   },
 ];
+
+export const HOST_SCOPES_INTRO =
+  "Most hosts will run the core arc. A few sites with a live local decision and a named decision-maker will go further as co-design hosts. We’ll work out the right scope with each host during selection.";
+
+/** The co-design arc: five phases, the layers that run across them, and what it produces. */
+export const CO_DESIGN_ARC = {
+  phases: [
+    {
+      name: "Agenda setting",
+      sub: "The core arc",
+      items: ["One-to-ones", "Grasstops cafe", "House meetings", "Open poll", "Sense-making"],
+    },
+    { name: "Goal setting", sub: "Values and goals", items: ["Cafe round", "Poll round", "Shared goals statement"] },
+    { name: "Idea development", sub: "Draft options", items: ["Research inputs", "Working group drafts", "3–5 hour sessions"] },
+    { name: "Tradeoffs", sub: "Explore and weigh", items: ["3–5 hour sessions", "Poll round", "Tradeoffs map"] },
+    {
+      name: "Decision making",
+      sub: "Decide and ratify",
+      items: ["Iterative drafting", "Convergent polls", "Supermajority tests", "Ratification poll"],
+    },
+  ],
+  /** Phase numbers are 1-based and inclusive. */
+  layers: [
+    {
+      from: 2,
+      to: 5,
+      style: "steering",
+      label: "Local steering committee",
+      body: "Chooses the issues and lends the process legitimacy",
+    },
+    {
+      from: 3,
+      to: 5,
+      style: "pilot",
+      label: "Topic working groups",
+      body: "Draft between sessions (being piloted)",
+    },
+    {
+      from: 1,
+      to: 5,
+      style: "organizing",
+      label: "Organizing",
+      body: "Turnout commitments, emerging leaders, an action team, ratification turnout",
+    },
+    {
+      from: 1,
+      to: 5,
+      style: "hub",
+      label: "Hub support",
+      body: "Close in agenda setting, handed over phase by phase",
+    },
+  ],
+  outputs: [
+    { phase: 4, name: "Tradeoffs map", body: "Input to a state assembly" },
+    { phase: 5, name: "Ratified decisions", body: "Local and state levers" },
+  ],
+  checkpoint: "Checkpoint between phases: have we learned enough to move on, or does another question need a different mode?",
+};
 
 export const FUNDING_NOTE =
   "Amounts are set in co-design by the scale of your public, the number of co-hosts, and travel. Grants cover staff time, venue and food, translation and interpretation, and local outreach. BLOOM makes host grants directly, including in hub states.";

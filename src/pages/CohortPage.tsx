@@ -7,11 +7,13 @@ import { useEffect, useRef, useState } from "react";
 import { HOSTS, INSTITUTION } from "../content/terms";
 import {
   ASSEMBLY_TYPES,
+  CO_DESIGN_ARC,
   CONTACT_EMAIL,
   CRITERIA,
   CRITERIA_NOTE,
   FUNDING_NOTE,
   HOST_SCOPES,
+  HOST_SCOPES_INTRO,
   HOSTS_RECEIVE,
   HUB_NOTE,
   HUB_PROVIDES,
@@ -27,6 +29,7 @@ import {
 } from "../content/rfp";
 import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
+import CoDesignArc from "../components/CoDesignArc";
 import { assetHref } from "../utils/href";
 
 const SECTIONS = [
@@ -68,12 +71,6 @@ const TIERS = [
     level: "National",
     body: "Questions requiring national action can ultimately become the agenda for a representative national civic assembly on AI.",
   },
-];
-
-const QUESTIONS = [
-  "Where do very different communities converge after actually working through the choices?",
-  "Where do they differ?",
-  "And what do they believe the country needs to resolve?",
 ];
 
 /** Rings that grow with each tier: one community, several, the country. */
@@ -126,6 +123,7 @@ function useScrollProgress<T extends HTMLElement>() {
 
 export default function CohortPage() {
   const { ref: ladderRef, progress } = useScrollProgress<HTMLOListElement>();
+  const [arcOpen, setArcOpen] = useState(() => typeof window !== "undefined" && window.location.hash === "#co-design-arc");
   const statusLine = cohortStatusLine();
 
   return (
@@ -293,16 +291,13 @@ export default function CohortPage() {
       {/* The ambition */}
       <section className="bg-cream py-20 md:py-28">
         <div className="mx-auto max-w-4xl px-5 text-center lg:px-10">
-          <p className="text-base text-maroon-900/80">
-            The ambition is to make something visible that our politics rarely lets us see:
+          <p className="text-lg leading-relaxed text-maroon-900/80 sm:text-xl">
+            Polls tell us what people think in isolation. Social media rewards what divides us.
           </p>
-          <div className="mt-10 space-y-6">
-            {QUESTIONS.map((q) => (
-              <p key={q} className="font-display text-3xl leading-snug text-bloom-500 sm:text-4xl">
-                {q}
-              </p>
-            ))}
-          </div>
+          <p className="mt-8 font-display text-3xl leading-snug text-bloom-500 sm:text-4xl">
+            The {INSTITUTION} shows what communities decide when they reason together: where they agree, where they
+            differ, and what they need from their state and the country.
+          </p>
         </div>
       </section>
 
@@ -310,10 +305,10 @@ export default function CohortPage() {
       <section id="host-roles" className="relative scroll-mt-24 overflow-hidden bg-cream py-20 md:py-28">
         <Glow tone="blush" className="-left-1/4 top-1/4 h-[60vmin] w-[60vmin]" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>Two ways to host</Eyebrow>
-          <h2 className={`${sectionHeading} max-w-3xl`}>Which host scope fits you?</h2>
+          <Eyebrow>Host roles</Eyebrow>
+          <h2 className={`${sectionHeading} max-w-3xl`}>Two ways to host.</h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-maroon-900/85">
-            {HOSTS} are the heart of the {INSTITUTION}. Choose the scope that matches your community and your capacity.
+            {HOSTS} are the heart of the {INSTITUTION}. {HOST_SCOPES_INTRO}
           </p>
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             {HOST_SCOPES.map((h) => (
@@ -331,7 +326,27 @@ export default function CohortPage() {
                   <p className="col-span-2 text-sm text-maroon-900/75">{h.hours}</p>
                 </dl>
                 <p className="mt-6 text-[15px] leading-relaxed text-maroon-900/85">{h.summary}</p>
-                <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">{h.stepsLabel}</p>
+                {h.steps.length === 0 && (
+                  <>
+                    <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">The phases</p>
+                    <ol className="mt-4 space-y-5">
+                      {CO_DESIGN_ARC.phases.map((ph, i) => (
+                        <li key={ph.name} className="flex gap-4">
+                          <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blush-100 text-sm text-bloom-600">
+                            {i + 1}
+                          </span>
+                          <div>
+                            <p className="font-medium text-maroon-900">{ph.name}</p>
+                            <p className="mt-1 text-[15px] leading-relaxed text-maroon-900/80">{ph.sub}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </>
+                )}
+                {h.steps.length > 0 && (
+                  <p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">{h.stepsLabel}</p>
+                )}
                 <ol className="mt-4 space-y-5">
                   {h.steps.map((st, i) => (
                     <li key={st.name} className="flex gap-4">
@@ -347,6 +362,33 @@ export default function CohortPage() {
                 </ol>
               </article>
             ))}
+          </div>
+
+          {/* Full co-design arc, collapsed by default to keep the page focused on the core role. */}
+          <div id="co-design-arc" className="mt-10 scroll-mt-24">
+            <button
+              type="button"
+              onClick={() => setArcOpen((o) => !o)}
+              aria-expanded={arcOpen}
+              aria-controls="co-design-arc-panel"
+              className="inline-flex items-center gap-2 rounded-full bg-blush-100 px-6 py-3 text-sm font-medium text-bloom-600 transition-colors hover:bg-blush-200"
+            >
+              {arcOpen ? "Hide the full co-design arc" : "See the full co-design arc"}
+              <span aria-hidden="true" className={`transition-transform ${arcOpen ? "rotate-180" : ""}`}>
+                &darr;
+              </span>
+            </button>
+            {arcOpen && (
+              <div id="co-design-arc-panel" className="mt-8">
+                <p className="max-w-3xl text-[15px] leading-relaxed text-maroon-900/85">
+                  Co-design hosts begin with the same agenda-setting arc as core hosts, then carry their community
+                  through four more phases to decisions it ratifies.
+                </p>
+                <div className="mt-6">
+                  <CoDesignArc />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
