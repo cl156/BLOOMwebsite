@@ -23,7 +23,7 @@
   "ladder": {
     "eyebrow": "From communities to the country",
     "heading": "No community can solve the AI transition alone.",
-    "headingAccent": "\n",
+    "headingAccent": "",
     "body": "A community can decide how to govern a proposed data center project. But it cannot by itself determine state or national protections for children, workers, privacy, or increasingly powerful AI systems.",
     "emphasis": "",
     "tiers": [
@@ -90,7 +90,7 @@
           "body": "Engage hundreds of residents to create a map of the opinion landscape, including common ground."
         },
         {
-          "name": "Synthesis",
+          "name": "Results",
           "body": "A map of community priorities that are immediately actionable and what needs further deliberation."
         }
       ]
@@ -185,7 +185,7 @@
   },
   "impact": {
     "eyebrow": "Impact",
-    "heading": "What your community’s work can change.",
+    "heading": "What your community’s work can impact.",
     "items": [
       {
         "name": "Government policy",
