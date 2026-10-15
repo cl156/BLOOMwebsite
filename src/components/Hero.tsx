@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-28 sm:pt-32 lg:px-10 lg:pb-24">
         <h1 className="max-w-3xl font-display tracking-tight">
           <span className="block text-2xl font-normal text-maroon-900 sm:text-3xl">
-            Decisions about AI are changing our lives.
+            Decisions about AI are changing lives.
           </span>
           <span className="mt-2 block text-5xl font-medium leading-[1.02] text-bloom-500 sm:text-6xl lg:text-7xl">
             Communities should have a say in how.
