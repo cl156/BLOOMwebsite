@@ -13,7 +13,7 @@
 import { useEffect, useState } from "react";
 import { Pill } from "./ui";
 import { pageHref } from "../utils/href";
-import { APPLY_URL, CLOSES_LABEL, HUB_APPLY_MAILTO, HUB_APPLY_URL, OPENS_LABEL, rfpStatus } from "../content/rfp";
+import { APPLY_URL, CLOSES_LABEL, OPENS_LABEL, rfpStatus } from "../content/rfp";
 
 const AIRTABLE_NOTIFY_URL = ""; // Leave empty: "Get notified" buttons go to the Get updates page, whose form has a Civic Host checkbox
 
@@ -116,28 +116,6 @@ export function CohortCTA({
     <FormButton kind="notify" variant={variant} className={className}>
       Get notified about the 2027 Cohort
     </FormButton>
-  );
-}
-
-/**
- * Hub (constellation) call to action, for the ?call=hubs variant: "Apply as a hub" while
- * applications are open (hub form, or email until that's set), an email invitation to talk
- * before they open, and nothing once they close.
- */
-export function HubCTA({ variant = "soft", className = "" }: { variant?: "primary" | "soft"; className?: string }) {
-  const status = rfpStatus();
-  if (status === "closed") return null;
-  if (status === "open") {
-    return (
-      <Pill href={HUB_APPLY_URL || HUB_APPLY_MAILTO} external={Boolean(HUB_APPLY_URL)} variant={variant} className={className}>
-        Apply as a hub with your hosts
-      </Pill>
-    );
-  }
-  return (
-    <Pill href={HUB_APPLY_MAILTO} variant={variant} className={className}>
-      Talk to us about applying as a hub
-    </Pill>
   );
 }
 

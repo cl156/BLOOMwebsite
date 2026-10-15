@@ -1,0 +1,283 @@
+{
+  "hero": {
+    "eyebrow": "The 2027 Cohort · Call for Civic Hosts",
+    "heading": "Decided locally. Connected across the country.",
+    "intro": "Over the past year, the BLOOM Project has developed a community assembly model that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to lead their communities in shaping their futures in the AI era.",
+    "pdfLabel": "Download the full RFP (PDF)"
+  },
+  "stats": [
+    {
+      "value": "~1,000",
+      "label": "people engaged across our 2026 pilots"
+    },
+    {
+      "value": "6",
+      "label": "counties, in Utah and Central Oregon"
+    },
+    {
+      "value": "75",
+      "label": "delegates across civic assemblies in Utah and Central Oregon"
+    }
+  ],
+  "nav": {
+    "paths": "How to apply",
+    "host-roles": "The work",
+    "support": "Support",
+    "impact": "Impact",
+    "who": "Who we’re looking for",
+    "timeline": "Timeline",
+    "apply": "Apply"
+  },
+  "network": {
+    "eyebrow": "A national network",
+    "heading": "No community should have to solve the AI transition alone.",
+    "body": "Communities across the country learn alongside each other, share what works, and build collective capacity to act.",
+    "imageAlt": "Delegates talking across a table at the Utah Solutions Forum"
+  },
+  "ladder": {
+    "eyebrow": "From communities to the country",
+    "heading": "Some questions can be resolved locally.",
+    "headingAccent": "Others can’t.",
+    "body": "A community can decide how to govern a proposed data center project. But it cannot by itself determine state or national protections for children, workers, privacy, or increasingly powerful AI systems.",
+    "emphasis": "BLOOM is building a federation through which questions can travel to the level where they can actually be resolved.",
+    "tiers": [
+      {
+        "level": "Local",
+        "body": "Communities identify priorities and act where they have authority."
+      },
+      {
+        "level": "State",
+        "body": "Questions arising across communities can become the charge for state-level representative assemblies."
+      },
+      {
+        "level": "National",
+        "body": "Questions requiring national action can ultimately become the agenda for a representative national civic assembly on AI."
+      }
+    ]
+  },
+  "ambition": {
+    "lead": "Polls tell us what people think in isolation. Social media rewards what divides us.",
+    "statement": "The Public Assembly on AI helps communities reason together and make decisions about how they want to move forward."
+  },
+  "paths": {
+    "eyebrow": "How to apply",
+    "heading": "Apply as a Civic Host.",
+    "intro": "Civic Hosts are locally rooted organizations that bring their community together to work through the AI choices in front of it.",
+    "whoFor": "Who it’s for",
+    "host": {
+      "for": "Local organizations rooted in a town, county, or constituency, with the relationships to convene across divides.",
+      "points": [
+        "One application, about an hour.",
+        "Organizations and coalitions of any size are welcome, as are fiscally sponsored organizations.",
+        "Supported by BLOOM, and by a state or regional civic hub where there is one."
+      ]
+    },
+    "hub": {
+      "eyebrow": "State and regional civic hubs",
+      "heading": "Already supporting a network of local organizations?",
+      "body": "Some organizations bring several hosts together across a state or region: coaching them, standing behind the quality of their work, and carrying what their communities conclude to state decision-makers. If that’s you, let’s talk about serving as a state or regional civic hub.",
+      "button": "Inquire about becoming a civic hub"
+    }
+  },
+  "work": {
+    "eyebrow": "The work",
+    "heading": "Two kinds of community assembly.",
+    "intro": "Every host runs a community assembly: bringing their community together to work through the AI choices in front of it. Most hosts will run the short arc over 10–12 weeks.",
+    "fundingLabel": "Funding",
+    "lengthLabel": "Length",
+    "core": {
+      "name": "Shortform",
+      "funding": "$10,000–$30,000",
+      "length": "10–12 weeks",
+      "hours": "~120 hours, led by one to two people",
+      "summary": "\n",
+      "stepsLabel": "The playbook",
+      "steps": [
+        {
+          "name": "One-to-ones",
+          "body": "Conversations that bring local leaders into the inquiry on a pressing AI issue."
+        },
+        {
+          "name": "Community forums",
+          "body": "30–50 residents meet to sort out local priorities, name local actions, and flag what needs state action."
+        },
+        {
+          "name": "Open poll",
+          "body": "Engage hundreds of residents to create a map of the opinion landscape, including common ground."
+        },
+        {
+          "name": "Synthesis",
+          "body": "A map of community priorities that are immediately actionable and what needs further deliberation"
+        }
+      ]
+    },
+    "coDesign": {
+      "name": "Longform",
+      "funding": "$50,000–$60,000",
+      "length": "February–July 2027",
+      "hours": "6 months that move from agenda setting to decisions",
+      "summary": "\n",
+      "stepsLabel": "The phases",
+      "steps": [
+        {
+          "name": "Agenda setting",
+          "body": "The shortform arc"
+        },
+        {
+          "name": "Goal setting",
+          "body": "Community forum and Open poll rounds surface shared values, ending in a goals statement the community stands behind."
+        },
+        {
+          "name": "Idea development",
+          "body": "Additional community forum and Open poll rounds develop potential solutions"
+        },
+        {
+          "name": "Tradeoffs",
+          "body": "Residents weigh options together, producing a map of tradeoffs to carry into decision making"
+        },
+        {
+          "name": "Decision making",
+          "body": "Recommendations are drafted, tested for broad agreement, and put to a public ratification vote."
+        }
+      ]
+    }
+  },
+  "support": {
+    "eyebrow": "What hosts receive",
+    "heading": "Funding, tools, and a network behind you.",
+    "fundingNote": "\n",
+    "receive": [
+      {
+        "name": "Methods",
+        "body": "A playbook built from our pilots in Utah and Oregon, refined with and for this cohort."
+      },
+      {
+        "name": "Platform",
+        "body": "CivicOS, BLOOM’s open-source deliberation suite, free to use. Your contact list stays yours."
+      },
+      {
+        "name": "Training",
+        "body": "Facilitation and organizing, plus coaching, through your civic hub or BLOOM."
+      },
+      {
+        "name": "Synthesis",
+        "body": "Tools to synthesize what people say across every level of discussion, and to present it clearly."
+      },
+      {
+        "name": "A peer cohort",
+        "body": "A national network of hosts on the same timeline, plus a state or regional cluster where there’s a civic hub."
+      }
+    ]
+  },
+  "impact": {
+    "eyebrow": "Impact",
+    "heading": "What your community’s work can change.",
+    "items": [
+      {
+        "name": "Government Policy",
+        "body": "Every host identifies decision-makers and decisions on a timeline: a county commission vote, a district’s classroom policy, an employer’s deployment plan, a state bill."
+      },
+      {
+        "name": "Community action",
+        "body": "Much of what a community decides it wants needs no official’s permission: workplace monitoring policies, a parent council adopting school guidance, a library running AI literacy sessions."
+      },
+      {
+        "name": "Agency & connection",
+        "body": "Participants leave with the experience of making a difference in their community, practice in deliberation and facilitation, and relationships with neighbors they would not otherwise have met."
+      }
+    ]
+  },
+  "who": {
+    "eyebrow": "What we’re looking for",
+    "heading": "Locally rooted. Able to convene across divides.",
+    "whereLabel": "\n",
+    "where": [
+      "Civic hosts should have deep roots in a place and a community of people: a county, a town, or a constituency. Ideal partners are rooted in places where something clear is at stake: a decision about AI that a nameable body will make on a nameable timeline, or that have a plan to put a decision on the table that's missing today.",
+      "\n",
+      "\n"
+    ],
+    "topicsLabel": "Potential topics",
+    "topicsIntro": "Hosts choose the issues most relevant to their community.",
+    "topics": [
+      "Data centers & AI infrastructure",
+      "Jobs and workforce",
+      "AI in K–12 and higher education",
+      "Surveillance and privacy",
+      "Risks of powerful AI",
+      "Power & wealth concentration"
+    ],
+    "influenceLabel": "Who this will influence",
+    "influence": "We help you identify which decision-makers and which decisions your assembly can influence, including: a county commission or city council, a school board, a state legislature, a mayor or governor, or a major employer.",
+    "assessHeading": "How we will assess potential hosts",
+    "assessIntro": "We are looking for hosts with four key attributes.",
+    "criteria": [
+      {
+        "name": "Existing relationships and convening capacity",
+        "body": "Enough standing with enough different people to convene partners: faith, labor, youth and education, small business, neighborhood and civic, or whoever the real constituencies are where you are."
+      },
+      {
+        "name": "A commitment to build collaborative politics",
+        "body": "Drawn to finding out what people think through deliberation, rather than confirming what you already believe."
+      },
+      {
+        "name": "Organizing or policy capacity",
+        "body": "We bring what we can on synthesis and reporting, and help identify pathways to political impact. Hosts who know local decision-makers and can turn people out through their networks will likely be more successful."
+      },
+      {
+        "name": "Willingness to share feedback openly",
+        "body": "We need both excitement about the possibilities and a willingness to point out what isn’t working."
+      }
+    ]
+  },
+  "timeline": {
+    "eyebrow": "Timeline",
+    "heading": "From application to a national assembly.",
+    "items": [
+      {
+        "when": "Oct 15, 2026",
+        "what": "Applications open"
+      },
+      {
+        "when": "Nov 20, 2026",
+        "what": "Applications close"
+      },
+      {
+        "when": "Dec 2026",
+        "what": "Interviews"
+      },
+      {
+        "when": "Jan 15, 2027",
+        "what": "Hosts notified"
+      },
+      {
+        "when": "Feb–Jul 2027",
+        "what": "Community assembly arc"
+      },
+      {
+        "when": "First half 2028",
+        "what": "National assembly on AI"
+      }
+    ],
+    "notes": [
+      {
+        "name": "Selection process",
+        "body": "The application takes about an hour. Short-listed finalists are invited to interviews in December. Being invited is not a guarantee of selection."
+      },
+      {
+        "name": "The arc",
+        "body": "Shortform assemblies run 10–12 week arcs between February and July 2027, with staggered starts; longform hosts run across the full window.\n\nTogether, this network will have the opportunity to commission state or national assemblies on AI in 2028."
+      }
+    ]
+  },
+  "join": {
+    "heading": "Join the 2027 Cohort.",
+    "body": "\n",
+    "need": "\n",
+    "questions": "Questions, or interested in serving as a state or regional civic hub?"
+  },
+  "infoSession": {
+    "button": "Register for an info session",
+    "when": "",
+    "cardLine": "Have questions first? Join an info session on the Call for Civic Hosts."
+  }
+}
