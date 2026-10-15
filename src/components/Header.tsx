@@ -4,9 +4,6 @@ import { sectionHref, pageHref, assetHref } from "../utils/href";
 
 
 const NAV_LINKS = [
-  { label: "Vision", href: sectionHref("vision") },
-  { label: "Where we work", href: sectionHref("work") },
-  { label: "What we do", href: sectionHref("what-we-do") },
   { label: "Partners", href: sectionHref("partners") },
   { label: "People", href: pageHref("people") },
   { label: "2027 Cohort", href: pageHref("cohort") },
