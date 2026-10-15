@@ -1,8 +1,8 @@
 {
   "hero": {
-    "eyebrow": "2027 COHORT · CALL FOR CIVIC HOSTS",
+    "eyebrow": "2027 COHORT · CALL FOR CIVIC HOSTS · PUBLIC ASSEMBLY ON AI",
     "heading": "AI issues decided locally. Connected across the country.",
-    "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to lead their communities in shaping their futures in the AI era.",
+    "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the country working out what they want from AI.",
     "pdfLabel": "Download the full RFP (PDF)",
     "statsLabel": "From our 2026 pilots",
     "statsLink": "More about the pilots"
@@ -21,26 +21,25 @@
       "label": "delegates across civic assemblies in Utah and Central Oregon"
     }
   ],
-  "navLabel": "On this page",
+  "navLabel": "Call for Civic Hosts",
   "nav": {
     "paths": "Who can apply",
     "host-roles": "The work",
-    "support": "Support",
-    "impact": "Impact",
     "who": "What we look for",
+    "tools": "Tools",
+    "impact": "Impact",
+    "support": "Support",
     "timeline": "Timeline",
     "apply": "Apply"
   },
   "network": {
-    "eyebrow": "A national network",
-    "heading": "No community should have to solve the AI transition alone.",
-    "body": "Communities across the country learn alongside each other, share what works, and build collective capacity to act.",
+    "body": "Each host builds a constituency behind its community’s common ground. When communities reach shared conclusions, they speak with the weight of many places.",
     "imageAlt": "Delegates talking across a table at the Utah Solutions Forum"
   },
   "ladder": {
     "eyebrow": "From communities to the country",
-    "heading": "Some questions can be solved locally.",
-    "headingAccent": "Others can’t.",
+    "heading": "No community can solve the AI transition alone.",
+    "headingAccent": "Some questions need the whole country.",
     "body": "A community can decide how to govern a proposed data center project. But it cannot by itself determine state or national protections for children, workers, privacy, or increasingly powerful AI systems.",
     "emphasis": "",
     "tiers": [
@@ -65,25 +64,25 @@
   "paths": {
     "eyebrow": "WHO CAN APPLY",
     "heading": "Are you a Civic Host?",
-    "intro": "Civic Hosts are local organizations or community leaders rooted in a town, county, or constituency, with the relationships to bring their community together across divides to work through the AI issues of the day.",
+    "intro": "Civic Hosts are local organizations or community leaders rooted in a town, county, or constituency, with the relationships to bring their community together across divides to work through the issues of the day.",
     "whoFor": "Who it’s for",
     "host": {
       "for": "",
       "points": [
-        "Organizations and coalitions of any size are welcome, as are fiscally sponsored organizations."
+        "Organizations and coalitions of any size are welcome, including congregations, civic clubs, and informal networks. Individual community leaders can apply through a partner organization or fiscal sponsor."
       ]
     },
     "hub": {
       "eyebrow": "State and regional civic hubs",
       "heading": "Already supporting a network of local civic organizations?",
-      "body": "Some organizations bring several hosts together across a state or region: coaching them, standing behind the quality of their work, and carrying what their communities conclude to state decision-makers. If that’s you, let’s talk about serving as a state or regional civic hub.",
-      "button": "Inquire about becoming a civic hub"
+      "body": "Some organizations bring several hosts together across a state or region with the capacity to coach them, stand behind the quality of their work, and help carry what their communities conclude to state decision-makers. If that’s you, let’s talk about serving as a state or regional civic hub.",
+      "button": "Inquire about joining as a civic hub"
     }
   },
   "work": {
     "eyebrow": "The work",
     "heading": "Two kinds of community assembly.",
-    "intro": "Every host is support to run a community assembly, in one of two forms.",
+    "intro": "Every host is supported to run a community assembly, in one of two forms.",
     "fundingLabel": "Funding",
     "lengthLabel": "Length",
     "core": {
@@ -91,7 +90,7 @@
       "funding": "$10,000–$30,000",
       "length": "10–12 weeks",
       "hours": "~120 hours, led by one to two people",
-      "summary": "\n",
+      "summary": "",
       "stepsLabel": "The playbook",
       "steps": [
         {
@@ -108,7 +107,7 @@
         },
         {
           "name": "Synthesis",
-          "body": "A map of community priorities that are immediately actionable and what needs further deliberation"
+          "body": "A map of community priorities that are immediately actionable and what needs further deliberation."
         }
       ]
     },
@@ -117,24 +116,24 @@
       "funding": "$50,000–$60,000",
       "length": "February–July 2027",
       "hours": "6 months that move from agenda setting to decisions",
-      "summary": "\n",
+      "summary": "",
       "stepsLabel": "The phases",
       "steps": [
         {
           "name": "Agenda setting",
-          "body": "The shortform arc"
+          "body": "The shortform arc."
         },
         {
           "name": "Goal setting",
-          "body": "Community forum and Open poll rounds surface shared values, ending in a goals statement the community stands behind."
+          "body": "Community forum and open poll rounds surface shared values, ending in a goals statement the community stands behind."
         },
         {
           "name": "Idea development",
-          "body": "Additional community forum and Open poll rounds develop potential solutions"
+          "body": "Additional community forum and open poll rounds develop potential solutions."
         },
         {
           "name": "Tradeoffs",
-          "body": "Residents weigh options together, producing a map of tradeoffs to carry into decision making"
+          "body": "Residents weigh options together, producing a map of tradeoffs to carry into decision making."
         },
         {
           "name": "Decision making",
@@ -143,10 +142,44 @@
       ]
     }
   },
+  "tools": {
+    "eyebrow": "The tools",
+    "heading": "Easier to run. Harder to dismiss.",
+    "intro": "Every host gets CivicOS, BLOOM’s open-source deliberation platform, free to use forever.",
+    "items": [
+      {
+        "label": "Live conversations",
+        "name": "Table Themer",
+        "body": "Captures what each table says during community forums and civic assemblies, and shows the themes emerging across the room as the conversation happens.",
+        "linkLabel": "",
+        "link": "",
+        "image": "photos/civicos-live-conversations.jpg",
+        "imageAlt": "Residents talking around a table at a community forum"
+      },
+      {
+        "label": "Digital participation",
+        "name": "Open Poll",
+        "body": "Residents add their own statements and react to their neighbors’ (agree, disagree, or unsure), mapping where the community agrees, where it divides, and what common ground already exists.",
+        "linkLabel": "Try the national Open Poll",
+        "link": "https://all.bloomproject.us/landing",
+        "image": "photos/civicos-open-poll.jpg",
+        "imageAlt": "An Open Poll statement on a phone, with agree and disagree votes around it"
+      },
+      {
+        "label": "Reports & insights",
+        "name": "Public reports",
+        "body": "Turns everything people said into a clear public report that decision-makers and neighbors can read in minutes.",
+        "linkLabel": "See the Central Oregon report",
+        "link": "https://report.bloomproject.us/central-oregon-ai/",
+        "image": "photos/civicos-report.jpg",
+        "imageAlt": "Cover of the public report: What did Central Oregonians have to say about AI?"
+      }
+    ]
+  },
   "support": {
     "eyebrow": "What hosts receive",
     "heading": "Funding, tools, and a network behind you.",
-    "fundingNote": "\n",
+    "fundingNote": "",
     "receive": [
       {
         "name": "Methods",
@@ -154,15 +187,11 @@
       },
       {
         "name": "Platform",
-        "body": "CivicOS, BLOOM’s open-source deliberation suite, free to use. Your contact list stays yours."
+        "body": "CivicOS tools for live conversations, open polls, and public reports. More on the tools below."
       },
       {
         "name": "Training",
         "body": "Facilitation and organizing, plus coaching, through your civic hub or BLOOM."
-      },
-      {
-        "name": "Reporting tools",
-        "body": "Tools to synthesize what people say across every level of discussion, and to present it clearly."
       },
       {
         "name": "A peer cohort",
@@ -175,8 +204,8 @@
     "heading": "What your community’s work can change.",
     "items": [
       {
-        "name": "Government Policy",
-        "body": "Every host identifies decision-makers and decisions on a timeline: a county commission vote, a district’s classroom policy, an employer’s deployment plan, a state bill."
+        "name": "Government policy",
+        "body": "Every host identifies decision-makers and decisions on a timeline: a county commission vote, a district’s classroom policy, an employer’s deployment plan, a state bill. What the community concludes is delivered to those decision-makers in public."
       },
       {
         "name": "Community action",
@@ -191,7 +220,7 @@
   "who": {
     "eyebrow": "What we’re looking for",
     "heading": "What makes a strong host.",
-    "whereLabel": "\n",
+    "whereLabel": "",
     "where": [
       "Ideal hosts work where something clear is at stake: a decision about AI that a nameable body will make on a nameable timeline, or a plan to put a missing decision on the table."
     ],
@@ -207,20 +236,20 @@
     ],
     "influenceLabel": "",
     "influence": "",
-    "assessHeading": "How we will assess potential hosts",
-    "assessIntro": "We are looking for hosts with four key attributes.",
+    "assessHeading": "How we will assess",
+    "assessIntro": "",
     "criteria": [
       {
         "name": "Existing relationships and convening capacity",
         "body": "Enough standing with enough different people to convene partners: faith, labor, youth and education, small business, neighborhood and civic, or whoever the real constituencies are where you are."
       },
       {
-        "name": "A commitment to build collaborative politics",
+        "name": "A commitment to collaborative politics",
         "body": "Drawn to finding out what people think through deliberation, rather than confirming what you already believe."
       },
       {
         "name": "Organizing or policy capacity",
-        "body": "We bring what we can on synthesis and reporting, and help identify pathways to political impact. Hosts who know local decision-makers and can turn people out through their networks will likely be more successful."
+        "body": "Hosts who know local decision-makers and can turn people out through their networks will likely be more successful. BLOOM helps with synthesis, reporting, and pathways to impact."
       },
       {
         "name": "A learning partner",
@@ -250,7 +279,7 @@
       },
       {
         "when": "Feb–Jul 2027",
-        "what": "Shortform and longform assemblies"
+        "what": "Community assemblies"
       },
       {
         "when": "First half 2028",
@@ -260,7 +289,7 @@
     "notes": [
       {
         "name": "Selection process",
-        "body": "The application takes about an hour. Short-listed finalists are invited to interviews in December. Being invited is not a guarantee of selection."
+        "body": "Short-listed finalists are invited to interviews in December. Being invited is not a guarantee of selection."
       },
       {
         "name": "The arc",
@@ -272,12 +301,13 @@
     "button": "Register for an info session",
     "when": "Thursday, October 22 · 10:00 AM PT / 1:00 PM ET",
     "cardLine": "",
-    "prompt": "Have questions before you apply?"
+    "prompt": "Have questions before you apply?",
+    "heroPrefix": "Info session"
   },
   "applicationForm": {
     "eyebrow": "Application",
     "heading": "Apply to be a Civic Host.",
-    "intro": "The application takes about an hour. Applications are due November 20, 2026.",
+    "intro": "The application takes about half an hour. Applications are due November 20, 2026.",
     "newTab": "Prefer a full page? Open the form in a new tab."
   }
 }

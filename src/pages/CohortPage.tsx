@@ -15,7 +15,7 @@ import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
 import { assetHref, sectionHref } from "../utils/href";
 
-const SECTIONS = ["paths", "host-roles", "support", "impact", "who", "timeline", "apply"] as const;
+const SECTIONS = ["paths", "who", "host-roles", "support", "tools", "impact", "timeline", "apply"] as const;
 
 const FILE = "cohort.json";
 
@@ -173,6 +173,12 @@ export default function CohortPage() {
             {infoButton}
             {pdfButton}
           </div>
+          {showInfoSession && c.infoSession.when.trim() && (
+            <p className="mt-3 text-sm text-maroon-900/75">
+              <E path="infoSession.heroPrefix" className="font-medium text-maroon-900">{c.infoSession.heroPrefix}</E>:{" "}
+              <E path="infoSession.when">{c.infoSession.when}</E>
+            </p>
+          )}
 
           <div className="mt-14 border-t border-blush-200 pt-6">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
@@ -206,7 +212,7 @@ export default function CohortPage() {
       {/* Section bar: sticks under the site header while scrolling, highlights the current section */}
       <nav aria-label="On this page" className="sticky top-20 z-40 border-y border-blush-200 bg-cream/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center gap-6 px-5 lg:px-10">
-          <p className="hidden shrink-0 text-xs font-semibold uppercase tracking-[0.18em] text-maroon-900/60 md:block">{c.navLabel}</p>
+          <p className="hidden shrink-0 text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500 md:block">{c.navLabel}</p>
           <div className="-mx-2 flex gap-1 overflow-x-auto py-2 [scrollbar-width:none]">
             {navIds.map((id) => (
               <a
@@ -223,26 +229,15 @@ export default function CohortPage() {
         </div>
       </nav>
 
-      {/* A national network */}
+      {/* The ambition */}
       <section className="bg-cream py-14 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-12 lg:px-10">
-          <div className="md:col-span-5">
-            <Eyebrow>
-              <E path="network.eyebrow">{c.network.eyebrow}</E>
-            </Eyebrow>
-            <h2 className={sectionHeading}>
-              <E path="network.heading">{c.network.heading}</E>
-            </h2>
-          </div>
-          <E as="p" path="network.body" className="self-end text-lg leading-relaxed text-maroon-900/85 md:col-span-6 md:col-start-7">
-            {c.network.body}
+        <div className="mx-auto max-w-4xl px-5 text-center lg:px-10">
+          <E as="p" path="ambition.lead" className="text-lg leading-relaxed text-maroon-900/80 sm:text-xl">
+            {c.ambition.lead}
           </E>
-          <img
-            src={assetHref("photos/delegates-conversation.jpg")}
-            alt={c.network.imageAlt}
-            loading="lazy"
-            className="aspect-[21/9] w-full rounded-3xl bg-blush-100 object-cover object-[50%_30%] md:col-span-12"
-          />
+          <E as="p" path="ambition.statement" className="mt-8 font-display text-3xl leading-snug text-bloom-500 sm:text-4xl">
+            {c.ambition.statement}
+          </E>
         </div>
       </section>
 
@@ -251,18 +246,19 @@ export default function CohortPage() {
         <Glow tone="blush" className="-right-1/4 top-1/3 h-[60vmin] w-[60vmin]" />
         <div className="relative mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-12 lg:px-10">
           <div className="md:col-span-5">
-            <div className="md:sticky md:top-32">
+            <div className="md:sticky md:top-40">
               <Eyebrow>
                 <E path="ladder.eyebrow">{c.ladder.eyebrow}</E>
               </Eyebrow>
-              <p className="mt-6 font-display text-4xl leading-tight text-maroon-900 sm:text-5xl">
+              <p className="mt-6 font-display text-3xl leading-tight text-maroon-900 sm:text-4xl">
                 <E path="ladder.heading">{c.ladder.heading}</E>
-                <E path="ladder.headingAccent" className="block text-bloom-500">
+                <E path="ladder.headingAccent" className="mt-2 block text-bloom-500">
                   {c.ladder.headingAccent}
                 </E>
               </p>
               <div className="mt-8 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
                 <E as="p" path="ladder.body">{c.ladder.body}</E>
+                <E as="p" path="network.body">{c.network.body}</E>
                 <E as="p" path="ladder.emphasis" className="font-medium text-maroon-900">
                   {c.ladder.emphasis}
                 </E>
@@ -302,18 +298,13 @@ export default function CohortPage() {
               );
             })}
           </ol>
-        </div>
-      </section>
 
-      {/* The ambition */}
-      <section className="bg-cream py-14 md:py-20">
-        <div className="mx-auto max-w-4xl px-5 text-center lg:px-10">
-          <E as="p" path="ambition.lead" className="text-lg leading-relaxed text-maroon-900/80 sm:text-xl">
-            {c.ambition.lead}
-          </E>
-          <E as="p" path="ambition.statement" className="mt-8 font-display text-3xl leading-snug text-bloom-500 sm:text-4xl">
-            {c.ambition.statement}
-          </E>
+          <img
+            src={assetHref("photos/delegates-conversation.jpg")}
+            alt={c.network.imageAlt}
+            loading="lazy"
+            className="aspect-[21/9] w-full rounded-3xl bg-blush-100 object-cover object-[50%_30%] md:col-span-12"
+          />
         </div>
       </section>
 
@@ -358,6 +349,62 @@ export default function CohortPage() {
                 </Pill>
               </div>
             </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* Who we're looking for */}
+      <section id="who" className="relative scroll-mt-40 overflow-hidden bg-cream py-14 md:py-20">
+        <Glow tone="blush" className="-right-1/4 top-0 h-[60vmin] w-[60vmin]" />
+        <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
+          <Eyebrow>
+            <E path="who.eyebrow">{c.who.eyebrow}</E>
+          </Eyebrow>
+          <h2 className={`${sectionHeading} max-w-3xl`}>
+            <E path="who.heading">{c.who.heading}</E>
+          </h2>
+          {/* One column: the "what's at stake" paragraph, then topics wrapping across the full width */}
+          <div className="mt-6 max-w-3xl space-y-4 text-lg leading-relaxed text-maroon-900/85">
+            <E as="p" path="who.whereLabel" className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+              {c.who.whereLabel}
+            </E>
+            {c.who.where.map((p, i) => (
+              <E key={i} as="p" path={`who.where.${i}`}>{p}</E>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <E as="p" path="who.topicsLabel" className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+              {c.who.topicsLabel}
+            </E>
+            <E as="p" path="who.topicsIntro" className="mt-2 text-[15px] leading-relaxed text-maroon-900/85">
+              {c.who.topicsIntro}
+            </E>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {c.who.topics.map((t, i) => (
+                <li key={i} className="rounded-full bg-blush-100 px-4 py-2 text-sm text-bloom-600">
+                  <E path={`who.topics.${i}`}>{t}</E>
+                </li>
+              ))}
+            </ul>
+            <E as="p" path="who.influenceLabel" className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+              {c.who.influenceLabel}
+            </E>
+            <E as="p" path="who.influence" className="mt-2 max-w-3xl text-[15px] leading-relaxed text-maroon-900/85">
+              {c.who.influence}
+            </E>
+          </div>
+
+          <div className="mt-10 rounded-3xl bg-white p-8 shadow-soft sm:p-12">
+            <E as="p" path="who.assessHeading" className="font-display text-3xl text-maroon-900">{c.who.assessHeading}</E>
+            <E as="p" path="who.assessIntro" className="mt-3 max-w-3xl text-[15px] leading-relaxed text-maroon-900/85">
+              {c.who.assessIntro}
+            </E>
+            <ol className="mt-10 grid gap-10 md:grid-cols-2">
+              {c.who.criteria.map((cr, i) => (
+                <NumberedItem key={i} n={i + 1} name={cr.name} body={cr.body} path={`who.criteria.${i}`} />
+              ))}
+            </ol>
           </div>
         </div>
       </section>
@@ -453,6 +500,55 @@ export default function CohortPage() {
         </div>
       </section>
 
+      {/* The tools: CivicOS, one card per tool, tied to the playbook step it supports */}
+      <section id="tools" className="scroll-mt-40 bg-cream py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-10">
+          <Eyebrow>
+            <E path="tools.eyebrow">{c.tools.eyebrow}</E>
+          </Eyebrow>
+          <h2 className={`${sectionHeading} max-w-3xl`}>
+            <E path="tools.heading">{c.tools.heading}</E>
+          </h2>
+          <E as="p" path="tools.intro" className="mt-6 block max-w-2xl text-lg leading-relaxed text-maroon-900/85">
+            {c.tools.intro}
+          </E>
+          <ul className="mt-10 grid gap-6 md:grid-cols-3">
+            {c.tools.items.map((t, i) => (
+              <li key={i} className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-soft">
+                <img
+                  src={assetHref(t.image)}
+                  alt={t.imageAlt}
+                  loading="lazy"
+                  className="aspect-[16/10] w-full bg-blush-50 object-cover object-top"
+                />
+                <div className="flex flex-1 flex-col p-7">
+                  <E as="p" path={`tools.items.${i}.label`} className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+                    {t.label}
+                  </E>
+                  <E as="p" path={`tools.items.${i}.name`} className="mt-2 font-display text-2xl text-maroon-900">
+                    {t.name}
+                  </E>
+                  <E as="p" path={`tools.items.${i}.body`} className="mt-3 flex-1 text-[15px] leading-relaxed text-maroon-900/85">
+                    {t.body}
+                  </E>
+                  {t.link && t.linkLabel.trim() && (
+                    <a
+                      href={t.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group mt-4 inline-flex items-center gap-2 text-sm font-medium text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
+                    >
+                      {t.linkLabel}
+                      <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+                    </a>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Impact */}
       <section id="impact" className="scroll-mt-40 bg-cream py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
@@ -467,66 +563,6 @@ export default function CohortPage() {
               <NumberedItem key={i} n={i + 1} name={it.name} body={it.body} path={`impact.items.${i}`} />
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* Who we're looking for */}
-      <section id="who" className="relative scroll-mt-40 overflow-hidden bg-cream py-14 md:py-20">
-        <Glow tone="blush" className="-right-1/4 top-0 h-[60vmin] w-[60vmin]" />
-        <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>
-            <E path="who.eyebrow">{c.who.eyebrow}</E>
-          </Eyebrow>
-          <h2 className={`${sectionHeading} max-w-3xl`}>
-            <E path="who.heading">{c.who.heading}</E>
-          </h2>
-          <div className="mt-10 grid gap-10 md:grid-cols-12">
-            <div className="space-y-4 text-[15px] leading-relaxed text-maroon-900/85 md:col-span-6">
-              <E as="p" path="who.whereLabel" className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
-                {c.who.whereLabel}
-              </E>
-              {c.who.where.map((p, i) => (
-                <E key={i} as="p" path={`who.where.${i}`}>{p}</E>
-              ))}
-            </div>
-            <div className="space-y-8 md:col-span-5 md:col-start-8">
-              <div>
-                <E as="p" path="who.topicsLabel" className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
-                  {c.who.topicsLabel}
-                </E>
-                <E as="p" path="who.topicsIntro" className="mt-3 text-[15px] leading-relaxed text-maroon-900/85">
-                  {c.who.topicsIntro}
-                </E>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {c.who.topics.map((t, i) => (
-                    <li key={i} className="rounded-full bg-blush-100 px-4 py-2 text-sm text-bloom-600">
-                      <E path={`who.topics.${i}`}>{t}</E>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <E as="p" path="who.influenceLabel" className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
-                  {c.who.influenceLabel}
-                </E>
-                <E as="p" path="who.influence" className="mt-3 text-[15px] leading-relaxed text-maroon-900/85">
-                  {c.who.influence}
-                </E>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-12 rounded-3xl bg-white p-8 shadow-soft sm:p-12">
-            <E as="p" path="who.assessHeading" className="font-display text-3xl text-maroon-900">{c.who.assessHeading}</E>
-            <E as="p" path="who.assessIntro" className="mt-3 max-w-3xl text-[15px] leading-relaxed text-maroon-900/85">
-              {c.who.assessIntro}
-            </E>
-            <ol className="mt-10 grid gap-10 md:grid-cols-2">
-              {c.who.criteria.map((cr, i) => (
-                <NumberedItem key={i} n={i + 1} name={cr.name} body={cr.body} path={`who.criteria.${i}`} />
-              ))}
-            </ol>
-          </div>
         </div>
       </section>
 
