@@ -12,7 +12,7 @@ const TEAM: Member[] = [
   { name: "Mike Grafton", role: "Engineering Lead", photo: "/team/mike.jpg" },
   { name: "Lauren Higgins", role: "Senior Advisor", org: "New Pluralist", photo: "/team/lauren.jpg" },
   { name: "Clara Long", role: "Co-Executive Director", photo: "/team/clara.jpeg" },
-  { name: "Humphrey Obuobi", role: "Design", photo: "/team/humphrey.png" },
+  { name: "Humphrey Obuobi", role: "Product & Design Lead", photo: "/team/humphrey.png" },
   { name: "Rahmin Sarabi", role: "Co-Executive Director", photo: "/team/rahmin.jpg" },
   { name: "Audrey Tang", role: "Senior Advisor", photo: "/team/audrey.jpeg" },
   { name: "Zabrae Valentine", role: "Deliberation & Policy Impact", photo: "/team/zabrae.jpeg" },
