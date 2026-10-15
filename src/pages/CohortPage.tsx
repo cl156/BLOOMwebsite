@@ -525,10 +525,6 @@ export default function CohortPage() {
                   <E as="p" path={`tools.items.${i}.body`} className="mt-3 flex-1 text-[15px] leading-relaxed text-maroon-900/85">
                     {t.body}
                   </E>
-                  <p className="mt-5 text-sm text-maroon-900/65">
-                    <E path="tools.usedInLabel">{c.tools.usedInLabel}</E>:{" "}
-                    <E path={`tools.items.${i}.usedIn`} className="font-medium text-maroon-900">{t.usedIn}</E>
-                  </p>
                   {t.link && t.linkLabel.trim() && (
                     <a
                       href={t.link}
