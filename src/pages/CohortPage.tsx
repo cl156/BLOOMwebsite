@@ -15,7 +15,7 @@ import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
 import { assetHref, sectionHref } from "../utils/href";
 
-const SECTIONS = ["paths", "who", "host-roles", "impact", "support", "timeline", "apply"] as const;
+const SECTIONS = ["paths", "who", "host-roles", "support", "tools", "impact", "timeline", "apply"] as const;
 
 const FILE = "cohort.json";
 
@@ -464,23 +464,6 @@ export default function CohortPage() {
         </div>
       </section>
 
-      {/* Impact */}
-      <section id="impact" className="scroll-mt-40 bg-cream py-14 md:py-20">
-        <div className="mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>
-            <E path="impact.eyebrow">{c.impact.eyebrow}</E>
-          </Eyebrow>
-          <h2 className={`${sectionHeading} max-w-3xl`}>
-            <E path="impact.heading">{c.impact.heading}</E>
-          </h2>
-          <ol className="mt-10 grid gap-10 md:grid-cols-3">
-            {c.impact.items.map((it, i) => (
-              <NumberedItem key={i} n={i + 1} name={it.name} body={it.body} path={`impact.items.${i}`} />
-            ))}
-          </ol>
-        </div>
-      </section>
-
       {/* Support */}
       <section id="support" className="scroll-mt-40 bg-cream py-14 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-12 lg:px-10">
@@ -508,6 +491,76 @@ export default function CohortPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* The tools: CivicOS, one card per tool, tied to the playbook step it supports */}
+      <section id="tools" className="scroll-mt-40 bg-cream py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-10">
+          <Eyebrow>
+            <E path="tools.eyebrow">{c.tools.eyebrow}</E>
+          </Eyebrow>
+          <h2 className={`${sectionHeading} max-w-3xl`}>
+            <E path="tools.heading">{c.tools.heading}</E>
+          </h2>
+          <E as="p" path="tools.intro" className="mt-6 block max-w-2xl text-lg leading-relaxed text-maroon-900/85">
+            {c.tools.intro}
+          </E>
+          <ul className="mt-10 grid gap-6 md:grid-cols-3">
+            {c.tools.items.map((t, i) => (
+              <li key={i} className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-soft">
+                <img
+                  src={assetHref(t.image)}
+                  alt={t.imageAlt}
+                  loading="lazy"
+                  className="aspect-[16/10] w-full bg-blush-50 object-cover object-top"
+                />
+                <div className="flex flex-1 flex-col p-7">
+                  <E as="p" path={`tools.items.${i}.label`} className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+                    {t.label}
+                  </E>
+                  <E as="p" path={`tools.items.${i}.name`} className="mt-2 font-display text-2xl text-maroon-900">
+                    {t.name}
+                  </E>
+                  <E as="p" path={`tools.items.${i}.body`} className="mt-3 flex-1 text-[15px] leading-relaxed text-maroon-900/85">
+                    {t.body}
+                  </E>
+                  <p className="mt-5 text-sm text-maroon-900/65">
+                    <E path="tools.usedInLabel">{c.tools.usedInLabel}</E>:{" "}
+                    <E path={`tools.items.${i}.usedIn`} className="font-medium text-maroon-900">{t.usedIn}</E>
+                  </p>
+                  {t.link && t.linkLabel.trim() && (
+                    <a
+                      href={t.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group mt-4 inline-flex items-center gap-2 text-sm font-medium text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
+                    >
+                      {t.linkLabel}
+                      <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+                    </a>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Impact */}
+      <section id="impact" className="scroll-mt-40 bg-cream py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-10">
+          <Eyebrow>
+            <E path="impact.eyebrow">{c.impact.eyebrow}</E>
+          </Eyebrow>
+          <h2 className={`${sectionHeading} max-w-3xl`}>
+            <E path="impact.heading">{c.impact.heading}</E>
+          </h2>
+          <ol className="mt-10 grid gap-10 md:grid-cols-3">
+            {c.impact.items.map((it, i) => (
+              <NumberedItem key={i} n={i + 1} name={it.name} body={it.body} path={`impact.items.${i}`} />
+            ))}
+          </ol>
         </div>
       </section>
 
