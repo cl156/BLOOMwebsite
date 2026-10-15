@@ -128,8 +128,8 @@
   },
   "tools": {
     "eyebrow": "The tools",
-    "heading": "Easier to run. Harder to dismiss.",
-    "intro": "Every host gets CivicOS, BLOOM’s open-source deliberation platform, free to use forever.",
+    "heading": "CivicOS: BLOOM’s open-source deliberation platform",
+    "intro": "Every Civic Host gets lifetime access to CivicOS and training on how to use it.",
     "items": [
       {
         "label": "Live conversations",
