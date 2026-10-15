@@ -53,8 +53,8 @@ export default function Vision() {
             fail to proactively and meaningfully engage the people who are affected the most.
           </p>
           <p className="!mt-10 font-display text-2xl leading-snug text-bloom-500 sm:text-3xl">
-            BLOOM&rsquo;s work starts from a different premise: give people a chance to learn, listen, and work through
-            the choices to decide together what happens next.
+            BLOOM&rsquo;s work starts from a different premise: give people a chance to learn, listen, work through
+            options and decide together what happens next.
           </p>
           <p>
             Our partners, local organizations committed to the wellbeing of their communities, bring people together
