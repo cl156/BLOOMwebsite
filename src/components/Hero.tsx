@@ -50,7 +50,7 @@ export default function Hero() {
               <em className="text-bloom-500">decide AI&rsquo;s role in their&nbsp;future.</em>
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <Pill href={sectionHref("work")}>See the results from Utah</Pill>
+              <Pill href={sectionHref("work")}>See the results from Utah and Oregon</Pill>
             </div>
             <p className="mt-4 text-sm text-maroon-900/70">
               Want to host an assembly in your community?{" "}
