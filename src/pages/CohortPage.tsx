@@ -173,6 +173,12 @@ export default function CohortPage() {
             {infoButton}
             {pdfButton}
           </div>
+          {showInfoSession && c.infoSession.when.trim() && (
+            <p className="mt-3 text-sm text-maroon-900/75">
+              <E path="infoSession.heroPrefix" className="font-medium text-maroon-900">{c.infoSession.heroPrefix}</E>:{" "}
+              <E path="infoSession.when">{c.infoSession.when}</E>
+            </p>
+          )}
 
           <div className="mt-14 border-t border-blush-200 pt-6">
             <div className="flex flex-wrap items-baseline justify-between gap-3">

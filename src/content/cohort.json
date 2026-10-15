@@ -145,7 +145,7 @@
   "tools": {
     "eyebrow": "The tools",
     "heading": "Easier to run. Harder to dismiss.",
-    "intro": "Every host gets CivicOS, BLOOM’s open-source deliberation platform, free to use now, and beyond. ",
+    "intro": "Every host gets CivicOS, BLOOM’s open-source deliberation platform, free to use forever.",
     "items": [
       {
         "label": "Live conversations",
@@ -301,12 +301,13 @@
     "button": "Register for an info session",
     "when": "Thursday, October 22 · 10:00 AM PT / 1:00 PM ET",
     "cardLine": "",
-    "prompt": "Have questions before you apply?"
+    "prompt": "Have questions before you apply?",
+    "heroPrefix": "Info session"
   },
   "applicationForm": {
     "eyebrow": "Application",
     "heading": "Apply to be a Civic Host.",
-    "intro": "The application takes about an hour. Applications are due November 20, 2026.",
+    "intro": "The application takes about half an hour. Applications are due November 20, 2026.",
     "newTab": "Prefer a full page? Open the form in a new tab."
   }
 }
