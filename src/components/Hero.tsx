@@ -3,10 +3,7 @@
  * (layout from Humphrey's site sketch, plus an inset photo).
  * Edges line up with the header; height follows the content.
  */
-import { useEffect, useState } from "react";
-import { sectionHref, pageHref, assetHref } from "../utils/href";
-import { FormLink } from "./CohortForm";
-import { CLOSES_LABEL, rfpStatus } from "../content/rfp";
+import { pageHref, assetHref } from "../utils/href";
 import { INSTITUTION } from "../content/terms";
 import { Eyebrow, Glow, Pill } from "./ui";
 import { FeaturedIn } from "./LatestNews";
@@ -19,26 +16,6 @@ const STATS = [
   { value: "92%", label: "of delegates supported the full package of recommendations" },
 ];
 
-/* Who should have a say: shown once in turn, ending back on "Communities". */
-const WHO = ["Communities", "Workers", "Parents", "Young people", "Neighbors", "Communities"];
-const WORD_MS = 2000;
-
-/** The headline's first word, on its own line so changing widths never reflow the rest of the hero. */
-function RotatingWord() {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
-    if (i >= WHO.length - 1) return;
-    const t = window.setTimeout(() => setI(i + 1), i === 0 ? WORD_MS + 600 : WORD_MS);
-    return () => window.clearTimeout(t);
-  }, [i]);
-  return (
-    <span key={i} className="block animate-[fadeIn_.45s_ease]">
-      {WHO[i]}
-    </span>
-  );
-}
-
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-cream">
@@ -46,17 +23,10 @@ export default function Hero() {
       <Glow tone="blush" className="-right-40 -top-40 h-[50vmin] w-[50vmin] opacity-70" />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-28 sm:pt-32 lg:px-10 lg:pb-24">
-        <h1 className="max-w-5xl font-display tracking-tight">
-          <span className="block text-2xl font-normal text-maroon-900 sm:text-3xl">
-            Decisions about AI are changing lives.
-          </span>
-          <span className="mt-2 block text-5xl font-medium leading-[1.02] text-bloom-500 sm:text-6xl lg:text-7xl">
-            <span className="sr-only">Communities should have a say in how.</span>
-            <span aria-hidden="true">
-              <RotatingWord />
-              <span className="block">should have a say in&nbsp;how.</span>
-            </span>
-          </span>
+        {/* One message: the institution's name as a label, then what it does. */}
+        <Eyebrow>The {INSTITUTION}</Eyebrow>
+        <h1 className="mt-5 max-w-5xl text-balance font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-6xl lg:text-7xl">
+          Equipping communities across the U.S. to decide AI&rsquo;s role in their&nbsp;future.
         </h1>
 
         <div className="mt-12 grid items-center gap-10 md:grid-cols-12 lg:mt-14">
@@ -69,26 +39,13 @@ export default function Hero() {
             <figcaption className="mt-3 text-xs text-maroon-900/60">Utah Solutions Forum, September 2026</figcaption>
           </figure>
 
-          <div className="text-[15px] leading-relaxed text-maroon-900 sm:text-base md:col-span-6 lg:col-span-6 lg:col-start-7">
-            {/* The institution's name as a label, then the key statement. */}
-            <Eyebrow>The {INSTITUTION}</Eyebrow>
-            <p className="mt-3 text-pretty font-display text-2xl leading-snug sm:text-3xl lg:text-4xl lg:leading-tight">
-              Equipping communities across the country to{" "}
-              <em className="text-bloom-500">decide AI&rsquo;s role in their&nbsp;future.</em>
+          <div className="md:col-span-6 lg:col-span-6 lg:col-start-7">
+            <p className="text-pretty font-display text-2xl leading-snug text-maroon-900 sm:text-3xl">
+              Decisions about AI are changing lives. Communities should have a say in&nbsp;how.
             </p>
-            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <Pill href={sectionHref("work")}>See the results from Utah and Oregon</Pill>
+            <div className="mt-8">
+              <Pill href={pageHref("cohort")}>Bring the {INSTITUTION} to your community</Pill>
             </div>
-            <p className="mt-4 text-sm text-maroon-900/70">
-              Want to host an assembly in your community?{" "}
-              {rfpStatus() === "open" ? (
-                <FormLink kind="apply">Apply to be a Civic Host by {CLOSES_LABEL}</FormLink>
-              ) : (
-                <a href={pageHref("cohort")} className="underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600">
-                  Learn about the 2027 Cohort
-                </a>
-              )}
-            </p>
           </div>
         </div>
 
