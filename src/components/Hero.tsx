@@ -26,7 +26,7 @@ export default function Hero() {
         {/* One message, read top to bottom: label, headline, supporting line, button. Photo alongside. */}
         <div className="grid items-center gap-10 md:grid-cols-12 lg:gap-14">
           <div className="md:col-span-7 lg:col-span-7">
-            <Eyebrow>The {INSTITUTION}</Eyebrow>
+            <Eyebrow className="text-sm sm:text-base">The {INSTITUTION}</Eyebrow>
             <h1 className="mt-5 text-balance font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl lg:text-7xl">
               Communities deciding AI&rsquo;s role in their&nbsp;future.
             </h1>
@@ -34,7 +34,7 @@ export default function Hero() {
               Decisions about AI are changing lives. Communities should have a say in&nbsp;how.
             </p>
             <div className="mt-8">
-              <Pill href={pageHref("cohort")}>Bring the {INSTITUTION} to your community</Pill>
+              <Pill href={pageHref("cohort")}>Bring it to your community</Pill>
             </div>
           </div>
 
