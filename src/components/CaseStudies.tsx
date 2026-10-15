@@ -4,7 +4,7 @@
  * scrolling the map under a resting cursor would otherwise change the card unasked.
  */
 import { useState } from "react";
-import { OREGON_ASSEMBLY, UTAH_FORUM } from "../content/terms";
+import { HOSTS, INSTITUTION, OREGON_ASSEMBLY, UTAH_FORUM } from "../content/terms";
 import { Eyebrow, Heading, Pill } from "./ui";
 import { US_STATES, MAP_WIDTH, MAP_HEIGHT, MAP_FULL_WIDTH } from "../content/usStates";
 
@@ -143,6 +143,19 @@ export default function CaseStudies() {
             </div>
             </div>
           </article>
+
+          {/* The two sites are part of one network. */}
+          <div className="mt-6 rounded-2xl border border-blush-200 p-7">
+            <p className="font-display text-2xl leading-snug text-maroon-900">
+              No community goes it alone. {HOSTS} share what works, and their assemblies connect into the {INSTITUTION}.
+            </p>
+            <a
+              href={pageHref("cohort")}
+              className="mt-4 inline-flex items-center gap-2 text-sm text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
+            >
+              See how the network grows from communities to the country &rarr;
+            </a>
+          </div>
         </div>
 
         {/* Right: the map. Starts level with the tabs, then stays in view while the card scrolls past. */}
