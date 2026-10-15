@@ -13,7 +13,7 @@
 import { useEffect, useState } from "react";
 import { Pill } from "./ui";
 import { pageHref } from "../utils/href";
-import { APPLY_URL, CLOSES_LABEL, OPENS_LABEL, rfpStatus } from "../content/rfp";
+import { APPLY_URL, CLOSES_LABEL, OPENS, OPENS_LABEL, OPENS_TODAY_LABEL, rfpStatus } from "../content/rfp";
 
 const AIRTABLE_NOTIFY_URL = ""; // Leave empty: "Get notified" buttons go to the Get updates page, whose form has a Civic Host checkbox
 
@@ -132,7 +132,11 @@ export function CohortCTA({
 /** One line on where the call stands, e.g. "Applications open October 15, 2026". */
 export function cohortStatusLine() {
   const status = rfpStatus();
-  if (status === "upcoming") return `Applications open ${OPENS_LABEL}`;
+  if (status === "upcoming") {
+    // On opening day (Pacific time), say "today" so morning visitors know why they can't apply yet.
+    const day = (d: Date) => d.toLocaleDateString("en-US", { timeZone: "America/Los_Angeles" });
+    return `Applications open ${day(new Date()) === day(OPENS) ? OPENS_TODAY_LABEL : OPENS_LABEL}`;
+  }
   if (status === "open") return `Applications open · due ${CLOSES_LABEL}`;
   return "Applications for the 2027 Cohort are closed";
 }
