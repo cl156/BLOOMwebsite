@@ -17,8 +17,8 @@ export const CONTACT_EMAIL = "hello@bloom-project.org";
 /** The RFP slide deck as a PDF in public/, e.g. "rfp/founding-civic-hosts-rfp.pdf". The download link shows once this is set and applications have opened. */
 export const RFP_PDF = "rfp/founding-civic-hosts-rfp.pdf";
 
-/** Pacific time. Before OPENS the site shows "Get notified"; after CLOSES it says applications are closed. */
-export const OPENS = new Date("2026-10-15T00:00:00-07:00");
+/** Pacific time (Oct 15 is daylight time, UTC−7). Before OPENS the site shows "Get notified"; after CLOSES it says applications are closed. Applications open at 2:00 PM PT. */
+export const OPENS = new Date("2026-10-15T14:00:00-07:00");
 export const CLOSES = new Date("2026-11-20T23:59:59-08:00");
 export const OPENS_LABEL = "October 15, 2026";
 export const CLOSES_LABEL = "November 20, 2026";
