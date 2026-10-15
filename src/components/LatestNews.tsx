@@ -10,24 +10,44 @@ import { pageHref } from "../utils/href";
 const formatDate = (iso: string) =>
   new Date(`${iso}T12:00:00`).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
-/** Unique outlet names, newest first, without labels like "(podcast)". */
-const OUTLETS = [...new Set(news.map((a) => a.outlet.replace(/\s*\(.*\)$/, "")))];
+/** One entry per outlet, newest first, without labels like "(podcast)". Each links to that outlet's latest story. */
+const OUTLETS = news.reduce<{ name: string; url: string; title: string }[]>((list, a) => {
+  const name = a.outlet.replace(/\s*\(.*\)$/, "");
+  if (!list.some((o) => o.name === name)) list.push({ name, url: a.url, title: a.title });
+  return list;
+}, []);
 
 export function FeaturedIn() {
   return (
-    <a
-      href={pageHref("news")}
-      className="group mt-10 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm text-maroon-900/60 hover:text-maroon-900"
-    >
-      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">Featured in</span>
+    <div className="mt-10 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm">
+      <a
+        href={pageHref("news")}
+        className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500 hover:text-bloom-600"
+      >
+        Featured in
+      </a>
       {OUTLETS.map((o, i) => (
-        <span key={o} className="font-display text-base text-maroon-900/70 group-hover:text-maroon-900">
-          {o}
+        <span key={o.name} className="font-display text-base text-maroon-900/70">
+          <a
+            href={o.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={o.title}
+            className="underline decoration-transparent underline-offset-4 transition-colors hover:text-maroon-900 hover:decoration-bloom-300"
+          >
+            {o.name}
+          </a>
           {i < OUTLETS.length - 1 && <span className="ml-3 text-bloom-300" aria-hidden="true">&middot;</span>}
         </span>
       ))}
-      <span className="text-bloom-600 transition-transform group-hover:translate-x-0.5" aria-hidden="true">&rarr;</span>
-    </a>
+      <a
+        href={pageHref("news")}
+        aria-label="All news"
+        className="text-bloom-600 transition-transform hover:translate-x-0.5"
+      >
+        &rarr;
+      </a>
+    </div>
   );
 }
 
