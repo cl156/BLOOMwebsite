@@ -4,7 +4,6 @@
  * Edges line up with the header; height follows the content.
  */
 import { sectionHref, pageHref, assetHref } from "../utils/href";
-import { INSTITUTION } from "../content/terms";
 import { FormLink } from "./CohortForm";
 import { CLOSES_LABEL, rfpStatus } from "../content/rfp";
 import { Glow, Pill } from "./ui";
@@ -47,8 +46,8 @@ export default function Hero() {
           <div className="text-[15px] leading-relaxed text-maroon-900 sm:text-base md:col-span-6 lg:col-span-6 lg:col-start-7">
             {/* The key statement: set at the size of the line above the headline. */}
             <p className="text-pretty font-display text-2xl leading-snug sm:text-3xl">
-              <span className="font-medium">The {INSTITUTION}</span> gives communities across the country{" "}
-              <em className="text-bloom-500">a real say in AI&rsquo;s role in their&nbsp;future.</em>
+              Equipping communities across the country to{" "}
+              <em className="text-bloom-500">decide AI&rsquo;s role in their&nbsp;future.</em>
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Pill href={sectionHref("work")}>See the results from Utah</Pill>
