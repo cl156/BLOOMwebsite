@@ -11,7 +11,7 @@ import { FeaturedIn } from "./LatestNews";
 /* Pilot results, from the Cohort page intro and the Utah press release */
 const STATS = [
   { value: "~1,000", label: "residents engaged across six counties in Utah and Oregon" },
-  { value: "75", label: "delegates chosen in Utah and Oregon to be representative of the states\u2019 mix of political views" },
+  { value: "75", label: "delegates chosen in Utah and Oregon to be representative of their communities\u2019 mix of political views" },
   { value: "10", label: "policy recommendations, each backed by at least 82% of delegates" },
   { value: "92%", label: "of delegates supported the full package of recommendations" },
 ];
