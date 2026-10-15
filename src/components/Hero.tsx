@@ -3,7 +3,7 @@
  * (layout from Humphrey's site sketch, plus an inset photo).
  * Edges line up with the header; height follows the content.
  */
-import { sectionHref, assetHref } from "../utils/href";
+import { sectionHref, pageHref, assetHref } from "../utils/href";
 import { INSTITUTION } from "../content/terms";
 import { FormLink } from "./CohortForm";
 import { CLOSES_LABEL, rfpStatus } from "../content/rfp";
@@ -59,7 +59,9 @@ export default function Hero() {
               {rfpStatus() === "open" ? (
                 <FormLink kind="apply">Apply to be a Civic Host by {CLOSES_LABEL}</FormLink>
               ) : (
-                <FormLink kind="notify">Get notified about the 2027 Cohort</FormLink>
+                <a href={pageHref("cohort")} className="underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600">
+                  Learn about the 2027 Cohort
+                </a>
               )}
             </p>
           </div>
