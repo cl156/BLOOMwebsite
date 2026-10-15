@@ -31,7 +31,7 @@ export default function Hero() {
               Communities deciding AI&rsquo;s role in their&nbsp;future.
             </h1>
             <p className="mt-6 max-w-xl text-pretty font-display text-xl leading-snug text-maroon-900 sm:text-2xl">
-              Decisions about AI are changing lives. Communities should have a say in&nbsp;how.
+              Decisions about AI are changing lives. Everyone deserves a say in&nbsp;how.
             </p>
             <div className="mt-8">
               <Pill href={pageHref("cohort")}>Bring it to your community</Pill>
