@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "2027 COHORT · CALL FOR CIVIC HOSTS · PUBLIC ASSEMBLY ON AI",
     "heading": "AI issues decided locally. Connected across the country.",
-    "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the country working out together what they want from AI.",
+    "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the country working out what they want from AI.",
     "pdfLabel": "Download the full RFP (PDF)",
     "statsLabel": "From our 2026 pilots",
     "statsLink": "More about the pilots"
@@ -33,7 +33,7 @@
     "apply": "Apply"
   },
   "network": {
-    "body": "Communities across the country learn alongside each other, share what works, and build collective capacity to act.",
+    "body": "Each host builds a constituency behind its community’s common ground. When communities reach shared conclusions, they speak with the weight of many places.",
     "imageAlt": "Delegates talking across a table at the Utah Solutions Forum"
   },
   "ladder": {
@@ -205,7 +205,7 @@
     "items": [
       {
         "name": "Government policy",
-        "body": "Every host identifies decision-makers and decisions on a timeline: a county commission vote, a district’s classroom policy, an employer’s deployment plan, a state bill."
+        "body": "Every host identifies decision-makers and decisions on a timeline: a county commission vote, a district’s classroom policy, an employer’s deployment plan, a state bill. What the community concludes is delivered to those decision-makers in public."
       },
       {
         "name": "Community action",
