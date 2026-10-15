@@ -2,7 +2,6 @@
  * The Vision (why): quotes on the left, narrative on the right,
  * then a photo from the Utah Solutions Forum. All participant quotes rotate in one carousel.
  */
-import { Eyebrow } from "./ui";
 import { ATTRIBUTION, UTAH_FORUM } from "../content/terms";
 import { assetHref } from "../utils/href";
 import QuoteCarousel from "./QuoteCarousel";
@@ -32,8 +31,7 @@ export default function Vision() {
         {/* Left: the voice that frames everything */}
         <div className="md:col-span-5">
           <div className="md:sticky md:top-32">
-            <Eyebrow>The vision</Eyebrow>
-            <div className="mt-6">
+            <div>
               <QuoteCarousel quotes={QUOTES} label="What participants said" />
             </div>
           </div>
