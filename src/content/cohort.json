@@ -1,6 +1,6 @@
 {
   "hero": {
-    "eyebrow": "2027 COHORT · CALL FOR CIVIC HOSTS",
+    "eyebrow": "2027 COHORT · CALL FOR CIVIC HOSTS · PUBLIC ASSEMBLY ON AI",
     "heading": "AI issues decided locally. Connected across the country.",
     "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the country working out together what they want from AI.",
     "pdfLabel": "Download the full RFP (PDF)",
@@ -144,7 +144,7 @@
   },
   "tools": {
     "eyebrow": "The tools",
-    "heading": "Easy to convene. Impossible to ignore.",
+    "heading": "Easier to run. Harder to dismiss.",
     "intro": "Every host gets CivicOS, BLOOM’s open-source deliberation platform, free to use. Your contact list stays yours.",
     "items": [
       {
