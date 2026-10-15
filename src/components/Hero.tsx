@@ -45,7 +45,7 @@ export default function Hero() {
 
           <div className="text-[15px] leading-relaxed text-maroon-900 sm:text-base md:col-span-6 lg:col-span-6 lg:col-start-7">
             {/* The key statement: set at the size of the line above the headline. */}
-            <p className="text-pretty font-display text-2xl leading-snug sm:text-3xl">
+            <p className="text-pretty font-display text-2xl leading-snug sm:text-3xl lg:text-4xl lg:leading-tight">
               Equipping communities across the country to{" "}
               <em className="text-bloom-500">decide AI&rsquo;s role in their&nbsp;future.</em>
             </p>
