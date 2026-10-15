@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "2027 COHORT · CALL FOR CIVIC HOSTS",
     "heading": "AI issues decided locally. Connected across the country.",
-    "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to lead their communities in shaping their futures in the AI era.",
+    "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the country working out together what they want from AI.",
     "pdfLabel": "Download the full RFP (PDF)",
     "statsLabel": "From our 2026 pilots",
     "statsLink": "More about the pilots"
@@ -37,7 +37,7 @@
     "imageAlt": "Delegates talking across a table at the Utah Solutions Forum"
   },
   "ladder": {
-    "eyebrow": "From communities to the country",
+    "eyebrow": "How the Public Assembly on AI works",
     "heading": "No community can solve the AI transition alone.",
     "headingAccent": "Some questions need the whole country.",
     "body": "A community can decide how to govern a proposed data center project. But it cannot by itself determine state or national protections for children, workers, privacy, or increasingly powerful AI systems.",
@@ -146,13 +146,11 @@
     "eyebrow": "The tools",
     "heading": "Easy to convene. Impossible to ignore.",
     "intro": "Every host gets CivicOS, BLOOM’s open-source deliberation platform, free to use. Your contact list stays yours.",
-    "usedInLabel": "Used in",
     "items": [
       {
         "label": "Live conversations",
         "name": "Table Themer",
         "body": "Captures what each table says during community forums and civic assemblies, and shows the themes emerging across the room as the conversation happens.",
-        "usedIn": "Community forums and civic assemblies",
         "linkLabel": "",
         "link": "",
         "image": "photos/civicos-live-conversations.jpg",
@@ -162,7 +160,6 @@
         "label": "Digital participation",
         "name": "Open Poll",
         "body": "Residents add their own statements and react to their neighbors’ (agree, disagree, or unsure), mapping where the community agrees, where it divides, and what common ground already exists.",
-        "usedIn": "Open poll",
         "linkLabel": "Try the national Open Poll",
         "link": "https://all.bloomproject.us/landing",
         "image": "photos/civicos-open-poll.jpg",
@@ -172,7 +169,6 @@
         "label": "Reports & insights",
         "name": "Public reports",
         "body": "Turns everything people said into a clear public report that decision-makers and neighbors can read in minutes.",
-        "usedIn": "Synthesis",
         "linkLabel": "See the Central Oregon report",
         "link": "https://report.bloomproject.us/central-oregon-ai/",
         "image": "photos/civicos-report.jpg",
