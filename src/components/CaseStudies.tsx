@@ -28,7 +28,8 @@ const SITES: Record<SiteId, { place: string; chip: string; title: string; host: 
   OR: {
     place: "Central Oregon",
     chip: "Assembly December 5\u20136",
-    title: "Building public capacity from the ground up",
+    title:
+      "Across Deschutes, Crook, and Jefferson counties, the Central Oregon Civic Action Project and a coalition of local organizations are engaging residents through digital participation, community conversations, and representative deliberation around the AI choices reaching Central Oregon.",
     host: { name: "the Central Oregon Civic Action Project (COCAP)", url: "https://cocap.us/" },
   },
 };
@@ -53,21 +54,7 @@ function UtahDetail() {
 }
 
 function OregonDetail() {
-  return (
-    <>
-      <p className="font-medium text-maroon-900">
-        Across Deschutes, Crook, and Jefferson counties, local organizations are engaging residents through digital
-        participation, community conversations, and representative deliberation around the AI choices reaching
-        Central Oregon.
-      </p>
-      <p>
-        The process culminates in the {OREGON_ASSEMBLY}, a representative assembly that leaves behind something more
-        important: local organizations and residents with greater capacity to work through future public problems
-        together.
-      </p>
-      <p className="font-medium text-maroon-900">The {OREGON_ASSEMBLY} takes place December 5&ndash;6, 2026.</p>
-    </>
-  );
+  return <p className="font-medium text-maroon-900">The {OREGON_ASSEMBLY} takes place December 5&ndash;6, 2026.</p>;
 }
 
 export default function CaseStudies() {
@@ -80,7 +67,7 @@ export default function CaseStudies() {
         {/* Left: heading + swapping card */}
         <div className="lg:col-span-6">
           <Eyebrow>Where we work</Eyebrow>
-          <Heading className="mt-5 text-4xl sm:text-5xl">Explore what communities have built.</Heading>
+          <Heading className="mt-5 text-4xl sm:text-5xl">Explore what our community partners are building.</Heading>
           <p className="mt-5 max-w-md text-[15px] leading-relaxed text-maroon-900/80">
             Local partners run the process. BLOOM brings the funding, methods and tools. Here&rsquo;s where it&rsquo;s
             happening so far.
@@ -127,8 +114,8 @@ export default function CaseStudies() {
               ) : (
                 <>
                   <Pill href={OREGON_REPORT_URL} external>Read the report</Pill>
-                  <Pill href="https://oregon.bloomproject.us/landing?host=true" external variant="soft">
-                    Explore Central Oregon
+                  <Pill href={SITES.OR.host.url} external variant="soft">
+                    Visit COCAP
                   </Pill>
                 </>
               )}

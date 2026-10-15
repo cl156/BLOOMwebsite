@@ -3,7 +3,7 @@
  * then a photo from the Utah Solutions Forum. All participant quotes rotate in one carousel.
  */
 import { Eyebrow } from "./ui";
-import { ATTRIBUTION, INSTITUTION, UTAH_FORUM } from "../content/terms";
+import { ATTRIBUTION, UTAH_FORUM } from "../content/terms";
 import { assetHref } from "../utils/href";
 import QuoteCarousel from "./QuoteCarousel";
 
@@ -42,27 +42,24 @@ export default function Vision() {
         {/* Right: the argument */}
         <div className="space-y-5 text-base leading-relaxed text-maroon-900 md:col-span-7 md:pt-2">
           <p className="text-lg">
-            <span className="text-bloom-500">AI choices are arriving faster than our ability to make them together.</span>
+            <span className="text-bloom-500">
+              Changes linked to artificial intelligence (AI) are arriving faster than communities&rsquo; ability to
+              respond.
+            </span>
           </p>
           <p>
-            Some people vote, call, email, show up, and comment and still see no real follow through. Many don&rsquo;t
-            participate at all. They&rsquo;re busy, isolated, overwhelmed, don&rsquo;t know where to start, or simply
-            don&rsquo;t believe their effort will matter.
-          </p>
-          <p>
-            Meanwhile, decisions that will reshape our classrooms, workplaces, and land are being made behind closed
-            doors. Good information is
-            increasingly hard to access. Powerful interests and people who profit from division shape what happens in ways
-            neighbors cannot.
+            The decisions that will reshape our classrooms, workplaces, and land are being made behind closed doors.
+            Corporations and politicians alike often believe that a future defined by the AI industry is inevitable, and
+            fail to proactively and meaningfully engage the people who are affected the most.
           </p>
           <p className="!mt-10 font-display text-2xl leading-snug text-bloom-500 sm:text-3xl">
-            The {INSTITUTION} starts from a different premise: given a real chance to learn, listen, and work through
-            the choices, we can decide together what happens next.
+            BLOOM&rsquo;s work starts from a different premise: give people a chance to learn, listen, and work through
+            the choices, and we can decide together what happens next.
           </p>
           <p>
-            The {INSTITUTION} is BLOOM&rsquo;s answer to this moment. Our partners, local organizations committed to
-            the wellbeing of their communities, bring neighbors together to learn the real considerations behind these
-            decisions, discuss the trade-offs, and develop actionable policies aligned with the public interest.
+            Our partners, local organizations committed to the wellbeing of their communities, bring people together
+            across differences to learn the real considerations behind these decisions, discuss the trade-offs, and
+            develop actionable policies aligned with the public interest.
           </p>
         </div>
       </div>
