@@ -1,11 +1,13 @@
 /**
  * One quote at a time, large enough to read, with arrows, dots, keyboard and swipe.
- * All quotes sit in the same grid cell, so the card keeps the height of the longest one
- * and nothing below it jumps when the quote changes. No autoplay: readers move at their own pace.
+ * All quotes sit in the same grid cell, so the block keeps the height of the longest one
+ * and nothing around it jumps when the quote changes. No autoplay: readers move at their own pace.
  */
 import { useRef, useState } from "react";
 
-export default function QuoteCarousel({ quotes, by }: { quotes: string[]; by: string }) {
+export type CarouselQuote = { text: string; by: string };
+
+export default function QuoteCarousel({ quotes, label }: { quotes: CarouselQuote[]; label: string }) {
   const [index, setIndex] = useState(0);
   const touchX = useRef<number | null>(null);
   const go = (i: number) => setIndex((i + quotes.length) % quotes.length);
@@ -13,8 +15,7 @@ export default function QuoteCarousel({ quotes, by }: { quotes: string[]; by: st
   return (
     <section
       aria-roledescription="carousel"
-      aria-label="What delegates said"
-      className="rounded-3xl bg-white px-6 py-10 shadow-soft sm:px-14 sm:py-14"
+      aria-label={label}
       onKeyDown={(e) => {
         if (e.key === "ArrowLeft") go(index - 1);
         if (e.key === "ArrowRight") go(index + 1);
@@ -30,21 +31,21 @@ export default function QuoteCarousel({ quotes, by }: { quotes: string[]; by: st
       <div className="grid" aria-live="polite">
         {quotes.map((q, i) => (
           <figure
-            key={q}
+            key={q.text}
             aria-hidden={i !== index}
-            className={`col-start-1 row-start-1 mx-auto max-w-3xl self-center text-center transition-opacity duration-500 ${
+            className={`col-start-1 row-start-1 self-start transition-opacity duration-500 ${
               i === index ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
           >
-            <blockquote className="font-display text-2xl leading-snug text-maroon-900 sm:text-3xl">
-              &ldquo;{q}&rdquo;
+            <blockquote className="font-display text-2xl leading-snug text-bloom-500 sm:text-3xl">
+              &ldquo;{q.text}&rdquo;
             </blockquote>
-            <figcaption className="mt-5 text-xs font-medium uppercase tracking-[0.16em] text-bloom-500">{by}</figcaption>
+            <figcaption className="mt-4 text-xs font-medium tracking-wide text-maroon-900/70">&mdash; {q.by}</figcaption>
           </figure>
         ))}
       </div>
 
-      <div className="mt-10 flex items-center justify-center gap-5">
+      <div className="mt-8 flex items-center gap-4">
         <button
           type="button"
           onClick={() => go(index - 1)}
@@ -56,7 +57,7 @@ export default function QuoteCarousel({ quotes, by }: { quotes: string[]; by: st
         <div className="flex gap-2">
           {quotes.map((q, i) => (
             <button
-              key={q}
+              key={q.text}
               type="button"
               onClick={() => go(i)}
               aria-label={`Quote ${i + 1} of ${quotes.length}`}

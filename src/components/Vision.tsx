@@ -1,16 +1,28 @@
 /**
  * The Vision (why): quotes on the left, narrative on the right,
- * then what participants took away (layout from Humphrey's sketch).
+ * then a photo from the Utah Solutions Forum. All participant quotes rotate in one carousel.
  */
-import { Eyebrow, Quote } from "./ui";
+import { Eyebrow } from "./ui";
 import { ATTRIBUTION, INSTITUTION, UTAH_FORUM } from "../content/terms";
 import { assetHref } from "../utils/href";
 import QuoteCarousel from "./QuoteCarousel";
 
-const TAKEAWAYS = [
-  "I’ve left with a better understanding of the common ground we share.",
-  "I have a better outlook on my fellow citizens. Seems like they are not as crazy and radical as online makes them seem.",
-  "I’ve never enjoyed politics, but this kind of moderated discussion and deliberation was very productive and gave me hope that citizens could engage in politics in an effective way.",
+/** Participant voices, in the order the carousel shows them. */
+const QUOTES = [
+  { text: "I want to use AI. I don’t want AI to use me.", by: ATTRIBUTION.cacheForum },
+  { text: "I’ve left with a better understanding of the common ground we share.", by: ATTRIBUTION.utahForum },
+  {
+    text: "I have a better outlook on my fellow citizens. Seems like they are not as crazy and radical as online makes them seem.",
+    by: ATTRIBUTION.utahForum,
+  },
+  {
+    text: "I’ve never enjoyed politics, but this kind of moderated discussion and deliberation was very productive and gave me hope that citizens could engage in politics in an effective way.",
+    by: ATTRIBUTION.utahForum,
+  },
+  {
+    text: "I want to see an elected official on TV parroting back the ideas we talked about and then actions following through.",
+    by: ATTRIBUTION.cacheForum,
+  },
 ];
 
 export default function Vision() {
@@ -21,9 +33,9 @@ export default function Vision() {
         <div className="md:col-span-5">
           <div className="md:sticky md:top-32">
             <Eyebrow>The vision</Eyebrow>
-            <Quote by={ATTRIBUTION.cacheForum} size="lg" className="mt-6">
-              I want to use AI. I don&rsquo;t want AI to use me.
-            </Quote>
+            <div className="mt-6">
+              <QuoteCarousel quotes={QUOTES} label="What participants said" />
+            </div>
           </div>
         </div>
 
@@ -57,7 +69,7 @@ export default function Vision() {
 
       {/* What participants took away */}
       <div className="mx-auto mt-24 max-w-7xl px-5 lg:px-10">
-        <figure className="mb-16">
+        <figure>
           <img
             src={assetHref("photos/small-group.jpg")}
             alt="Two delegates in conversation at the Utah Solutions Forum"
@@ -66,17 +78,6 @@ export default function Vision() {
           />
           <figcaption className="mt-3 text-xs text-maroon-900/60">Delegates at the {UTAH_FORUM}, September 2026.</figcaption>
         </figure>
-        <QuoteCarousel quotes={TAKEAWAYS} by={ATTRIBUTION.utahForum} />
-
-        <div className="mx-auto mt-20 max-w-3xl text-center">
-          <p className="text-base text-maroon-900/80">
-            And people don&rsquo;t just want to be heard. They want what they decide together to matter.
-          </p>
-          <Quote by={ATTRIBUTION.cacheForum} size="lg" className="mt-6">
-            I want to see an elected official on TV parroting back the ideas we talked about and then actions
-            following through.
-          </Quote>
-        </div>
       </div>
     </section>
   );
