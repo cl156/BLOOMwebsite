@@ -48,7 +48,7 @@ export default function Vision() {
             </span>
           </p>
           <p>
-            The decisions that will reshape our classrooms, workplaces, and land are being made behind closed doors.
+            The decisions that will reshape classrooms, workplaces, and land are being made behind closed doors.
             Corporations and politicians alike often believe that a future defined by the AI industry is inevitable, and
             fail to proactively and meaningfully engage the people who are affected the most.
           </p>
