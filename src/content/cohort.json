@@ -1,26 +1,10 @@
 {
   "hero": {
-    "eyebrow": "2027 COHORT · CALL FOR CIVIC HOSTS · PUBLIC ASSEMBLY ON AI",
-    "heading": "AI issues decided locally. Connected across the country.",
-    "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the country working out what they want from AI.",
-    "pdfLabel": "Download the full RFP (PDF)",
-    "statsLabel": "From our 2026 pilots",
-    "statsLink": "More about the pilots"
+    "eyebrow": "",
+    "heading": "Call for Civic Hosts:\nThe Public Assembly on AI",
+    "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the United States working out what they want from AI.",
+    "pdfLabel": "Download the full RFP (PDF)"
   },
-  "stats": [
-    {
-      "value": "~1,000",
-      "label": "people engaged"
-    },
-    {
-      "value": "6",
-      "label": "counties, in Utah and Central Oregon"
-    },
-    {
-      "value": "75",
-      "label": "delegates across civic assemblies in Utah and Central Oregon"
-    }
-  ],
   "navLabel": "Call for Civic Hosts",
   "nav": {
     "paths": "Who can apply",
@@ -39,7 +23,7 @@
   "ladder": {
     "eyebrow": "From communities to the country",
     "heading": "No community can solve the AI transition alone.",
-    "headingAccent": "Some questions need the whole country.",
+    "headingAccent": "\n",
     "body": "A community can decide how to govern a proposed data center project. But it cannot by itself determine state or national protections for children, workers, privacy, or increasingly powerful AI systems.",
     "emphasis": "",
     "tiers": [
@@ -83,7 +67,7 @@
     "eyebrow": "The work",
     "heading": "Two kinds of community assembly.",
     "intro": "Every host is supported to run a community assembly, in one of two forms. We’ll match each host to the form that fits its community, its capacity, and what’s at stake.",
-    "fundingLabel": "Funding",
+    "fundingLabel": "FUNDING FROM BLOOM",
     "lengthLabel": "Length",
     "core": {
       "name": "Shortform",
@@ -307,7 +291,7 @@
   "applicationForm": {
     "eyebrow": "Application",
     "heading": "Apply to be a Civic Host.",
-    "intro": "The application takes about half an hour. Applications are due November 20, 2026.",
+    "intro": "The application takes about an hour. Applications are due November 20, 2026.",
     "newTab": "Prefer a full page? Open the form in a new tab."
   }
 }
