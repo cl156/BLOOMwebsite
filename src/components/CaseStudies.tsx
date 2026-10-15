@@ -275,16 +275,18 @@ export default function CaseStudies() {
                 key={id}
                 onClick={() => setActive(id)}
                 aria-pressed={isActive}
-                className={`absolute -translate-y-1/2 rounded-lg px-3 py-2 text-left shadow-soft transition-colors ${
-                  isActive ? "bg-maroon-900 text-white" : "bg-white text-maroon-900 hover:bg-blush-100"
-                }`}
+                className={`absolute -translate-y-1/2 whitespace-nowrap rounded-xl px-4 py-3 text-left shadow-soft transition-colors ${
+                  id === "UT" ? "-translate-x-1/2" : ""
+                } ${isActive ? "bg-maroon-900 text-white" : "bg-white text-maroon-900 hover:bg-blush-100"}`}
+                // Oregon's label sits to the right of the state; Utah's sits centered below it,
+                // so the larger labels stay inside the map on narrow screens.
                 style={{
-                  left: `${((s.cx + (id === "OR" ? 10 : 24)) / MAP_WIDTH) * 100}%`,
-                  top: `${((s.cy - (id === "OR" ? 20 : 0)) / MAP_HEIGHT) * 100}%`,
+                  left: `${((s.cx + (id === "OR" ? 10 : 0)) / MAP_WIDTH) * 100}%`,
+                  top: `${((s.cy + (id === "OR" ? -20 : 140)) / MAP_HEIGHT) * 100}%`,
                 }}
               >
-                <span className="block text-sm font-medium">{SITES[id].place}</span>
-                <span className={`block text-[10px] uppercase tracking-wider ${isActive ? "text-bloom-200" : "text-bloom-500"}`}>
+                <span className="block font-display text-xl leading-tight sm:text-2xl">{SITES[id].place}</span>
+                <span className={`mt-1 block text-[11px] uppercase tracking-wider sm:text-xs ${isActive ? "text-bloom-200" : "text-bloom-500"}`}>
                   {SITES[id].chip}
                 </span>
               </button>
