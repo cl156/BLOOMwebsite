@@ -21,7 +21,7 @@
       "label": "delegates across civic assemblies in Utah and Central Oregon"
     }
   ],
-  "navLabel": "On this page",
+  "navLabel": "Call for Civic Hosts",
   "nav": {
     "paths": "Who can apply",
     "host-roles": "The work",
@@ -32,15 +32,13 @@
     "apply": "Apply"
   },
   "network": {
-    "eyebrow": "A national network",
-    "heading": "No community should have to solve the AI transition alone.",
     "body": "Communities across the country learn alongside each other, share what works, and build collective capacity to act.",
     "imageAlt": "Delegates talking across a table at the Utah Solutions Forum"
   },
   "ladder": {
     "eyebrow": "From communities to the country",
-    "heading": "Some questions can be solved locally.",
-    "headingAccent": "Others can’t.",
+    "heading": "No community can solve the AI transition alone.",
+    "headingAccent": "Some questions need the whole country.",
     "body": "A community can decide how to govern a proposed data center project. But it cannot by itself determine state or national protections for children, workers, privacy, or increasingly powerful AI systems.",
     "emphasis": "",
     "tiers": [
@@ -70,20 +68,20 @@
     "host": {
       "for": "",
       "points": [
-        "Organizations and coalitions of any size are welcome, as are fiscally sponsored organizations."
+        "Organizations and coalitions of any size are welcome, including congregations, civic clubs, and informal networks. Individual community leaders can apply through a partner organization or fiscal sponsor."
       ]
     },
     "hub": {
       "eyebrow": "State and regional civic hubs",
       "heading": "Already supporting a network of local civic organizations?",
-      "body": "Some organizations bring several hosts together across a state or region: coaching them, standing behind the quality of their work, and carrying what their communities conclude to state decision-makers. If that’s you, let’s talk about serving as a state or regional civic hub.",
+      "body": "Some organizations bring several hosts together across a state or region with the capacity to coach them, stand behind the quality of their work, and help carry what their communities conclude to state decision-makers. If that’s you, let’s talk about serving as a state or regional civic hub.",
       "button": "Inquire about becoming a civic hub"
     }
   },
   "work": {
     "eyebrow": "The work",
     "heading": "Two kinds of community assembly.",
-    "intro": "Every host is support to run a community assembly, in one of two forms.",
+    "intro": "Every host is supported to run a community assembly, in one of two forms.",
     "fundingLabel": "Funding",
     "lengthLabel": "Length",
     "core": {
@@ -91,7 +89,7 @@
       "funding": "$10,000–$30,000",
       "length": "10–12 weeks",
       "hours": "~120 hours, led by one to two people",
-      "summary": "\n",
+      "summary": "",
       "stepsLabel": "The playbook",
       "steps": [
         {
@@ -108,7 +106,7 @@
         },
         {
           "name": "Synthesis",
-          "body": "A map of community priorities that are immediately actionable and what needs further deliberation"
+          "body": "A map of community priorities that are immediately actionable and what needs further deliberation."
         }
       ]
     },
@@ -117,24 +115,24 @@
       "funding": "$50,000–$60,000",
       "length": "February–July 2027",
       "hours": "6 months that move from agenda setting to decisions",
-      "summary": "\n",
+      "summary": "",
       "stepsLabel": "The phases",
       "steps": [
         {
           "name": "Agenda setting",
-          "body": "The shortform arc"
+          "body": "The shortform arc."
         },
         {
           "name": "Goal setting",
-          "body": "Community forum and Open poll rounds surface shared values, ending in a goals statement the community stands behind."
+          "body": "Community forum and open poll rounds surface shared values, ending in a goals statement the community stands behind."
         },
         {
           "name": "Idea development",
-          "body": "Additional community forum and Open poll rounds develop potential solutions"
+          "body": "Additional community forum and open poll rounds develop potential solutions."
         },
         {
           "name": "Tradeoffs",
-          "body": "Residents weigh options together, producing a map of tradeoffs to carry into decision making"
+          "body": "Residents weigh options together, producing a map of tradeoffs to carry into decision making."
         },
         {
           "name": "Decision making",
@@ -146,7 +144,7 @@
   "support": {
     "eyebrow": "What hosts receive",
     "heading": "Funding, tools, and a network behind you.",
-    "fundingNote": "\n",
+    "fundingNote": "",
     "receive": [
       {
         "name": "Methods",
@@ -175,7 +173,7 @@
     "heading": "What your community’s work can change.",
     "items": [
       {
-        "name": "Government Policy",
+        "name": "Government policy",
         "body": "Every host identifies decision-makers and decisions on a timeline: a county commission vote, a district’s classroom policy, an employer’s deployment plan, a state bill."
       },
       {
@@ -191,7 +189,7 @@
   "who": {
     "eyebrow": "What we’re looking for",
     "heading": "What makes a strong host.",
-    "whereLabel": "\n",
+    "whereLabel": "",
     "where": [
       "Ideal hosts work where something clear is at stake: a decision about AI that a nameable body will make on a nameable timeline, or a plan to put a missing decision on the table."
     ],
@@ -207,20 +205,20 @@
     ],
     "influenceLabel": "",
     "influence": "",
-    "assessHeading": "How we will assess potential hosts",
-    "assessIntro": "We are looking for hosts with four key attributes.",
+    "assessHeading": "How we will assess",
+    "assessIntro": "",
     "criteria": [
       {
         "name": "Existing relationships and convening capacity",
         "body": "Enough standing with enough different people to convene partners: faith, labor, youth and education, small business, neighborhood and civic, or whoever the real constituencies are where you are."
       },
       {
-        "name": "A commitment to build collaborative politics",
+        "name": "A commitment to collaborative politics",
         "body": "Drawn to finding out what people think through deliberation, rather than confirming what you already believe."
       },
       {
         "name": "Organizing or policy capacity",
-        "body": "We bring what we can on synthesis and reporting, and help identify pathways to political impact. Hosts who know local decision-makers and can turn people out through their networks will likely be more successful."
+        "body": "Hosts who know local decision-makers and can turn people out through their networks will likely be more successful. BLOOM helps with synthesis, reporting, and pathways to impact."
       },
       {
         "name": "A learning partner",
@@ -260,7 +258,7 @@
     "notes": [
       {
         "name": "Selection process",
-        "body": "The application takes about an hour. Short-listed finalists are invited to interviews in December. Being invited is not a guarantee of selection."
+        "body": "Short-listed finalists are invited to interviews in December. Being invited is not a guarantee of selection."
       },
       {
         "name": "The arc",
