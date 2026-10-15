@@ -15,9 +15,8 @@ import { CohortFormModal } from "./components/CohortForm";
  * BLOOM homepage — Public Assemblies on AI
  *
  * Section order:
- *   Hero → Vision (why) → The Work (Utah, Central Oregon) → What we do (how) →
- *   Our Approach ("How we work") → Utah recommendations →
- *   2027 Cohort teaser → Partners → Latest news → Footer
+ *   Hero → Vision (why) → Where we work (Utah, Central Oregon) → Utah recommendations → What we do (how) →
+ *   Our Approach ("How we work") → 2027 Cohort teaser → Partners → Latest news → Footer
  *
  * Other pages: /cohort/ (theory of change + application), /people/ (team), /news/ (press).
  */
@@ -29,9 +28,9 @@ export default function App() {
         <Hero />
         <Vision />
         <CaseStudies />
+        <Recommendations />
         <WhatBloomIs />
         <Approach />
-        <Recommendations />
         <CohortCard />
         <Partners />
         <LatestNews />

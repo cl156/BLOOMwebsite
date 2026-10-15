@@ -1,6 +1,6 @@
 /**
  * What people come up with: the Utah Solutions Forum's 10 recommendations as a slowly rolling row,
- * each with the share of delegates who backed it. Sits after "How we work" as a concrete example.
+ * each with the share of delegates who backed it. Sits right after "Where we work", under the Utah card.
  *
  * The row scrolls on its own, holds while the pointer is over it, and has a pause button.
  * For people who've asked for reduced motion it stays still and scrolls sideways by hand.
