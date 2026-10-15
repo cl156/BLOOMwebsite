@@ -5,6 +5,7 @@
 import { Eyebrow, Quote } from "./ui";
 import { ATTRIBUTION, INSTITUTION, UTAH_FORUM } from "../content/terms";
 import { assetHref } from "../utils/href";
+import QuoteCarousel from "./QuoteCarousel";
 
 const TAKEAWAYS = [
   "I’ve left with a better understanding of the common ground we share.",
@@ -65,14 +66,7 @@ export default function Vision() {
           />
           <figcaption className="mt-3 text-xs text-maroon-900/60">Delegates at the {UTAH_FORUM}, September 2026.</figcaption>
         </figure>
-        <div className="grid gap-6 md:grid-cols-3">
-          {TAKEAWAYS.map((q) => (
-            <figure key={q} className="rounded-2xl bg-white p-7 shadow-soft">
-              <blockquote className="text-[15px] leading-relaxed text-maroon-900">&ldquo;{q}&rdquo;</blockquote>
-              <figcaption className="mt-4 text-xs tracking-wide text-maroon-900/60">&mdash; {ATTRIBUTION.utahForum}</figcaption>
-            </figure>
-          ))}
-        </div>
+        <QuoteCarousel quotes={TAKEAWAYS} by={ATTRIBUTION.utahForum} />
 
         <div className="mx-auto mt-20 max-w-3xl text-center">
           <p className="text-base text-maroon-900/80">
