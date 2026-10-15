@@ -3,6 +3,7 @@
  * (layout from Humphrey's site sketch, plus an inset photo).
  * Edges line up with the header; height follows the content.
  */
+import { useEffect, useState } from "react";
 import { sectionHref, pageHref, assetHref } from "../utils/href";
 import { FormLink } from "./CohortForm";
 import { CLOSES_LABEL, rfpStatus } from "../content/rfp";
@@ -18,6 +19,26 @@ const STATS = [
   { value: "92%", label: "of delegates supported the full package of recommendations" },
 ];
 
+/* Who should have a say: shown once in turn, ending back on "Communities". */
+const WHO = ["Communities", "Workers", "Parents", "Young people", "Neighbors", "Communities"];
+const WORD_MS = 2000;
+
+/** The headline's first word, on its own line so changing widths never reflow the rest of the hero. */
+function RotatingWord() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    if (i >= WHO.length - 1) return;
+    const t = window.setTimeout(() => setI(i + 1), i === 0 ? WORD_MS + 600 : WORD_MS);
+    return () => window.clearTimeout(t);
+  }, [i]);
+  return (
+    <span key={i} className="block animate-[fadeIn_.45s_ease]">
+      {WHO[i]}
+    </span>
+  );
+}
+
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-cream">
@@ -25,12 +46,16 @@ export default function Hero() {
       <Glow tone="blush" className="-right-40 -top-40 h-[50vmin] w-[50vmin] opacity-70" />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-28 sm:pt-32 lg:px-10 lg:pb-24">
-        <h1 className="max-w-3xl font-display tracking-tight">
+        <h1 className="max-w-5xl font-display tracking-tight">
           <span className="block text-2xl font-normal text-maroon-900 sm:text-3xl">
             Decisions about AI are changing lives.
           </span>
           <span className="mt-2 block text-5xl font-medium leading-[1.02] text-bloom-500 sm:text-6xl lg:text-7xl">
-            Communities should have a say in how.
+            <span className="sr-only">Communities should have a say in how.</span>
+            <span aria-hidden="true">
+              <RotatingWord />
+              <span className="block">should have a say in&nbsp;how.</span>
+            </span>
           </span>
         </h1>
 
