@@ -54,7 +54,7 @@ export default function Vision() {
           </p>
           <p className="!mt-10 font-display text-2xl leading-snug text-bloom-500 sm:text-3xl">
             BLOOM&rsquo;s work starts from a different premise: give people a chance to learn, listen, and work through
-            the choices, and we can decide together what happens next.
+            the choices to decide together what happens next.
           </p>
           <p>
             Our partners, local organizations committed to the wellbeing of their communities, bring people together
