@@ -38,6 +38,27 @@ export default function Editable({
   );
 }
 
+/**
+ * Saving rewrites a JSON file, which makes the dev server reload the page. Remember the
+ * scroll position before each save and return to it after the reload, so editing
+ * further down the page doesn't jump back to the top.
+ */
+const SCROLL_KEY = "editable-scroll";
+if (import.meta.env.DEV && typeof window !== "undefined") {
+  const saved = sessionStorage.getItem(SCROLL_KEY);
+  if (saved) {
+    sessionStorage.removeItem(SCROLL_KEY);
+    const target = Number(saved);
+    const started = Date.now();
+    // The page renders after this runs, so keep trying until it's tall enough (up to 3s).
+    const restore = () => {
+      window.scrollTo(0, target);
+      if (Math.abs(window.scrollY - target) > 2 && Date.now() - started < 3000) requestAnimationFrame(restore);
+    };
+    requestAnimationFrame(restore);
+  }
+}
+
 /** Dev-only inner component with contentEditable behavior */
 function EditableInner({
   file,
@@ -48,13 +69,16 @@ function EditableInner({
 }: EditableProps) {
   const ref = useRef<HTMLElement>(null);
   const saving = useRef(false);
+  const before = useRef<string | null>(null);
 
   const handleBlur = useCallback(async () => {
     const el = ref.current;
     if (!el || saving.current) return;
 
     const value = el.innerText;
+    if (value === before.current) return; // clicked in and out without changing anything
     saving.current = true;
+    sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
 
     try {
       await fetch("/__save-content", {
@@ -74,6 +98,7 @@ function EditableInner({
       ref={ref}
       contentEditable
       suppressContentEditableWarning
+      onFocus={() => (before.current = ref.current?.innerText ?? null)}
       onBlur={handleBlur}
       className={`${className} editable-field`}
       style={{ outline: "none" }}

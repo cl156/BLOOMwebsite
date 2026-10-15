@@ -20,7 +20,7 @@ export default function CohortCard() {
           <p className="mt-2 font-display text-xl text-maroon-900">Many places. A growing civic institution.</p>
           <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
             <p>
-              BLOOM is looking for locally rooted organizations to become founding {HOSTS} of the {INSTITUTION},
+              BLOOM is looking for locally rooted organizations to become {HOSTS} of the {INSTITUTION},
               running assemblies in their communities in 2027.
             </p>
             <p>

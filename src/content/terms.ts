@@ -6,6 +6,11 @@
  *   - "the Public Assembly on AI" (singular, capitalized) is the institution BLOOM is building.
  *   - Individual convenings are lowercase "assemblies", or go by their proper names below.
  *   - "Civic Hosts" is always capitalized.
+ *   - "community assembly" is lowercase: it describes the work one host does, not a proper noun.
+ *   - Organizations that bring several local hosts together across a state or region are
+ *     "state or regional civic hubs" ("civic hubs" for short, lowercase). They inquire rather
+ *     than apply. Introduce the term with what they do on first use.
+ *   - Not "founding" hosts: it's a call for Civic Hosts.
  */
 
 /** The institution. Write "the {INSTITUTION}" in running text. */
