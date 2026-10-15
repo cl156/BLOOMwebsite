@@ -44,11 +44,12 @@ export default function Hero() {
             <figcaption className="mt-3 text-xs text-maroon-900/60">Utah Solutions Forum, September 2026</figcaption>
           </figure>
 
-          <div className="text-[15px] leading-relaxed text-maroon-900 sm:text-base md:col-span-6 lg:col-span-5 lg:col-start-8">
-            <p>
-              BLOOM is building <strong className="font-semibold">the {INSTITUTION}</strong>: a federation of communities
+          <div className="text-[15px] leading-relaxed text-maroon-900 sm:text-base md:col-span-6 lg:col-span-6 lg:col-start-7">
+            {/* The key statement: set at the size of the line above the headline. */}
+            <p className="text-pretty font-display text-2xl leading-snug sm:text-3xl">
+              BLOOM is building <span className="font-medium">the {INSTITUTION}</span>: a federation of communities
               across the United States equipped and empowered to{" "}
-              <em className="text-bloom-500">decide what they want their shared future to be.</em>
+              <em className="text-bloom-500">decide what they want their shared future to&nbsp;be.</em>
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Pill href={sectionHref("work")}>See the results from Utah</Pill>
