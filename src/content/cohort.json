@@ -39,7 +39,7 @@
     "heading": "Some questions can be resolved locally.",
     "headingAccent": "Others can’t.",
     "body": "A community can decide how to govern a proposed data center project. But it cannot by itself determine state or national protections for children, workers, privacy, or increasingly powerful AI systems.",
-    "emphasis": "BLOOM is building a federation through which questions can travel to the level where they can actually be resolved.",
+    "emphasis": "BLOOM is building a new public institution where people can address issues at the local, state, and national level. ",
     "tiers": [
       {
         "level": "Local",
@@ -269,15 +269,16 @@
       }
     ]
   },
-  "join": {
-    "heading": "Join the 2027 Cohort.",
-    "body": "\n",
-    "need": "\n",
-    "questions": "Questions, or interested in serving as a state or regional civic hub?"
-  },
   "infoSession": {
     "button": "Register for an info session",
-    "when": "",
-    "cardLine": "Have questions first? Join an info session on the Call for Civic Hosts."
+    "when": "Thursday, October 22 · 10:00 AM PT / 1:00 PM ET",
+    "cardLine": "Have questions first? Join an info session on the Call for Civic Hosts.",
+    "prompt": "Have questions before you apply?"
+  },
+  "applicationForm": {
+    "eyebrow": "Application",
+    "heading": "Apply to be a Civic Host.",
+    "intro": "The application takes about an hour. Applications are due November 20, 2026.",
+    "newTab": "Prefer a full page? Open the form in a new tab."
   }
 }

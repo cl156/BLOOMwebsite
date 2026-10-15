@@ -9,6 +9,8 @@
 
 /** Airtable application form. Opens in a new tab. */
 export const APPLY_URL = "https://airtable.com/appWfFclW2rKc7Ot1/pagikLlEpAcW0r6ZY/form";
+/** The same form, embedded at the bottom of /cohort/ while applications are open. */
+export const APPLY_EMBED_URL = "https://airtable.com/embed/appWfFclW2rKc7Ot1/pagikLlEpAcW0r6ZY/form";
 
 export const CONTACT_EMAIL = "hello@bloom-project.org";
 
@@ -44,5 +46,14 @@ export function rfpStatus(now = new Date()): RfpStatus {
 /** State or regional civic hubs inquire by email rather than applying. */
 export const HUB_INQUIRY_MAILTO = `mailto:${CONTACT_EMAIL}?subject=State%20or%20regional%20civic%20hub%20(2027%20Cohort)`;
 
-/** Zoom registration for the "Call for Civic Hosts Info Session | Public Assembly on AI". Hidden once applications close. */
+/** Zoom registration for the "Call for Civic Hosts Info Session | Public Assembly on AI". */
 export const INFO_SESSION_URL = "https://us02web.zoom.us/meeting/register/E6q9UVGJQx-UnN02WG5wuA";
+/**
+ * When the info session ends (Oct 22, 2026, 10:00 AM PT, allowing an hour). Registration links hide
+ * after this. The date shown on the page is infoSession.when in content/cohort.json.
+ */
+export const INFO_SESSION_ENDS = new Date("2026-10-22T11:00:00-07:00");
+
+export function infoSessionUpcoming(now = new Date()) {
+  return Boolean(INFO_SESSION_URL) && now < INFO_SESSION_ENDS && rfpStatus(now) !== "closed";
+}

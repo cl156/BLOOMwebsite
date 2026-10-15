@@ -9,7 +9,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 import copy from "../content/cohort.json";
-import { CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, rfpStatus } from "../content/rfp";
+import { APPLY_EMBED_URL, APPLY_URL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, rfpStatus } from "../content/rfp";
 import Editable from "../components/Editable";
 import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
@@ -110,15 +110,18 @@ export default function CohortPage() {
     { key: "core", s: c.work.core },
     { key: "coDesign", s: c.work.coDesign },
   ] as const;
-  // Info session registration shows until applications close.
-  const showInfoSession = Boolean(INFO_SESSION_URL) && rfpStatus() !== "closed";
+  // The application form is embedded at the bottom while applications are open; Apply buttons jump to it.
+  const showForm = rfpStatus() === "open";
+  const formAnchor = "#apply";
+  // Info session registration shows until the session is over.
+  const showInfoSession = infoSessionUpcoming();
   const infoButton = showInfoSession && (
     <Pill href={INFO_SESSION_URL} external variant="soft">
       {c.infoSession.button}
     </Pill>
   );
   const infoWhen = showInfoSession && (
-    <E as="p" path="infoSession.when" className="mt-3 text-sm text-maroon-900/75">
+    <E as="p" path="infoSession.when" className="mt-2 text-[15px] text-maroon-900/80">
       {c.infoSession.when}
     </E>
   );
@@ -145,11 +148,10 @@ export default function CohortPage() {
           </E>
           <p className="mt-8 text-sm font-semibold text-maroon-900">{statusLine}</p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <CohortCTA />
+            <CohortCTA formAnchor={formAnchor} />
             {infoButton}
             {pdfButton}
           </div>
-          {infoWhen}
 
           <ul className="mt-14 grid grid-cols-1 gap-x-6 gap-y-8 border-t border-blush-200 pt-10 sm:grid-cols-3">
             {c.stats.map((s, i) => (
@@ -165,7 +167,7 @@ export default function CohortPage() {
           </ul>
 
           <nav aria-label="On this page" className="mt-12 flex flex-wrap gap-2">
-            {SECTIONS.map((id) => (
+            {SECTIONS.filter((id) => id !== "apply" || showForm).map((id) => (
               <a
                 key={id}
                 href={`#${id}`}
@@ -302,7 +304,7 @@ export default function CohortPage() {
                 ))}
               </ul>
               <div className="mt-8">
-                <CohortCTA />
+                <CohortCTA formAnchor={formAnchor} />
               </div>
               {showInfoSession && (
                 <p className="mt-5 text-sm text-maroon-900/75">
@@ -539,36 +541,49 @@ export default function CohortPage() {
         </div>
       </section>
 
-      {/* Join */}
-      <section id="apply" className="relative scroll-mt-24 overflow-hidden bg-cream py-16 md:py-24">
-        <Glow tone="blush" className="left-1/2 top-1/2 h-[120%] w-[90%] -translate-x-1/2 -translate-y-1/2" />
-        <div className="relative mx-auto max-w-3xl px-5">
-          <div className="rounded-3xl bg-white p-8 shadow-soft sm:p-12">
-            <Eyebrow>{statusLine}</Eyebrow>
-            <h2 className="mt-4 font-display text-4xl font-medium tracking-tight text-bloom-500 sm:text-5xl">
-              <E path="join.heading">{c.join.heading}</E>
+      {/* Application form (embedded Airtable), only while applications are open */}
+      {showForm && (
+        <section id="apply" className="scroll-mt-24 bg-cream pb-16 md:pb-24">
+          <div className="mx-auto max-w-4xl px-5">
+            <Eyebrow>
+              <E path="applicationForm.eyebrow">{c.applicationForm.eyebrow}</E>
+            </Eyebrow>
+            <h2 className={`${sectionHeading} max-w-3xl`}>
+              <E path="applicationForm.heading">{c.applicationForm.heading}</E>
             </h2>
-            {(c.join.body.trim() || c.join.need.trim()) && (
-              <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-maroon-900/85">
-                <E as="p" path="join.body">{c.join.body}</E>
-                <E as="p" path="join.need">{c.join.need}</E>
-              </div>
-            )}
-            <div className="mt-8 flex flex-wrap gap-3">
-              <CohortCTA />
-              {infoButton}
-              {pdfButton}
-            </div>
-            {infoWhen}
-            <p className="mt-8 text-sm text-maroon-900/75">
-              <E path="join.questions">{c.join.questions}</E>{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600">
-                {CONTACT_EMAIL}
+            <E as="p" path="applicationForm.intro" className="mt-4 text-[15px] leading-relaxed text-maroon-900/85">
+              {c.applicationForm.intro}
+            </E>
+            <iframe
+              title="Civic Host application form"
+              src={APPLY_EMBED_URL}
+              className="mt-8 h-[80vh] min-h-[640px] w-full rounded-3xl border border-blush-200 bg-white shadow-soft"
+            />
+            <p className="mt-4 text-sm text-maroon-900/75">
+              <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600">
+                {c.applicationForm.newTab}
               </a>
             </p>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* Info session registration, last on the page until applications close */}
+      {showInfoSession && (
+        <section className="bg-cream pb-16 md:pb-24">
+          <div className="mx-auto max-w-4xl px-5">
+            <div className="flex flex-col items-start gap-5 rounded-3xl bg-blush-50 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+              <div>
+                <E as="p" path="infoSession.prompt" className="font-display text-2xl text-maroon-900">
+                  {c.infoSession.prompt}
+                </E>
+                {infoWhen}
+              </div>
+              {infoButton}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

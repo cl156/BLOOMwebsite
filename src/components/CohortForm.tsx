@@ -99,12 +99,22 @@ export function CohortCTA({
   variant = "primary",
   className = "",
   label = "Apply to be a Civic Host",
+  formAnchor,
 }: {
   variant?: "primary" | "soft";
   className?: string;
   label?: string;
+  /** While open, jump to an embedded form on this page (e.g. "#application-form") instead of opening a new tab. */
+  formAnchor?: string;
 }) {
   const status = rfpStatus();
+  if (status === "open" && formAnchor) {
+    return (
+      <Pill href={formAnchor} variant={variant} className={className}>
+        {label}
+      </Pill>
+    );
+  }
   if (status === "open") {
     return (
       <FormButton kind="apply" variant={variant} className={className}>
