@@ -5,6 +5,7 @@ import CaseStudies from "./components/CaseStudies";
 import WhatBloomIs from "./components/WhatBloomIs";
 import CohortCard from "./components/CohortCard";
 import Approach from "./components/Approach";
+import Recommendations from "./components/Recommendations";
 import Partners from "./components/Partners";
 import LatestNews from "./components/LatestNews";
 import Footer from "./components/Footer";
@@ -15,7 +16,8 @@ import { CohortFormModal } from "./components/CohortForm";
  *
  * Section order:
  *   Hero → Vision (why) → The Work (Utah, Central Oregon) → What we do (how) →
- *   Our Approach ("How we work") → 2027 Cohort teaser → Partners → Latest news → Footer
+ *   Our Approach ("How we work") → Utah recommendations →
+ *   2027 Cohort teaser → Partners → Latest news → Footer
  *
  * Other pages: /cohort/ (theory of change + application), /people/ (team), /news/ (press).
  */
@@ -29,6 +31,7 @@ export default function App() {
         <CaseStudies />
         <WhatBloomIs />
         <Approach />
+        <Recommendations />
         <CohortCard />
         <Partners />
         <LatestNews />

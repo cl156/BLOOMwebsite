@@ -17,6 +17,12 @@ html {
   to { opacity: 1; transform: none; }
 }
 
+/* A row that scrolls left forever: the track holds its content twice, so moving it by half loops cleanly. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
