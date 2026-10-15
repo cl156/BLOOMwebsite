@@ -33,7 +33,7 @@ export default function Recommendations() {
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         <div className="grid gap-8 md:grid-cols-12">
           <div className="md:col-span-6">
-            <Eyebrow>What people decide</Eyebrow>
+            <Eyebrow>What people decided</Eyebrow>
             <h2 className="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl">
               Ten proposals, each backed by at least 82% of delegates.
             </h2>
