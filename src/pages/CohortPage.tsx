@@ -19,17 +19,50 @@ const SECTIONS = ["paths", "who", "host-roles", "support", "tools", "impact", "t
 
 const FILE = "cohort.json";
 
+/** Split text so the first occurrence of each listed word becomes a link. */
+function linkWords(text: string, links: Record<string, string>) {
+  const words = Object.keys(links).filter((w) => text.includes(w));
+  if (!words.length) return text;
+  const pattern = new RegExp(`(${words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`);
+  const used = new Set<string>();
+  return text.split(pattern).map((part, i) => {
+    if (links[part] && !used.has(part)) {
+      used.add(part);
+      return (
+        // Not editable, so the link still works inside click-to-edit text in local dev.
+        <a key={i} href={links[part]} contentEditable={false} className="underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600">
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 /**
  * Text that's click-to-edit in local dev and plain text on the live site.
  * Empty text renders nothing, so deleting a line on the page also removes its spacing.
  */
-function E({ path, as, className, children }: { path: string; as?: "span" | "p" | "div"; className?: string; children: string }) {
+function E({
+  path,
+  as,
+  className,
+  children,
+  links,
+}: {
+  path: string;
+  as?: "span" | "p" | "div";
+  className?: string;
+  children: string;
+  /** Words to link, e.g. { Utah: "/#work" }. The first occurrence of each becomes a link. */
+  links?: Record<string, string>;
+}) {
   if (!children.trim()) return null;
   // Show line breaks typed into the text (Enter) as breaks on the page.
   const cls = children.includes("\n") ? `${className ?? ""} whitespace-pre-line` : className;
   return (
     <Editable file={FILE} path={path} as={as} className={cls}>
-      {children}
+      {links ? linkWords(children, links) : children}
     </Editable>
   );
 }
@@ -164,7 +197,12 @@ export default function CohortPage() {
           <h1 className="mt-5 max-w-4xl font-display text-5xl font-medium leading-[1.02] tracking-tight text-bloom-500 sm:text-6xl lg:text-7xl">
             <E path="hero.heading">{c.hero.heading}</E>
           </h1>
-          <E as="p" path="hero.intro" className="mt-6 block max-w-xl text-base leading-relaxed text-maroon-900/85">
+          <E
+            as="p"
+            path="hero.intro"
+            links={{ Utah: sectionHref("work"), Oregon: sectionHref("work") }}
+            className="mt-6 block max-w-xl text-base leading-relaxed text-maroon-900/85"
+          >
             {c.hero.intro}
           </E>
           <p className="mt-8 text-sm font-semibold text-maroon-900">{statusLine}</p>
@@ -180,32 +218,6 @@ export default function CohortPage() {
             </p>
           )}
 
-          <div className="mt-14 border-t border-blush-200 pt-6">
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <Eyebrow>
-                <E path="hero.statsLabel">{c.hero.statsLabel}</E>
-              </Eyebrow>
-              <a
-                href={sectionHref("work")}
-                className="group inline-flex items-center gap-2 text-sm font-medium text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
-              >
-                {c.hero.statsLink}
-                <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-              </a>
-            </div>
-            <ul className="mt-8 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-3">
-            {c.stats.map((s, i) => (
-              <li key={i}>
-                <E as="p" path={`stats.${i}.value`} className="font-display text-4xl font-medium tracking-tight text-bloom-500 sm:text-5xl">
-                  {s.value}
-                </E>
-                <E as="p" path={`stats.${i}.label`} className="mt-2 max-w-[18rem] text-sm leading-snug text-maroon-900/75">
-                  {s.label}
-                </E>
-              </li>
-            ))}
-          </ul>
-          </div>
         </div>
       </section>
 
