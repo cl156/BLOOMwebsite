@@ -10,8 +10,9 @@ import { pageHref } from "../utils/href";
 const formatDate = (iso: string) =>
   new Date(`${iso}T12:00:00`).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
-/** One entry per outlet, newest first, without labels like "(podcast)". Each links to that outlet's latest story. */
-const OUTLETS = news.reduce<{ name: string; url: string; title: string }[]>((list, a) => {
+/** One entry per press outlet, newest first, without labels like "(podcast)". Each links to that outlet's latest story.
+ *  Items from partners (`fromPartner`) appear on the News page but not here, since they aren't press coverage. */
+const OUTLETS = news.filter((a) => !("fromPartner" in a && a.fromPartner)).reduce<{ name: string; url: string; title: string }[]>((list, a) => {
   const name = a.outlet.replace(/\s*\(.*\)$/, "");
   if (!list.some((o) => o.name === name)) list.push({ name, url: a.url, title: a.title });
   return list;
@@ -68,7 +69,7 @@ const CARDS: Card[] = [
     title: a.title,
     href: a.url,
     external: true,
-    cta: "kind" in a && a.kind === "podcast" ? "Listen to the episode" : "Read article",
+    cta: "kind" in a && a.kind === "podcast" ? "Listen to the episode" : "kind" in a && a.kind === "video" ? "Watch the video" : "Read article",
   })),
 ];
 
