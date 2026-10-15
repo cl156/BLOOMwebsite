@@ -7,13 +7,13 @@
  * text on the page to edit it; it saves back to that file when you click away.
  * Dates, links and the open/close logic live in content/rfp.ts.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import copy from "../content/cohort.json";
 import { APPLY_EMBED_URL, APPLY_URL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, rfpStatus } from "../content/rfp";
 import Editable from "../components/Editable";
 import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
-import { assetHref } from "../utils/href";
+import { assetHref, sectionHref } from "../utils/href";
 
 const SECTIONS = ["paths", "host-roles", "support", "impact", "who", "timeline", "apply"] as const;
 
@@ -99,6 +99,25 @@ function useScrollProgress<T extends HTMLElement>() {
   return { ref, progress };
 }
 
+/** Which section is currently in view, for highlighting the section bar. */
+function useActiveSection(ids: readonly string[]) {
+  const [active, setActive] = useState<string | null>(null);
+  useEffect(() => {
+    const onScroll = () => {
+      let current: string | null = null;
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.35) current = id;
+      }
+      setActive(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [ids]);
+  return active;
+}
+
 export default function CohortPage() {
   const { ref: ladderRef, progress } = useScrollProgress<HTMLOListElement>();
   const statusLine = cohortStatusLine();
@@ -112,6 +131,8 @@ export default function CohortPage() {
   ] as const;
   // The application form is embedded at the bottom while applications are open; Apply buttons jump to it.
   const showForm = rfpStatus() === "open";
+  const navIds = useMemo(() => SECTIONS.filter((id) => id !== "apply" || showForm), [showForm]);
+  const active = useActiveSection(navIds);
   const formAnchor = "#apply";
   // Info session registration shows until the session is over.
   const showInfoSession = infoSessionUpcoming();
@@ -153,7 +174,20 @@ export default function CohortPage() {
             {pdfButton}
           </div>
 
-          <ul className="mt-14 grid grid-cols-1 gap-x-6 gap-y-8 border-t border-blush-200 pt-10 sm:grid-cols-3">
+          <div className="mt-14 border-t border-blush-200 pt-6">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <Eyebrow>
+                <E path="hero.statsLabel">{c.hero.statsLabel}</E>
+              </Eyebrow>
+              <a
+                href={sectionHref("work")}
+                className="group inline-flex items-center gap-2 text-sm font-medium text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700"
+              >
+                {c.hero.statsLink}
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+              </a>
+            </div>
+            <ul className="mt-8 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-3">
             {c.stats.map((s, i) => (
               <li key={i}>
                 <E as="p" path={`stats.${i}.value`} className="font-display text-4xl font-medium tracking-tight text-bloom-500 sm:text-5xl">
@@ -165,20 +199,29 @@ export default function CohortPage() {
               </li>
             ))}
           </ul>
+          </div>
+        </div>
+      </section>
 
-          <nav aria-label="On this page" className="mt-12 flex flex-wrap gap-2">
-            {SECTIONS.filter((id) => id !== "apply" || showForm).map((id) => (
+      {/* Section bar: sticks under the site header while scrolling, highlights the current section */}
+      <nav aria-label="On this page" className="sticky top-20 z-40 border-y border-blush-200 bg-cream/95 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center gap-6 px-5 lg:px-10">
+          <p className="hidden shrink-0 text-xs font-semibold uppercase tracking-[0.18em] text-maroon-900/60 md:block">{c.navLabel}</p>
+          <div className="-mx-2 flex gap-1 overflow-x-auto py-2 [scrollbar-width:none]">
+            {navIds.map((id) => (
               <a
                 key={id}
                 href={`#${id}`}
-                className="rounded-full border border-blush-200 bg-white px-4 py-2 text-sm text-maroon-900 transition-colors hover:border-bloom-300 hover:text-bloom-600"
+                className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm transition-colors ${
+                  active === id ? "bg-blush-100 text-bloom-600" : "text-maroon-900 hover:text-bloom-600"
+                }`}
               >
                 {c.nav[id]}
               </a>
             ))}
-          </nav>
+          </div>
         </div>
-      </section>
+      </nav>
 
       {/* A national network */}
       <section className="bg-cream py-14 md:py-20">
@@ -275,53 +318,31 @@ export default function CohortPage() {
       </section>
 
       {/* How to apply: the host application, plus a separate inquiry for state or regional civic hubs */}
-      <section id="paths" className="relative scroll-mt-24 overflow-hidden bg-cream py-14 md:py-20">
+      <section id="paths" className="relative scroll-mt-40 overflow-hidden bg-cream py-14 md:py-20">
         <Glow tone="blush" className="-right-1/4 top-1/4 h-[60vmin] w-[60vmin]" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>
-            <E path="paths.eyebrow">{c.paths.eyebrow}</E>
-          </Eyebrow>
-          <h2 className={`${sectionHeading} max-w-3xl`}>
-            <E path="paths.heading">{c.paths.heading}</E>
-          </h2>
-          <E as="p" path="paths.intro" className="mt-6 block max-w-2xl text-lg leading-relaxed text-maroon-900/85">
-            {c.paths.intro}
-          </E>
-          <div className="mt-10 grid items-start gap-6 lg:grid-cols-12">
-            <article className="flex flex-col rounded-3xl bg-white p-8 shadow-soft sm:p-10 lg:col-span-7">
-              <p className="rounded-2xl bg-blush-50 p-5 text-[15px] leading-relaxed text-maroon-900">
-                <E path="paths.whoFor" className="block text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
-                  {c.paths.whoFor}
+          <div className="grid items-start gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <Eyebrow>
+                <E path="paths.eyebrow">{c.paths.eyebrow}</E>
+              </Eyebrow>
+              <h2 className={`${sectionHeading} max-w-3xl`}>
+                <E path="paths.heading">{c.paths.heading}</E>
+              </h2>
+              <E as="p" path="paths.intro" className="mt-6 block max-w-2xl text-lg leading-relaxed text-maroon-900/85">
+                {c.paths.intro}
+              </E>
+              {c.paths.host.points.map((pt, i) => (
+                <E key={i} as="p" path={`paths.host.points.${i}`} className="mt-4 max-w-2xl text-[15px] leading-relaxed text-maroon-900/75">
+                  {pt}
                 </E>
-                <E path="paths.host.for" className="mt-2 block">{c.paths.host.for}</E>
-              </p>
-              <ul className="mt-6 space-y-3 text-[15px] leading-relaxed text-maroon-900/85">
-                {c.paths.host.points.map((pt, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="text-bloom-500" aria-hidden="true">&#10003;</span>
-                    <E path={`paths.host.points.${i}`}>{pt}</E>
-                  </li>
-                ))}
-              </ul>
+              ))}
               <div className="mt-8">
                 <CohortCTA formAnchor={formAnchor} />
               </div>
-              {showInfoSession && (
-                <p className="mt-5 text-sm text-maroon-900/75">
-                  <a
-                    href={INFO_SESSION_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-bloom-300 underline-offset-4 hover:text-bloom-600"
-                  >
-                    {c.infoSession.cardLine}
-                  </a>
-                  {c.infoSession.when.trim() && <> {c.infoSession.when}</>}
-                </p>
-              )}
-            </article>
+            </div>
 
-            <aside id="hubs" className="scroll-mt-24 rounded-3xl border border-blush-200 bg-blush-50 p-8 sm:p-10 lg:col-span-5">
+            <aside id="hubs" className="scroll-mt-40 rounded-3xl border border-blush-200 bg-blush-50 p-8 sm:p-10 lg:col-span-5 lg:mt-10">
               <Eyebrow>
                 <E path="paths.hub.eyebrow">{c.paths.hub.eyebrow}</E>
               </Eyebrow>
@@ -342,7 +363,7 @@ export default function CohortPage() {
       </section>
 
       {/* The work: core and co-design community assemblies */}
-      <section id="host-roles" className="relative scroll-mt-24 overflow-hidden bg-cream py-14 md:py-20">
+      <section id="host-roles" className="relative scroll-mt-40 overflow-hidden bg-cream py-14 md:py-20">
         <Glow tone="blush" className="-left-1/4 top-1/4 h-[60vmin] w-[60vmin]" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
           <Eyebrow>
@@ -403,7 +424,7 @@ export default function CohortPage() {
       </section>
 
       {/* Support */}
-      <section id="support" className="scroll-mt-24 bg-cream py-14 md:py-20">
+      <section id="support" className="scroll-mt-40 bg-cream py-14 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-12 lg:px-10">
           <div className="md:col-span-5">
             <Eyebrow>
@@ -433,7 +454,7 @@ export default function CohortPage() {
       </section>
 
       {/* Impact */}
-      <section id="impact" className="scroll-mt-24 bg-cream py-14 md:py-20">
+      <section id="impact" className="scroll-mt-40 bg-cream py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
           <Eyebrow>
             <E path="impact.eyebrow">{c.impact.eyebrow}</E>
@@ -450,7 +471,7 @@ export default function CohortPage() {
       </section>
 
       {/* Who we're looking for */}
-      <section id="who" className="relative scroll-mt-24 overflow-hidden bg-cream py-14 md:py-20">
+      <section id="who" className="relative scroll-mt-40 overflow-hidden bg-cream py-14 md:py-20">
         <Glow tone="blush" className="-right-1/4 top-0 h-[60vmin] w-[60vmin]" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
           <Eyebrow>
@@ -510,7 +531,7 @@ export default function CohortPage() {
       </section>
 
       {/* Timeline */}
-      <section id="timeline" className="scroll-mt-24 bg-cream py-14 md:py-20">
+      <section id="timeline" className="scroll-mt-40 bg-cream py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
           <Eyebrow>
             <E path="timeline.eyebrow">{c.timeline.eyebrow}</E>
@@ -543,7 +564,7 @@ export default function CohortPage() {
 
       {/* Application form (embedded Airtable), only while applications are open */}
       {showForm && (
-        <section id="apply" className="scroll-mt-24 bg-cream pb-16 md:pb-24">
+        <section id="apply" className="scroll-mt-40 bg-cream pb-16 md:pb-24">
           <div className="mx-auto max-w-4xl px-5">
             <Eyebrow>
               <E path="applicationForm.eyebrow">{c.applicationForm.eyebrow}</E>
