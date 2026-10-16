@@ -4,6 +4,7 @@
 import { Eyebrow, Glow, Pill } from "../components/ui";
 import { INSTITUTION } from "../content/terms";
 import news from "../content/news.json";
+import { LATEST_POST } from "../content/latestPost";
 import { assetHref } from "../utils/href";
 
 const REPORT_URL = "https://drive.google.com/file/d/1QngRN6wkkAcPDdhdFInZQn_qu0mmBWnl/view?usp=drive_link";
@@ -44,7 +45,27 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* Featured press release */}
+      {/* BLOOM's newest announcement */}
+      <section className="bg-cream pb-10">
+        <div className="mx-auto max-w-7xl px-5 lg:px-10">
+          <article className="rounded-3xl bg-white p-7 shadow-soft sm:p-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+              {LATEST_POST.source} &middot; {formatDate(LATEST_POST.date)}
+            </p>
+            <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium leading-tight text-maroon-900 sm:text-4xl">
+              {LATEST_POST.title}
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-maroon-900/80">{LATEST_POST.dek}</p>
+            <div className="mt-7">
+              <Pill href={LATEST_POST.url} external>
+                {LATEST_POST.cta}
+              </Pill>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* Utah press release, in full */}
       <section className="bg-cream pb-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
           <article id="utah-solutions-forum" className="overflow-hidden rounded-3xl bg-white shadow-soft">

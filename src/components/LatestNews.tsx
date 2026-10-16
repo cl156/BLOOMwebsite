@@ -5,6 +5,7 @@
  */
 import { Eyebrow } from "./ui";
 import news from "../content/news.json";
+import { LATEST_POST } from "../content/latestPost";
 import { pageHref } from "../utils/href";
 
 const formatDate = (iso: string) =>
@@ -56,15 +57,15 @@ type Card = { kicker: string; date: string; title: string; href: string; externa
 
 const CARDS: Card[] = [
   {
-    kicker: "Press release",
-    date: "2026-09-25",
-    title: "Utahns Move from Concerns to Solutions on AI and Data Centers",
-    href: pageHref("news", "utah-solutions-forum"),
-    external: false,
-    cta: "Read the press release",
+    kicker: LATEST_POST.source,
+    date: LATEST_POST.date,
+    title: LATEST_POST.title,
+    href: LATEST_POST.url,
+    external: true,
+    cta: LATEST_POST.cta,
   },
   ...news.slice(0, 2).map((a) => ({
-    kicker: a.outlet,
+    kicker: a.outlet.replace(/\s*\(.*\)$/, ""),
     date: a.date,
     title: a.title,
     href: a.url,
