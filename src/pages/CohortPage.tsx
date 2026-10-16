@@ -61,7 +61,8 @@ function E({
   // Show line breaks typed into the text (Enter) as breaks on the page.
   const cls = children.includes("\n") ? `${className ?? ""} whitespace-pre-line` : className;
   return (
-    <Editable file={FILE} path={path} as={as} className={cls}>
+    // key: rebuild the element when the saved text changes, so in-place edits never leave stale fragments.
+    <Editable key={children} file={FILE} path={path} as={as} className={cls}>
       {links ? linkWords(children, links) : children}
     </Editable>
   );
@@ -244,7 +245,7 @@ export default function CohortPage() {
         <div className="relative mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-12 lg:px-10">
           <div className="md:col-span-5">
             <div className="md:sticky md:top-40">
-              <p className="font-display text-3xl leading-tight text-maroon-900 sm:text-4xl">
+              <p className="font-display text-2xl leading-snug text-maroon-900 sm:text-3xl">
                 <E path="ladder.heading">{c.ladder.heading}</E>
                 <E path="ladder.headingAccent" className="mt-2 block text-bloom-500">
                   {c.ladder.headingAccent}
