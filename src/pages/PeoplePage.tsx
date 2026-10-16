@@ -15,7 +15,7 @@ const TEAM: Member[] = [
   { name: "Humphrey Obuobi", role: "Product & Design Lead", photo: "/team/humphrey.png" },
   { name: "Rahmin Sarabi", role: "Co-Executive Director", photo: "/team/rahmin.jpg" },
   { name: "Audrey Tang", role: "Senior Advisor", photo: "/team/audrey.jpeg" },
-  { name: "Zabrae Valentine", role: "Deliberation & Policy Impact", photo: "/team/zabrae.jpeg" },
+  { name: "Zabrae Valentine", role: "Deliberation Design and Policy Impact", photo: "/team/zabrae.jpeg" },
 ];
 
 /* Listed without photos. Lauren Higgins and Audrey Tang appear in the team grid above. */
