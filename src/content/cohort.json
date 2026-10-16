@@ -1,81 +1,52 @@
 {
   "hero": {
-    "eyebrow": "",
     "heading": "Call for Civic Hosts:\nThe Public Assembly on AI",
     "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the United States working out what they want from AI.",
     "pdfLabel": "Download the full RFP (PDF)"
   },
   "navLabel": "Call for Civic Hosts",
   "nav": {
-    "paths": "Who can apply",
     "host-roles": "The work",
     "who": "What we look for",
     "tools": "Tools",
     "impact": "Impact",
     "support": "Support",
     "timeline": "Timeline",
-    "apply": "Apply"
+    "apply": "Apply",
+    "questions": "Questions"
   },
   "network": {
-    "body": "Each host builds a constituency behind its community’s common ground. When communities reach shared conclusions, they speak with the weight of many places.",
+    "body": "The Public Assembly will empower communities to create local agendas while identifying the places where they can organize together. In each place, informed dialogue builds relationships that lead to positive, durable change.",
     "imageAlt": "Delegates talking across a table at the Utah Solutions Forum"
   },
   "ladder": {
-    "eyebrow": "From communities to the country",
-    "heading": "No community can solve the AI transition alone.",
+    "heading": "The Public Assembly on AI helps communities make decisions about the role this technology should play in their lives.",
     "headingAccent": "",
     "body": "A community can decide how to govern a proposed data center project. But it cannot by itself determine state or national protections for children, workers, privacy, or increasingly powerful AI systems.",
     "emphasis": "",
     "tiers": [
       {
         "level": "Local",
-        "body": "Communities identify priorities and act where they can."
+        "body": "Hosts engage their broader communities and identify shared priorities based on common ground."
       },
       {
         "level": "State",
-        "body": "Questions arising across communities can become the charge for state-level representative assemblies."
+        "body": "Conclusions that resonate across communities become the charge for state-level representative assemblies."
       },
       {
         "level": "National",
-        "body": "Questions requiring national action can ultimately become the agenda for a representative national civic assembly on AI."
+        "body": "Questions requiring national action ultimately become the agenda for a national civic assembly, bringing local perspectives to the national stage."
       }
     ]
   },
-  "ambition": {
-    "lead": "Polls tell us what people think in isolation. Social media rewards what divides us.",
-    "statement": "The Public Assembly on AI helps communities reason together and make decisions about how they want to move forward."
-  },
-  "paths": {
-    "eyebrow": "WHO CAN APPLY",
-    "heading": "Are you a Civic Host?",
-    "intro": "Civic Hosts are local organizations or community leaders rooted in a town, county, or constituency, with the relationships to bring their community together across divides to work through the issues of the day.",
-    "whoFor": "Who it’s for",
-    "host": {
-      "for": "",
-      "points": [
-        "Organizations and coalitions of any size are welcome, including congregations, civic clubs, and informal networks. Individual community leaders can apply through a partner organization or fiscal sponsor."
-      ]
-    },
-    "hub": {
-      "eyebrow": "State and regional civic hubs",
-      "heading": "Already supporting a network of local civic organizations?",
-      "body": "Some organizations bring several hosts together across a state or region with the capacity to coach them, stand behind the quality of their work, and help carry what their communities conclude to state decision-makers. If that’s you, let’s talk about serving as a state or regional civic hub.",
-      "button": "Inquire about joining as a civic hub"
-    }
-  },
   "work": {
-    "eyebrow": "The work",
     "heading": "Two kinds of community assembly.",
     "intro": "Every host is supported to run a community assembly, in one of two forms. We’ll match each host to the form that fits its community, its capacity, and what’s at stake.",
     "fundingLabel": "FUNDING FROM BLOOM",
-    "lengthLabel": "Length",
     "core": {
       "name": "Shortform",
       "funding": "$10,000–$30,000",
-      "length": "10–12 weeks",
-      "hours": "~120 hours, led by one to two people",
-      "summary": "",
-      "stepsLabel": "The playbook",
+      "length": "3 month commitment",
       "steps": [
         {
           "name": "One-to-ones",
@@ -93,15 +64,13 @@
           "name": "Results",
           "body": "A map of community priorities that are immediately actionable and what needs further deliberation."
         }
-      ]
+      ],
+      "outcome": "Works towards a map of community priorities: what’s immediately actionable, and what needs further deliberation."
     },
     "coDesign": {
       "name": "Longform",
       "funding": "$50,000–$60,000",
-      "length": "February–July 2027",
-      "hours": "6 months that move from agenda setting to decisions",
-      "summary": "",
-      "stepsLabel": "The phases",
+      "length": "6 month commitment",
       "steps": [
         {
           "name": "Agenda setting",
@@ -123,11 +92,12 @@
           "name": "Decision making",
           "body": "Recommendations are drafted, tested for broad agreement, and put to a public ratification vote."
         }
-      ]
-    }
+      ],
+      "outcome": "Works towards community recommendations, tested for broad agreement and put to a public ratification vote."
+    },
+    "stepsLabel": "Activities"
   },
   "tools": {
-    "eyebrow": "The tools",
     "heading": "CivicOS: BLOOM’s open-source deliberation platform",
     "intro": "Every Civic Host gets lifetime access to CivicOS and training on how to use it.",
     "items": [
@@ -161,7 +131,6 @@
     ]
   },
   "support": {
-    "eyebrow": "What hosts receive",
     "heading": "Funding, tools, and a network behind you.",
     "fundingNote": "",
     "receive": [
@@ -184,7 +153,6 @@
     ]
   },
   "impact": {
-    "eyebrow": "Impact",
     "heading": "What your community’s work can impact.",
     "items": [
       {
@@ -202,7 +170,6 @@
     ]
   },
   "who": {
-    "eyebrow": "What we’re looking for",
     "heading": "What makes a strong host.",
     "whereLabel": "",
     "where": [
@@ -239,10 +206,14 @@
         "name": "A learning partner",
         "body": "This is a first cohort. We’re looking for hosts who will try things, tell us plainly what isn’t working, and help shape the model for the communities that come next."
       }
-    ]
+    ],
+    "hub": {
+      "heading": "Already supporting a network of local civic organizations?",
+      "body": "Some organizations bring several hosts together across a state or region with the capacity to coach them, stand behind the quality of their work, and help carry what their communities conclude to state decision-makers. If that’s you, let’s talk about serving as a state or regional civic hub.",
+      "button": "Inquire about joining as a civic hub"
+    }
   },
   "timeline": {
-    "eyebrow": "Timeline",
     "heading": "From application to a national assembly.",
     "items": [
       {
@@ -286,10 +257,12 @@
     "when": "Thursday, October 22 · 10:00 AM PT / 1:00 PM ET",
     "cardLine": "",
     "prompt": "Have questions before you apply?",
-    "heroPrefix": "Info session"
+    "heroPrefix": "Info session",
+    "subtitle": "Register for an information session",
+    "rsvp": "RSVP",
+    "emailPrompt": "You can also email us at"
   },
   "applicationForm": {
-    "eyebrow": "Application",
     "heading": "Apply to be a Civic Host.",
     "intro": "The application takes about an hour. Applications are due November 20, 2026.",
     "newTab": "Prefer a full page? Open the form in a new tab."

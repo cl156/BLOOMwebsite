@@ -9,13 +9,13 @@
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import copy from "../content/cohort.json";
-import { APPLY_EMBED_URL, APPLY_URL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, rfpStatus } from "../content/rfp";
+import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, rfpStatus } from "../content/rfp";
 import Editable from "../components/Editable";
-import { Eyebrow, Glow, Pill } from "../components/ui";
+import { Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
 import { assetHref, sectionHref } from "../utils/href";
 
-const SECTIONS = ["paths", "who", "host-roles", "support", "tools", "impact", "timeline", "apply"] as const;
+const SECTIONS = ["who", "host-roles", "support", "tools", "impact", "timeline", "apply", "questions"] as const;
 
 const FILE = "cohort.json";
 
@@ -82,7 +82,7 @@ function NumberedItem({ n, name, body, path }: { n: number; name: string; body: 
   );
 }
 
-const sectionHeading = "mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl";
+const sectionHeading = "font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl";
 
 /** Rings that grow with each tier: one community, several, the country. */
 function TierMark({ tier }: { tier: number }) {
@@ -108,7 +108,7 @@ function TierMark({ tier }: { tier: number }) {
   );
 }
 
-/** The ladder's connecting line draws in as the reader scrolls through it. */
+/** How far the reader has scrolled through the ladder, so each tier fades in as it's reached. */
 function useScrollProgress<T extends HTMLElement>() {
   const ref = useRef<T>(null);
   const [progress, setProgress] = useState(0);
@@ -191,10 +191,7 @@ export default function CohortPage() {
       <section className="relative overflow-hidden bg-cream pb-16 pt-36 sm:pt-44">
         <Glow className="left-1/2 top-0 h-[80vmin] w-[80vmin] -translate-x-1/2" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>
-            <E path="hero.eyebrow">{c.hero.eyebrow}</E>
-          </Eyebrow>
-          <h1 className="mt-5 max-w-4xl font-display text-5xl font-medium leading-[1.02] tracking-tight text-bloom-500 sm:text-6xl lg:text-7xl">
+          <h1 className="max-w-4xl font-display text-5xl font-medium leading-[1.02] tracking-tight text-bloom-500 sm:text-6xl lg:text-7xl">
             <E path="hero.heading">{c.hero.heading}</E>
           </h1>
           <E
@@ -241,28 +238,13 @@ export default function CohortPage() {
         </div>
       </nav>
 
-      {/* The ambition */}
-      <section className="bg-cream py-14 md:py-20">
-        <div className="mx-auto max-w-4xl px-5 text-center lg:px-10">
-          <E as="p" path="ambition.lead" className="text-lg leading-relaxed text-maroon-900/80 sm:text-xl">
-            {c.ambition.lead}
-          </E>
-          <E as="p" path="ambition.statement" className="mt-8 font-display text-3xl leading-snug text-bloom-500 sm:text-4xl">
-            {c.ambition.statement}
-          </E>
-        </div>
-      </section>
-
       {/* From communities to the country */}
       <section className="relative overflow-hidden bg-cream py-14 md:py-20">
         <Glow tone="blush" className="-right-1/4 top-1/3 h-[60vmin] w-[60vmin]" />
         <div className="relative mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-12 lg:px-10">
           <div className="md:col-span-5">
             <div className="md:sticky md:top-40">
-              <Eyebrow>
-                <E path="ladder.eyebrow">{c.ladder.eyebrow}</E>
-              </Eyebrow>
-              <p className="mt-6 font-display text-3xl leading-tight text-maroon-900 sm:text-4xl">
+              <p className="font-display text-3xl leading-tight text-maroon-900 sm:text-4xl">
                 <E path="ladder.heading">{c.ladder.heading}</E>
                 <E path="ladder.headingAccent" className="mt-2 block text-bloom-500">
                   {c.ladder.headingAccent}
@@ -279,16 +261,13 @@ export default function CohortPage() {
           </div>
 
           {/* The ladder */}
-          <ol ref={ladderRef} className="relative md:col-span-6 md:col-start-7" aria-label="How questions travel">
-            <div aria-hidden="true" className="absolute bottom-10 left-7 top-10 w-px bg-blush-200">
-              <div className="w-px bg-bloom-500 transition-[height] duration-150" style={{ height: `${progress * 100}%` }} />
-            </div>
+          <ol ref={ladderRef} className="md:col-span-6 md:col-start-7" aria-label="How questions travel">
             {tiers.map((t, i) => {
               const reached = progress >= i / tiers.length;
               return (
-                <li key={i} className="relative flex gap-6 pb-14 last:pb-0">
+                <li key={i} className="flex items-center gap-6 pb-10 last:pb-0">
                   <div
-                    className={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-cream transition-opacity duration-500 ${
+                    className={`flex h-14 w-14 shrink-0 items-center justify-center transition-opacity duration-500 ${
                       reached ? "opacity-100" : "opacity-40"
                     }`}
                   >
@@ -320,58 +299,10 @@ export default function CohortPage() {
         </div>
       </section>
 
-      {/* How to apply: the host application, plus a separate inquiry for state or regional civic hubs */}
-      <section id="paths" className="relative scroll-mt-40 overflow-hidden bg-cream py-14 md:py-20">
-        <Glow tone="blush" className="-right-1/4 top-1/4 h-[60vmin] w-[60vmin]" />
-        <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-          <div className="grid items-start gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <Eyebrow>
-                <E path="paths.eyebrow">{c.paths.eyebrow}</E>
-              </Eyebrow>
-              <h2 className={`${sectionHeading} max-w-3xl`}>
-                <E path="paths.heading">{c.paths.heading}</E>
-              </h2>
-              <E as="p" path="paths.intro" className="mt-6 block max-w-2xl text-lg leading-relaxed text-maroon-900/85">
-                {c.paths.intro}
-              </E>
-              {c.paths.host.points.map((pt, i) => (
-                <E key={i} as="p" path={`paths.host.points.${i}`} className="mt-4 max-w-2xl text-[15px] leading-relaxed text-maroon-900/75">
-                  {pt}
-                </E>
-              ))}
-              <div className="mt-8">
-                <CohortCTA formAnchor={formAnchor} />
-              </div>
-            </div>
-
-            <aside id="hubs" className="scroll-mt-40 rounded-3xl border border-blush-200 bg-blush-50 p-8 sm:p-10 lg:col-span-5 lg:mt-10">
-              <Eyebrow>
-                <E path="paths.hub.eyebrow">{c.paths.hub.eyebrow}</E>
-              </Eyebrow>
-              <E as="p" path="paths.hub.heading" className="mt-4 font-display text-2xl leading-snug text-maroon-900">
-                {c.paths.hub.heading}
-              </E>
-              <E as="p" path="paths.hub.body" className="mt-4 text-[15px] leading-relaxed text-maroon-900/85">
-                {c.paths.hub.body}
-              </E>
-              <div className="mt-8">
-                <Pill href={HUB_INQUIRY_MAILTO} variant="soft">
-                  {c.paths.hub.button}
-                </Pill>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
       {/* Who we're looking for */}
       <section id="who" className="relative scroll-mt-40 overflow-hidden bg-cream py-14 md:py-20">
         <Glow tone="blush" className="-right-1/4 top-0 h-[60vmin] w-[60vmin]" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>
-            <E path="who.eyebrow">{c.who.eyebrow}</E>
-          </Eyebrow>
           <h2 className={`${sectionHeading} max-w-3xl`}>
             <E path="who.heading">{c.who.heading}</E>
           </h2>
@@ -418,6 +349,23 @@ export default function CohortPage() {
               ))}
             </ol>
           </div>
+
+          {/* State and regional civic hubs inquire rather than apply */}
+          <aside id="hubs" className="mt-6 grid scroll-mt-40 gap-6 rounded-3xl border border-blush-200 bg-blush-50 p-8 sm:p-10 lg:grid-cols-12 lg:gap-10">
+            <E as="p" path="who.hub.heading" className="font-display text-3xl leading-snug text-maroon-900 lg:col-span-5">
+              {c.who.hub.heading}
+            </E>
+            <div className="lg:col-span-7">
+              <E as="p" path="who.hub.body" className="text-[15px] leading-relaxed text-maroon-900/85">
+                {c.who.hub.body}
+              </E>
+              <div className="mt-6">
+                <Pill href={HUB_INQUIRY_MAILTO} variant="soft">
+                  {c.who.hub.button}
+                </Pill>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -425,9 +373,6 @@ export default function CohortPage() {
       <section id="host-roles" className="relative scroll-mt-40 overflow-hidden bg-cream py-14 md:py-20">
         <Glow tone="blush" className="-left-1/4 top-1/4 h-[60vmin] w-[60vmin]" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>
-            <E path="work.eyebrow">{c.work.eyebrow}</E>
-          </Eyebrow>
           <h2 className={`${sectionHeading} max-w-3xl`}>
             <E path="work.heading">{c.work.heading}</E>
           </h2>
@@ -438,35 +383,27 @@ export default function CohortPage() {
             {scopes.map(({ key, s: h }) => (
               <article key={key} className="flex flex-col rounded-3xl bg-white p-8 shadow-soft sm:p-10">
                 <E as="p" path={`work.${key}.name`} className="font-display text-3xl text-maroon-900">{h.name}</E>
-                <dl className="mt-6 grid grid-cols-2 gap-4 rounded-2xl bg-blush-50 p-5">
-                  <div>
-                    <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
-                      <E path="work.fundingLabel">{c.work.fundingLabel}</E>
-                    </dt>
-                    <dd className="mt-1 font-display text-xl text-maroon-900">
-                      <E path={`work.${key}.funding`}>{h.funding}</E>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
-                      <E path="work.lengthLabel">{c.work.lengthLabel}</E>
-                    </dt>
-                    <dd className="mt-1 font-display text-xl text-maroon-900">
-                      <E path={`work.${key}.length`}>{h.length}</E>
-                    </dd>
-                  </div>
-                  <E as="p" path={`work.${key}.hours`} className="col-span-2 text-sm text-maroon-900/75">{h.hours}</E>
-                </dl>
-                <E as="p" path={`work.${key}.summary`} className="mt-6 text-[15px] leading-relaxed text-maroon-900/85">{h.summary}</E>
-                <E as="p" path={`work.${key}.stepsLabel`} className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
-                  {h.stepsLabel}
+                <E as="p" path={`work.${key}.outcome`} className="mt-4 font-display text-2xl leading-snug text-bloom-500">
+                  {h.outcome}
                 </E>
-                <ol className="mt-4 space-y-5">
+                <p className="mt-4 font-display text-xl text-maroon-900">
+                  <E path={`work.${key}.length`}>{h.length}</E>
+                </p>
+                <div className="mt-6 rounded-2xl bg-blush-50 px-5 py-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+                    <E path="work.fundingLabel">{c.work.fundingLabel}</E>
+                  </p>
+                  <p className="mt-1 font-display text-xl text-maroon-900">
+                    <E path={`work.${key}.funding`}>{h.funding}</E>
+                  </p>
+                </div>
+                <E as="p" path="work.stepsLabel" className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+                  {c.work.stepsLabel}
+                </E>
+                <ul className="mt-4 space-y-5">
                   {h.steps.map((st, i) => (
                     <li key={i} className="flex gap-4">
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blush-100 text-sm text-bloom-600">
-                        {i + 1}
-                      </span>
+                      <span aria-hidden="true" className="shrink-0 text-bloom-500">&rarr;</span>
                       <div>
                         <E as="p" path={`work.${key}.steps.${i}.name`} className="font-medium text-maroon-900">{st.name}</E>
                         <E as="p" path={`work.${key}.steps.${i}.body`} className="mt-1 text-[15px] leading-relaxed text-maroon-900/80">
@@ -475,7 +412,7 @@ export default function CohortPage() {
                       </div>
                     </li>
                   ))}
-                </ol>
+                </ul>
               </article>
             ))}
           </div>
@@ -486,9 +423,6 @@ export default function CohortPage() {
       <section id="support" className="scroll-mt-40 bg-cream py-14 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-12 lg:px-10">
           <div className="md:col-span-5">
-            <Eyebrow>
-              <E path="support.eyebrow">{c.support.eyebrow}</E>
-            </Eyebrow>
             <h2 className={sectionHeading}>
               <E path="support.heading">{c.support.heading}</E>
             </h2>
@@ -515,9 +449,6 @@ export default function CohortPage() {
       {/* The tools: CivicOS, one card per tool, tied to the playbook step it supports */}
       <section id="tools" className="scroll-mt-40 bg-cream py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>
-            <E path="tools.eyebrow">{c.tools.eyebrow}</E>
-          </Eyebrow>
           <h2 className={`${sectionHeading} max-w-3xl`}>
             <E path="tools.heading">{c.tools.heading}</E>
           </h2>
@@ -564,9 +495,6 @@ export default function CohortPage() {
       {/* Impact */}
       <section id="impact" className="scroll-mt-40 bg-cream py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>
-            <E path="impact.eyebrow">{c.impact.eyebrow}</E>
-          </Eyebrow>
           <h2 className={`${sectionHeading} max-w-3xl`}>
             <E path="impact.heading">{c.impact.heading}</E>
           </h2>
@@ -581,9 +509,6 @@ export default function CohortPage() {
       {/* Timeline */}
       <section id="timeline" className="scroll-mt-40 bg-cream py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
-          <Eyebrow>
-            <E path="timeline.eyebrow">{c.timeline.eyebrow}</E>
-          </Eyebrow>
           <h2 className={`${sectionHeading} max-w-3xl`}>
             <E path="timeline.heading">{c.timeline.heading}</E>
           </h2>
@@ -614,9 +539,6 @@ export default function CohortPage() {
       {showForm && (
         <section id="apply" className="scroll-mt-40 bg-cream pb-16 md:pb-24">
           <div className="mx-auto max-w-4xl px-5">
-            <Eyebrow>
-              <E path="applicationForm.eyebrow">{c.applicationForm.eyebrow}</E>
-            </Eyebrow>
             <h2 className={`${sectionHeading} max-w-3xl`}>
               <E path="applicationForm.heading">{c.applicationForm.heading}</E>
             </h2>
@@ -637,22 +559,37 @@ export default function CohortPage() {
         </section>
       )}
 
-      {/* Info session registration, last on the page until applications close */}
-      {showInfoSession && (
-        <section className="bg-cream pb-16 md:pb-24">
-          <div className="mx-auto max-w-4xl px-5">
-            <div className="flex flex-col items-start gap-5 rounded-3xl bg-blush-50 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
-              <div>
-                <E as="p" path="infoSession.prompt" className="font-display text-2xl text-maroon-900">
-                  {c.infoSession.prompt}
-                </E>
-                {infoWhen}
-              </div>
-              {infoButton}
+      {/* Questions: info session registration until it's over, and an email to reach us */}
+      <section id="questions" className="scroll-mt-40 bg-cream pb-16 md:pb-24">
+        <div className="mx-auto max-w-4xl px-5">
+          <div className="flex flex-col items-start gap-6 rounded-3xl bg-blush-50 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+            <div>
+              <E as="p" path="infoSession.prompt" className="font-display text-3xl text-maroon-900">
+                {c.infoSession.prompt}
+              </E>
+              {showInfoSession && (
+                <>
+                  <E as="p" path="infoSession.subtitle" className="mt-3 font-display text-xl text-bloom-500">
+                    {c.infoSession.subtitle}
+                  </E>
+                  {infoWhen}
+                </>
+              )}
+              <p className="mt-4 text-[15px] text-maroon-900/80">
+                <E path="infoSession.emailPrompt">{c.infoSession.emailPrompt}</E>{" "}
+                <a href={`mailto:${CONTACT_EMAIL}`} className="font-medium text-bloom-600 underline decoration-bloom-300 underline-offset-4 hover:text-bloom-700">
+                  {CONTACT_EMAIL}
+                </a>
+              </p>
             </div>
+            {showInfoSession && (
+              <Pill href={INFO_SESSION_URL} external className="!px-8 !py-4 !text-base">
+                {c.infoSession.rsvp}
+              </Pill>
+            )}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
     </main>
   );
 }
