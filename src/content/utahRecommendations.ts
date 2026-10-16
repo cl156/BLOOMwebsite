@@ -1,4 +1,6 @@
-/** From the Utah Solutions Forum preliminary report (Sept. 25, 2026), with the share of delegates who backed each. */
+import { assetHref } from "../utils/href";
+
+/** From the Utah Solutions Forum preliminary report (updated Sept. 28, 2026), with the share of delegates who backed each. */
 export const UTAH_RECOMMENDATIONS: { area: string; text: string; pct: number }[] = [
   { area: "Information and participation", text: "A dedicated statewide AI information hub", pct: 95 },
   { area: "Information and participation", text: "A centralized citizen engagement portal", pct: 84 },
@@ -12,5 +14,6 @@ export const UTAH_RECOMMENDATIONS: { area: string; text: string; pct: number }[]
   { area: "Accountability", text: "An AI consumer complaint and transparency initiative", pct: 97 },
 ];
 
-export const UTAH_REPORT_URL = "https://drive.google.com/file/d/1QngRN6wkkAcPDdhdFInZQn_qu0mmBWnl/view?usp=drive_link";
+/** The preliminary recommendations report (PDF), hosted on the site. */
+export const UTAH_REPORT_URL = assetHref("reports/utah-solutions-forum-preliminary-report.pdf");
 export const UTAH_FORUM_URL = "https://forum.utahcommonground.org/";
