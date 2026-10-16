@@ -20,8 +20,8 @@
     "imageAlt": "Delegates talking across a table at the Utah Solutions Forum"
   },
   "moment": {
-    "eyebrow": "The moment",
-    "heading": "AI is forcing choices about our future, right now.",
+    "eyebrow": "",
+    "heading": "The choices AI raises are already on the table.",
     "items": [
       {
         "label": "Where we live",
@@ -42,7 +42,7 @@
   "ladder": {
     "heading": "The Public Assembly on AI helps communities work out together the future worth building, from local to national.",
     "headingAccent": "",
-    "body": "Today, many communities struggle to even influence local choices, like how (or if) a data center gets built. And no community can, on its own, set state or national protections for children, workers, and privacy, or guardrails on powerful AI.\n\nThe Public Assembly gives communities the tools, organizing support, and connections to do both. Every community sets its own agenda and finds where it can organize with others. Along the way, informed dialogue builds the relationships that make change last.",
+    "body": "Today, many communities struggle to even have a say in local choices, like how (or if) a data center gets built. And no community can, on its own, set state or national protections for children, workers, and privacy, or guardrails on powerful AI.\n\nThe Public Assembly gives communities the tools, organizing support, and connections to do both. Every community sets its own agenda and finds where it can organize with others. Along the way, informed dialogue builds the relationships that make change last.",
     "emphasis": "",
     "tiers": [
       {
@@ -231,15 +231,7 @@
       "heading": "Already supporting a network of local civic organizations?",
       "body": "Some organizations bring several hosts together across a state or region with the capacity to coach them, stand behind the quality of their work, and help carry what their communities conclude to state decision-makers. If that’s you, let’s talk about serving as a state or regional civic hub.",
       "button": "Inquire about joining as a civic hub"
-    },
-    "topicQuestions": [
-      "What should our community ask of a proposed data center: water, power, jobs, tax breaks?",
-      "How should employers here bring in AI, and what do workers need?",
-      "How should our schools and colleges use AI, and where should they hold back?",
-      "Where should AI monitoring of residents, students, or workers stop?",
-      "What safeguards should the most powerful AI systems face?",
-      "How do we keep AI’s gains from concentrating in a few hands?"
-    ]
+    }
   },
   "timeline": {
     "heading": "From application to a national assembly.",

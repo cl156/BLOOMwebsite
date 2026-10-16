@@ -59,3 +59,13 @@ export const INFO_SESSION_ENDS = new Date("2026-10-22T11:00:00-07:00");
 export function infoSessionUpcoming(now = new Date()) {
   return Boolean(INFO_SESSION_URL) && now < INFO_SESSION_ENDS && rfpStatus(now) !== "closed";
 }
+
+/**
+ * Draft sections that stay hidden unless the link asks for them, e.g. /cohort/?preview=moment.
+ * Several can be combined: ?preview=moment,other
+ */
+export function previewEnabled(name: string) {
+  if (typeof window === "undefined") return false;
+  const v = new URLSearchParams(window.location.search).get("preview");
+  return Boolean(v && v.split(",").includes(name));
+}

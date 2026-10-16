@@ -9,7 +9,7 @@
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import copy from "../content/cohort.json";
-import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, rfpStatus } from "../content/rfp";
+import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, previewEnabled, rfpStatus } from "../content/rfp";
 import Editable from "../components/Editable";
 import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
@@ -83,7 +83,7 @@ function NumberedItem({ n, name, body, path }: { n: number; name: string; body: 
   );
 }
 
-const sectionHeading = "font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl";
+const sectionHeading = "text-balance font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl";
 
 /** Rings that grow with each tier: one community, several, the country. */
 function TierMark({ tier }: { tier: number }) {
@@ -239,7 +239,8 @@ export default function CohortPage() {
         </div>
       </nav>
 
-      {/* The moment: the choices AI is forcing, as questions; why communities need to work through them together */}
+      {/* The moment (draft, hidden unless the link has ?preview=moment): the choices AI raises, as questions */}
+      {previewEnabled("moment") && (
       <section id="moment" className="scroll-mt-40 bg-cream pb-4 pt-14 md:pt-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
           <Eyebrow>
@@ -270,6 +271,7 @@ export default function CohortPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* From communities to the country */}
       <section className="relative overflow-hidden bg-cream py-14 md:py-20">
@@ -356,18 +358,10 @@ export default function CohortPage() {
             <E as="p" path="who.topicsIntro" className="mt-2 text-[15px] leading-relaxed text-maroon-900/85">
               {c.who.topicsIntro}
             </E>
-            {/* Each topic as the kind of question a community assembly takes up */}
-            <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-4 flex flex-wrap gap-2">
               {c.who.topics.map((t, i) => (
-                <li key={i} className="rounded-2xl bg-blush-50 p-5">
-                  <E as="p" path={`who.topics.${i}`} className="text-xs font-semibold uppercase tracking-[0.16em] text-bloom-600">
-                    {t}
-                  </E>
-                  {c.who.topicQuestions?.[i] && (
-                    <E as="p" path={`who.topicQuestions.${i}`} className="mt-2 text-[15px] leading-relaxed text-maroon-900">
-                      {c.who.topicQuestions[i]}
-                    </E>
-                  )}
+                <li key={i} className="rounded-full bg-blush-100 px-4 py-2 text-sm text-bloom-600">
+                  <E path={`who.topics.${i}`}>{t}</E>
                 </li>
               ))}
             </ul>
