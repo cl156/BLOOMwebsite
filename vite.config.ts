@@ -68,6 +68,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, "index.html"),
         news: path.resolve(__dirname, "news/index.html"),
+        utahPressRelease: path.resolve(__dirname, "news/utah-solutions-forum/index.html"),
         cohort: path.resolve(__dirname, "cohort/index.html"),
         people: path.resolve(__dirname, "people/index.html"),
         updates: path.resolve(__dirname, "updates/index.html"),

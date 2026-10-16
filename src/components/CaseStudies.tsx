@@ -107,7 +107,7 @@ export default function CaseStudies() {
             <div className="mt-7 flex flex-wrap gap-3">
               {active === "UT" ? (
                 <>
-                  <Pill href={pageHref("news", "utah-solutions-forum")}>Read the press release</Pill>
+                  <Pill href={pageHref("news/utah-solutions-forum")}>Read the press release</Pill>
                   <Pill href={UTAH_REPORT_URL} external variant="soft">Read the report</Pill>
                   <Pill href={UTAH_FORUM_URL} external variant="soft">Visit the {UTAH_FORUM}</Pill>
                 </>
