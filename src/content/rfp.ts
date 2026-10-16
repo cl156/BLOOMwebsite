@@ -14,8 +14,12 @@ export const APPLY_EMBED_URL = "https://airtable.com/embed/appWfFclW2rKc7Ot1/pag
 
 export const CONTACT_EMAIL = "hello@bloom-project.org";
 
-/** The RFP slide deck as a PDF in public/, e.g. "rfp/founding-civic-hosts-rfp.pdf". The download link shows once this is set and applications have opened. */
-export const RFP_PDF = "rfp/founding-civic-hosts-rfp.pdf";
+/**
+ * The Call for Civic Hosts (CFP) as a PDF in public/. The download link shows once this is set and
+ * applications have opened. The old address (rfp/founding-civic-hosts-rfp.pdf) is kept as a copy of
+ * the same file so links shared before the rename still work; update both when the PDF changes.
+ */
+export const RFP_PDF = "cfp/call-for-civic-hosts.pdf";
 
 /** Pacific time (Oct 15 is daylight time, UTC−7). Before OPENS the site shows "Get notified"; after CLOSES it says applications are closed. Applications open at 2:00 PM PT. */
 export const OPENS = new Date("2026-10-15T14:00:00-07:00");
