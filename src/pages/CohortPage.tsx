@@ -9,9 +9,9 @@
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import copy from "../content/cohort.json";
-import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, rfpStatus } from "../content/rfp";
+import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, previewEnabled, rfpStatus } from "../content/rfp";
 import Editable from "../components/Editable";
-import { Glow, Pill } from "../components/ui";
+import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
 import { assetHref, sectionHref } from "../utils/href";
 
@@ -83,7 +83,7 @@ function NumberedItem({ n, name, body, path }: { n: number; name: string; body: 
   );
 }
 
-const sectionHeading = "font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl";
+const sectionHeading = "text-balance font-display text-4xl font-medium leading-[1.05] tracking-tight text-bloom-500 sm:text-5xl";
 
 /** Rings that grow with each tier: one community, several, the country. */
 function TierMark({ tier }: { tier: number }) {
@@ -238,6 +238,40 @@ export default function CohortPage() {
           </div>
         </div>
       </nav>
+
+      {/* The moment (draft, hidden unless the link has ?preview=moment): the choices AI raises, as questions */}
+      {previewEnabled("moment") && (
+      <section id="moment" className="scroll-mt-40 bg-cream pb-4 pt-14 md:pt-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-10">
+          <Eyebrow>
+            <E path="moment.eyebrow">{c.moment.eyebrow}</E>
+          </Eyebrow>
+          <h2 className={`${sectionHeading} max-w-4xl`}>
+            <E path="moment.heading">{c.moment.heading}</E>
+          </h2>
+          <ul className="mt-10 grid gap-5 md:grid-cols-3">
+            {c.moment.items.map((m, i) => (
+              <li key={i} className="rounded-3xl border border-blush-200 bg-white p-7 shadow-soft">
+                <E as="p" path={`moment.items.${i}.label`} className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+                  {m.label}
+                </E>
+                <E as="p" path={`moment.items.${i}.question`} className="mt-3 font-display text-xl leading-snug text-maroon-900">
+                  {m.question}
+                </E>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10 max-w-3xl border-l-2 border-bloom-500 pl-6">
+            <E as="p" path="moment.contrast" className="text-lg leading-relaxed text-maroon-900/75">
+              {c.moment.contrast}
+            </E>
+            <E as="p" path="moment.bridge" className="mt-3 font-display text-2xl leading-snug text-maroon-900">
+              {c.moment.bridge}
+            </E>
+          </div>
+        </div>
+      </section>
+      )}
 
       {/* From communities to the country */}
       <section className="relative overflow-hidden bg-cream py-14 md:py-20">

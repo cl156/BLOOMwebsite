@@ -19,10 +19,30 @@
     "body": "",
     "imageAlt": "Delegates talking across a table at the Utah Solutions Forum"
   },
+  "moment": {
+    "eyebrow": "",
+    "heading": "The choices AI raises are already on the table.",
+    "items": [
+      {
+        "label": "Where we live",
+        "question": "Should our county approve a data center, and on what terms?"
+      },
+      {
+        "label": "How we learn and work",
+        "question": "What rules should govern AI in our schools and workplaces?"
+      },
+      {
+        "label": "Who benefits",
+        "question": "Who should share in the gains from AI, and who bears the risks?"
+      }
+    ],
+    "contrast": "Polls capture what people think in isolation. Social media rewards what divides us.",
+    "bridge": "Communities need a way to work through these choices together."
+  },
   "ladder": {
     "heading": "The Public Assembly on AI helps communities work out together the future worth building, from local to national.",
     "headingAccent": "",
-    "body": "Today, many communities struggle to even influence local choices, like how (or if) a data center gets built. And no community can, on its own, set state or national protections for children, workers, and privacy, or guardrails on powerful AI.\n\nThe Public Assembly gives communities the tools, organizing support, and connections to do both. Every community sets its own agenda and finds where it can organize with others. Along the way, informed dialogue builds the relationships that make change last.",
+    "body": "Today, many communities struggle to even have a say in local choices, like how (or if) a data center gets built. And no community can, on its own, set state or national protections for children, workers, and privacy, or guardrails on powerful AI.\n\nThe Public Assembly gives communities the tools, organizing support, and connections to do both. Every community sets its own agenda and finds where it can organize with others. Along the way, informed dialogue builds the relationships that make change last.",
     "emphasis": "",
     "tiers": [
       {
@@ -44,7 +64,7 @@
     "intro": "Every host is supported to run a community assembly, in one of two forms. We’ll match each host to the form that fits its community, its capacity, and what’s at stake.",
     "fundingLabel": "FUNDING FROM BLOOM",
     "core": {
-      "name": "Shortform",
+      "name": "Short arc",
       "funding": "$10,000–$30,000",
       "length": "3 month commitment",
       "steps": [
@@ -68,7 +88,7 @@
       "outcome": "Works towards a map of community priorities: what’s immediately actionable, and what needs further deliberation."
     },
     "coDesign": {
-      "name": "Longform",
+      "name": "Long arc",
       "funding": "$50,000–$60,000",
       "length": "6 month commitment",
       "steps": [
