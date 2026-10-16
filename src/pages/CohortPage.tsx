@@ -11,7 +11,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import copy from "../content/cohort.json";
 import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, rfpStatus } from "../content/rfp";
 import Editable from "../components/Editable";
-import { Glow, Pill } from "../components/ui";
+import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
 import { assetHref, sectionHref } from "../utils/href";
 
@@ -239,6 +239,38 @@ export default function CohortPage() {
         </div>
       </nav>
 
+      {/* The moment: the choices AI is forcing, as questions; why communities need to work through them together */}
+      <section id="moment" className="scroll-mt-40 bg-cream pb-4 pt-14 md:pt-20">
+        <div className="mx-auto max-w-7xl px-5 lg:px-10">
+          <Eyebrow>
+            <E path="moment.eyebrow">{c.moment.eyebrow}</E>
+          </Eyebrow>
+          <h2 className={`${sectionHeading} max-w-4xl`}>
+            <E path="moment.heading">{c.moment.heading}</E>
+          </h2>
+          <ul className="mt-10 grid gap-5 md:grid-cols-3">
+            {c.moment.items.map((m, i) => (
+              <li key={i} className="rounded-3xl border border-blush-200 bg-white p-7 shadow-soft">
+                <E as="p" path={`moment.items.${i}.label`} className="text-xs font-semibold uppercase tracking-[0.18em] text-bloom-500">
+                  {m.label}
+                </E>
+                <E as="p" path={`moment.items.${i}.question`} className="mt-3 font-display text-xl leading-snug text-maroon-900">
+                  {m.question}
+                </E>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10 max-w-3xl border-l-2 border-bloom-500 pl-6">
+            <E as="p" path="moment.contrast" className="text-lg leading-relaxed text-maroon-900/75">
+              {c.moment.contrast}
+            </E>
+            <E as="p" path="moment.bridge" className="mt-3 font-display text-2xl leading-snug text-maroon-900">
+              {c.moment.bridge}
+            </E>
+          </div>
+        </div>
+      </section>
+
       {/* From communities to the country */}
       <section className="relative overflow-hidden bg-cream py-14 md:py-20">
         <Glow tone="blush" className="-right-1/4 top-1/3 h-[60vmin] w-[60vmin]" />
@@ -324,10 +356,18 @@ export default function CohortPage() {
             <E as="p" path="who.topicsIntro" className="mt-2 text-[15px] leading-relaxed text-maroon-900/85">
               {c.who.topicsIntro}
             </E>
-            <ul className="mt-4 flex flex-wrap gap-2">
+            {/* Each topic as the kind of question a community assembly takes up */}
+            <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {c.who.topics.map((t, i) => (
-                <li key={i} className="rounded-full bg-blush-100 px-4 py-2 text-sm text-bloom-600">
-                  <E path={`who.topics.${i}`}>{t}</E>
+                <li key={i} className="rounded-2xl bg-blush-50 p-5">
+                  <E as="p" path={`who.topics.${i}`} className="text-xs font-semibold uppercase tracking-[0.16em] text-bloom-600">
+                    {t}
+                  </E>
+                  {c.who.topicQuestions?.[i] && (
+                    <E as="p" path={`who.topicQuestions.${i}`} className="mt-2 text-[15px] leading-relaxed text-maroon-900">
+                      {c.who.topicQuestions[i]}
+                    </E>
+                  )}
                 </li>
               ))}
             </ul>
