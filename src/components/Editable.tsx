@@ -74,8 +74,16 @@ function EditableInner({
   const handleBlur = useCallback(async () => {
     const el = ref.current;
     if (!el || saving.current) return;
+    // An element being replaced (after a save elsewhere) can blur on its way out; never save from it.
+    if (!el.isConnected) return;
 
-    const value = el.innerText;
+    // Clean up what the browser adds while editing: trailing (non-breaking) spaces and
+    // runs of blank lines from pressing Enter, so a paragraph break is always one blank line.
+    const value = el.innerText
+      .replace(/\u00a0/g, " ")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
     if (value === before.current) return; // clicked in and out without changing anything
     saving.current = true;
     sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));

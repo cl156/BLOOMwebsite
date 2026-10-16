@@ -1,7 +1,7 @@
 {
   "hero": {
     "heading": "Call for Civic Hosts:\nThe Public Assembly on AI",
-    "intro": "Over the past year, the BLOOM Project has developed a community assembly model with local partners that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI. Now we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the United States working out what they want from AI.",
+    "intro": "Over the past year, the BLOOM Project and local partners developed a community assembly model that combines digital tools with deliberative public problem-solving. We tested it in two pilots in Utah and Oregon, engaging nearly 1,000 people across six counties on questions about AI.\n\nNow we’re inviting a cohort of Civic Hosts to help build the Public Assembly on AI: a network of communities across the United States working out what they want from AI and building the civic power to realize it.",
     "pdfLabel": "Download the full RFP (PDF)"
   },
   "navLabel": "Call for Civic Hosts",
@@ -16,26 +16,26 @@
     "questions": "Questions"
   },
   "network": {
-    "body": "The Public Assembly will empower communities to create local agendas while identifying the places where they can organize together. In each place, informed dialogue builds relationships that lead to positive, durable change.",
+    "body": "",
     "imageAlt": "Delegates talking across a table at the Utah Solutions Forum"
   },
   "ladder": {
-    "heading": "The Public Assembly on AI helps communities make decisions about the role this technology should play in their lives.",
+    "heading": "The Public Assembly on AI helps communities create the future they want, from local to national scale.",
     "headingAccent": "",
-    "body": "A community can decide how to govern a proposed data center project. But it cannot by itself determine state or national protections for children, workers, privacy, or increasingly powerful AI systems.",
+    "body": "Today, many communities struggle to even influence what happens locally, like how (or if) a data center gets built. State and national choices, from protections for children, workers, and privacy to guardrails on powerful AI, are further out of reach.\n\nThe Public Assembly gives communities the tools, organizing support, and connections to do both. Each sets its own agenda, acts where it can, and finds where it can organize with others.",
     "emphasis": "",
     "tiers": [
       {
         "level": "Local",
-        "body": "Hosts engage their broader communities and identify shared priorities based on common ground."
+        "body": "Hosts bring their communities together to find common ground and act where they can."
       },
       {
         "level": "State",
-        "body": "Conclusions that resonate across communities become the charge for state-level representative assemblies."
+        "body": "Shared priorities across communities set the agenda for state assemblies."
       },
       {
         "level": "National",
-        "body": "Questions requiring national action ultimately become the agenda for a national civic assembly, bringing local perspectives to the national stage."
+        "body": "Questions that need further action shape a national civic assembly on AI."
       }
     ]
   },
