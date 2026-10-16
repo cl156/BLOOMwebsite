@@ -5,7 +5,7 @@
 import { Pill } from "../components/ui";
 import { assetHref, pageHref } from "../utils/href";
 
-const REPORT_URL = "https://drive.google.com/file/d/1QngRN6wkkAcPDdhdFInZQn_qu0mmBWnl/view?usp=drive_link";
+import { UTAH_REPORT_URL as REPORT_URL } from "../content/utahRecommendations";
 
 const RECOMMENDATIONS = [
   "Creating a dedicated statewide AI information hub and citizen engagement portal to help Utahns understand proposed projects and policies and participate in decisions.",
