@@ -67,7 +67,8 @@ const CARDS: Card[] = [
   ...news.slice(0, 2).map((a) => ({
     kicker: a.outlet.replace(/\s*\(.*\)$/, ""),
     date: a.date,
-    title: a.title,
+    // A long headline can carry a "shortTitle" for this card; the News page always shows the full headline.
+    title: "shortTitle" in a && a.shortTitle ? a.shortTitle : a.title,
     href: a.url,
     external: true,
     cta: "kind" in a && a.kind === "podcast" ? "Listen to the episode" : "kind" in a && a.kind === "video" ? "Watch the video" : "Read article",
