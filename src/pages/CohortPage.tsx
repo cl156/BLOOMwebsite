@@ -9,7 +9,7 @@
  */
 import { useEffect, useMemo, useRef, useState } from "react";
 import copy from "../content/cohort.json";
-import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, previewEnabled, rfpStatus } from "../content/rfp";
+import { APPLY_EMBED_URL, APPLY_URL, CONTACT_EMAIL, HUB_INQUIRY_MAILTO, INFO_SESSION_URL, RFP_PDF, infoSessionUpcoming, infoSessionWhen, previewEnabled, rfpStatus } from "../content/rfp";
 import Editable from "../components/Editable";
 import { Eyebrow, Glow, Pill } from "../components/ui";
 import { CohortCTA, cohortStatusLine } from "../components/CohortForm";
@@ -175,11 +175,9 @@ export default function CohortPage() {
       {c.infoSession.button}
     </Pill>
   );
-  const infoWhen = showInfoSession && (
-    <E as="p" path="infoSession.when" className="mt-2 text-[15px] text-maroon-900/80">
-      {c.infoSession.when}
-    </E>
-  );
+  // Session dates come from INFO_SESSIONS in content/rfp.ts; past sessions drop off automatically.
+  const sessionWhen = infoSessionWhen();
+  const infoWhen = showInfoSession && sessionWhen && <p className="mt-2 text-[15px] text-maroon-900/80">{sessionWhen}</p>;
   const pdfButton = showPdf && (
     <Pill href={assetHref(RFP_PDF)} external variant="soft" arrow={false}>
       {c.hero.pdfLabel}
@@ -209,10 +207,13 @@ export default function CohortPage() {
             {infoButton}
             {pdfButton}
           </div>
-          {showInfoSession && c.infoSession.when.trim() && (
+          {showInfoSession && sessionWhen && (
             <p className="mt-3 text-sm text-maroon-900/75">
-              <E path="infoSession.heroPrefix" className="font-medium text-maroon-900">{c.infoSession.heroPrefix}</E>:{" "}
-              <E path="infoSession.when">{c.infoSession.when}</E>
+              {/* "Info sessions" while two remain, "Info session" once only one is left */}
+              <span className="font-medium text-maroon-900">
+                {sessionWhen.includes(" or ") ? c.infoSession.heroPrefix : c.infoSession.heroPrefix.replace(/s$/, "")}
+              </span>:{" "}
+              {sessionWhen}
             </p>
           )}
 

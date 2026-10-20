@@ -268,16 +268,15 @@
       },
       {
         "name": "The arc",
-        "body": "Shortform assemblies run 10–12 week arcs between February and July 2027, with staggered starts; longform assemblies run across the full window.\n\nTogether, this network will have the opportunity to commission state or national assemblies on AI in 2028."
+        "body": "Short arc assemblies run 12 weeks between February and July 2027, with staggered starts; long arc assemblies run across the full window.\n\nTogether, this network will have the opportunity to commission state or national assemblies on AI in 2028."
       }
     ]
   },
   "infoSession": {
     "button": "Register for an info session",
-    "when": "Thursday, October 22 · 10:00 AM PT / 1:00 PM ET",
     "cardLine": "",
     "prompt": "Have questions before you apply?",
-    "heroPrefix": "Info session",
+    "heroPrefix": "Info sessions",
     "subtitle": "Register for an information session",
     "rsvp": "RSVP",
     "emailPrompt": "You can also email us at"
