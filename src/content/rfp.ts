@@ -55,10 +55,21 @@ export const HUB_INQUIRY_MAILTO = `mailto:${CONTACT_EMAIL}?subject=State%20or%20
 /** Zoom registration for the "Call for Civic Hosts Info Session | Public Assembly on AI". */
 export const INFO_SESSION_URL = "https://us02web.zoom.us/meeting/register/E6q9UVGJQx-UnN02WG5wuA";
 /**
- * When the info session ends (Oct 22, 2026, 10:00 AM PT, allowing an hour). Registration links hide
- * after this. The date shown on the page is infoSession.when in content/cohort.json.
+ * Info sessions, in order. Each one drops off the page once it has ended (allowing an hour), and the
+ * registration links hide after the last one. Both are 10:00 AM Pacific.
  */
-export const INFO_SESSION_ENDS = new Date("2026-10-22T11:00:00-07:00");
+export const INFO_SESSIONS = [
+  { label: "Thursday, October 22", ends: new Date("2026-10-22T11:00:00-07:00") },
+  { label: "Tuesday, November 10", ends: new Date("2026-11-10T11:00:00-08:00") },
+];
+export const INFO_SESSION_TIME = "10:00 AM PT / 1:00 PM ET";
+export const INFO_SESSION_ENDS = INFO_SESSIONS[INFO_SESSIONS.length - 1].ends;
+
+/** e.g. "Thursday, October 22 or Tuesday, November 10 · 10:00 AM PT / 1:00 PM ET" — only sessions still ahead. */
+export function infoSessionWhen(now = new Date()) {
+  const upcoming = INFO_SESSIONS.filter((s) => now < s.ends).map((s) => s.label);
+  return upcoming.length ? `${upcoming.join(" or ")} · ${INFO_SESSION_TIME}` : "";
+}
 
 export function infoSessionUpcoming(now = new Date()) {
   return Boolean(INFO_SESSION_URL) && now < INFO_SESSION_ENDS && rfpStatus(now) !== "closed";
