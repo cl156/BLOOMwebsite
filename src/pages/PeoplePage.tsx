@@ -10,7 +10,7 @@ type Member = { name: string; role: string; org?: string; photo?: string };
 const TEAM: Member[] = [
   { name: "Wren Elhai", role: "Strategy & Partnerships", photo: "/team/wren.jpg" },
   { name: "Mike Grafton", role: "Engineering Lead", photo: "/team/mike.jpg" },
-  { name: "Lauren Higgins", role: "Senior Advisor", org: "New Pluralist", photo: "/team/lauren.jpg" },
+  { name: "Lauren Higgins", role: "Senior Advisor", org: "New Pluralists", photo: "/team/lauren.jpg" },
   { name: "Clara Long", role: "Co-Executive Director", photo: "/team/clara.jpeg" },
   { name: "Humphrey Obuobi", role: "Product & Design Lead", photo: "/team/humphrey.png" },
   { name: "Rahmin Sarabi", role: "Co-Executive Director", photo: "/team/rahmin.jpg" },
